@@ -7,6 +7,12 @@ public abstract class AlgoMon {
 	private List<Ataque> ataques;
 	private Tipo tipo;
 	
+	public AlgoMon(int vida, List<Ataque> ataques, Tipo tipo){
+		this.setVida(vida);
+		this.setAtaques(ataques);
+		this.setTipo(tipo);
+	}
+	
 	public void atacar(AlgoMon otro, String ataque){
 		
 	}
