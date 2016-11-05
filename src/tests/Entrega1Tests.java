@@ -1,6 +1,9 @@
 package tests;
 
 import org.junit.Test;
+
+import clases.AlgoMon;
+
 import static org.junit.Assert.*;
 
 public class Entrega1Tests {

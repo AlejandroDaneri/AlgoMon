@@ -7,7 +7,7 @@ public abstract class AlgoMon {
 	private List<Ataque> ataques;
 	private Tipo tipo;
 	
-	public void atacar(AlgoMon otro, Ataque ataque){
+	public void atacar(AlgoMon otro, String ataque){
 		
 	}
 	

@@ -3,12 +3,12 @@ package clases;
 import excepciones.AtaquesAgotadosException;
 
 public abstract class Ataque {
-	
+
 	private int potencia;
 	private int cantidad;
 	private Tipo tipo;
 		
-	private Ataque(int potencia, int cantidad, Tipo tipo){
+	public Ataque(int potencia, int cantidad, Tipo tipo){
 		this.setPotencia(potencia);
 		this.setCantidad(cantidad);
 		this.setTipo(tipo);
