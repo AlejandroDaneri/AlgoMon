@@ -7,19 +7,19 @@ public enum Tipo {
 			return otroTipo.getVsAgua();
 		}
 	},
-	FUEGO(0.5,0.5,2,1) {
+	FUEGO(2,0.5,0.5,1) {
 		@Override
 		public double obtenerMultiplicador(Tipo otroTipo) {
 			return otroTipo.getVsFuego();
 		}
 	},
-	PLANTA(0.5,0.5,2,1) {
+	PLANTA(0.5,2,0.5,1) {
 		@Override
 		public double obtenerMultiplicador(Tipo otroTipo) {
 			return otroTipo.getVsPlanta();
 		}
 	},
-	NORMAL(0.5,0.5,2,1) {
+	NORMAL(1,1,1,1) {
 		@Override
 		public double obtenerMultiplicador(Tipo otroTipo) {
 			return otroTipo.getVsNormal();
