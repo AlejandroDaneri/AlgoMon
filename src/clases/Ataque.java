@@ -14,11 +14,12 @@ public abstract class Ataque {
 		this.setTipo(tipo);
 	}
 	
-	public void atacar(AlgoMon atacante, AlgoMon atacado){
+	public void atacar(AlgoMon atacante, AlgoMon atacado) throws AtaquesAgotadosException{
 		if(this.getCantidad() == 0)
 			throw new AtaquesAgotadosException();
 		double multiplicador = this.getTipo().obtenerMultiplicador(atacado.getTipo());
 		atacado.disminuirVida((int)(this.getPotencia()*multiplicador));
+		(this.cantidad)--;
 	}
 
 	public int getPotencia() {
