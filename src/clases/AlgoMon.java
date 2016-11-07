@@ -2,6 +2,9 @@ package clases;
 
 import java.util.List;
 
+import excepciones.AtaqueInvalidoException;
+import excepciones.AtaquesAgotadosException;
+
 public abstract class AlgoMon {
 	private int vida;
 	private List<Ataque> ataques;
@@ -13,8 +16,21 @@ public abstract class AlgoMon {
 		this.setTipo(tipo);
 	}
 	
-	public void atacar(AlgoMon otro, String ataque){
-		
+	public void atacar(AlgoMon otro, String ataqueName) throws AtaquesAgotadosException{
+		if(!this.tieneAtaque(ataqueName)) throw new AtaqueInvalidoException();
+		for(Ataque ataque: ataques){
+			if(ataque.tieneAtaque(ataqueName)){
+				ataque.atacar(this, otro);
+			}
+		}
+	}
+	
+	public boolean tieneAtaque(String nombre) {
+		boolean tiene = false;
+		for(Ataque ataque: ataques){
+			if(ataque.tieneAtaque(nombre)) tiene = true;
+		}
+		return tiene;
 	}
 	
 	public void disminuirVida(int puntos){
