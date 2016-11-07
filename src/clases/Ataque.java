@@ -56,7 +56,7 @@ public abstract class Ataque {
 		this.tipo = tipo;
 	}
 	
-	public boolean tieneAtaque(String nombre){
+	public boolean equals(String nombre){
 		return this.nombre.equals(nombre);
 	}
 }

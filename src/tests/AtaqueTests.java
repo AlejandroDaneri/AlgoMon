@@ -5,15 +5,13 @@ import org.junit.Test;
 
 import clases.Canto;
 
-import static org.junit.Assert.*;
-
 public class AtaqueTests {
 	
 	@Test
-	public void testTieneAtaque(){
+	public void testEquals(){
 		Canto canto = new Canto();
-		assertEquals(true,canto.tieneAtaque("Canto"));
-		assertEquals(false,canto.tieneAtaque("LatigoCepa"));
+		assertEquals(true,canto.equals("Canto"));
+		assertEquals(false,canto.equals("LatigoCepa"));
 	}
 	
 }

@@ -19,7 +19,7 @@ public abstract class AlgoMon {
 	public void atacar(AlgoMon otro, String ataqueName) throws AtaquesAgotadosException{
 		if(!this.tieneAtaque(ataqueName)) throw new AtaqueInvalidoException();
 		for(Ataque ataque: ataques){
-			if(ataque.tieneAtaque(ataqueName)){
+			if(ataque.equals(ataqueName)){
 				ataque.atacar(this, otro);
 			}
 		}
@@ -28,7 +28,7 @@ public abstract class AlgoMon {
 	public boolean tieneAtaque(String nombre) {
 		boolean tiene = false;
 		for(Ataque ataque: ataques){
-			if(ataque.tieneAtaque(nombre)) tiene = true;
+			if(ataque.equals(nombre)) tiene = true;
 		}
 		return tiene;
 	}
