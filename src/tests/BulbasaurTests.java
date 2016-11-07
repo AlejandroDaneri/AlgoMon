@@ -6,7 +6,12 @@ import clases.Bulbasaur;
 import clases.Tipo;
 
 public class BulbasaurTests {
-	
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Bulbasaur bulbasaur = new Bulbasaur();
+		assertNotNull(bulbasaur);
+	}
+
 	@Test
 	public void testCrearBalbasaur() {
 		

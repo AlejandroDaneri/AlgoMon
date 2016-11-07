@@ -6,7 +6,12 @@ import clases.Jigglypuff;
 import clases.Tipo;
 
 public class JigglypuffTests {
-	
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Jigglypuff jigglypuff = new Jigglypuff();
+		assertNotNull(jigglypuff);
+	}
+
 	@Test
 	public void testCrearJigglypuff() {
 		

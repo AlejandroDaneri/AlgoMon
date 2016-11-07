@@ -6,7 +6,12 @@ import clases.Rattata;
 import clases.Tipo;
 
 public class RattataTests {
-	
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Rattata rattata = new Rattata();
+		assertNotNull(rattata);
+	}
+
 	@Test
 	public void testCrearRattata() {
 		

@@ -7,7 +7,12 @@ import clases.Charmander;
 import clases.Tipo;
 
 public class CharmanderTests {
-	
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Charmander charmander = new Charmander();
+		assertNotNull(charmander);
+	}
+
 	@Test
 	public void testCrearCharmander() {
 		
