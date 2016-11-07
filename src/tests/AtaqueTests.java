@@ -33,8 +33,8 @@ public class AtaqueTests {
 		
 		assertEquals(bulbasaur.getVida(), 130);
 		
-		Ataque ataque1 = buscarAtaque(squirtle.getAtaques(), "CañonDeAgua");
-		assertEquals(ataque1.getCantidad(), 7);
+		Ataque ataque = buscarAtaque(squirtle.getAtaques(), "CañonDeAgua");
+		assertEquals(ataque.getCantidad(), 7);
 	}
 	
 	@Test
@@ -56,6 +56,10 @@ public class AtaqueTests {
 		}
 		
 		assertEquals(charmander.getVida(), 135);
+		
+		Ataque ataque = buscarAtaque(bulbasaur.getAtaques(), "LatigoCepa");
+		assertEquals(ataque.getCantidad(), 5);
+
 
 	}
 	
