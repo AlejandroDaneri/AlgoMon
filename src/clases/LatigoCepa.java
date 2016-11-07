@@ -3,7 +3,7 @@ package clases;
 public class LatigoCepa extends Ataque {
 
 	public LatigoCepa() {
-		super(15,10,Tipo.PLANTA);
+		super("LatigoCepa",15,10,Tipo.PLANTA);
 	}
 
 }

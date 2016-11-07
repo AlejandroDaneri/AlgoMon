@@ -1,9 +1,9 @@
 package clases;
 
-public class CaÒonDeAgua extends Ataque {
+public class Ca√±onDeAgua extends Ataque {
 
-	public CaÒonDeAgua() {
-		super(20,8,Tipo.AGUA);
+	public Ca√±onDeAgua() {
+		super("Ca√±onDeAgua",20,8,Tipo.AGUA);
 	}
 
 }

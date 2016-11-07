@@ -10,7 +10,7 @@ public class Squirtle extends AlgoMon {
 		List<Ataque> ataques = new ArrayList<Ataque>();
 		ataques.add(new Burbuja());
 		ataques.add(new AtaqueRapido());
-		ataques.add(new CañonDeAgua());
+		ataques.add(new CaÃ±onDeAgua());
 		this.setAtaques(ataques);
 	}
 }
