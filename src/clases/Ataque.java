@@ -3,12 +3,14 @@ package clases;
 import excepciones.AtaquesAgotadosException;
 
 public abstract class Ataque {
-
+	
+	private String nombre;
 	private int potencia;
 	private int cantidad;
 	private Tipo tipo;
 		
-	public Ataque(int potencia, int cantidad, Tipo tipo){
+	public Ataque(String nombre, int potencia, int cantidad, Tipo tipo){
+		this.setNombre(nombre);
 		this.setPotencia(potencia);
 		this.setCantidad(cantidad);
 		this.setTipo(tipo);
@@ -21,7 +23,15 @@ public abstract class Ataque {
 		atacado.disminuirVida((int)(this.getPotencia()*multiplicador));
 		(this.cantidad)--;
 	}
-
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
 	public int getPotencia() {
 		return potencia;
 	}
@@ -44,5 +54,9 @@ public abstract class Ataque {
 
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
+	}
+	
+	public boolean tieneAtaque(String nombre){
+		return this.nombre.equals(nombre);
 	}
 }
