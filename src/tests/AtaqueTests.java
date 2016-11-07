@@ -1,9 +1,16 @@
 package tests;
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 
+import clases.Ataque;
+import clases.Bulbasaur;
 import clases.Canto;
+import clases.Charmander;
+import clases.Squirtle;
+import excepciones.AtaquesAgotadosException;
 
 public class AtaqueTests {
 	
@@ -14,4 +21,51 @@ public class AtaqueTests {
 		assertEquals(false,canto.equals("LatigoCepa"));
 	}
 	
+	@Test
+	public void testAtacar() {
+		Squirtle squirtle = new Squirtle();
+		Bulbasaur bulbasaur = new Bulbasaur();
+
+		try {
+			squirtle.atacar(bulbasaur, "CañonDeAgua");
+		} catch (AtaquesAgotadosException e1) {
+		}
+		
+		assertEquals(bulbasaur.getVida(), 130);
+		
+		Ataque ataque1 = buscarAtaque(squirtle.getAtaques(), "CañonDeAgua");
+		assertEquals(ataque1.getCantidad(), 7);
+	}
+	
+	@Test
+	public void testDañoDeAtaqueEsUnEntero() {
+		Bulbasaur bulbasaur = new Bulbasaur();
+		Charmander charmander = new Charmander();
+		
+		try {
+			bulbasaur.atacar(charmander, "LatigoCepa");
+		} catch (AtaquesAgotadosException e) {
+		}
+		assertEquals("El daño que hace un ataque es siempre un entero", charmander.getVida(), 163);
+		try {
+			bulbasaur.atacar(charmander, "LatigoCepa");
+			bulbasaur.atacar(charmander, "LatigoCepa");
+			bulbasaur.atacar(charmander, "LatigoCepa");
+			bulbasaur.atacar(charmander, "LatigoCepa");
+		} catch (AtaquesAgotadosException e) {
+		}
+		
+		assertEquals(charmander.getVida(), 135);
+
+	}
+	
+	public Ataque buscarAtaque(List<Ataque> ataques, String nombreDeAtaque) {
+		Ataque ataqueDevuelto = null;
+		for (Ataque ataque: ataques) {
+			if (ataque.equals(nombreDeAtaque)) {
+				ataqueDevuelto = ataque;
+			}
+		}
+		return ataqueDevuelto;
+	}
 }
