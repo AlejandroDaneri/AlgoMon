@@ -7,7 +7,7 @@ public class Rattata extends AlgoMon {
 
 	public Rattata() {
 		super(170, null, Tipo.NORMAL);
-		List<Ataque> ataques = new ArrayList<Ataque>();
+		List<Ataque> ataques = new ArrayList<>();
 		ataques.add(new Fogonazo());
 		ataques.add(new AtaqueRapido());
 		ataques.add(new Burbuja());

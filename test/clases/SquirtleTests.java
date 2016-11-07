@@ -1,10 +1,7 @@
-package tests;
-import static org.junit.Assert.*;
-
+package clases;
 import org.junit.Test;
 
-import clases.Squirtle;
-import clases.Tipo;
+import static org.junit.Assert.*;
 
 public class SquirtleTests {
 

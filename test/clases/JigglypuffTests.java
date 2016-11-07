@@ -1,9 +1,7 @@
-package tests;
-import static org.junit.Assert.*;
+package clases;
 import org.junit.Test;
 
-import clases.Jigglypuff;
-import clases.Tipo;
+import static org.junit.Assert.*;
 
 public class JigglypuffTests {
 	@Test

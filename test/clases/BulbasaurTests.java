@@ -1,9 +1,8 @@
-package tests;
-import static org.junit.Assert.*;
+package clases;
 import org.junit.Test;
 
-import clases.Bulbasaur;
-import clases.Tipo;
+import static org.junit.Assert.*;
+
 
 public class BulbasaurTests {
 	@Test

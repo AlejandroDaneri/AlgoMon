@@ -31,7 +31,7 @@ public enum Tipo {
 	private double vsPlanta;
 	private double vsNormal;
 	
-	private Tipo(double vsAgua, double vsFuego,double vsPlanta,double vsNormal){
+	Tipo(double vsAgua, double vsFuego,double vsPlanta,double vsNormal){
 		this.vsAgua = vsAgua;
 		this.vsFuego = vsFuego;
 		this.vsPlanta = vsPlanta;

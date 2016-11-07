@@ -1,11 +1,7 @@
-package tests;
-import static org.junit.Assert.*;
-
+package clases;
 import org.junit.Test;
 
-import clases.Chansey;
-import clases.Tipo;
-
+import static org.junit.Assert.*;
 
 public class ChanseyTests {
 	@Test
