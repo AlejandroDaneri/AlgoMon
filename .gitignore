@@ -2,10 +2,6 @@
 *.swp
 *.iml
 
-/.classpath
-/.project
-
-
 /.idea/
 /out/**
 /out/
