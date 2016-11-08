@@ -10,7 +10,7 @@ public class Bulbasaur extends AlgoMon {
 		List<Ataque> ataques = new ArrayList<Ataque>();
 		ataques.add(new LatigoCepa());
 		ataques.add(new AtaqueRapido());
-		ataques.add(new ChupaVidas());
+		ataques.add(new Chupavidas());
 		this.setAtaques(ataques);
 	}
 }

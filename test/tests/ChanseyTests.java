@@ -16,7 +16,7 @@ public class ChanseyTests {
 		String ataque1 = "Canto";
 		String ataque2 = "AtaqueRapido";
 		String ataque3 = "LatigoCepa";
-		String ataque4 = "ChupaVidas";
+		String ataque4 = "Chupavidas";
 
 		
 		assertEquals(chansey.getTipo(), Tipo.NORMAL);

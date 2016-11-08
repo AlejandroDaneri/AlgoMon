@@ -13,7 +13,7 @@ public class BulbasaurTests {
 		Bulbasaur bulbasaur = new Bulbasaur();
 		String ataque1 = "LatigoCepa";
 		String ataque2 = "AtaqueRapido";
-		String ataque3 = "ChupaVidas";
+		String ataque3 = "Chupavidas";
 		String ataque4 = "Canto";
 
 		
