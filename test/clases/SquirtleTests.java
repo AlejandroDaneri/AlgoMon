@@ -16,7 +16,7 @@ public class SquirtleTests {
 		Squirtle squirtle = new Squirtle();
 		String ataque1 = "Burbuja";
 		String ataque2 = "AtaqueRapido";
-		String ataque3 = "CañonDeAgua";
+		String ataque3 = "CanonDeAgua";
 		String ataque4 = "LatigoCepa";
 		
 		assertEquals(squirtle.getTipo(), Tipo.AGUA);
