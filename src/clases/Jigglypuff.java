@@ -7,7 +7,7 @@ public class Jigglypuff extends AlgoMon {
 	
 	public Jigglypuff() {
 		super(130, null, Tipo.NORMAL);
-		List<Ataque> ataques = new ArrayList<>();
+		List<Ataque> ataques = new ArrayList<Ataque>();
 		ataques.add(new Canto());
 		ataques.add(new AtaqueRapido());
 		ataques.add(new Burbuja());

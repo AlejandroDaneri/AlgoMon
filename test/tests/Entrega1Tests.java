@@ -1,7 +1,9 @@
-package clases;
+package tests;
 
-import excepciones.AtaquesAgotadosException;
 import org.junit.Test;
+
+import clases.*;
+import excepciones.AtaquesAgotadosException;
 
 import static org.junit.Assert.*;
 

@@ -1,10 +1,16 @@
-package clases;
-import excepciones.AtaquesAgotadosException;
-import org.junit.Test;
+package tests;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import clases.Ataque;
+import clases.Bulbasaur;
+import clases.Canto;
+import clases.Charmander;
+import clases.Squirtle;
+import excepciones.AtaquesAgotadosException;
 
 public class AtaqueTests {
 	
@@ -40,7 +46,7 @@ public class AtaqueTests {
 			bulbasaur.atacar(charmander, "LatigoCepa");
 		} catch (AtaquesAgotadosException e) {
 		}
-		assertEquals("El daño que hace un ataque es siempre un entero", charmander.getVida(), 163);
+		assertEquals("El dano que hace un ataque es siempre un entero", charmander.getVida(), 163);
 		try {
 			bulbasaur.atacar(charmander, "LatigoCepa");
 			bulbasaur.atacar(charmander, "LatigoCepa");
