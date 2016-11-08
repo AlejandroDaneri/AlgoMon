@@ -28,9 +28,9 @@ public class Entrega2Tests {
 		// dependiendo de la implementación capaz haya que crear los dos algomones restantes
 		
 		partida.recibirAlgomones(algomonesJugador1, algomonesJugador2);
-		jigglypuff.atacar(squirtle, "Canto", estadoADormido); 
+		jigglypuff.atacar(squirtle, "Canto"); 
 		squirtle.atacar(chansey, "AtaqueRapido"); // esto lanza la excepcion. turno 1 de squirtle
-		chansey.atacar(charmander, "Canto", estadoADormido);
+		chansey.atacar(charmander, "Canto");
 		charmander.atacar(jigglypuff, "AtaqueRapido"); // esto lanza la excepcion. turno 1 de charmander, 2 de squirtle
 		jigglypuff.atacar(squirtle, "AtaqueRapido");
 		squirtle.atacar(chansey, "AtaqueRapido"); // esto lanza la excepcion. turno 3 de squirtle, 2 de charmander
@@ -129,20 +129,20 @@ public class Entrega2Tests {
 		Charmander charmander2 = new Charmander();
 		algomonesJugador2.add(charmander2);
 		partida.recibirAlgomones(algomonesJugador1, algomonesJugador2);
-		charmander1.atacar(bulbasaur, "Fogonazo", estadoAQuemado);
+		charmander1.atacar(bulbasaur, "Fogonazo");
 		assertEquals(136, bulbasaur.getVida());
 		bulbasaur.atacar(charmander1, "AtaqueRapido");
 		assertEquals(160, charmander1.getVida());
 		assertEquals(122, bulbasaur.getVida());
 		
-		rattata.atacar(squirtle, "Fogonazo", estadoAQuemado);
+		rattata.atacar(squirtle, "Fogonazo");
 		assertEquals(149, squirtle.getVida());
 		squirtle.atacar(charmander1, "AtaqueRapido");
 		assertEquals(150, charmander1.getVida());
 		assertEquals(122, bulbasaur.getVida()); // no estuvo activo durante este turno
 		assertEquals(134, squirtle.getVida()); // pierde el 10 % de su vida original
 		
-		rattata.atacar(charmander2, "Fogonazo", estadoAQuemado);
+		rattata.atacar(charmander2, "Fogonazo");
 		assertEquals(169, charmander2.getVida());
 		charmander2.atacar(rattata, "AtaqueRapido");
 		assertEquals(160, rattata.getVida());
@@ -150,7 +150,7 @@ public class Entrega2Tests {
 		assertEquals(134, squirtle.getVida()); // no estuvo activo durante este turno
 		assertEquals(152, charmander2.getVida());
 		
-		charmander2.atacar(jigglypuff, "Fogonazo", estadoAQuemado);
+		charmander2.atacar(jigglypuff, "Fogonazo");
 		assertEquals(128, jigglypuff.getVida());
 		assertEquals(135, charmander2.getVida());
 		assertEquals(122, bulbasaur.getVida()); // no estuvo activo durante este turno

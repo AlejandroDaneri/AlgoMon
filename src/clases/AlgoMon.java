@@ -6,6 +6,7 @@ import excepciones.AtaqueInvalidoException;
 import excepciones.AtaquesAgotadosException;
 
 public abstract class AlgoMon {
+	
 	private int vida;
 	private List<Ataque> ataques;
 	private Tipo tipo;
@@ -44,6 +45,7 @@ public abstract class AlgoMon {
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
+	
 
 	public List<Ataque> getAtaques() {
 		return ataques;

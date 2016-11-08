@@ -21,7 +21,7 @@ public abstract class Ataque {
 			throw new AtaquesAgotadosException();
 		double multiplicador = this.getTipo().obtenerMultiplicador(atacado.getTipo());
 		atacado.disminuirVida((int)(this.getPotencia()*multiplicador));
-		(this.cantidad)--;
+		this.reducirCantidadDeAtaque();
 	}
 	
 	public void setNombre(String nombre) {
@@ -58,5 +58,9 @@ public abstract class Ataque {
 	
 	public boolean equals(String nombre){
 		return this.nombre.equals(nombre);
+	}
+	
+	public void reducirCantidadDeAtaque() {
+		(this.cantidad)--;
 	}
 }
