@@ -8,17 +8,28 @@ public abstract class Ataque {
 	private int potencia;
 	private int cantidad;
 	private Tipo tipo;
+	private Accion accion;
 		
+	public Ataque(String nombre, int potencia, int cantidad, Tipo tipo, Accion accion){
+		this.setNombre(nombre);
+		this.setPotencia(potencia);
+		this.setCantidad(cantidad);
+		this.setTipo(tipo);
+		this.setAccion(accion);
+	}
+	
 	public Ataque(String nombre, int potencia, int cantidad, Tipo tipo){
 		this.setNombre(nombre);
 		this.setPotencia(potencia);
 		this.setCantidad(cantidad);
 		this.setTipo(tipo);
+		this.setAccion(new AccionNula());
 	}
 	
 	public void atacar(AlgoMon atacante, AlgoMon atacado) throws AtaquesAgotadosException{
 		if(this.getCantidad() == 0)
 			throw new AtaquesAgotadosException();
+		this.getAccion().actuar(atacante, atacado);
 		double multiplicador = this.getTipo().obtenerMultiplicador(atacado.getTipo());
 		atacado.disminuirVida((int)(this.getPotencia()*multiplicador));
 		this.reducirCantidadDeAtaque();
@@ -62,5 +73,13 @@ public abstract class Ataque {
 	
 	public void reducirCantidadDeAtaque() {
 		(this.cantidad)--;
+	}
+
+	public Accion getAccion() {
+		return accion;
+	}
+
+	public void setAccion(Accion accion) {
+		this.accion = accion;
 	}
 }

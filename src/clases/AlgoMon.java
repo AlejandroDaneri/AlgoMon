@@ -48,6 +48,14 @@ public abstract class AlgoMon {
 	public void nuevoTurno(){
 		this.getEstados().nuevoTurno(this);
 	}
+	
+	public void setEstadoEfimero(Estado estadoEfimero){
+		this.getEstados().setEstadoEfimero(estadoEfimero);
+	}
+	
+	public void setEstadoPersistente(Estado estadoPersistente){
+		this.getEstados().setEstadoPersistente(estadoPersistente);
+	}
 
 	public int getVida() {
 		return vida;
