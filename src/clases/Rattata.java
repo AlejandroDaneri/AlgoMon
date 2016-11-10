@@ -13,4 +13,9 @@ public class Rattata extends AlgoMon {
 		ataques.add(new Burbuja());
 		this.setAtaques(ataques);
 	}
+
+	@Override
+	public int obtenerVidaOriginal() {
+		return 170;
+	}
 }

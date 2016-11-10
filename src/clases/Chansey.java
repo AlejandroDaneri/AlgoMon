@@ -13,4 +13,9 @@ public class Chansey extends AlgoMon {
 		ataques.add(new LatigoCepa());
 		this.setAtaques(ataques);
 	}
+
+	@Override
+	public int obtenerVidaOriginal() {
+		return 130;
+	}
 }

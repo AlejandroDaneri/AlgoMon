@@ -13,4 +13,9 @@ public class Bulbasaur extends AlgoMon {
 		ataques.add(new Chupavidas());
 		this.setAtaques(ataques);
 	}
+
+	@Override
+	public int obtenerVidaOriginal() {
+		return 140;
+	}
 }

@@ -10,15 +10,18 @@ public abstract class AlgoMon {
 	private int vida;
 	private List<Ataque> ataques;
 	private Tipo tipo;
+	private Estados estados;
 	
 	public AlgoMon(int vida, List<Ataque> ataques, Tipo tipo){
 		this.setVida(vida);
 		this.setAtaques(ataques);
 		this.setTipo(tipo);
+		this.setEstados(new Estados());
 	}
 	
 	public void atacar(AlgoMon otro, String ataqueName) throws AtaquesAgotadosException{
 		if(!this.tieneAtaque(ataqueName)) throw new AtaqueInvalidoException();
+		if(!this.puedeAtacar()) return;
 		for(Ataque ataque: ataques){
 			if(ataque.equals(ataqueName)){
 				ataque.atacar(this, otro);
@@ -26,6 +29,10 @@ public abstract class AlgoMon {
 		}
 	}
 	
+	private boolean puedeAtacar() {
+		return this.getEstados().puedeAtacar();
+	}
+
 	public boolean tieneAtaque(String nombre) {
 		boolean tiene = false;
 		for(Ataque ataque: ataques){
@@ -36,6 +43,10 @@ public abstract class AlgoMon {
 	
 	public void disminuirVida(int puntos){
 		this.setVida(this.getVida() - puntos);
+	}
+	
+	public void nuevoTurno(){
+		this.getEstados().nuevoTurno(this);
 	}
 
 	public int getVida() {
@@ -62,4 +73,14 @@ public abstract class AlgoMon {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
+
+	public Estados getEstados() {
+		return estados;
+	}
+
+	public void setEstados(Estados estados) {
+		this.estados = estados;
+	}
+
+	public abstract int obtenerVidaOriginal();
 }

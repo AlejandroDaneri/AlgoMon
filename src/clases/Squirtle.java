@@ -13,4 +13,9 @@ public class Squirtle extends AlgoMon {
 		ataques.add(new CanonDeAgua());
 		this.setAtaques(ataques);
 	}
+
+	@Override
+	public int obtenerVidaOriginal() {
+		return 150;
+	}
 }

@@ -14,4 +14,9 @@ public class Charmander extends AlgoMon {
 		this.setAtaques(ataques);
 	}
 
+	@Override
+	public int obtenerVidaOriginal() {
+		return 170;
+	}
+
 }

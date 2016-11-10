@@ -13,4 +13,9 @@ public class Jigglypuff extends AlgoMon {
 		ataques.add(new Burbuja());
 		this.setAtaques(ataques);
 	}
+
+	@Override
+	public int obtenerVidaOriginal() {
+		return 130;
+	}
 }
