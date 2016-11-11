@@ -8,7 +8,6 @@ public class Dormido implements Estado {
 		this.turnos = 3;
 	}
 
-	@Override
 	public void nuevoTurno(AlgoMon algomon) {
 		turnos--;
 		if(turnos == 0){
@@ -16,7 +15,6 @@ public class Dormido implements Estado {
 		}
 	}
 
-	@Override
 	public boolean puedeAtacar() {
 		return false;
 	}
