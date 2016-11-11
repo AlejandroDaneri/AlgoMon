@@ -84,7 +84,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         botonCambiarIzquierdo.setGraphic(imagen);
         botonCambiarIzquierdo.setMaxSize(50,50);
         botonCambiarIzquierdo.setStyle("-fx-background-color: transparent");
-        botonCambiarIzquierdaHandler botonCambiarIzquierdaHandler = new botonCambiarIzquierdaHandler(algomones,seleccionJugador);
+        botonCambiarIzquierdaEventHandler botonCambiarIzquierdaHandler = new botonCambiarIzquierdaEventHandler(algomones,seleccionJugador);
         botonCambiarIzquierdo.setOnAction(botonCambiarIzquierdaHandler);
         return botonCambiarIzquierdo;
     }
@@ -94,7 +94,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         botonCambiarDerecha.setGraphic(imagen);
         botonCambiarDerecha.setMaxSize(50,50);
         botonCambiarDerecha.setStyle("-fx-background-color: transparent");
-        botonCambiarDerechaHandler botonCambiarDerechaHandler = new botonCambiarDerechaHandler(algomones,seleccionJugador);
+        botonCambiarDerechaEventHandler botonCambiarDerechaHandler = new botonCambiarDerechaEventHandler(algomones,seleccionJugador);
         botonCambiarDerecha.setOnAction(botonCambiarDerechaHandler);
         return botonCambiarDerecha;
     }
