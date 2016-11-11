@@ -91,4 +91,5 @@ public abstract class AlgoMon {
 	}
 
 	public abstract int obtenerVidaOriginal();
+
 }
