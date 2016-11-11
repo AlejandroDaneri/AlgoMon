@@ -6,10 +6,22 @@ import clases.Bulbasaur;
 import clases.Tipo;
 
 public class BulbasaurTests {
-	
+
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Bulbasaur bulbasaur = new Bulbasaur();
+		assertNotNull(bulbasaur);
+	}
+
+
+	@Test
+	public void testObtenerVidaOriginal() {
+		Bulbasaur bulbasaur = new Bulbasaur();
+		assertEquals(bulbasaur.obtenerVidaOriginal(),140);
+	}
 	@Test
 	public void testCrearBalbasaur() {
-		
+
 		Bulbasaur bulbasaur = new Bulbasaur();
 		String ataque1 = "LatigoCepa";
 		String ataque2 = "AtaqueRapido";
@@ -25,4 +37,5 @@ public class BulbasaurTests {
 		assertEquals(bulbasaur.tieneAtaque(ataque4), false);
 
 	}
+
 }

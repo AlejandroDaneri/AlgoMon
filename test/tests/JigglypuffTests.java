@@ -6,7 +6,18 @@ import clases.Jigglypuff;
 import clases.Tipo;
 
 public class JigglypuffTests {
-	
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Jigglypuff jigglypuff = new Jigglypuff();
+		assertNotNull(jigglypuff);
+	}
+
+
+	@Test
+	public void testObtenerVidaOriginal() {
+		Jigglypuff jigglypuff = new Jigglypuff();
+		assertEquals(jigglypuff.obtenerVidaOriginal(),130);
+	}
 	@Test
 	public void testCrearJigglypuff() {
 		

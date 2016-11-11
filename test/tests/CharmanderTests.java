@@ -7,6 +7,18 @@ import clases.Charmander;
 import clases.Tipo;
 
 public class CharmanderTests {
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Charmander charmander = new Charmander();
+		assertNotNull(charmander);
+	}
+
+
+	@Test
+	public void testObtenerVidaOriginal() {
+		Charmander charmander = new Charmander();
+		assertEquals(charmander.obtenerVidaOriginal(),170);
+	}
 	
 	@Test
 	public void testCrearCharmander() {

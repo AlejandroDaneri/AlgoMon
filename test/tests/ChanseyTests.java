@@ -8,7 +8,18 @@ import clases.Tipo;
 
 
 public class ChanseyTests {
-	
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Chansey chansey = new Chansey();
+		assertNotNull(chansey);
+	}
+
+	@Test
+	public void testObtenerVidaOriginal() {
+		Chansey chansey = new Chansey();
+		assertEquals(chansey.obtenerVidaOriginal(),130);
+	}
+
 	@Test
 	public void testCrearChansey() {
 		

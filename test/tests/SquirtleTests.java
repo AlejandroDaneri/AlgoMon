@@ -7,7 +7,17 @@ import clases.Squirtle;
 import clases.Tipo;
 
 public class SquirtleTests {
-	
+	@Test
+	public void testCrearNoDevuelveNull() {
+		Squirtle squirtle = new Squirtle();
+		assertNotNull(squirtle);
+	}
+
+	@Test
+	public void testObtenerVidaOriginal() {
+		Squirtle squirtle = new Squirtle();
+		assertEquals(squirtle.obtenerVidaOriginal(),150);
+	}
 	@Test
 	public void testCrearSquirtle() {
 		
