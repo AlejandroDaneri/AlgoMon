@@ -15,7 +15,7 @@ public class Entrega2Test {
 	@Test
 	public void test01JigglypuffYChanseyAtacanConCanto() throws AlgoMonDormidoException, AtaquesAgotadosException {
 		
-		Partida partida = new Partida();
+		Partida partida = new Partida("Jugador1", "Jugador2");
 		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>(); // este es el primero que elige
 		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>(); // este es el segundo que elige
 		Jigglypuff jigglypuff = new Jigglypuff();
@@ -55,7 +55,7 @@ public class Entrega2Test {
 	
 	@Test
 	public void test02BulbasaurAtacaConChupavidasACharmander() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
+		Partida partida = new Partida("Jugador1", "Jugador2");
 		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
 		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
 		Bulbasaur bulbasaur = new Bulbasaur();
@@ -73,7 +73,7 @@ public class Entrega2Test {
 	
 	@Test
 	public void test03BulbasaurAtacaConChupavidasASquirtle() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
+		Partida partida = new Partida("Jugador1", "Jugador2");
 		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
 		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
 		Bulbasaur bulbasaur = new Bulbasaur();
@@ -91,7 +91,7 @@ public class Entrega2Test {
 	
 	@Test
 	public void test04BulbasaurAtacaConChupavidasAOtrosAlgomones() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
+		Partida partida = new Partida("Jugador1", "Jugador2");
 		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
 		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
 		Bulbasaur bulbasaur = new Bulbasaur();
@@ -125,7 +125,7 @@ public class Entrega2Test {
 	
 	@Test
 	public void test05CharmanderYRattataAtacanConFogonazo() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
+		Partida partida = new Partida("Jugador1", "Jugador2");
 		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
 		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
 		Rattata rattata = new Rattata();
