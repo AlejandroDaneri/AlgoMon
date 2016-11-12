@@ -4,14 +4,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import excepciones.AtaquesAgotadosException;
 
-public class Partida2 {
+public class Partida {
 	
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private int turnos;
 	private int turnoActual;
 	
-	public Partida2(String nombre1, String nombre2) {
+	public Partida(String nombre1, String nombre2) {
 		Jugador jugador1 = new Jugador(0,nombre1);	// el 0/1 representan un indice arbitrario de turnos
 		Jugador jugador2 = new Jugador(1,nombre2);
 		this.setTurnos();
