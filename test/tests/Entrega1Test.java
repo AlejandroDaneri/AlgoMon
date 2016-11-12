@@ -7,7 +7,7 @@ import excepciones.AtaquesAgotadosException;
 
 import static org.junit.Assert.*;
 
-public class Entrega1Tests {
+public class Entrega1Test {
 	
 	@Test
 	public void test01SquirtleAtacaACharmander() throws AtaquesAgotadosException{

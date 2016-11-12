@@ -12,7 +12,7 @@ import clases.Charmander;
 import clases.Squirtle;
 import excepciones.AtaquesAgotadosException;
 
-public class AtaqueTests {
+public class AtaqueTest {
 	
 	@Test
 	public void testEquals(){

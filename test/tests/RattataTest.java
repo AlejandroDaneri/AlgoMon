@@ -5,7 +5,7 @@ import org.junit.Test;
 import clases.Rattata;
 import clases.Tipo;
 
-public class RattataTests {
+public class RattataTest {
 	@Test
 	public void testCrearNoDevuelveNull() {
 		Rattata rattata = new Rattata();

@@ -7,7 +7,7 @@ import clases.Chansey;
 import clases.Tipo;
 
 
-public class ChanseyTests {
+public class ChanseyTest {
 	@Test
 	public void testCrearNoDevuelveNull() {
 		Chansey chansey = new Chansey();

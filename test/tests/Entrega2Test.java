@@ -10,7 +10,7 @@ import excepciones.AtaquesAgotadosException;
 
 import static org.junit.Assert.*;
 
-public class Entrega2Tests {
+public class Entrega2Test {
 	
 	@Test
 	public void test01JigglypuffYChanseyAtacanConCanto() throws AlgoMonDormidoException, AtaquesAgotadosException {

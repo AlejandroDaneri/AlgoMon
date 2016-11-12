@@ -6,7 +6,7 @@ import org.junit.Test;
 import clases.Charmander;
 import clases.Tipo;
 
-public class CharmanderTests {
+public class CharmanderTest {
 	@Test
 	public void testCrearNoDevuelveNull() {
 		Charmander charmander = new Charmander();

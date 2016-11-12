@@ -5,7 +5,7 @@ import org.junit.Test;
 import clases.Jigglypuff;
 import clases.Tipo;
 
-public class JigglypuffTests {
+public class JigglypuffTest {
 	@Test
 	public void testCrearNoDevuelveNull() {
 		Jigglypuff jigglypuff = new Jigglypuff();

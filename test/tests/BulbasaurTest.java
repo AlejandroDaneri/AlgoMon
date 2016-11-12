@@ -5,7 +5,7 @@ import org.junit.Test;
 import clases.Bulbasaur;
 import clases.Tipo;
 
-public class BulbasaurTests {
+public class BulbasaurTest {
 
 	@Test
 	public void testCrearNoDevuelveNull() {

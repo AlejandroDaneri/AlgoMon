@@ -6,7 +6,7 @@ import org.junit.Test;
 import clases.Squirtle;
 import clases.Tipo;
 
-public class SquirtleTests {
+public class SquirtleTest {
 	@Test
 	public void testCrearNoDevuelveNull() {
 		Squirtle squirtle = new Squirtle();
