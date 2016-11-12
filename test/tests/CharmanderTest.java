@@ -4,7 +4,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import clases.Charmander;
+import clases.Jigglypuff;
+import clases.Rattata;
+import clases.Squirtle;
 import clases.Tipo;
+import excepciones.AtaquesAgotadosException;
 
 public class CharmanderTest {
 	@Test
@@ -35,5 +39,47 @@ public class CharmanderTest {
 		assertEquals(charmander.tieneAtaque(ataque2), true);
 		assertEquals(charmander.tieneAtaque(ataque3), true);
 		assertEquals(charmander.tieneAtaque(ataque4), false);
+	}
+	
+	@Test
+	public void testAlgoMonDormido() {
+		
+		Charmander charmander = new Charmander();
+		Jigglypuff jigglypuff = new Jigglypuff();
+		try {
+			jigglypuff.atacar(charmander, "Canto");
+		} catch (AtaquesAgotadosException e) { }
+		assertEquals(false, charmander.puedeAtacar());
+	}
+	
+	@Test
+	public void testAlgoMonQuemado() {
+		
+		Charmander charmander = new Charmander();
+		Rattata rattata = new Rattata();
+		try {
+			rattata.atacar(charmander, "Fogonazo");
+			charmander.nuevoTurno();
+			charmander.atacar(rattata, "AtaqueRapido");
+		} catch (AtaquesAgotadosException e) { }
+		assertEquals(152, charmander.getVida());
+	}
+	
+	@Test
+	public void testAlgoMonMuerto() {
+		Charmander charmander = new Charmander();
+		Squirtle squirtle = new Squirtle();
+		try {
+			squirtle.atacar(charmander, "CanonDeAgua");
+			squirtle.atacar(charmander, "CanonDeAgua");
+		} catch (AtaquesAgotadosException e) { }
+		assertEquals(false, charmander.estaMuerto());
+		
+		try {
+			for(int i=0; i<3;i++){
+				squirtle.atacar(charmander, "CanonDeAgua");
+			}
+		} catch (AtaquesAgotadosException e) { }
+		assertEquals(true, charmander.estaMuerto());
 	}
 }
