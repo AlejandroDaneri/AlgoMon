@@ -115,4 +115,31 @@ public class JugadorTest {
 		}
 		assertEquals(jugador.perdio(), false);
 	}
+	
+	public void testAtacarAlgomonActivo() throws AtaquesAgotadosException {
+		Jugador jugador1 = new Jugador(0,"Pedro");
+		Jugador jugador2 = new Jugador(1,"Pablo");
+		AlgoMon jigglypuff = new Jigglypuff();
+		AlgoMon charmander = new Charmander();
+		AlgoMon squirtle = new Squirtle();
+		jugador1.agregarAlgomon(jigglypuff);
+		jugador1.agregarAlgomon(charmander);
+		jugador2.agregarAlgomon(squirtle);
+		jugador1.atacar(jugador2.getAlgomonActivo(),"AtaqueRapido");
+		assertEquals(jugador2.getAlgomonActivo().getVida(), 140);
+		assertEquals(jugador2.getAlgomonActivo().estaMuerto(), false);
+	}
+	
+	@Test(expected = AtaqueInvalidoException.class)
+	public void testAtacarAlgomonAtaqueInexistente() throws AtaquesAgotadosException {
+		Jugador jugador1 = new Jugador(0,"Pedro");
+		Jugador jugador2 = new Jugador(1,"Pablo");
+		AlgoMon jigglypuff = new Jigglypuff();
+		AlgoMon charmander = new Charmander();
+		AlgoMon squirtle = new Squirtle();
+		jugador1.agregarAlgomon(jigglypuff);
+		jugador1.agregarAlgomon(charmander);
+		jugador2.agregarAlgomon(squirtle);
+		jugador1.atacar(jugador2.getAlgomonActivo(),"Chupavidas");
+	}
 }

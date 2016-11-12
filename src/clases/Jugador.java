@@ -2,6 +2,7 @@ package clases;
 
 import java.util.ArrayList;
 import excepciones.AlgoMonInexistenteException;
+import excepciones.AtaquesAgotadosException;
 import excepciones.CantidadMaximaAlgoMonesException;
 
 public class Jugador {
@@ -89,13 +90,9 @@ public class Jugador {
 		return true;
 	}
 	
-//	public void atacarConAlgomonActivo(AlgoMon oponente, String ataqueName) {
-//		try {
-//			this.getListaDeAlgomones().get(this.getAlgomonActivo()).atacar(oponente, ataqueName);
-//		} catch (AtaquesAgotadosException e) {
-//			// TODO Auto-generated catch block
-//		}
-//	}
+	public void atacar(AlgoMon oponente, String ataqueName) throws AtaquesAgotadosException {
+		this.algomonActivo.atacar(oponente, ataqueName);	// La excepcion de AtaqueInvalido esta en atacar tmb
+	}
 	
 //	public void aplicarElementoAlAlgomonActivo() {
 //		
