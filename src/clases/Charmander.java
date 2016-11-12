@@ -18,5 +18,9 @@ public class Charmander extends AlgoMon {
 	public int obtenerVidaOriginal() {
 		return 170;
 	}
+	
+	public String getNombre(){
+		return "Charmander";
+	}
 
 }

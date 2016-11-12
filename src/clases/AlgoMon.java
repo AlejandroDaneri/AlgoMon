@@ -89,6 +89,12 @@ public abstract class AlgoMon {
 	public void setEstados(Estados estados) {
 		this.estados = estados;
 	}
+	
+	public boolean estaMuerto(){
+		return this.getVida() <= 0;
+	}
+	
+	public abstract String getNombre();
 
 	public abstract int obtenerVidaOriginal();
 

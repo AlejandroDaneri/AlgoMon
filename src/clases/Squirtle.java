@@ -18,4 +18,8 @@ public class Squirtle extends AlgoMon {
 	public int obtenerVidaOriginal() {
 		return 150;
 	}
+	
+	public String getNombre(){
+		return "Squirtle";
+	}
 }

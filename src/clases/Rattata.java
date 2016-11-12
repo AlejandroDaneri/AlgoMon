@@ -18,4 +18,8 @@ public class Rattata extends AlgoMon {
 	public int obtenerVidaOriginal() {
 		return 170;
 	}
+	
+	public String getNombre(){
+		return "Rattata";
+	}
 }

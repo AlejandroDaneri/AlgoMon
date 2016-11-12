@@ -18,4 +18,8 @@ public class Jigglypuff extends AlgoMon {
 	public int obtenerVidaOriginal() {
 		return 130;
 	}
+	
+	public String getNombre(){
+		return "Jigglypuff";
+	}
 }

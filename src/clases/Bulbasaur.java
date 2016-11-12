@@ -18,4 +18,8 @@ public class Bulbasaur extends AlgoMon {
 	public int obtenerVidaOriginal() {
 		return 140;
 	}
+	
+	public String getNombre(){
+		return "Bulbasaur";
+	}
 }
