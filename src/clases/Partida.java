@@ -1,53 +1,64 @@
 package clases;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
 	
-	private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-	private Iterator<Jugador> iter;
-
-	public Partida() {
-		Jugador jugadorAuxiliar1 = new Jugador();
-		Jugador jugadorAuxiliar2 = new Jugador();
-		this.definirOrdenDeLosJugadores(jugadorAuxiliar1, jugadorAuxiliar2);
-		this.iter = jugadores.iterator();
+	private Jugador jugador1;
+	private Jugador jugador2;
+	private int turnos;
+	private int turnoActual;
+	
+	public Partida(String nombre1, String nombre2) {
+		Jugador jugador1 = new Jugador(0,nombre1);	// el 0/1 representan un indice arbitrario de turnos
+		Jugador jugador2 = new Jugador(1,nombre2);
+		this.setTurnos();
+		this.setOrdenJugadores();
 	}
-
-	private void definirOrdenDeLosJugadores(Jugador jugadorAuxiliar1,
-			Jugador jugadorAuxiliar2) {
-		ArrayList<Jugador> listaDeJugadores = new ArrayList<Jugador>();
-		listaDeJugadores.add(jugadorAuxiliar1);
-		listaDeJugadores.add(jugadorAuxiliar2);
-		Random random = new Random();
-		int index = random.nextInt(listaDeJugadores.size());
-		this.jugadores.add(0, listaDeJugadores.get(index));
-		if (index % 2 == 0) {
-			this.jugadores.add(1, listaDeJugadores.get(1));
+	
+	public void setTurnos() {
+		this.turnos = 0;
+	}
+	
+	public int getTurnos() {
+		return turnos;
+	}
+	
+	public void setOrdenJugadores() {
+		int random = ThreadLocalRandom.current().nextInt(1, 3); // Genera num aleatorio entre 1 y 2.
+		this.turnoActual = random % 2;
+	}
+	
+	public void jugarPartida() {
+		while(!this.juegoTerminado()) {
+		    jugarTurnoActual();
+		    turnos ++;
+		    jugarTurnoActual();
 		}
-		else this.jugadores.add(1, listaDeJugadores.get(0));
+		System.out.print(this.nombreGanador());
 	}
 	
-	public void nuevoTurno() {
-		if (iter.hasNext()) {
-			iter.next().nuevoTurno();
-		}
-		else {
-			this.iter = jugadores.iterator();
-			iter.next().nuevoTurno();
-		}		
+	public String nombreGanador(){
+		if(jugador1.perdio()) return jugador2.getNombre();
+		return jugador1.getNombre();
 	}
 	
-	public void recibirAlgomones(ArrayList<AlgoMon> algomonesJugador1,
-			ArrayList<AlgoMon> algomonesJugador2) {
-		this.getListaDeJugadores().get(0).setListaDeAlgomones(algomonesJugador1);
-		this.getListaDeJugadores().get(1).setListaDeAlgomones(algomonesJugador2);	
+	public Jugador jugadorActual(){
+		if(this.turnoActual == this.jugador1.getIndiceTurno()) return jugador1;
+		return jugador2;
 	}
 	
-	private ArrayList<Jugador> getListaDeJugadores() {
-	return jugadores;
+	public void jugarTurnoActual(){
+		Jugador jugadorActual = jugadorActual();
+		jugadorActual.jugarTurno();	// Se podria armar algo en jugador pero esto va para la vista.
+		this.nextTurno();
 	}
 	
+	public boolean juegoTerminado(){
+		return this.jugador1.perdio() || this.jugador2.perdio();
+	}
+	
+	public void nextTurno(){
+		turnoActual = (turnoActual + 1) % 2;
+	}
 }

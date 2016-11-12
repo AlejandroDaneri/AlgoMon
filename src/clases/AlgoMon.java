@@ -29,7 +29,7 @@ public abstract class AlgoMon {
 		}
 	}
 	
-	private boolean puedeAtacar() {
+	public boolean puedeAtacar() {
 		return this.getEstados().puedeAtacar();
 	}
 
