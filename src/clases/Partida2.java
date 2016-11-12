@@ -7,9 +7,10 @@ public class Partida2 {
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private int turnos;
+	private int turnoActual;
 	
 	public Partida2(String nombre1, String nombre2) {
-		Jugador jugador1 = new Jugador(0,nombre1);
+		Jugador jugador1 = new Jugador(0,nombre1);	// el 0/1 representan un indice arbitrario de turnos
 		Jugador jugador2 = new Jugador(1,nombre2);
 		this.setTurnos();
 		this.setOrdenJugadores();
@@ -25,7 +26,7 @@ public class Partida2 {
 	
 	public void setOrdenJugadores() {
 		int random = ThreadLocalRandom.current().nextInt(1, 3); // Genera num aleatorio entre 1 y 2.
-		if(random == 1)
+		this.turnoActual = random % 2;
 	}
 	
 	public void jugarPartida() {
@@ -34,9 +35,30 @@ public class Partida2 {
 		    turnos ++;
 		    jugarTurnoActual();
 		}
+		System.out.print(this.nombreGanador());
+	}
+	
+	public String nombreGanador(){
+		if(jugador1.perdio()) return jugador2.getNombre();
+		return jugador1.getNombre();
+	}
+	
+	public Jugador jugadorActual(){
+		if(this.turnoActual == this.jugador1.getIndiceTurno()) return jugador1;
+		return jugador2;
+	}
+	
+	public void jugarTurnoActual(){
+		Jugador jugadorActual = jugadorActual();
+		jugadorActual.jugarTurno();	// Se podria armar algo en jugador pero esto va para la vista.
+		this.nextTurno();
 	}
 	
 	public boolean juegoTerminado(){
-		return this.jugador1.cantidadAlgomones() == 0 || this.jugador2.cantidadAlgomones() == 0;
+		return this.jugador1.perdio() || this.jugador2.perdio();
+	}
+	
+	public void nextTurno(){
+		turnoActual = (turnoActual + 1) % 2;
 	}
 }
