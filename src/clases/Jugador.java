@@ -33,9 +33,11 @@ public class Jugador {
 	}
 	
 	public void actualizarEstados() {
-		for(AlgoMon algomon: algomones) {
-			algomon.nuevoTurno();
+		for(AlgoMon algomon: algomones){
+			if(algomon == this.getAlgomonActivo()) continue;
+			algomon.nuevoTurnoNoActivo();	// El turno no activo solo modifica los Estados Persistentes
 		}
+		algomonActivo.nuevoTurno();
 	}
 	
 	public ArrayList<AlgoMon> getListaDeAlgomones() {

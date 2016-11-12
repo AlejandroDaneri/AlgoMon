@@ -49,6 +49,14 @@ public abstract class AlgoMon {
 		this.getEstados().nuevoTurno(this);
 	}
 	
+	public void nuevoTurnoNoActivo(){
+		this.getEstadoPersistente().nuevoTurno(this);
+	}
+	
+	public Estado getEstadoPersistente(){
+		return this.getEstados().getEstadoPersistente();
+	}
+	
 	public void setEstadoEfimero(Estado estadoEfimero){
 		this.getEstados().setEstadoEfimero(estadoEfimero);
 	}

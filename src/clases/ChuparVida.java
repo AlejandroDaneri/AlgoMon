@@ -6,8 +6,11 @@ public class ChuparVida implements Accion {
 
 	public void actuar(AlgoMon atacante, AlgoMon atacado) {
 		double multiplicador = atacante.getTipo().obtenerMultiplicador(atacado.getTipo());
-		atacante.setVida( (int)(atacante.getVida() +
-				potencia * multiplicador *0.3) ) ;
+		
+		int vidaAumentada = (int)(atacante.getVida() + potencia * multiplicador * 0.3);
+		
+		if( vidaAumentada > atacante.obtenerVidaOriginal() ) atacante.setVida(atacante.obtenerVidaOriginal());
+		else atacante.setVida(vidaAumentada);
 	}
 
 }

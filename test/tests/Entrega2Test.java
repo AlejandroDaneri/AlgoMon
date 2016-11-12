@@ -1,191 +1,161 @@
 package tests;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import clases.*;
-import excepciones.AlgoMonDormidoException;
-import excepciones.AtaquesAgotadosException;
+import excepciones.*;
 
 import static org.junit.Assert.*;
 
 public class Entrega2Test {
 	
 	@Test
-	public void test01JigglypuffYChanseyAtacanConCanto() throws AlgoMonDormidoException, AtaquesAgotadosException {
+	public void test01JigglypuffAtacaConCanto() throws AtaquesAgotadosException {
 		
-		Partida partida = new Partida();
-		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>(); // este es el primero que elige
-		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>(); // este es el segundo que elige
-		Jigglypuff jigglypuff = new Jigglypuff();
-		algomonesJugador1.add(jigglypuff);
-		Squirtle squirtle = new Squirtle();
-		algomonesJugador2.add(squirtle);
-		Chansey chansey = new Chansey();
-		algomonesJugador1.add(chansey);
-		Charmander charmander = new Charmander();
-		algomonesJugador2.add(charmander);
+		AlgoMon jigglypuff = new Jigglypuff();
+		AlgoMon squirtle = new Squirtle();
 		
-		// dependiendo de la implementación capaz haya que crear los dos algomones restantes
-		
-		partida.recibirAlgomones(algomonesJugador1, algomonesJugador2);
 		jigglypuff.atacar(squirtle, "Canto");
-		partida.nuevoTurno();
-		squirtle.atacar(chansey, "AtaqueRapido"); // esto lanza la excepcion. turno 1 de squirtle
-		partida.nuevoTurno();
-		chansey.atacar(charmander, "Canto");
-		partida.nuevoTurno();
-		charmander.atacar(jigglypuff, "AtaqueRapido"); // esto lanza la excepcion. turno 1 de charmander, 2 de squirtle
-		partida.nuevoTurno();
-		jigglypuff.atacar(squirtle, "AtaqueRapido");
-		partida.nuevoTurno();
-		squirtle.atacar(chansey, "AtaqueRapido"); // esto lanza la excepcion. turno 3 de squirtle, 2 de charmander
-		partida.nuevoTurno();
-		chansey.atacar(charmander, "AtaqueRapido");
-		partida.nuevoTurno();
-		squirtle.atacar(chansey, "AtaqueRapido"); // esto se puede. turno 3 de charmander
-		partida.nuevoTurno();
-		assertEquals(120, chansey.getVida());
-		jigglypuff.atacar(squirtle, "AtaqueRapido");
-		partida.nuevoTurno();
-		charmander.atacar(jigglypuff, "AtaqueRapido"); // esto se puede.
-		assertEquals(120, jigglypuff.getVida());
+		squirtle.atacar(jigglypuff, "AtaqueRapido");
+		squirtle.nuevoTurno();
+		jigglypuff.atacar(squirtle, "Burbuja");
+		squirtle.atacar(jigglypuff, "AtaqueRapido");
+		squirtle.nuevoTurno();
+		jigglypuff.atacar(squirtle, "Burbuja");
+		squirtle.atacar(jigglypuff, "AtaqueRapido");
+		squirtle.nuevoTurno();
+		
+		assertEquals(jigglypuff.getVida(), jigglypuff.obtenerVidaOriginal());
+
 	}
 	
 	@Test
-	public void test02BulbasaurAtacaConChupavidasACharmander() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
-		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
-		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
-		Bulbasaur bulbasaur = new Bulbasaur();
-		algomonesJugador1.add(bulbasaur);
-		Charmander charmander = new Charmander();
-		algomonesJugador2.add(charmander);
+	public void test02ChanseyAtacaConCanto() throws AtaquesAgotadosException {
 		
-		partida.recibirAlgomones(algomonesJugador1, algomonesJugador2);
-		assertEquals(140, bulbasaur.getVida());
+		AlgoMon squirtle = new Squirtle();
+		AlgoMon chansey = new Chansey();
+		
+		chansey.atacar(squirtle, "Canto");
+		squirtle.atacar(chansey, "Burbuja");
+		squirtle.nuevoTurno();
+		chansey.atacar(squirtle, "AtaqueRapido");
+		squirtle.atacar(chansey, "Burbuja");
+		squirtle.nuevoTurno();
+		chansey.atacar(squirtle, "AtaqueRapido");
+		squirtle.atacar(chansey, "Burbuja");
+		squirtle.nuevoTurno();
+		chansey.atacar(squirtle, "AtaqueRapido");
+		squirtle.atacar(chansey, "Burbuja");	// En este si le hace dano
+		squirtle.nuevoTurno();
+		
+		assertEquals(chansey.getVida(), 120); // 130 - 10 (pot. burbuja)
+		
+	}
+	
+	@Test
+	public void test03BulbasaurAtacaConChupavidasACharmander() throws AtaquesAgotadosException {
+		AlgoMon bulbasaur = new Bulbasaur();
+		AlgoMon charmander = new Charmander();
+		
+		bulbasaur.atacar(charmander, "LatigoCepa");
+		charmander.atacar(bulbasaur, "AtaqueRapido");
+		
 		bulbasaur.atacar(charmander, "Chupavidas");
-		partida.nuevoTurno();
-		assertEquals(163, charmander.getVida());
-		assertEquals(142, bulbasaur.getVida());
-	}
-	
-	@Test
-	public void test03BulbasaurAtacaConChupavidasASquirtle() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
-		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
-		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
-		Bulbasaur bulbasaur = new Bulbasaur();
-		algomonesJugador1.add(bulbasaur);
-		Squirtle squirtle = new Squirtle();
-		algomonesJugador2.add(squirtle);
-
-		partida.recibirAlgomones(algomonesJugador1, algomonesJugador2);
-		assertEquals(140, bulbasaur.getVida());
-		bulbasaur.atacar(squirtle, "Chupavidas");
-		partida.nuevoTurno();
-		assertEquals(120, squirtle.getVida());
-		assertEquals(149, bulbasaur.getVida());
-	}
-	
-	@Test
-	public void test04BulbasaurAtacaConChupavidasAOtrosAlgomones() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
-		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
-		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
-		Bulbasaur bulbasaur = new Bulbasaur();
-		algomonesJugador1.add(bulbasaur);
-		Jigglypuff jigglypuff = new Jigglypuff();
-		algomonesJugador2.add(jigglypuff);
-		Chansey chansey = new Chansey();
-		algomonesJugador2.add(chansey);
-		Rattata rattata = new Rattata();
-		algomonesJugador2.add(rattata);
+		charmander.atacar(bulbasaur, "AtaqueRapido");
 		
-		partida.recibirAlgomones(algomonesJugador1, algomonesJugador2);
-		assertEquals(140, bulbasaur.getVida());
-		bulbasaur.atacar(jigglypuff, "Chupavidas");
-		partida.nuevoTurno();
-		assertEquals(115, jigglypuff.getVida());
-		assertEquals(144, bulbasaur.getVida());
+		bulbasaur.atacar(charmander, "AtaqueRapido");
+		charmander.atacar(bulbasaur, "AtaqueRapido");
+		
+		assertEquals(bulbasaur.getVida(), 112); // 140 - 30 = 110 + 2 (Ganancia Chupavidas)
+
+	}
+	
+	@Test
+	public void test04BulbasaurAtacaConChupavidasASquirtle() throws AtaquesAgotadosException {
+		AlgoMon bulbasaur2 = new Bulbasaur();
+		AlgoMon squirtle = new Squirtle();
+		
+		bulbasaur2.atacar(squirtle, "LatigoCepa");
+		squirtle.atacar(bulbasaur2, "AtaqueRapido");
+		
+		bulbasaur2.atacar(squirtle, "Chupavidas");
+		squirtle.atacar(bulbasaur2, "AtaqueRapido");
+		
+		bulbasaur2.atacar(squirtle, "AtaqueRapido");
+		squirtle.atacar(bulbasaur2, "AtaqueRapido");
+		
+		assertEquals(bulbasaur2.getVida(), 119); // 140 - 30 = 110 + 9 (Ganancia Chupavidas)
+		
+	}
+	
+	@Test
+	public void test05BulbasaurAtacaConChupavidasAOtrosAlgomones() throws AtaquesAgotadosException {
+		AlgoMon bulbasaur = new Bulbasaur();
+		AlgoMon rattata = new Rattata();
+		AlgoMon chansey = new Chansey();
+		AlgoMon jiggly = new Jigglypuff();
+		
+		chansey.atacar(bulbasaur, "AtaqueRapido");
+		bulbasaur.atacar(rattata, "Chupavidas");
+		
+		rattata.atacar(bulbasaur, "Burbuja");
 		bulbasaur.atacar(chansey, "Chupavidas");
-		partida.nuevoTurno();
-		assertEquals(115, chansey.getVida());
-		assertEquals(148, bulbasaur.getVida());
-		bulbasaur.atacar(rattata, "Chupavidas");
-		partida.nuevoTurno();
-		assertEquals(155, rattata.getVida());
-		assertEquals(152, bulbasaur.getVida());
-		bulbasaur.atacar(rattata, "Chupavidas");
-		partida.nuevoTurno();
-		assertEquals(140, rattata.getVida());
-		assertEquals(156, bulbasaur.getVida());		
+		
+		jiggly.atacar(bulbasaur, "AtaqueRapido");
+		bulbasaur.atacar(jiggly, "Chupavidas");
+		
+		assertEquals(bulbasaur.getVida(), 127); // 140 - 25 = 115 + 4 + 4 + 4 (Ganancia Chupavidas)
 	}
 	
 	@Test
-	public void test05CharmanderYRattataAtacanConFogonazo() throws AtaquesAgotadosException {
-		Partida partida = new Partida();
-		ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
-		ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
-		Rattata rattata = new Rattata();
-		algomonesJugador1.add(rattata);
-		Jigglypuff jigglypuff = new Jigglypuff();
-		algomonesJugador2.add(jigglypuff);
-		Charmander charmander1 = new Charmander();
-		algomonesJugador1.add(charmander1);
-		Bulbasaur bulbasaur = new Bulbasaur();
-		algomonesJugador2.add(bulbasaur);
-		Squirtle squirtle = new Squirtle();
-		algomonesJugador2.add(squirtle);
-
-		// si no les parece feo, meto un cuarto algomon a la lista 2 (de tipo fuego, dado que es el que falta)
-		// así probamos con todos los tipos. como no estamos verificando cantidad de Algomones que tiene
-		// cada jugador, es posible. Si les parece feo lo borramos
+	public void test06CharmanderAtacaConFogonazo() throws AtaquesAgotadosException {
+		AlgoMon charmander = new Charmander();
+		AlgoMon rattata = new Rattata();
+		AlgoMon squirtle = new Squirtle();
 		
-		Charmander charmander2 = new Charmander();
-		algomonesJugador2.add(charmander2);
-		partida.recibirAlgomones(algomonesJugador1, algomonesJugador2);
-		charmander1.atacar(bulbasaur, "Fogonazo");
-		partida.nuevoTurno();
-		assertEquals(136, bulbasaur.getVida());
-		bulbasaur.atacar(charmander1, "AtaqueRapido");
-		partida.nuevoTurno();
-		assertEquals(160, charmander1.getVida());
-		assertEquals(122, bulbasaur.getVida());
+		charmander.atacar(rattata, "Fogonazo");
+		rattata.atacar(charmander, "AtaqueRapido");
+		rattata.nuevoTurno();
 		
-		rattata.atacar(squirtle, "Fogonazo");
-		partida.nuevoTurno();
-		assertEquals(149, squirtle.getVida());
-		squirtle.atacar(charmander1, "AtaqueRapido");
-		partida.nuevoTurno();
-		assertEquals(150, charmander1.getVida());
-		assertEquals(122, bulbasaur.getVida()); // no estuvo activo durante este turno
-		assertEquals(134, squirtle.getVida()); // pierde el 10 % de su vida original
+		charmander.atacar(rattata, "AtaqueRapido");
+		rattata.atacar(charmander, "AtaqueRapido");
+		rattata.nuevoTurno();
 		
-		rattata.atacar(charmander2, "Fogonazo");
-		partida.nuevoTurno();
-		assertEquals(169, charmander2.getVida());
-		charmander2.atacar(rattata, "AtaqueRapido");
-		partida.nuevoTurno();
-		assertEquals(160, rattata.getVida());
-		assertEquals(122, bulbasaur.getVida()); // no estuvo activo durante este turno
-		assertEquals(134, squirtle.getVida()); // no estuvo activo durante este turno
-		assertEquals(152, charmander2.getVida());
+		charmander.atacar(squirtle, "Fogonazo");
+		squirtle.atacar(charmander, "Burbuja");
+		squirtle.nuevoTurno();
 		
-		charmander2.atacar(jigglypuff, "Fogonazo");
-		partida.nuevoTurno();
-		assertEquals(128, jigglypuff.getVida());
-		assertEquals(135, charmander2.getVida());
-		assertEquals(122, bulbasaur.getVida()); // no estuvo activo durante este turno
-		assertEquals(134, squirtle.getVida()); // no estuvo activo durante este turno
+		charmander.atacar(squirtle, "AtaqueRapido");
+		squirtle.atacar(charmander, "Burbuja");
+		squirtle.nuevoTurno();
+		
+		assertEquals(rattata.getVida(), 124); // 170 - 2 - 10 = 158 - 17 - 17 (Dos quemados)
+		assertEquals(squirtle.getVida(), 109); // 150 - 1 - 10 = 139 - 15 - 15 (Dos quemados)
 	}
 	
-	
-//	Charmander y Rattata atacan con fogonazo y el algomón atacado recibirá un daño del 10%
-//	de sus puntos de vida originales en cada turno (DEL PROPIO JUGADOR) en que esté activo (además recibirá el
-//	daño correspondiente según su tipo en el momento del ataque fogonazo).
-//	Quemado: cada vez que el algomón realice una acción (sea atacar o recibir un elemento)
-//	recibirá un daño equivalente al 10% de sus puntos de vida originales.
-
+	@Test
+	public void test07RattataAtacaConFogonazo() throws AtaquesAgotadosException {
+		AlgoMon rattata = new Rattata();
+		AlgoMon chansey = new Chansey();
+		AlgoMon bulba = new Bulbasaur();
+		
+		rattata.atacar(chansey, "Fogonazo");
+		chansey.atacar(rattata, "LatigoCepa");
+		chansey.nuevoTurno();
+		
+		rattata.atacar(chansey, "AtaqueRapido");
+		chansey.atacar(rattata, "AtaqueRapido");
+		chansey.nuevoTurno();
+		
+		rattata.atacar(bulba, "Fogonazo");
+		bulba.atacar(rattata, "LatigoCepa");
+		bulba.nuevoTurno();
+		
+		rattata.atacar(bulba, "AtaqueRapido");
+		bulba.atacar(rattata, "Chupavidas");
+		bulba.nuevoTurno();
+		
+		assertEquals(chansey.getVida(), 92); // 130 - 2 - 10 = 118 - 13 - 13 (Dos quemados)
+		assertEquals(bulba.getVida(), 102); // 140 - 4 - 10 = 126 - 14 - 14 + 4 (Dos quemados + Chupavidas)
+	}
 }
