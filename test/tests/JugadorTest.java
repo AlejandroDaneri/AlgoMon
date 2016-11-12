@@ -5,7 +5,7 @@ import org.junit.Test;
 import clases.*;
 import excepciones.*;
 
-public class JugadorTests {
+public class JugadorTest {
 
 	@Test
 	public void testCreacionJugador() {
