@@ -2,14 +2,16 @@ package clases;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Partida {
+import excepciones.AtaquesAgotadosException;
+
+public class Partida2 {
 	
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private int turnos;
 	private int turnoActual;
 	
-	public Partida(String nombre1, String nombre2) {
+	public Partida2(String nombre1, String nombre2) {
 		Jugador jugador1 = new Jugador(0,nombre1);	// el 0/1 representan un indice arbitrario de turnos
 		Jugador jugador2 = new Jugador(1,nombre2);
 		this.setTurnos();
@@ -29,15 +31,6 @@ public class Partida {
 		this.turnoActual = random % 2;
 	}
 	
-	public void jugarPartida() {
-		while(!this.juegoTerminado()) {
-		    jugarTurnoActual();
-		    turnos ++;
-		    jugarTurnoActual();
-		}
-		System.out.print(this.nombreGanador());
-	}
-	
 	public String nombreGanador(){
 		if(jugador1.perdio()) return jugador2.getNombre();
 		return jugador1.getNombre();
@@ -48,10 +41,17 @@ public class Partida {
 		return jugador2;
 	}
 	
-	public void jugarTurnoActual(){
+	public Jugador jugadorOponente(){
+		if(this.turnoActual != this.jugador1.getIndiceTurno()) return jugador1;
+		return jugador2;
+	}
+	
+	public void jugarTurnoActual(int opcion,String algomonOataque) throws AtaquesAgotadosException{
 		Jugador jugadorActual = jugadorActual();
-		jugadorActual.jugarTurno();	// Se podria armar algo en jugador pero esto va para la vista.
+		if(opcion == 1) jugadorActual.atacar(this.jugadorOponente().getAlgomonActivo(), algomonOataque);
+		else jugadorActual.cambiarDeAlgoMon(algomonOataque);
 		this.nextTurno();
+		turnos++;
 	}
 	
 	public boolean juegoTerminado(){
@@ -60,5 +60,10 @@ public class Partida {
 	
 	public void nextTurno(){
 		turnoActual = (turnoActual + 1) % 2;
+	}
+	
+	public void agregarAlgomon(AlgoMon algomon){
+		Jugador jugadorActual = jugadorActual();
+		jugadorActual.agregarAlgomon(algomon);
 	}
 }
