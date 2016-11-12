@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
-public class Aplicacion extends Application{
+public class AplicacionPrincipal extends Application{
 
     public static void main(String[] args) {
         launch(args);
