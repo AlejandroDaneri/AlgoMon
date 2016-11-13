@@ -22,11 +22,11 @@ public class AplicacionPrincipal extends Application{
 
         ContenedorEleccionAlgomon contenedorEleccion =
                 new ContenedorEleccionAlgomon(primaryStage);
-        Scene escenaEleccion = new Scene(contenedorEleccion, 640, 480);
+        Scene escenaEleccion = new Scene(contenedorEleccion, 1024, 720);
 
         ContenedorBienvenida contenedorBienvenidos =
                 new ContenedorBienvenida(primaryStage, musicaDeFondo,escenaEleccion);
-        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
+        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1024, 720);
 
         primaryStage.setScene(escenaBienvenidos);
         primaryStage.setFullScreen(true);
