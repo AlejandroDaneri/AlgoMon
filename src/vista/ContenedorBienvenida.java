@@ -14,7 +14,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
 public class ContenedorBienvenida extends VBox{
 
     private Stage stage;
@@ -28,14 +27,12 @@ public class ContenedorBienvenida extends VBox{
         Label titulo = new Label("Algomon"); // Si el titulo esta en la imagen de fondo esto no va mas
         titulo.setFont(Font.font("Courier New",FontWeight.BOLD, 56));
 
-
         Image imagen = new Image("file:src/vista/imagenes/patronfondo.jpg");
         BackgroundImage imagenDeFondo =
                 new BackgroundImage(imagen, BackgroundRepeat.REPEAT,
                         BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
-
 
         Button botonEntrar = new Button();
         botonEntrar.setText("JUGAR");
@@ -66,7 +63,6 @@ public class ContenedorBienvenida extends VBox{
 
         BotonSalirEventHandler botonSalirHandler = new BotonSalirEventHandler();
         botonSalir.setOnAction(botonSalirHandler);
-
 
         HBox contenedorVolumen = new HBox();
 
