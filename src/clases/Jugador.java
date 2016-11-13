@@ -10,14 +10,16 @@ public class Jugador {
 	private static int cantMaxAlgomones = 3;
 	private String nombre;
 	private int indiceTurno;
-	private ArrayList<AlgoMon> algomones;
 	private AlgoMon algomonActivo;
-	//private ArrayList<Elemento> elementos;
+	private ArrayList<AlgoMon> algomones;
+	private Elementos elementos;
+	
 	
 	public Jugador(int indice,String nombre) {
 		this.setNombre(nombre);
 		this.setIndiceTurno(indice);
 		this.algomones = new ArrayList<AlgoMon>();
+		this.elementos = new Elementos();
 	}
 	
 	public void setNombre(String nombre) {
@@ -96,8 +98,12 @@ public class Jugador {
 		this.algomonActivo.atacar(oponente, ataqueName);	// La excepcion de AtaqueInvalido esta en atacar tmb
 	}
 	
-//	public void aplicarElementoAlAlgomonActivo() {
-//		
-//	}
+	public void aplicarElemento(String elemento) {
+		this.elementos.aplicar(elemento,this.algomonActivo);
+	}
+	
+	public int vidaAlgomonActivo(){
+		return algomonActivo.getVida();
+	}
 	
 }

@@ -1,9 +1,18 @@
 package clases;
 
-public class Restaurador implements Elemento {
+public class Restaurador extends Elemento {
+	
+	public Restaurador(){
+		this.cantidad = 3;
+	}
 	
 	public void aplicar(AlgoMon algomon){
 		algomon.setEstadoPersistente(new EstadoNormal());
 		algomon.setEstadoEfimero(new EstadoNormal());
 	}
+	
+	public String nombre(){
+		return "Restaurador";
+	}
+	
 }

@@ -1,16 +1,21 @@
 package clases;
 
-public class Vitamina implements Elemento {
+public class Vitamina extends Elemento {
 	
-	private int cantidadAumentar;
+	private int cantidadAumentarAtaques;
 	
 	public Vitamina(){
-		this.cantidadAumentar = 2;
+		this.cantidadAumentarAtaques = 2;
+		this.cantidad = 5;
 	}
 	
 	public void aplicar(AlgoMon algomon){
 		for (Ataque ataque: algomon.getAtaques()){
-			ataque.aumentarAtaque(cantidadAumentar);
+			ataque.aumentarAtaque(cantidadAumentarAtaques);
 		}
+	}
+	
+	public String nombre(){
+		return "Vitamina";
 	}
 }
