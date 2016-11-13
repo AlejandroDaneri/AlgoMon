@@ -142,4 +142,53 @@ public class JugadorTest {
 		jugador2.agregarAlgomon(squirtle);
 		jugador1.atacar(jugador2.getAlgomonActivo(),"Chupavidas");
 	}
+	
+	@Test
+	public void testJugadorAplicaElementoPocion() throws AtaquesAgotadosException {
+		Jugador jugador1 = new Jugador(0,"Pedro");
+		Jugador jugador2 = new Jugador(1,"Pablo");
+		
+		AlgoMon jigglypuff = new Jigglypuff();
+		AlgoMon charmander = new Charmander();
+		
+		jugador1.agregarAlgomon(charmander);
+		jugador2.agregarAlgomon(jigglypuff);
+		
+		jugador1.atacar(jugador2.getAlgomonActivo(),"AtaqueRapido");
+		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		
+		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
+		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		
+		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
+		jugador2.aplicarElemento("Pocion");
+		
+		assertEquals(jugador2.vidaAlgomonActivo(), 108); // 130 - 10 - 16 - 16 + 20 = 108
+	}
+	
+	@Test
+	public void testJugadorAplicaElementoRestaurador() throws AtaquesAgotadosException {
+		Jugador jugador1 = new Jugador(0,"Pedro");
+		Jugador jugador2 = new Jugador(1,"Pablo");
+		
+		AlgoMon jigglypuff = new Jigglypuff();
+		AlgoMon charmander = new Charmander();
+		
+		jugador1.agregarAlgomon(charmander);
+		jugador2.agregarAlgomon(jigglypuff);
+		
+		jugador1.atacar(jugador2.getAlgomonActivo(),"Fogonazo");	// Lo quema
+		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		jugador2.actualizarEstados();
+		
+		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
+		jugador2.aplicarElemento("Restaurador");
+		jugador2.actualizarEstados();
+		
+		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
+		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		
+		assertEquals(jugador2.vidaAlgomonActivo(), 83); // 130 - 2 - 16 - 13 (Quemado) - 16 = 83
+		assertEquals(jugador2.getAlgomonActivo().getEstadoPersistente() instanceof EstadoNormal, true);
+	}
 }

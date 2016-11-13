@@ -10,7 +10,7 @@ import excepciones.AtaquesAgotadosException;
 public class ElementosTest {
 
 	@Test
-	public void AplicarPociontest() throws AtaquesAgotadosException {
+	public void testAplicarPocion() throws AtaquesAgotadosException {
 		
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
@@ -30,7 +30,7 @@ public class ElementosTest {
 	}
 	
 	@Test
-	public void AplicarSuperPociontest() throws AtaquesAgotadosException {
+	public void testAplicarSuperPocion() throws AtaquesAgotadosException {
 		
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
@@ -53,7 +53,7 @@ public class ElementosTest {
 	}
 	
 	@Test
-	public void AplicarRestauradorConEstadoQuemado() throws AtaquesAgotadosException {
+	public void testAplicarRestauradorConEstadoQuemado() throws AtaquesAgotadosException {
 		
 		AlgoMon charmander = new Charmander();
 		AlgoMon bulbasaur = new Bulbasaur();
@@ -78,7 +78,7 @@ public class ElementosTest {
 	}
 	
 	@Test
-	public void AplicarRestauradorConEstadoDormido() throws AtaquesAgotadosException {
+	public void testAplicarRestauradorConEstadoDormido() throws AtaquesAgotadosException {
 		
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon bulbasaur = new Bulbasaur();
@@ -102,7 +102,7 @@ public class ElementosTest {
 	}
 	
 	@Test
-	public void AplicarVitaminaNoExcedeCantidadInicial() throws AtaquesAgotadosException {
+	public void testAplicarVitaminaNoExcedeCantidadInicial() throws AtaquesAgotadosException {
 		
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
@@ -124,7 +124,7 @@ public class ElementosTest {
 	}
 	
 	@Test
-	public void AplicarVitaminaConAtaquesEnBajasCantidades() throws AtaquesAgotadosException {
+	public void testAplicarVitaminaConAtaquesEnBajasCantidades() throws AtaquesAgotadosException {
 		
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
