@@ -79,7 +79,6 @@ public abstract class AlgoMon {
 		this.vida = vida;
 	}
 	
-
 	public List<Ataque> getAtaques() {
 		return ataques;
 	}

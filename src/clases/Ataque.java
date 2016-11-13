@@ -82,4 +82,12 @@ public abstract class Ataque {
 	public void setAccion(Accion accion) {
 		this.accion = accion;
 	}
+	
+	public abstract int cantidadInicial();
+	
+	public void aumentarAtaque(int aumento){
+		int cantidadAumentada = this.getCantidad() + aumento;
+		if( cantidadAumentada > this.cantidadInicial() ) this.setCantidad(this.cantidadInicial());
+		else this.setCantidad(cantidadAumentada);
+	}
 }

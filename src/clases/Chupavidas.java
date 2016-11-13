@@ -6,4 +6,8 @@ public class Chupavidas extends Ataque {
 		super("Chupavidas",15, 8, Tipo.PLANTA, new ChuparVida());
 	}
 	
+	public int cantidadInicial(){
+		return 8;
+	}
+	
 }
