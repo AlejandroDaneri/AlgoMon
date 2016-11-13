@@ -45,6 +45,12 @@ public abstract class AlgoMon {
 		this.setVida(this.getVida() - puntos);
 	}
 	
+	public void aumentarVida(int puntos){
+		int vidaAumentada = this.getVida() + puntos;
+		if( vidaAumentada > this.obtenerVidaOriginal() ) this.setVida(this.obtenerVidaOriginal());
+		else this.setVida(vidaAumentada);
+	}
+	
 	public void nuevoTurno(){
 		this.getEstados().nuevoTurno(this);
 	}
