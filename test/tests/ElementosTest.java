@@ -18,8 +18,10 @@ public class ElementosTest {
 		
 		squirtle.atacar(bulbasaur,"Burbuja");
 		bulbasaur.atacar(squirtle,"LatigoCepa");
+		
 		squirtle.atacar(bulbasaur, "AtaqueRapido");
 		bulbasaur.atacar(squirtle, "AtaqueRapido");
+		
 		pocion.aplicar(squirtle);
 		pocion.aplicar(bulbasaur);
 		
@@ -36,10 +38,13 @@ public class ElementosTest {
 		
 		squirtle.atacar(bulbasaur,"Burbuja");
 		bulbasaur.atacar(squirtle,"LatigoCepa");
+		
 		squirtle.atacar(bulbasaur, "AtaqueRapido");
 		bulbasaur.atacar(squirtle, "AtaqueRapido");
+		
 		squirtle.atacar(bulbasaur, "CanonDeAgua");
 		bulbasaur.atacar(squirtle, "LatigoCepa");
+		
 		superpocion.aplicar(squirtle);
 		superpocion.aplicar(bulbasaur);
 		
@@ -48,7 +53,7 @@ public class ElementosTest {
 	}
 	
 	@Test
-	public void AplicarRestauradorConQuemado() throws AtaquesAgotadosException {
+	public void AplicarRestauradorConEstadoQuemado() throws AtaquesAgotadosException {
 		
 		AlgoMon charmander = new Charmander();
 		AlgoMon bulbasaur = new Bulbasaur();
@@ -57,17 +62,91 @@ public class ElementosTest {
 		charmander.atacar(bulbasaur,"Fogonazo");
 		bulbasaur.atacar(charmander,"LatigoCepa");
 		bulbasaur.nuevoTurno();
+		
 		charmander.atacar(bulbasaur, "AtaqueRapido");
 		bulbasaur.atacar(charmander, "AtaqueRapido");
 		bulbasaur.nuevoTurno();
+		
 		restaurador.aplicar(bulbasaur);
+		
 		charmander.atacar(bulbasaur, "Brasas");
 		bulbasaur.atacar(charmander, "LatigoCepa");
-		bulbasaur.nuevoTurno();
 		
 		assertEquals(66,bulbasaur.getVida());	// 140 - 4 - 10 - 14 (Quemado) - 14 (Quemado) - 32 = 66
 		assertEquals(bulbasaur.getEstadoPersistente() instanceof Quemado, false);
 		assertEquals(bulbasaur.getEstadoPersistente() instanceof EstadoNormal, true);
 	}
-
+	
+	@Test
+	public void AplicarRestauradorConEstadoDormido() throws AtaquesAgotadosException {
+		
+		AlgoMon jigglypuff = new Jigglypuff();
+		AlgoMon bulbasaur = new Bulbasaur();
+		Restaurador restaurador = new Restaurador();
+		
+		jigglypuff.atacar(bulbasaur,"Canto");
+		bulbasaur.atacar(jigglypuff,"LatigoCepa");
+		bulbasaur.nuevoTurno();
+		
+		jigglypuff.atacar(bulbasaur, "Burbuja");
+		bulbasaur.atacar(jigglypuff, "AtaqueRapido");
+		bulbasaur.nuevoTurno();
+		
+		restaurador.aplicar(bulbasaur);
+		jigglypuff.atacar(bulbasaur, "AtaqueRapido");
+		bulbasaur.atacar(jigglypuff, "LatigoCepa");
+		
+		assertEquals(115,jigglypuff.getVida());	// 130 - 15 = 115
+		assertEquals(bulbasaur.getEstadoPersistente() instanceof Dormido, false);
+		assertEquals(bulbasaur.getEstadoPersistente() instanceof EstadoNormal, true);
+	}
+	
+	@Test
+	public void AplicarVitaminaNoExcedeCantidadInicial() throws AtaquesAgotadosException {
+		
+		AlgoMon squirtle = new Squirtle();
+		AlgoMon bulbasaur = new Bulbasaur();
+		Vitamina vitamina = new Vitamina();
+		
+		squirtle.atacar(bulbasaur,"CanonDeAgua");
+		bulbasaur.atacar(squirtle,"LatigoCepa");
+		
+		vitamina.aplicar(squirtle);
+		vitamina.aplicar(bulbasaur);
+		
+		for(Ataque ataque: squirtle.getAtaques()){
+			assertEquals(ataque.getCantidad() <= ataque.cantidadInicial(),true);
+		}
+		for(Ataque ataque: bulbasaur.getAtaques()){
+			assertEquals(ataque.getCantidad() <= ataque.cantidadInicial(),true);
+		}
+		
+	}
+	
+	@Test
+	public void AplicarVitaminaConAtaquesEnBajasCantidades() throws AtaquesAgotadosException {
+		
+		AlgoMon squirtle = new Squirtle();
+		AlgoMon bulbasaur = new Bulbasaur();
+		Vitamina vitamina = new Vitamina();
+		
+		for(int x=0; x<8; x++){
+			squirtle.atacar(bulbasaur,"CanonDeAgua");
+		}
+		
+		for(int x=0; x<15; x++){
+			squirtle.atacar(bulbasaur,"Burbuja");
+		}
+		
+		for(int x=0; x<16; x++){
+			squirtle.atacar(bulbasaur,"AtaqueRapido");
+		}
+		
+		vitamina.aplicar(squirtle);
+		
+		for(Ataque ataque: squirtle.getAtaques()){
+			assertEquals(ataque.getCantidad() == 2, true);
+		}
+		assertEquals(bulbasaur.estaMuerto(), true);
+	}
 }
