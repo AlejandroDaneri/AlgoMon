@@ -1,16 +1,10 @@
-package tests;
-import static org.junit.Assert.*;
+package clases;
+import excepciones.AtaquesAgotadosException;
+import org.junit.Test;
 
 import java.util.List;
 
-import org.junit.Test;
-
-import clases.Ataque;
-import clases.Bulbasaur;
-import clases.Canto;
-import clases.Charmander;
-import clases.Squirtle;
-import excepciones.AtaquesAgotadosException;
+import static org.junit.Assert.assertEquals;
 
 public class AtaqueTest {
 	

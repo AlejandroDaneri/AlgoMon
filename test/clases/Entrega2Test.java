@@ -1,11 +1,9 @@
-package tests;
+package clases;
 
+import excepciones.AtaquesAgotadosException;
 import org.junit.Test;
 
-import clases.*;
-import excepciones.*;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class Entrega2Test {
 	

@@ -1,14 +1,9 @@
-package tests;
-import static org.junit.Assert.*;
-
+package clases;
+import excepciones.AtaquesAgotadosException;
 import org.junit.Test;
 
-import clases.Charmander;
-import clases.Jigglypuff;
-import clases.Rattata;
-import clases.Squirtle;
-import clases.Tipo;
-import excepciones.AtaquesAgotadosException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class CharmanderTest {
 	@Test
