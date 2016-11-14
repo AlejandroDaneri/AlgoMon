@@ -13,7 +13,7 @@ public class AplicacionPrincipal extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        AudioClip musicaDeFondo = new AudioClip("file:src/vista/sonidos/prueba.mp3");
+        AudioClip musicaDeFondo = new AudioClip("file:src/vista/sonidos/Pokemonentrada.mp3");
         musicaDeFondo.setCycleCount(2); //
         musicaDeFondo.play();
 
