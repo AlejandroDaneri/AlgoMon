@@ -81,5 +81,11 @@ public class ChanseyTest {
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, chansey.estaMuerto());
 	}
+	@Test
+	public void testGetNombre() {
+		Chansey chansey = new Chansey();
+		assertEquals("Chansey",chansey.getNombre());
+	}
+
 
 }

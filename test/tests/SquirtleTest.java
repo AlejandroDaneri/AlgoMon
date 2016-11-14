@@ -11,7 +11,7 @@ import clases.Tipo;
 import excepciones.AtaquesAgotadosException;
 
 public class SquirtleTest {
-	@Test
+    @Test
 	public void testCrearNoDevuelveNull() {
 		Squirtle squirtle = new Squirtle();
 		assertNotNull(squirtle);
@@ -79,6 +79,12 @@ public class SquirtleTest {
 			}
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, squirtle.estaMuerto());
+	}
+
+	@Test
+	public void testGetNombre() {
+		Squirtle squirtle = new Squirtle();
+		assertEquals("Squirtle",squirtle.getNombre());
 	}
 
 }

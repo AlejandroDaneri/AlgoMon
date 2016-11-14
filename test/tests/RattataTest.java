@@ -84,4 +84,10 @@ public class RattataTest {
 		assertEquals(true, rattata.estaMuerto());
 	}
 
+	@Test
+	public void testGetNombre() {
+		Rattata rattata = new Rattata();
+		assertEquals("Rattata",rattata.getNombre());
+	}
+
 }
