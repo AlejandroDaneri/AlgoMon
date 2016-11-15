@@ -12,15 +12,18 @@ public class Entrega2Test {
 		
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon squirtle = new Squirtle();
-		
-		jigglypuff.atacar(squirtle, "Canto");
-		squirtle.atacar(jigglypuff, "AtaqueRapido");
+		Canto canto = new Canto();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Burbuja burbuja = new Burbuja();
+
+		jigglypuff.atacar(squirtle, canto);
+		squirtle.atacar(jigglypuff, ataqueRapido);
 		squirtle.nuevoTurno();
-		jigglypuff.atacar(squirtle, "Burbuja");
-		squirtle.atacar(jigglypuff, "AtaqueRapido");
+		jigglypuff.atacar(squirtle, burbuja);
+		squirtle.atacar(jigglypuff, ataqueRapido);
 		squirtle.nuevoTurno();
-		jigglypuff.atacar(squirtle, "Burbuja");
-		squirtle.atacar(jigglypuff, "AtaqueRapido");
+		jigglypuff.atacar(squirtle, burbuja);
+		squirtle.atacar(jigglypuff, ataqueRapido);
 		squirtle.nuevoTurno();
 		
 		assertEquals(jigglypuff.getVida(), jigglypuff.obtenerVidaOriginal());
@@ -32,18 +35,22 @@ public class Entrega2Test {
 		
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon chansey = new Chansey();
+		Canto canto = new Canto();
+		Burbuja burbuja = new Burbuja();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+
 		
-		chansey.atacar(squirtle, "Canto");
-		squirtle.atacar(chansey, "Burbuja");
+		chansey.atacar(squirtle, canto);
+		squirtle.atacar(chansey, burbuja);
 		squirtle.nuevoTurno();
-		chansey.atacar(squirtle, "AtaqueRapido");
-		squirtle.atacar(chansey, "Burbuja");
+		chansey.atacar(squirtle, ataqueRapido);
+		squirtle.atacar(chansey, burbuja);
 		squirtle.nuevoTurno();
-		chansey.atacar(squirtle, "AtaqueRapido");
-		squirtle.atacar(chansey, "Burbuja");
+		chansey.atacar(squirtle, ataqueRapido);
+		squirtle.atacar(chansey, burbuja);
 		squirtle.nuevoTurno();
-		chansey.atacar(squirtle, "AtaqueRapido");
-		squirtle.atacar(chansey, "Burbuja");	// En este si le hace dano
+		chansey.atacar(squirtle, ataqueRapido);
+		squirtle.atacar(chansey, burbuja);	// En este si le hace dano
 		squirtle.nuevoTurno();
 		
 		assertEquals(chansey.getVida(), 120); // 130 - 10 (pot. burbuja)
@@ -54,15 +61,18 @@ public class Entrega2Test {
 	public void test03BulbasaurAtacaConChupavidasACharmander() throws AtaquesAgotadosException {
 		AlgoMon bulbasaur = new Bulbasaur();
 		AlgoMon charmander = new Charmander();
+		LatigoCepa latigo = new LatigoCepa();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Chupavidas chupavidas = new Chupavidas();
 		
-		bulbasaur.atacar(charmander, "LatigoCepa");
-		charmander.atacar(bulbasaur, "AtaqueRapido");
+		bulbasaur.atacar(charmander, latigo);
+		charmander.atacar(bulbasaur, ataqueRapido);
 		
-		bulbasaur.atacar(charmander, "Chupavidas");
-		charmander.atacar(bulbasaur, "AtaqueRapido");
+		bulbasaur.atacar(charmander, chupavidas);
+		charmander.atacar(bulbasaur, ataqueRapido);
 		
-		bulbasaur.atacar(charmander, "AtaqueRapido");
-		charmander.atacar(bulbasaur, "AtaqueRapido");
+		bulbasaur.atacar(charmander, ataqueRapido);
+		charmander.atacar(bulbasaur, ataqueRapido);
 		
 		assertEquals(bulbasaur.getVida(), 112); // 140 - 30 = 110 + 2 (Ganancia Chupavidas)
 
@@ -72,15 +82,18 @@ public class Entrega2Test {
 	public void test04BulbasaurAtacaConChupavidasASquirtle() throws AtaquesAgotadosException {
 		AlgoMon bulbasaur2 = new Bulbasaur();
 		AlgoMon squirtle = new Squirtle();
+		LatigoCepa latigo = new LatigoCepa();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Chupavidas chupavidas = new Chupavidas();
 		
-		bulbasaur2.atacar(squirtle, "LatigoCepa");
-		squirtle.atacar(bulbasaur2, "AtaqueRapido");
+		bulbasaur2.atacar(squirtle, latigo);
+		squirtle.atacar(bulbasaur2, ataqueRapido);
 		
-		bulbasaur2.atacar(squirtle, "Chupavidas");
-		squirtle.atacar(bulbasaur2, "AtaqueRapido");
+		bulbasaur2.atacar(squirtle, chupavidas);
+		squirtle.atacar(bulbasaur2, ataqueRapido);
 		
-		bulbasaur2.atacar(squirtle, "AtaqueRapido");
-		squirtle.atacar(bulbasaur2, "AtaqueRapido");
+		bulbasaur2.atacar(squirtle, ataqueRapido);
+		squirtle.atacar(bulbasaur2, ataqueRapido);
 		
 		assertEquals(bulbasaur2.getVida(), 119); // 140 - 30 = 110 + 9 (Ganancia Chupavidas)
 		
@@ -92,15 +105,19 @@ public class Entrega2Test {
 		AlgoMon rattata = new Rattata();
 		AlgoMon chansey = new Chansey();
 		AlgoMon jiggly = new Jigglypuff();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Chupavidas chupavidas = new Chupavidas();
+		Burbuja burbuja = new Burbuja();
+
 		
-		chansey.atacar(bulbasaur, "AtaqueRapido");
-		bulbasaur.atacar(rattata, "Chupavidas");
+		chansey.atacar(bulbasaur, ataqueRapido);
+		bulbasaur.atacar(rattata, chupavidas);
 		
-		rattata.atacar(bulbasaur, "Burbuja");
-		bulbasaur.atacar(chansey, "Chupavidas");
+		rattata.atacar(bulbasaur, burbuja);
+		bulbasaur.atacar(chansey, chupavidas);
 		
-		jiggly.atacar(bulbasaur, "AtaqueRapido");
-		bulbasaur.atacar(jiggly, "Chupavidas");
+		jiggly.atacar(bulbasaur, ataqueRapido);
+		bulbasaur.atacar(jiggly, chupavidas);
 		
 		assertEquals(bulbasaur.getVida(), 127); // 140 - 25 = 115 + 4 + 4 + 4 (Ganancia Chupavidas)
 	}
@@ -110,21 +127,24 @@ public class Entrega2Test {
 		AlgoMon charmander = new Charmander();
 		AlgoMon rattata = new Rattata();
 		AlgoMon squirtle = new Squirtle();
+		Fogonazo fogonazo = new Fogonazo();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Burbuja burbuja = new Burbuja();
 		
-		charmander.atacar(rattata, "Fogonazo");
-		rattata.atacar(charmander, "AtaqueRapido");
+		charmander.atacar(rattata, fogonazo);
+		rattata.atacar(charmander, ataqueRapido);
 		rattata.nuevoTurno();
 		
-		charmander.atacar(rattata, "AtaqueRapido");
-		rattata.atacar(charmander, "AtaqueRapido");
+		charmander.atacar(rattata, ataqueRapido);
+		rattata.atacar(charmander, ataqueRapido);
 		rattata.nuevoTurno();
 		
-		charmander.atacar(squirtle, "Fogonazo");
-		squirtle.atacar(charmander, "Burbuja");
+		charmander.atacar(squirtle, fogonazo);
+		squirtle.atacar(charmander, burbuja);
 		squirtle.nuevoTurno();
 		
-		charmander.atacar(squirtle, "AtaqueRapido");
-		squirtle.atacar(charmander, "Burbuja");
+		charmander.atacar(squirtle, ataqueRapido);
+		squirtle.atacar(charmander, burbuja);
 		squirtle.nuevoTurno();
 		
 		assertEquals(rattata.getVida(), 124); // 170 - 2 - 10 = 158 - 17 - 17 (Dos quemados)
@@ -136,21 +156,25 @@ public class Entrega2Test {
 		AlgoMon rattata = new Rattata();
 		AlgoMon chansey = new Chansey();
 		AlgoMon bulba = new Bulbasaur();
+		Fogonazo fogonazo = new Fogonazo();
+		LatigoCepa latigo = new LatigoCepa();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Chupavidas chupavidas = new Chupavidas();
 		
-		rattata.atacar(chansey, "Fogonazo");
-		chansey.atacar(rattata, "LatigoCepa");
+		rattata.atacar(chansey, fogonazo);
+		chansey.atacar(rattata, latigo);
 		chansey.nuevoTurno();
 		
-		rattata.atacar(chansey, "AtaqueRapido");
-		chansey.atacar(rattata, "AtaqueRapido");
+		rattata.atacar(chansey, ataqueRapido);
+		chansey.atacar(rattata, ataqueRapido);
 		chansey.nuevoTurno();
 		
-		rattata.atacar(bulba, "Fogonazo");
-		bulba.atacar(rattata, "LatigoCepa");
+		rattata.atacar(bulba, fogonazo);
+		bulba.atacar(rattata, latigo);
 		bulba.nuevoTurno();
 		
-		rattata.atacar(bulba, "AtaqueRapido");
-		bulba.atacar(rattata, "Chupavidas");
+		rattata.atacar(bulba, ataqueRapido);
+		bulba.atacar(rattata, chupavidas);
 		bulba.nuevoTurno();
 		
 		assertEquals(chansey.getVida(), 92); // 130 - 2 - 10 = 118 - 13 - 13 (Dos quemados)

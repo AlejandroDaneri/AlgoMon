@@ -11,9 +11,10 @@ public class Entrega1Test {
 	public void test01SquirtleAtacaACharmander() throws AtaquesAgotadosException{
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon charmander = new Charmander();
-		squirtle.atacar(charmander,"Burbuja");
+		
+		squirtle.atacar(charmander, new Burbuja());
 		assertEquals(150,charmander.getVida());
-		squirtle.atacar(charmander,"CanonDeAgua");
+		squirtle.atacar(charmander, new CanonDeAgua());
 		assertEquals(110,charmander.getVida());
 	}
 	
@@ -21,9 +22,9 @@ public class Entrega1Test {
 	public void test02SquirtleAtacaABulbasaur() throws AtaquesAgotadosException{
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
-		squirtle.atacar(bulbasaur,"Burbuja");
+		squirtle.atacar(bulbasaur, new Burbuja());
 		assertEquals(135,bulbasaur.getVida());
-		squirtle.atacar(bulbasaur,"CanonDeAgua");
+		squirtle.atacar(bulbasaur, new CanonDeAgua());
 		assertEquals(125,bulbasaur.getVida());
 	}
 	
@@ -33,17 +34,20 @@ public class Entrega1Test {
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon chansey = new Chansey();
 		AlgoMon rattata = new Rattata();
-		squirtle.atacar(jigglypuff,"Burbuja");
+		Burbuja burbuja = new Burbuja();
+		CanonDeAgua canon = new CanonDeAgua();
+		
+		squirtle.atacar(jigglypuff, burbuja);
 		assertEquals(120,jigglypuff.getVida());
-		squirtle.atacar(jigglypuff,"CanonDeAgua");
+		squirtle.atacar(jigglypuff, canon);
 		assertEquals(100,jigglypuff.getVida());
-		squirtle.atacar(chansey,"Burbuja");
+		squirtle.atacar(chansey, burbuja);
 		assertEquals(120,chansey.getVida());
-		squirtle.atacar(chansey,"CanonDeAgua");
+		squirtle.atacar(chansey, canon);
 		assertEquals(100,chansey.getVida());
-		squirtle.atacar(rattata,"Burbuja");
+		squirtle.atacar(rattata, burbuja);
 		assertEquals(160,rattata.getVida());
-		squirtle.atacar(rattata,"CanonDeAgua");
+		squirtle.atacar(rattata, canon);
 		assertEquals(140,rattata.getVida());
 	}
 	
@@ -52,9 +56,10 @@ public class Entrega1Test {
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
 		AlgoMon chansey = new Chansey();
-		bulbasaur.atacar(squirtle,"LatigoCepa");
+		LatigoCepa latigo = new LatigoCepa();
+		bulbasaur.atacar(squirtle, latigo);
 		assertEquals(120,squirtle.getVida());
-		chansey.atacar(squirtle,"LatigoCepa");
+		chansey.atacar(squirtle, latigo);
 		assertEquals(90,squirtle.getVida());
 	}
 	
@@ -63,9 +68,10 @@ public class Entrega1Test {
 		AlgoMon charmander = new Charmander();
 		AlgoMon bulbasaur = new Bulbasaur();
 		AlgoMon chansey = new Chansey();
-		bulbasaur.atacar(charmander,"LatigoCepa");
+		LatigoCepa latigo = new LatigoCepa();
+		bulbasaur.atacar(charmander, latigo);
 		assertEquals(163,charmander.getVida());
-		chansey.atacar(charmander,"LatigoCepa");
+		chansey.atacar(charmander, latigo);
 		assertEquals(156,charmander.getVida());
 	}
 	
@@ -75,13 +81,14 @@ public class Entrega1Test {
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon chansey = new Chansey();
 		AlgoMon rattata = new Rattata();
-		bulbasaur.atacar(jigglypuff,"LatigoCepa");
+		LatigoCepa latigo = new LatigoCepa();
+		bulbasaur.atacar(jigglypuff, latigo);
 		assertEquals(115,jigglypuff.getVida());
-		chansey.atacar(jigglypuff,"LatigoCepa");
+		chansey.atacar(jigglypuff, latigo);
 		assertEquals(100,jigglypuff.getVida());
-		bulbasaur.atacar(rattata,"LatigoCepa");
+		bulbasaur.atacar(rattata, latigo);
 		assertEquals(155,rattata.getVida());
-		chansey.atacar(rattata,"LatigoCepa");
+		chansey.atacar(rattata, latigo);
 		assertEquals(140,rattata.getVida());
 	}
 	
@@ -89,7 +96,7 @@ public class Entrega1Test {
 	public void test07CharmanderAtacaABulbasaurConBrasas() throws AtaquesAgotadosException{
 		AlgoMon charmander = new Charmander();
 		AlgoMon bulbasaur = new Bulbasaur();
-		charmander.atacar(bulbasaur,"Brasas");
+		charmander.atacar(bulbasaur, new Brasas());
 		assertEquals(108,bulbasaur.getVida());
 	}
 	
@@ -97,7 +104,7 @@ public class Entrega1Test {
 	public void test08CharmanderAtacaASquirtleConBrasas() throws AtaquesAgotadosException{
 		AlgoMon charmander = new Charmander();
 		AlgoMon squirtle = new Squirtle();
-		charmander.atacar(squirtle,"Brasas");
+		charmander.atacar(squirtle, new Brasas());
 		assertEquals(142,squirtle.getVida());
 	}
 	
@@ -107,11 +114,12 @@ public class Entrega1Test {
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon chansey = new Chansey();
 		AlgoMon rattata = new Rattata();
-		charmander.atacar(jigglypuff,"Brasas");
+		Brasas brasas = new Brasas();
+		charmander.atacar(jigglypuff, brasas);
 		assertEquals(114,jigglypuff.getVida());
-		charmander.atacar(chansey,"Brasas");
+		charmander.atacar(chansey, brasas);
 		assertEquals(114,chansey.getVida());
-		charmander.atacar(rattata,"Brasas");
+		charmander.atacar(rattata, brasas);
 		assertEquals(154,rattata.getVida());
 	}
 	
@@ -121,13 +129,14 @@ public class Entrega1Test {
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon chansey = new Chansey();
 		AlgoMon rattata = new Rattata();
-		bulbasaur.atacar(jigglypuff,"AtaqueRapido");
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		bulbasaur.atacar(jigglypuff, ataqueRapido);
 		assertEquals(120,jigglypuff.getVida());
-		chansey.atacar(rattata,"AtaqueRapido");
+		chansey.atacar(rattata, ataqueRapido);
 		assertEquals(160,rattata.getVida());
-		rattata.atacar(bulbasaur,"AtaqueRapido");
+		rattata.atacar(bulbasaur, ataqueRapido);
 		assertEquals(130,bulbasaur.getVida());
-		jigglypuff.atacar(chansey,"AtaqueRapido");
+		jigglypuff.atacar(chansey, ataqueRapido);
 		assertEquals(120,chansey.getVida());
 	}
 	
@@ -137,10 +146,11 @@ public class Entrega1Test {
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon chansey = new Chansey();
 		AlgoMon rattata = new Rattata();
+		CanonDeAgua canon = new CanonDeAgua();
 		for(int i=0; i<4;i++){
-			squirtle.atacar(jigglypuff,"CanonDeAgua");
-			squirtle.atacar(chansey,"CanonDeAgua");
+			squirtle.atacar(jigglypuff, canon);
+			squirtle.atacar(chansey, canon);
 		}
-		squirtle.atacar(rattata,"CanonDeAgua");
+		squirtle.atacar(rattata, canon);
 	}
 }

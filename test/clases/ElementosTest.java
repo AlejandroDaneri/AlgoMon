@@ -13,12 +13,15 @@ public class ElementosTest {
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
 		Pocion pocion = new Pocion();
+		Burbuja burbuja = new Burbuja();
+		LatigoCepa latigo = new LatigoCepa();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
 		
-		squirtle.atacar(bulbasaur,"Burbuja");
-		bulbasaur.atacar(squirtle,"LatigoCepa");
+		squirtle.atacar(bulbasaur, burbuja);
+		bulbasaur.atacar(squirtle, latigo);
 		
-		squirtle.atacar(bulbasaur, "AtaqueRapido");
-		bulbasaur.atacar(squirtle, "AtaqueRapido");
+		squirtle.atacar(bulbasaur, ataqueRapido);
+		bulbasaur.atacar(squirtle, ataqueRapido);
 		
 		pocion.aplicar(squirtle);
 		pocion.aplicar(bulbasaur);
@@ -33,15 +36,19 @@ public class ElementosTest {
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
 		SuperPocion superpocion = new SuperPocion();
+		Burbuja burbuja = new Burbuja();
+		LatigoCepa latigo = new LatigoCepa();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		CanonDeAgua canon = new CanonDeAgua();
 		
-		squirtle.atacar(bulbasaur,"Burbuja");
-		bulbasaur.atacar(squirtle,"LatigoCepa");
+		squirtle.atacar(bulbasaur, burbuja);
+		bulbasaur.atacar(squirtle, latigo);
 		
-		squirtle.atacar(bulbasaur, "AtaqueRapido");
-		bulbasaur.atacar(squirtle, "AtaqueRapido");
+		squirtle.atacar(bulbasaur, ataqueRapido);
+		bulbasaur.atacar(squirtle, ataqueRapido);
 		
-		squirtle.atacar(bulbasaur, "CanonDeAgua");
-		bulbasaur.atacar(squirtle, "LatigoCepa");
+		squirtle.atacar(bulbasaur, canon);
+		bulbasaur.atacar(squirtle, latigo);
 		
 		superpocion.aplicar(squirtle);
 		superpocion.aplicar(bulbasaur);
@@ -56,19 +63,23 @@ public class ElementosTest {
 		AlgoMon charmander = new Charmander();
 		AlgoMon bulbasaur = new Bulbasaur();
 		Restaurador restaurador = new Restaurador();
+		Fogonazo fogonazo = new Fogonazo();
+		LatigoCepa latigo = new LatigoCepa();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Brasas brasas = new Brasas();
 		
-		charmander.atacar(bulbasaur,"Fogonazo");
-		bulbasaur.atacar(charmander,"LatigoCepa");
+		charmander.atacar(bulbasaur,fogonazo);
+		bulbasaur.atacar(charmander,latigo);
 		bulbasaur.nuevoTurno();
 		
-		charmander.atacar(bulbasaur, "AtaqueRapido");
-		bulbasaur.atacar(charmander, "AtaqueRapido");
+		charmander.atacar(bulbasaur, ataqueRapido);
+		bulbasaur.atacar(charmander, ataqueRapido);
 		bulbasaur.nuevoTurno();
 		
 		restaurador.aplicar(bulbasaur);
 		
-		charmander.atacar(bulbasaur, "Brasas");
-		bulbasaur.atacar(charmander, "LatigoCepa");
+		charmander.atacar(bulbasaur, brasas);
+		bulbasaur.atacar(charmander, latigo);
 		
 		assertEquals(66,bulbasaur.getVida());	// 140 - 4 - 10 - 14 (Quemado) - 14 (Quemado) - 32 = 66
 		assertEquals(bulbasaur.getEstadoPersistente() instanceof Quemado, false);
@@ -81,18 +92,23 @@ public class ElementosTest {
 		AlgoMon jigglypuff = new Jigglypuff();
 		AlgoMon bulbasaur = new Bulbasaur();
 		Restaurador restaurador = new Restaurador();
+		Canto canto = new Canto();
+		LatigoCepa latigo = new LatigoCepa();
+		Burbuja burbuja = new Burbuja();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+
 		
-		jigglypuff.atacar(bulbasaur,"Canto");
-		bulbasaur.atacar(jigglypuff,"LatigoCepa");
+		jigglypuff.atacar(bulbasaur, canto);
+		bulbasaur.atacar(jigglypuff, latigo);
 		bulbasaur.nuevoTurno();
 		
-		jigglypuff.atacar(bulbasaur, "Burbuja");
-		bulbasaur.atacar(jigglypuff, "AtaqueRapido");
+		jigglypuff.atacar(bulbasaur, burbuja);
+		bulbasaur.atacar(jigglypuff, ataqueRapido);
 		bulbasaur.nuevoTurno();
 		
 		restaurador.aplicar(bulbasaur);
-		jigglypuff.atacar(bulbasaur, "AtaqueRapido");
-		bulbasaur.atacar(jigglypuff, "LatigoCepa");
+		jigglypuff.atacar(bulbasaur, ataqueRapido);
+		bulbasaur.atacar(jigglypuff, latigo);
 		
 		assertEquals(115,jigglypuff.getVida());	// 130 - 15 = 115
 		assertEquals(bulbasaur.getEstadoPersistente() instanceof Dormido, false);
@@ -105,9 +121,11 @@ public class ElementosTest {
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
 		Vitamina vitamina = new Vitamina();
+		CanonDeAgua canon = new CanonDeAgua();
+		LatigoCepa latigo = new LatigoCepa();
 		
-		squirtle.atacar(bulbasaur,"CanonDeAgua");
-		bulbasaur.atacar(squirtle,"LatigoCepa");
+		squirtle.atacar(bulbasaur, canon);
+		bulbasaur.atacar(squirtle, latigo);
 		
 		vitamina.aplicar(squirtle);
 		vitamina.aplicar(bulbasaur);
@@ -127,17 +145,20 @@ public class ElementosTest {
 		AlgoMon squirtle = new Squirtle();
 		AlgoMon bulbasaur = new Bulbasaur();
 		Vitamina vitamina = new Vitamina();
+		CanonDeAgua canon = new CanonDeAgua();
+		Burbuja burbuja = new Burbuja();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
 		
 		for(int x=0; x<8; x++){
-			squirtle.atacar(bulbasaur,"CanonDeAgua");
+			squirtle.atacar(bulbasaur, canon);
 		}
 		
 		for(int x=0; x<15; x++){
-			squirtle.atacar(bulbasaur,"Burbuja");
+			squirtle.atacar(bulbasaur, burbuja);
 		}
 		
 		for(int x=0; x<16; x++){
-			squirtle.atacar(bulbasaur,"AtaqueRapido");
+			squirtle.atacar(bulbasaur, ataqueRapido);
 		}
 		
 		vitamina.aplicar(squirtle);
