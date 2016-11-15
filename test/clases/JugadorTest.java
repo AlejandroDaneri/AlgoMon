@@ -2,7 +2,6 @@ package clases;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import clases.*;
 import excepciones.*;
 
 public class JugadorTest {
@@ -44,9 +43,9 @@ public class JugadorTest {
 		AlgoMon charm = new Charmander();
 		jugador.agregarAlgomon(jigg);
 		jugador.agregarAlgomon(charm);
-		assertEquals(jugador.getAlgomonActivo().getNombre(), "Jigglypuff");
-		jugador.cambiarDeAlgoMon("Charmander");
-		assertEquals(jugador.getAlgomonActivo().getNombre(), "Charmander");
+		assertTrue(jugador.getAlgomonActivo().equals(new Jigglypuff()));
+		jugador.cambiarDeAlgoMon(new Charmander());
+		assertTrue(jugador.getAlgomonActivo().equals(new Charmander()));
 	}
 	
 	@Test(expected = AlgoMonInexistenteException.class)
@@ -56,10 +55,10 @@ public class JugadorTest {
 		AlgoMon charm = new Charmander();
 		jugador.agregarAlgomon(jigg);
 		jugador.agregarAlgomon(charm);
-		assertEquals(jugador.getAlgomonActivo().getNombre(), "Jigglypuff");
-		jugador.cambiarDeAlgoMon("Charmander");
-		assertEquals(jugador.getAlgomonActivo().getNombre(), "Charmander");
-		jugador.cambiarDeAlgoMon("Squirtle");
+		assertTrue(jugador.getAlgomonActivo().equals(new Jigglypuff()));
+		jugador.cambiarDeAlgoMon(new Charmander());
+		assertTrue(jugador.getAlgomonActivo().equals(new Charmander()));
+		jugador.cambiarDeAlgoMon(new Squirtle());
 	}
 	
 	@Test
@@ -69,10 +68,10 @@ public class JugadorTest {
 		AlgoMon charm = new Charmander();
 		jugador.agregarAlgomon(jigg);
 		jugador.agregarAlgomon(charm);
-		assertEquals(jugador.tieneAlgomon("Jigglypuff"), true);
-		assertEquals(jugador.tieneAlgomon("Charmander"), true);
-		assertEquals(jugador.tieneAlgomon("Bulbasaur"), false);
-		assertEquals(jugador.tieneAlgomon("Squirtle"), false);
+		assertEquals(jugador.tieneAlgomon(new Jigglypuff()), true);
+		assertEquals(jugador.tieneAlgomon(new Charmander()), true);
+		assertEquals(jugador.tieneAlgomon(new Bulbasaur()), false);
+		assertEquals(jugador.tieneAlgomon(new Squirtle()), false);
 	}
 	
 	@Test
@@ -82,8 +81,8 @@ public class JugadorTest {
 		AlgoMon charm = new Charmander();
 		jugador.agregarAlgomon(jigg);
 		jugador.agregarAlgomon(charm);
-		assertEquals(jugador.primeraEleccion().getNombre(), "Jigglypuff");
-		assertEquals(jugador.primeraEleccion().getNombre() == "Charmander", false);
+		assertTrue(jugador.primeraEleccion().equals(new Jigglypuff()));
+		assertFalse(jugador.primeraEleccion().equals(new Charmander()));
 	}
 	
 	@Test
@@ -95,10 +94,10 @@ public class JugadorTest {
 		jugador.agregarAlgomon(jigglypuff);
 		jugador.agregarAlgomon(charmander);
 		for(int i = 0; i <= 5; i++){
-			squirtle.atacar(charmander, "CanonDeAgua");
+			squirtle.atacar(charmander, new CanonDeAgua());
 		}
 		for(int i = 0; i <= 13; i++){
-			squirtle.atacar(jigglypuff, "Burbuja");
+			squirtle.atacar(jigglypuff, new Burbuja());
 		}
 		assertEquals(jugador.perdio(), true);
 	}
@@ -111,7 +110,7 @@ public class JugadorTest {
 		jugador.agregarAlgomon(jigglypuff);
 		jugador.agregarAlgomon(charmander);
 		for(int i = 0; i <= 5; i++){
-			squirtle.atacar(charmander, "CanonDeAgua");
+			squirtle.atacar(charmander, new CanonDeAgua());
 		}
 		assertEquals(jugador.perdio(), false);
 	}
@@ -125,7 +124,7 @@ public class JugadorTest {
 		jugador1.agregarAlgomon(jigglypuff);
 		jugador1.agregarAlgomon(charmander);
 		jugador2.agregarAlgomon(squirtle);
-		jugador1.atacar(jugador2.getAlgomonActivo(),"AtaqueRapido");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new AtaqueRapido());
 		assertEquals(jugador2.getAlgomonActivo().getVida(), 140);
 		assertEquals(jugador2.getAlgomonActivo().estaMuerto(), false);
 	}
@@ -140,7 +139,7 @@ public class JugadorTest {
 		jugador1.agregarAlgomon(jigglypuff);
 		jugador1.agregarAlgomon(charmander);
 		jugador2.agregarAlgomon(squirtle);
-		jugador1.atacar(jugador2.getAlgomonActivo(),"Chupavidas");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new Chupavidas());
 	}
 	
 	@Test
@@ -154,13 +153,13 @@ public class JugadorTest {
 		jugador1.agregarAlgomon(charmander);
 		jugador2.agregarAlgomon(jigglypuff);
 		
-		jugador1.atacar(jugador2.getAlgomonActivo(),"AtaqueRapido");
-		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new AtaqueRapido());
+		jugador2.atacar(jugador1.getAlgomonActivo(),new AtaqueRapido());
 		
-		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
-		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
+		jugador2.atacar(jugador1.getAlgomonActivo(),new AtaqueRapido());
 		
-		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
 		jugador2.aplicarElemento("Pocion");
 		
 		assertEquals(jugador2.vidaAlgomonActivo(), 108); // 130 - 10 - 16 - 16 + 20 = 108
@@ -177,16 +176,16 @@ public class JugadorTest {
 		jugador1.agregarAlgomon(charmander);
 		jugador2.agregarAlgomon(jigglypuff);
 		
-		jugador1.atacar(jugador2.getAlgomonActivo(),"Fogonazo");	// Lo quema
-		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new Fogonazo());	// Lo quema
+		jugador2.atacar(jugador1.getAlgomonActivo(),new AtaqueRapido());
 		jugador2.actualizarEstados();
 		
-		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
 		jugador2.aplicarElemento("Restaurador");
 		jugador2.actualizarEstados();
 		
-		jugador1.atacar(jugador2.getAlgomonActivo(),"Brasas");
-		jugador2.atacar(jugador1.getAlgomonActivo(),"AtaqueRapido");
+		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
+		jugador2.atacar(jugador1.getAlgomonActivo(),new AtaqueRapido());
 		
 		assertEquals(jugador2.vidaAlgomonActivo(), 83); // 130 - 2 - 16 - 13 (Quemado) - 16 = 83
 		assertEquals(jugador2.getAlgomonActivo().getEstadoPersistente() instanceof EstadoNormal, true);

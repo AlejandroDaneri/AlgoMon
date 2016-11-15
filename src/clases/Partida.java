@@ -46,13 +46,16 @@ public class Partida {
 		return jugador2;
 	}
 	
-	public void jugarTurnoActual(int opcion,String algomonOataque) throws AtaquesAgotadosException{
-		// Esto de las opciones lo habia pensado para testear el modelo.
-		// En la practica no va a existir porque vamos a tener menues en la vista.
-		// Faltaria ademas la opcion 3 que es aplicar un elemento.
+	public void jugarTurnoActual(Ataque ataque) throws AtaquesAgotadosException{
 		Jugador jugadorActual = jugadorActual();
-		if(opcion == 1) jugadorActual.atacar(this.jugadorOponente().getAlgomonActivo(), algomonOataque);
-		else jugadorActual.cambiarDeAlgoMon(algomonOataque);
+		jugadorActual.atacar(this.jugadorOponente().getAlgomonActivo(), ataque);
+		this.nextTurno();
+		turnos++;
+	}
+	
+	public void jugarTurnoActual(AlgoMon algomon){
+		Jugador jugadorActual = jugadorActual();
+		jugadorActual.cambiarDeAlgoMon(algomon);;
 		this.nextTurno();
 		turnos++;
 	}

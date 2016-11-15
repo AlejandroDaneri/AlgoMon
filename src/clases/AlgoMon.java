@@ -25,7 +25,7 @@ public abstract class AlgoMon {
 		if(!this.tieneAtaque(otroAtaque)) throw new AtaqueInvalidoException();
 		if(!this.puedeAtacar()) return;
 		for(Ataque ataque: ataques){
-			if(ataque.getClass().equals(otroAtaque.getClass())){
+			if(ataque.equals(otroAtaque)){
 				ataque.atacar(this, otro);
 			}
 		}
@@ -57,8 +57,8 @@ public abstract class AlgoMon {
 		this.getEstados().nuevoTurno(this);
 	}
 	
-	public void nuevoTurnoNoActivo(){
-		this.getEstadoPersistente().nuevoTurno(this);
+	public boolean equals(AlgoMon otroAlgoMon){
+		return this.getClass().equals(otroAlgoMon.getClass());
 	}
 	
 	public Estado getEstadoPersistente(){

@@ -35,10 +35,6 @@ public class Jugador {
 	}
 	
 	public void actualizarEstados() {
-		for(AlgoMon algomon: algomones){
-			if(algomon == this.getAlgomonActivo()) continue;
-			algomon.nuevoTurnoNoActivo();	// El turno no activo solo modifica los Estados Persistentes
-		}
 		algomonActivo.nuevoTurno();
 	}
 	
@@ -64,10 +60,10 @@ public class Jugador {
 		algomones.add(algomon);
 	}
 	
-	public void cambiarDeAlgoMon(String algomon) {
+	public void cambiarDeAlgoMon(AlgoMon algomon) {
 		if(!this.tieneAlgomon(algomon)) throw new AlgoMonInexistenteException();
 		for(AlgoMon algomonUser: algomones){
-			if(algomonUser.getClass().equals(algomon.getClass()) && !algomonUser.estaMuerto()) this.setAlgomonActivo(algomonUser);
+			if(algomonUser.equals(algomon) && !algomonUser.estaMuerto()) this.setAlgomonActivo(algomonUser);
 		}
 	}
 	
@@ -75,11 +71,10 @@ public class Jugador {
 		this.algomonActivo = algomon;
 	}
 	
-	public boolean tieneAlgomon(String algomon) {
+	public boolean tieneAlgomon(AlgoMon algomon) {
 		boolean tiene = false;
 		for(AlgoMon algomonUser: algomones){
-			if(algomonUser.getClass().equals(algomon.getClass())) tiene = true;
-//			if(algomonUser.getNombre().equals(algomon)) tiene = true;
+			if(algomonUser.equals(algomon)) tiene = true;
 		}
 		return tiene;
 	}
@@ -95,8 +90,8 @@ public class Jugador {
 		return true;
 	}
 	
-	public void atacar(AlgoMon oponente, String ataqueName) throws AtaquesAgotadosException {
-		this.algomonActivo.atacar(oponente, ataqueName);	// La excepcion de AtaqueInvalido esta en atacar tmb
+	public void atacar(AlgoMon oponente, Ataque ataque) throws AtaquesAgotadosException {
+		this.algomonActivo.atacar(oponente, ataque);	// La excepcion de AtaqueInvalido esta en atacar tmb
 	}
 	
 	public void aplicarElemento(String elemento) {
