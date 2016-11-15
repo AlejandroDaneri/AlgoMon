@@ -21,11 +21,11 @@ public abstract class AlgoMon {
 		this.setEstados(new Estados());
 	}
 	
-	public void atacar(AlgoMon otro, String ataqueName) throws AtaquesAgotadosException{
-		if(!this.tieneAtaque(ataqueName)) throw new AtaqueInvalidoException();
+	public void atacar(AlgoMon otro, Ataque otroAtaque) throws AtaquesAgotadosException{
+		if(!this.tieneAtaque(otroAtaque)) throw new AtaqueInvalidoException();
 		if(!this.puedeAtacar()) return;
 		for(Ataque ataque: ataques){
-			if(ataque.equals(ataqueName)){
+			if(ataque.getClass().equals(otroAtaque.getClass())){
 				ataque.atacar(this, otro);
 			}
 		}
@@ -35,10 +35,10 @@ public abstract class AlgoMon {
 		return this.getEstados().puedeAtacar();
 	}
 
-	public boolean tieneAtaque(String nombre) {
+	public boolean tieneAtaque(Ataque unAtaque) {
 		boolean tiene = false;
 		for(Ataque ataque: ataques){
-			if(ataque.equals(nombre)) tiene = true;
+			if(ataque.getClass().equals(unAtaque.getClass())) tiene = true;
 		}
 		return tiene;
 	}

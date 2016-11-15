@@ -23,17 +23,17 @@ public class BulbasaurTest {
 	public void testCrearBalbasaur() {
 
 		Bulbasaur bulbasaur = new Bulbasaur();
-		String ataque1 = "LatigoCepa";
-		String ataque2 = "AtaqueRapido";
-		String ataque3 = "Chupavidas";
-		String ataque4 = "Canto";
+		LatigoCepa latigo = new LatigoCepa();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Chupavidas chupavidas = new Chupavidas();
+		Canto canto = new Canto();
 
 		assertEquals(bulbasaur.getTipo(), Tipo.PLANTA);
 		assertEquals(bulbasaur.getVida(), 140);
-		assertEquals(bulbasaur.tieneAtaque(ataque1), true);
-		assertEquals(bulbasaur.tieneAtaque(ataque2), true);
-		assertEquals(bulbasaur.tieneAtaque(ataque3), true);
-		assertEquals(bulbasaur.tieneAtaque(ataque4), false);
+		assertEquals(bulbasaur.tieneAtaque(latigo), true);
+		assertEquals(bulbasaur.tieneAtaque(ataqueRapido), true);
+		assertEquals(bulbasaur.tieneAtaque(chupavidas), true);
+		assertEquals(bulbasaur.tieneAtaque(canto), false);
 	}
 	
 	@Test
@@ -41,8 +41,10 @@ public class BulbasaurTest {
 		
 		Bulbasaur bulbasaur = new Bulbasaur();
 		Jigglypuff jigglypuff = new Jigglypuff();
+		Canto canto = new Canto();
+
 		try {
-			jigglypuff.atacar(bulbasaur, "Canto");
+			jigglypuff.atacar(bulbasaur, canto);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, bulbasaur.puedeAtacar());
 	}
@@ -52,10 +54,13 @@ public class BulbasaurTest {
 		
 		Bulbasaur bulbasaur = new Bulbasaur();
 		Charmander charmander = new Charmander();
+		Fogonazo fogonazo = new Fogonazo();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+
 		try {
-			charmander.atacar(bulbasaur, "Fogonazo");
+			charmander.atacar(bulbasaur, fogonazo);
 			bulbasaur.nuevoTurno();
-			bulbasaur.atacar(charmander, "AtaqueRapido");
+			bulbasaur.atacar(charmander, ataqueRapido);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(122, bulbasaur.getVida());
 	}
@@ -64,16 +69,17 @@ public class BulbasaurTest {
 	public void testAlgoMonMuerto() {
 		Bulbasaur bulbasaur = new Bulbasaur();
 		Charmander charmander = new Charmander();
+		Brasas brasas = new Brasas();
 		try {
-			charmander.atacar(bulbasaur, "Brasas");
-			charmander.atacar(bulbasaur, "Brasas");
+			charmander.atacar(bulbasaur, brasas);
+			charmander.atacar(bulbasaur, brasas);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, bulbasaur.estaMuerto());
 
 		try {
-			charmander.atacar(bulbasaur, "Brasas");
-			charmander.atacar(bulbasaur, "Brasas");
-			charmander.atacar(bulbasaur, "Brasas");
+			charmander.atacar(bulbasaur, brasas);
+			charmander.atacar(bulbasaur, brasas);
+			charmander.atacar(bulbasaur, brasas);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, bulbasaur.estaMuerto());
 	}

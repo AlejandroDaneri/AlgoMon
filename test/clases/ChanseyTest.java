@@ -23,17 +23,17 @@ public class ChanseyTest {
 	public void testCrearChansey() {
 		
 		Chansey chansey = new Chansey();
-		String ataque1 = "Canto";
-		String ataque2 = "AtaqueRapido";
-		String ataque3 = "LatigoCepa";
-		String ataque4 = "Chupavidas";
+		Canto canto = new Canto();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		LatigoCepa latigo = new LatigoCepa();
+		Chupavidas chupavidas = new Chupavidas();
 
 		assertEquals(chansey.getTipo(), Tipo.NORMAL);
 		assertEquals(chansey.getVida(), 130);
-		assertEquals(chansey.tieneAtaque(ataque1), true);
-		assertEquals(chansey.tieneAtaque(ataque2), true);
-		assertEquals(chansey.tieneAtaque(ataque3), true);
-		assertEquals(chansey.tieneAtaque(ataque4), false);
+		assertEquals(chansey.tieneAtaque(canto), true);
+		assertEquals(chansey.tieneAtaque(ataqueRapido), true);
+		assertEquals(chansey.tieneAtaque(latigo), true);
+		assertEquals(chansey.tieneAtaque(chupavidas), false);
 	}
 	
 	@Test
@@ -41,8 +41,9 @@ public class ChanseyTest {
 		
 		Chansey chansey = new Chansey();
 		Jigglypuff jigglypuff = new Jigglypuff();
+		Canto canto = new Canto();
 		try {
-			jigglypuff.atacar(chansey, "Canto");
+			jigglypuff.atacar(chansey, canto);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, chansey.puedeAtacar());
 	}
@@ -52,10 +53,13 @@ public class ChanseyTest {
 		
 		Chansey chansey = new Chansey();
 		Charmander charmander = new Charmander();
+		Fogonazo fogonazo = new Fogonazo();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+
 		try {
-			charmander.atacar(chansey, "Fogonazo");
+			charmander.atacar(chansey, fogonazo);
 			chansey.nuevoTurno();
-			chansey.atacar(charmander, "AtaqueRapido");
+			chansey.atacar(charmander, ataqueRapido);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(115, chansey.getVida());
 	}
@@ -64,15 +68,16 @@ public class ChanseyTest {
 	public void testAlgoMonMuerto() {
 		Chansey chansey = new Chansey();
 		Charmander charmander = new Charmander();
+		Brasas brasas = new Brasas();
 		try {
-			charmander.atacar(chansey, "Brasas");
-			charmander.atacar(chansey, "Brasas");
+			charmander.atacar(chansey, brasas);
+			charmander.atacar(chansey, brasas);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, chansey.estaMuerto());
 
 		try {
 			for(int i=0; i<7;i++){
-				charmander.atacar(chansey, "Brasas");
+				charmander.atacar(chansey, brasas);
 			}
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, chansey.estaMuerto());

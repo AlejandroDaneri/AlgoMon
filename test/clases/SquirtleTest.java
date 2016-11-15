@@ -26,17 +26,17 @@ public class SquirtleTest {
 	public void testCrearSquirtle() {
 		
 		Squirtle squirtle = new Squirtle();
-		String ataque1 = "Burbuja";
-		String ataque2 = "AtaqueRapido";
-		String ataque3 = "CanonDeAgua";
-		String ataque4 = "LatigoCepa";
+		Burbuja burbuja = new Burbuja();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		CanonDeAgua canon = new CanonDeAgua();
+		LatigoCepa latigo = new LatigoCepa();
 		
 		assertEquals(squirtle.getTipo(), Tipo.AGUA);
 		assertEquals(squirtle.getVida(), 150);
-		assertEquals(squirtle.tieneAtaque(ataque1), true);
-		assertEquals(squirtle.tieneAtaque(ataque2), true);
-		assertEquals(squirtle.tieneAtaque(ataque3), true);
-		assertEquals(squirtle.tieneAtaque(ataque4), false);		
+		assertEquals(squirtle.tieneAtaque(burbuja), true);
+		assertEquals(squirtle.tieneAtaque(ataqueRapido), true);
+		assertEquals(squirtle.tieneAtaque(canon), true);
+		assertEquals(squirtle.tieneAtaque(latigo), false);		
 	}
 	
 	@Test
@@ -44,8 +44,9 @@ public class SquirtleTest {
 		
 		Squirtle squirtle = new Squirtle();
 		Jigglypuff jigglypuff = new Jigglypuff();
+		Canto canto = new Canto();
 		try {
-			jigglypuff.atacar(squirtle, "Canto");
+			jigglypuff.atacar(squirtle, canto);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, squirtle.puedeAtacar());
 	}
@@ -55,10 +56,12 @@ public class SquirtleTest {
 		
 		Squirtle squirtle = new Squirtle();
 		Charmander charmander = new Charmander();
+		Fogonazo fogonazo = new Fogonazo();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
 		try {
-			charmander.atacar(squirtle, "Fogonazo");
+			charmander.atacar(squirtle, fogonazo);
 			squirtle.nuevoTurno();
-			squirtle.atacar(charmander, "AtaqueRapido");
+			squirtle.atacar(charmander, ataqueRapido);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(134, squirtle.getVida());
 	}
@@ -68,14 +71,15 @@ public class SquirtleTest {
 		
 		Squirtle squirtle = new Squirtle();
 		Bulbasaur bulbasaur = new Bulbasaur();
+		Chupavidas chupavidas = new Chupavidas();
 		try {
-			bulbasaur.atacar(squirtle, "Chupavidas");
+			bulbasaur.atacar(squirtle, chupavidas);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, squirtle.estaMuerto());
 
 		try {
 			for(int i=0; i<4;i++){
-				bulbasaur.atacar(squirtle, "Chupavidas");
+				bulbasaur.atacar(squirtle, chupavidas);
 			}
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, squirtle.estaMuerto());

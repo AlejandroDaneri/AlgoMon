@@ -3,11 +3,12 @@ package clases;
 public class CanonDeAgua extends Ataque {
 
 	public CanonDeAgua() {
-		super("CanonDeAgua",20,8,Tipo.AGUA);
+		super(20,8,Tipo.AGUA);
 	}
 	
 	public int cantidadInicial(){
-		return 8;
+		int cantidadInicial = 8;
+		return cantidadInicial;
 	}
 
 }

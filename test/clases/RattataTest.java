@@ -27,17 +27,17 @@ public class RattataTest {
 	public void testCrearRattata() {
 		
 		Rattata rattata = new Rattata();
-		String ataque1 = "Fogonazo";
-		String ataque2 = "AtaqueRapido";
-		String ataque3 = "Burbuja";
-		String ataque4 = "CañonDeAgua";
-		
+		Fogonazo fogonazo = new Fogonazo();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Burbuja burbuja = new Burbuja();
+		CanonDeAgua canon = new CanonDeAgua();
+
 		assertEquals(rattata.getTipo(), Tipo.NORMAL);
 		assertEquals(rattata.getVida(), 170);
-		assertEquals(rattata.tieneAtaque(ataque1), true);
-		assertEquals(rattata.tieneAtaque(ataque2), true);
-		assertEquals(rattata.tieneAtaque(ataque3), true);
-		assertEquals(rattata.tieneAtaque(ataque4), false);
+		assertEquals(rattata.tieneAtaque(fogonazo), true);
+		assertEquals(rattata.tieneAtaque(ataqueRapido), true);
+		assertEquals(rattata.tieneAtaque(burbuja), true);
+		assertEquals(rattata.tieneAtaque(canon), false);
 	}
 	
 	@Test
@@ -45,8 +45,9 @@ public class RattataTest {
 		
 		Rattata rattata = new Rattata();
 		Jigglypuff jigglypuff = new Jigglypuff();
+		Canto canto = new Canto();
 		try {
-			jigglypuff.atacar(rattata, "Canto");
+			jigglypuff.atacar(rattata, canto);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, rattata.puedeAtacar());
 	}
@@ -56,10 +57,12 @@ public class RattataTest {
 		
 		Rattata rattata = new Rattata();
 		Charmander charmander = new Charmander();
+		Fogonazo fogonazo = new Fogonazo();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
 		try {
-			charmander.atacar(rattata, "Fogonazo");
+			charmander.atacar(rattata, fogonazo);
 			rattata.nuevoTurno();
-			rattata.atacar(charmander, "AtaqueRapido");
+			rattata.atacar(charmander, ataqueRapido);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(151, rattata.getVida());
 	}
@@ -69,16 +72,18 @@ public class RattataTest {
 		
 		Rattata rattata = new Rattata();
 		Squirtle squirtle = new Squirtle();
+		CanonDeAgua canon = new CanonDeAgua();
+		Burbuja burbuja = new Burbuja();
 		try {
-			squirtle.atacar(rattata, "CanonDeAgua");
-			squirtle.atacar(rattata, "CanonDeAgua");
+			squirtle.atacar(rattata, canon);
+			squirtle.atacar(rattata, canon);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, rattata.estaMuerto());
 		
 		try {
 			for(int i=0; i<5;i++){
-				squirtle.atacar(rattata, "CanonDeAgua");
-				squirtle.atacar(rattata, "Burbuja");
+				squirtle.atacar(rattata, canon);
+				squirtle.atacar(rattata, burbuja);
 			}
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, rattata.estaMuerto());

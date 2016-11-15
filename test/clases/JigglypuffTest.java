@@ -27,17 +27,17 @@ public class JigglypuffTest {
 	public void testCrearJigglypuff() {
 		
 		Jigglypuff jigglypuff = new Jigglypuff();
-		String ataque1 = "Canto";
-		String ataque2 = "AtaqueRapido";
-		String ataque3 = "Burbuja";
-		String ataque4 = "Brasas";
+		Canto canto = new Canto();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Burbuja burbuja = new Burbuja();
+		Brasas brasas = new Brasas();
 		
 		assertEquals(jigglypuff.getTipo(), Tipo.NORMAL);
 		assertEquals(jigglypuff.getVida(), 130);
-		assertEquals(jigglypuff.tieneAtaque(ataque1), true);
-		assertEquals(jigglypuff.tieneAtaque(ataque2), true);
-		assertEquals(jigglypuff.tieneAtaque(ataque3), true);
-		assertEquals(jigglypuff.tieneAtaque(ataque4), false);
+		assertEquals(jigglypuff.tieneAtaque(canto), true);
+		assertEquals(jigglypuff.tieneAtaque(ataqueRapido), true);
+		assertEquals(jigglypuff.tieneAtaque(burbuja), true);
+		assertEquals(jigglypuff.tieneAtaque(brasas), false);
 	}
 	
 	@Test
@@ -45,8 +45,9 @@ public class JigglypuffTest {
 		
 		Jigglypuff jigglypuff = new Jigglypuff();
 		Chansey chansey = new Chansey();
+		Canto canto = new Canto();
 		try {
-			chansey.atacar(jigglypuff, "Canto");
+			chansey.atacar(jigglypuff, canto);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, jigglypuff.puedeAtacar());
 	}
@@ -56,10 +57,12 @@ public class JigglypuffTest {
 		
 		Jigglypuff jigglypuff = new Jigglypuff();
 		Charmander charmander = new Charmander();
+		Fogonazo fogonazo = new Fogonazo();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
 		try {
-			charmander.atacar(jigglypuff, "Fogonazo");
+			charmander.atacar(jigglypuff, fogonazo);
 			jigglypuff.nuevoTurno();
-			jigglypuff.atacar(charmander, "AtaqueRapido");
+			jigglypuff.atacar(charmander, ataqueRapido);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(115, jigglypuff.getVida());
 	}
@@ -68,15 +71,18 @@ public class JigglypuffTest {
 	public void testAlgoMonMuerto() {
 		Jigglypuff jigglypuff = new Jigglypuff();
 		Squirtle squirtle = new Squirtle();
+		AtaqueRapido ataqueRapido = new AtaqueRapido();
+		Burbuja burbuja = new Burbuja();
+
 		try {
-			squirtle.atacar(jigglypuff, "AtaqueRapido");
+			squirtle.atacar(jigglypuff, ataqueRapido);
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(false, jigglypuff.estaMuerto());
 		
 		try {
 			for(int i=0; i<6;i++){
-				squirtle.atacar(jigglypuff, "AtaqueRapido");
-				squirtle.atacar(jigglypuff, "Burbuja");
+				squirtle.atacar(jigglypuff, ataqueRapido);
+				squirtle.atacar(jigglypuff, burbuja);
 			}
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, jigglypuff.estaMuerto());

@@ -3,10 +3,11 @@ package clases;
 public class Fogonazo extends Ataque {
 
 	public Fogonazo() {
-		super("Fogonazo",2,4,Tipo.FUEGO, new Quemar());
+		super(2,4,Tipo.FUEGO, new Quemar());
 	}
 	
 	public int cantidadInicial(){
-		return 4;
+		int cantidadInicial = 4;
+		return cantidadInicial;
 	}
 }

@@ -2,10 +2,11 @@ package clases;
 
 public class AtaqueRapido extends Ataque {
 	public AtaqueRapido(){
-		super("AtaqueRapido",10,16,Tipo.NORMAL);
+		super(10,16,Tipo.NORMAL);
 	}
 	
 	public int cantidadInicial(){
-		return 16;
+		int cantidadInicial = 16;
+		return cantidadInicial;
 	}
 }

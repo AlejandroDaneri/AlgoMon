@@ -4,22 +4,19 @@ import excepciones.AtaquesAgotadosException;
 
 public abstract class Ataque {
 	
-	private String nombre;
 	private int potencia;
 	private int cantidad;
 	private Tipo tipo;
 	private Accion accion;
 		
-	public Ataque(String nombre, int potencia, int cantidad, Tipo tipo, Accion accion){
-		this.setNombre(nombre);
+	public Ataque(int potencia, int cantidad, Tipo tipo, Accion accion){
 		this.setPotencia(potencia);
 		this.setCantidad(cantidad);
 		this.setTipo(tipo);
 		this.setAccion(accion);
 	}
 	
-	public Ataque(String nombre, int potencia, int cantidad, Tipo tipo){
-		this.setNombre(nombre);
+	public Ataque(int potencia, int cantidad, Tipo tipo){
 		this.setPotencia(potencia);
 		this.setCantidad(cantidad);
 		this.setTipo(tipo);
@@ -34,15 +31,7 @@ public abstract class Ataque {
 		atacado.disminuirVida((int)(this.getPotencia()*multiplicador));
 		this.reducirCantidadDeAtaque();
 	}
-	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public String getNombre() {
-		return nombre;
-	}
-	
+		
 	public int getPotencia() {
 		return potencia;
 	}
@@ -67,9 +56,9 @@ public abstract class Ataque {
 		this.tipo = tipo;
 	}
 	
-	public boolean equals(String nombre){
-		return this.nombre.equals(nombre);
-	}
+//	public boolean equals(String nombre){
+//		return this.nombre.equals(nombre);
+//	}
 	
 	public void reducirCantidadDeAtaque() {
 		(this.cantidad)--;
