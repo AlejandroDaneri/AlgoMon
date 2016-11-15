@@ -81,12 +81,4 @@ public class JigglypuffTest {
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, jigglypuff.estaMuerto());
 	}
-
-	@Test
-	public void testGetNombre() {
-		Jigglypuff jigglypuff = new Jigglypuff();
-		assertEquals("Jigglypuff",jigglypuff.getNombre());
-	}
-
-
 }

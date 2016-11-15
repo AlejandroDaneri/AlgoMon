@@ -80,11 +80,4 @@ public class SquirtleTest {
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, squirtle.estaMuerto());
 	}
-
-	@Test
-	public void testGetNombre() {
-		Squirtle squirtle = new Squirtle();
-		assertEquals("Squirtle",squirtle.getNombre());
-	}
-
 }

@@ -1,26 +1,17 @@
 package clases;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Charmander extends AlgoMon {
 
 	public Charmander() {
-		super(170, null, Tipo.FUEGO);
-		List<Ataque> ataques = new ArrayList<Ataque>();
-		ataques.add(new Brasas());
-		ataques.add(new AtaqueRapido());
-		ataques.add(new Fogonazo());
-		this.setAtaques(ataques);
+		super(170, Tipo.FUEGO);
+		this.agregarAtaque(new Brasas());
+		this.agregarAtaque(new AtaqueRapido());
+		this.agregarAtaque(new Fogonazo());
 	}
 
 	@Override
 	public int obtenerVidaOriginal() {
 		return 170;
-	}
-	
-	public String getNombre(){
-		return "Charmander";
 	}
 
 }

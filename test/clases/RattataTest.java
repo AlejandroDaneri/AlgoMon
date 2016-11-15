@@ -83,11 +83,4 @@ public class RattataTest {
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, rattata.estaMuerto());
 	}
-
-	@Test
-	public void testGetNombre() {
-		Rattata rattata = new Rattata();
-		assertEquals("Rattata",rattata.getNombre());
-	}
-
 }

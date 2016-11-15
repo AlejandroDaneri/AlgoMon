@@ -77,10 +77,5 @@ public class BulbasaurTest {
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, bulbasaur.estaMuerto());
 	}
-	@Test
-	public void testGetNombre() {
-		Bulbasaur bulbasaur = new Bulbasaur();
-		assertEquals("Bulbasaur",bulbasaur.getNombre());
-	}
 
 }

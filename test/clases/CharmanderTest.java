@@ -77,10 +77,4 @@ public class CharmanderTest {
 		} catch (AtaquesAgotadosException e) { }
 		assertEquals(true, charmander.estaMuerto());
 	}
-	@Test
-	public void testGetNombre() {
-		Charmander charmander = new Charmander();
-		assertEquals("Charmander",charmander.getNombre());
-	}
-
 }

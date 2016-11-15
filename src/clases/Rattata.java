@@ -1,25 +1,16 @@
 package clases;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Rattata extends AlgoMon {
 
 	public Rattata() {
-		super(170, null, Tipo.NORMAL);
-		List<Ataque> ataques = new ArrayList<Ataque>();
-		ataques.add(new Fogonazo());
-		ataques.add(new AtaqueRapido());
-		ataques.add(new Burbuja());
-		this.setAtaques(ataques);
+		super(170, Tipo.NORMAL);
+		this.agregarAtaque(new Fogonazo());
+		this.agregarAtaque(new AtaqueRapido());
+		this.agregarAtaque(new Burbuja());
 	}
 
 	@Override
 	public int obtenerVidaOriginal() {
 		return 170;
-	}
-	
-	public String getNombre(){
-		return "Rattata";
 	}
 }

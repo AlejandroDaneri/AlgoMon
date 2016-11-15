@@ -67,7 +67,7 @@ public class Jugador {
 	public void cambiarDeAlgoMon(String algomon) {
 		if(!this.tieneAlgomon(algomon)) throw new AlgoMonInexistenteException();
 		for(AlgoMon algomonUser: algomones){
-			if(algomonUser.getNombre().equals(algomon) && !algomonUser.estaMuerto()) this.setAlgomonActivo(algomonUser);
+			if(algomonUser.getClass().equals(algomon.getClass()) && !algomonUser.estaMuerto()) this.setAlgomonActivo(algomonUser);
 		}
 	}
 	
@@ -78,7 +78,8 @@ public class Jugador {
 	public boolean tieneAlgomon(String algomon) {
 		boolean tiene = false;
 		for(AlgoMon algomonUser: algomones){
-			if(algomonUser.getNombre().equals(algomon)) tiene = true;
+			if(algomonUser.getClass().equals(algomon.getClass())) tiene = true;
+//			if(algomonUser.getNombre().equals(algomon)) tiene = true;
 		}
 		return tiene;
 	}

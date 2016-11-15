@@ -1,5 +1,6 @@
 package clases;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import excepciones.AtaqueInvalidoException;
@@ -12,7 +13,8 @@ public abstract class AlgoMon {
 	private Tipo tipo;
 	private Estados estados;
 	
-	public AlgoMon(int vida, List<Ataque> ataques, Tipo tipo){
+	public AlgoMon(int vida, Tipo tipo){
+		this.setAtaques(new ArrayList<Ataque>());
 		this.setVida(vida);
 		this.setAtaques(ataques);
 		this.setTipo(tipo);
@@ -86,6 +88,10 @@ public abstract class AlgoMon {
 	public void setAtaques(List<Ataque> ataques) {
 		this.ataques = ataques;
 	}
+	
+	public void agregarAtaque(Ataque unAtaque) {
+		this.ataques.add(unAtaque);
+	}
 
 	public Tipo getTipo() {
 		return tipo;
@@ -107,8 +113,6 @@ public abstract class AlgoMon {
 		return this.getVida() <= 0;
 	}
 	
-	public abstract String getNombre();
-
 	public abstract int obtenerVidaOriginal();
 
 }
