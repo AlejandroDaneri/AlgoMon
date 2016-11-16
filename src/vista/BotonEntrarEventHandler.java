@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
+public class BotonEntrarEventHandler extends Boton {
     Stage stage;
     Scene escenaActual;
 
@@ -16,9 +16,14 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        super.handle(event);
         stage.setScene(escenaActual);
         stage.setFullScreenExitHint(""); //revisar tamaño de escena anterior
         stage.setFullScreen(true);
 
     }
+
+
+
+
 }

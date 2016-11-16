@@ -30,15 +30,14 @@ public class AplicacionPrincipal extends Application{
         Escena escenaBienvenidos = new Escena(contenedorBienvenidos,stagePrincipal,alto_minimo,ancho_minimo);
 
         stagePrincipal.setScene(escenaBienvenidos);
-
         stagePrincipal.setFullScreen(true);
         stagePrincipal.setFullScreenExitHint("Presione F11 para entrar o salir de la pantalla completa ");
+        stagePrincipal.setMinHeight(alto_minimo);
+        stagePrincipal.setMinWidth(ancho_minimo);
         stagePrincipal.show();
 
         AlertaHandler alerta = new AlertaHandler();
         stagePrincipal.setOnCloseRequest(alerta);
 
-        stagePrincipal.setMinHeight(alto_minimo);
-        stagePrincipal.setMinWidth(ancho_minimo);
     }
 }

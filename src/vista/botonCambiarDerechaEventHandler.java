@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-public class botonCambiarDerechaEventHandler implements EventHandler<ActionEvent> {
+public class botonCambiarDerechaEventHandler extends Boton {
     private final ArrayList<Image> algomones;
     private final ImageView seleccion;
     private final ImageView tabla;
@@ -27,6 +27,7 @@ public class botonCambiarDerechaEventHandler implements EventHandler<ActionEvent
     @Override
     public void handle(ActionEvent event) {
         try {
+            super.handle(event);
             int indice= algomones.indexOf(seleccion.getImage());
             seleccion.setImage(algomones.get(indice+1));
             tabla.setImage(tablas.get(indice+1));

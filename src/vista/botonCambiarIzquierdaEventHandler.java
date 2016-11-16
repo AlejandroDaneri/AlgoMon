@@ -4,13 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.web.WebView;
 
-import java.net.URL;
 import java.util.ArrayList;
 
 
-public class botonCambiarIzquierdaEventHandler implements EventHandler<ActionEvent> {
+public class botonCambiarIzquierdaEventHandler extends Boton {
     private final ArrayList<Image> algomones;
     private final ImageView seleccion;
     private final ImageView tabla;
@@ -26,6 +24,7 @@ public class botonCambiarIzquierdaEventHandler implements EventHandler<ActionEve
     @Override
     public void handle(ActionEvent event) {
         try {
+            super.handle(event);
             int indice= algomones.indexOf(seleccion.getImage());
             seleccion.setImage(algomones.get(indice-1));
             tabla.setImage(tablas.get(indice-1));
