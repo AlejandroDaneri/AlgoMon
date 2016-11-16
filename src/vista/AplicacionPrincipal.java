@@ -32,7 +32,7 @@ public class AplicacionPrincipal extends Application{
         stagePrincipal.setScene(escenaBienvenidos);
 
         stagePrincipal.setFullScreen(true);
-        stagePrincipal.setFullScreenExitHint("Presione F11 para salir o entrar de la pantalla completa ");
+        stagePrincipal.setFullScreenExitHint("Presione F11 para entrar o salir de la pantalla completa ");
         stagePrincipal.show();
 
         AlertaHandler alerta = new AlertaHandler();
