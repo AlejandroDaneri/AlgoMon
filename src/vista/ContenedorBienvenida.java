@@ -54,7 +54,6 @@ public class ContenedorBienvenida extends VBox{
                 new BotonReglasEventHandler(stage);
         botonReglas.setOnAction(botonReglasHandler);
 
-
         Button botonSalir = new Button();
         botonSalir.setText("Salir ");
         botonSalir.setFont(Font.font("", 20));
@@ -65,7 +64,15 @@ public class ContenedorBienvenida extends VBox{
         botonSalir.setOnAction(botonSalirHandler);
 
         HBox contenedorVolumen = new HBox();
+        inicializarControladorDeVolumen(contenedorVolumen,musicaDeFondo);
 
+        this.getChildren().addAll(titulo, botonEntrar,contenedorVolumen, botonReglas, botonSalir);
+        this.setPadding(new Insets(30));
+        this.setSpacing(20);
+
+    }
+
+    private void inicializarControladorDeVolumen(HBox contenedorVolumen, AudioClip musicaDeFondo) {
         Slider volumen = new Slider(0,1,1);
         volumen.setMaxWidth(225);
         volumen.setStyle("-fx-base: #373441");
@@ -78,6 +85,7 @@ public class ContenedorBienvenida extends VBox{
         contenedorVolumen.getChildren().addAll(imagenVolumen,volumen);
         contenedorVolumen.setAlignment(Pos.CENTER);
 
+
         volumen.valueProperty().addListener((observadorDeValor, valorAnterior, valorActual) -> {
             if (volumen.getValue() == 0.0) {
                 imagenVolumen.setImage(musicaApagada);
@@ -89,9 +97,5 @@ public class ContenedorBienvenida extends VBox{
             musicaDeFondo.stop();
             musicaDeFondo.play(valorActual.doubleValue());
         });
-
-        this.getChildren().addAll(titulo, botonEntrar,contenedorVolumen, botonReglas, botonSalir);
-        this.setPadding(new Insets(30));
-        this.setSpacing(20);
     }
 }

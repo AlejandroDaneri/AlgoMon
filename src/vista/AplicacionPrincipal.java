@@ -1,39 +1,44 @@
 package vista;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class AplicacionPrincipal extends Application{
+    private final int ancho_minimo = 1024;
+    private final int alto_minimo = 720;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage stagePrincipal) throws Exception {
         AudioClip musicaDeFondo = new AudioClip("file:src/vista/sonidos/Pokemonentrada.mp3");
         musicaDeFondo.setCycleCount(2); //
         musicaDeFondo.play();
 
-       // Juego juego = new Juego();
-        primaryStage.setTitle("AlgoMon");
+       // Partida partida = new Partida();
+        stagePrincipal.setTitle("AlgoMon");
 
         ContenedorEleccionAlgomon contenedorEleccion =
-                new ContenedorEleccionAlgomon(primaryStage);
-        Scene escenaEleccion = new Scene(contenedorEleccion, 1024, 720);
+                new ContenedorEleccionAlgomon(stagePrincipal);
+        Escena escenaEleccion = new Escena(contenedorEleccion,stagePrincipal,alto_minimo,ancho_minimo);
 
         ContenedorBienvenida contenedorBienvenidos =
-                new ContenedorBienvenida(primaryStage, musicaDeFondo,escenaEleccion);
-        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1024, 720);
+                new ContenedorBienvenida(stagePrincipal, musicaDeFondo,escenaEleccion);
+        Escena escenaBienvenidos = new Escena(contenedorBienvenidos,stagePrincipal,alto_minimo,ancho_minimo);
 
-        primaryStage.setScene(escenaBienvenidos);
-        primaryStage.setFullScreen(true);
-        primaryStage.setFullScreenExitHint("");
+        stagePrincipal.setScene(escenaBienvenidos);
 
-        primaryStage.show();
+        stagePrincipal.setFullScreen(true);
+        stagePrincipal.setFullScreenExitHint("Presione F11 para salir o entrar de la pantalla completa ");
+        stagePrincipal.show();
 
+        AlertaHandler alerta = new AlertaHandler();
+        stagePrincipal.setOnCloseRequest(alerta);
 
+        stagePrincipal.setMinHeight(alto_minimo);
+        stagePrincipal.setMinWidth(ancho_minimo);
     }
 }

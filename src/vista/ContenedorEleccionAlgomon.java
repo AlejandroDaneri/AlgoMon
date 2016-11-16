@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-
 public class ContenedorEleccionAlgomon extends HBox{
     private Stage stage;
     public ContenedorEleccionAlgomon(Stage primaryStage) {
@@ -31,103 +30,91 @@ public class ContenedorEleccionAlgomon extends HBox{
         ArrayList<Image> tablas = new ArrayList<Image>(); //lista de tablas de caracteristicas
         inicializarTablas(tablas);
 
-        HBox seleccionados1 = new HBox(); //lista de algomones ya elegidos
-        ImageView seleccion1 = new ImageView(algomones.get(0));
-        seleccion1.setFitWidth(150);
-        seleccion1.setFitHeight(150);
-        ImageView seleccion2 = new ImageView(algomones.get(1));
-        seleccion2.setFitWidth(150);
-        seleccion2.setFitHeight(150);
-        ImageView seleccion3 = new ImageView(algomones.get(2));
-        seleccion3.setFitWidth(150);
-        seleccion3.setFitHeight(150);
+        VBox espacioParaJugador1 = crearEspacioParaJugador(algomones,tablas);
+        VBox espacioParaJugador2 = crearEspacioParaJugador(algomones,tablas);
 
-        seleccionados1.getChildren().addAll(seleccion1,seleccion2,seleccion3);
-        seleccionados1.setAlignment(Pos.CENTER);
+        this.getChildren().addAll(espacioParaJugador1,espacioParaJugador2);
+        this.setSpacing(100);
+        this.setAlignment(Pos.CENTER);
 
-        HBox seleccionados2 = new HBox(); //lista de algomones ya elegidos
-        ImageView seleccion21 = new ImageView(algomones.get(3));
-        seleccion21.setFitWidth(150);
-        seleccion21.setFitHeight(150);
-        ImageView seleccion22 = new ImageView(algomones.get(4));
-        seleccion22.setFitWidth(150);
-        seleccion22.setFitHeight(150);
-        ImageView seleccion23 = new ImageView(algomones.get(5));
-        seleccion23.setFitWidth(150);
-        seleccion23.setFitHeight(150);
+    }
 
-        seleccionados2.getChildren().addAll(seleccion21,seleccion22,seleccion23);
-        seleccionados2.setAlignment(Pos.CENTER);
+    private VBox crearEspacioParaJugador(ArrayList<Image> algomones, ArrayList<Image> tablas) {
+        HBox seleccionados1 = inicializarListaDeElegidos();
 
-
-        ImageView seleccionJugador1 = new ImageView(algomones.get(0));
-        seleccionJugador1.setFitWidth(250);
-        seleccionJugador1.setFitHeight(250);
-
-        ImageView seleccionJugador2 = new ImageView(algomones.get(1));
-        seleccionJugador2.setFitWidth(250);
-        seleccionJugador2.setFitHeight(250);
+        ImageView seleccionJugador1 = crearImagenDeAlgomonAElegir(algomones);
+        ImageView tabla1 = crearTablaDeAlgomonSeleccionado();
 
         ImageView flechaIzq1 = crearFlecha("file:src/vista/imagenes/flechaizq.png");
         ImageView flechaDer1 = crearFlecha("file:src/vista/imagenes/flechader.png");
-        ImageView flechaIzq2 = crearFlecha("file:src/vista/imagenes/flechaizq.png");
-        ImageView flechaDer2 = crearFlecha("file:src/vista/imagenes/flechader.png");
 
-        ImageView tabla1 = new ImageView("file:src/vista/imagenes/TCharmander.png");
-        tabla1.setFitHeight(175);
-        tabla1.setFitWidth(400);
+        Button botonCambiarIzquierda1 = crearBotonIzquierdo(flechaIzq1,algomones,seleccionJugador1,tabla1,tablas);
+        Button botonCambiarDerecha1 = crearBotonDerecho(flechaDer1,algomones,seleccionJugador1,tabla1,tablas);
 
-        ImageView tabla2 = new ImageView("file:src/vista/imagenes/TBulbasaur.png");
-        tabla2.setFitHeight(175);
-        tabla2.setFitWidth(400);
+        BorderPane zonaDeElecccionParaJugador1 =
+                crearZonaDeEleccionParaJugador(botonCambiarIzquierda1,botonCambiarDerecha1,seleccionJugador1);
+        Button botonSeleccion1 = crearBotonDeSeleccion();
 
-        Button botonCambiarIzquierda1 = inicializarBotonIzquierdo(flechaIzq1,algomones,seleccionJugador1,tabla1,tablas);
-        Button botonCambiarIzquierda2 = inicializarBotonIzquierdo(flechaIzq2,algomones,seleccionJugador2,tabla2,tablas);
-        Button botonCambiarDerecha1 = inicializarBotonDerecho(flechaDer1,algomones,seleccionJugador1,tabla1,tablas);
-        Button botonCambiarDerecha2 = inicializarBotonDerecho(flechaDer2,algomones,seleccionJugador2,tabla2,tablas);
+        VBox espacioParaJugador = new VBox();
+        espacioParaJugador.setAlignment(Pos.CENTER);
+        espacioParaJugador.getChildren().addAll(seleccionados1,zonaDeElecccionParaJugador1,tabla1,botonSeleccion1);
 
-
-        BorderPane zonaJugador1 = new BorderPane();
-        zonaJugador1.setLeft(botonCambiarIzquierda1);
-        zonaJugador1.setRight(botonCambiarDerecha1);
-        zonaJugador1.setCenter(seleccionJugador1);
-        zonaJugador1.setAlignment(botonCambiarIzquierda1,Pos.CENTER);
-        zonaJugador1.setAlignment(botonCambiarDerecha1,Pos.CENTER);
-        zonaJugador1.setPadding(new Insets(0,0,0,10));
-        zonaJugador1.setMaxWidth(500);
-
-
-        BorderPane zonaJugador2 = new BorderPane();
-        zonaJugador2.setLeft(botonCambiarIzquierda2);
-        zonaJugador2.setRight(botonCambiarDerecha2);
-        zonaJugador2.setCenter(seleccionJugador2);
-        zonaJugador2.setAlignment(botonCambiarIzquierda2,Pos.CENTER);
-        zonaJugador2.setAlignment(botonCambiarDerecha2,Pos.CENTER);
-        zonaJugador2.setPadding(new Insets(0,0,0,10));
-
-
-        Button botonSeleccion1 = new Button("Seleccionar");
-        botonSeleccion1.setFont(Font.font(20));
-        BotonSeleccionarEventHandler botonSeleccionarJugador1EH =new BotonSeleccionarEventHandler();
-        botonSeleccion1.setOnAction(botonSeleccionarJugador1EH);
-
-        Button botonSeleccion2 = new Button("Seleccionar");
-        botonSeleccion2.setFont(Font.font(20));
-        BotonSeleccionarEventHandler botonSeleccionarJugador2EH =new BotonSeleccionarEventHandler();
-        botonSeleccion1.setOnAction(botonSeleccionarJugador2EH);
-
-        VBox totalJugador1 = new VBox();
-        totalJugador1.setAlignment(Pos.CENTER);
-        totalJugador1.setPadding(new Insets(0,0,0,100));
-        totalJugador1.getChildren().addAll(seleccionados1,zonaJugador1,tabla1,botonSeleccion1);
-
-        VBox totalJugador2 = new VBox();
-        totalJugador2.setAlignment(Pos.CENTER);
-        totalJugador2.setPadding(new Insets(0,100,0,500));
-        totalJugador2.getChildren().addAll(seleccionados2,zonaJugador2,tabla2,botonSeleccion2);
-
-        this.getChildren().addAll(totalJugador1,totalJugador2);
+        return espacioParaJugador;
     }
+
+    private Button crearBotonDeSeleccion() {
+        Button botonSeleccion = new Button("Seleccionar");
+        botonSeleccion.setFont(Font.font(20));
+        BotonSeleccionarEventHandler botonSeleccionarEventHandler =new BotonSeleccionarEventHandler();
+        botonSeleccion.setOnAction(botonSeleccionarEventHandler);
+        return botonSeleccion;
+    }
+
+    private HBox inicializarListaDeElegidos() {
+        HBox seleccionados = new HBox(); //lista de algomones ya elegidos
+        //inicializarElegidos()
+        ImageView seleccion1 = crearImagenDeNoElegido();
+        ImageView seleccion2 = crearImagenDeNoElegido();
+        ImageView seleccion3 = crearImagenDeNoElegido();
+
+        seleccionados.getChildren().addAll(seleccion1,seleccion2,seleccion3);
+        seleccionados.setAlignment(Pos.CENTER);
+        return seleccionados;
+    }
+
+    private ImageView crearImagenDeNoElegido() {
+        ImageView seleccion = new ImageView("file:src/vista/imagenes/seleccionVacia.png");//puse cualquiera para probar
+        seleccion.setFitWidth(150);
+        seleccion.setFitHeight(150);
+        return seleccion;
+    }
+
+    private BorderPane crearZonaDeEleccionParaJugador(Button botonCambiarIzquierda,
+                                                      Button botonCambiarDerecha, ImageView seleccionJugador) {
+        BorderPane zonaJugador = new BorderPane();
+        zonaJugador.setLeft(botonCambiarIzquierda);
+        zonaJugador.setRight(botonCambiarDerecha);
+        zonaJugador.setCenter(seleccionJugador);
+        zonaJugador.setAlignment(botonCambiarIzquierda,Pos.CENTER);
+        zonaJugador.setAlignment(botonCambiarDerecha,Pos.CENTER);
+        zonaJugador.setPadding(new Insets(0,0,0,10));
+        return zonaJugador;
+    }
+
+    private ImageView crearTablaDeAlgomonSeleccionado() {
+        ImageView tabla = new ImageView("file:src/vista/imagenes/TCharmander.png");
+        tabla.setFitHeight(175);
+        tabla.setFitWidth(400);
+        return  tabla;
+    }
+
+    private ImageView crearImagenDeAlgomonAElegir(ArrayList<Image> algomones) {
+        ImageView seleccionJugador = new ImageView(algomones.get(0));
+        seleccionJugador.setFitWidth(250);
+        seleccionJugador.setFitHeight(250);
+        return seleccionJugador;
+    }
+
 
     private void inicializarTablas(ArrayList<Image> tablas) {
         agregarImagenALista("file:src/vista/imagenes/TCharmander.png",tablas);
@@ -147,7 +134,7 @@ public class ContenedorEleccionAlgomon extends HBox{
         agregarImagenALista("file:src/vista/imagenes/Rattata.png",algomones);
     }
 
-    private Button inicializarBotonIzquierdo(ImageView imagen, ArrayList<Image> algomones, ImageView seleccionJugador, ImageView tabla, ArrayList<Image> tablas) {
+    private Button crearBotonIzquierdo(ImageView imagen, ArrayList<Image> algomones, ImageView seleccionJugador, ImageView tabla, ArrayList<Image> tablas) {
         Button botonCambiarIzquierdo = new Button();
         botonCambiarIzquierdo.setGraphic(imagen);
         botonCambiarIzquierdo.setMaxSize(50,50);
@@ -157,7 +144,7 @@ public class ContenedorEleccionAlgomon extends HBox{
         return botonCambiarIzquierdo;
     }
 
-    private Button inicializarBotonDerecho(ImageView imagen, ArrayList<Image> algomones, ImageView seleccionJugador, ImageView tabla, ArrayList<Image> tablas) {
+    private Button crearBotonDerecho(ImageView imagen, ArrayList<Image> algomones, ImageView seleccionJugador, ImageView tabla, ArrayList<Image> tablas) {
         Button botonCambiarDerecha = new Button();
         botonCambiarDerecha.setGraphic(imagen);
         botonCambiarDerecha.setMaxSize(50,50);
@@ -178,4 +165,5 @@ public class ContenedorEleccionAlgomon extends HBox{
         flechaView.setFitWidth(50);
         return flechaView;
     }
+
 }
