@@ -2,6 +2,7 @@ package vista;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.WindowEvent;
@@ -17,7 +18,7 @@ public class AlertaHandler implements EventHandler<WindowEvent>{
         alert.setHeaderText("¿Esta seguro que desea abandonar el juego?");
 
         ButtonType aceptar = new ButtonType("Aceptar");
-        ButtonType cancelar = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType cancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         alert.getButtonTypes().setAll(aceptar,cancelar);
 
@@ -25,6 +26,7 @@ public class AlertaHandler implements EventHandler<WindowEvent>{
         if (result.get() != aceptar) {
             event.consume();
         }
+
 
     }
 

@@ -23,6 +23,7 @@ public class ContenedorBienvenida extends VBox{
         this.stage = primaryStage;
         this.setAlignment(Pos.CENTER);
         this.setSpacing(50);
+        stage.setFullScreen(true);
 
         Label titulo = new Label("Algomon"); // Si el titulo esta en la imagen de fondo esto no va mas
         titulo.setFont(Font.font("Courier New",FontWeight.BOLD, 56));
@@ -41,7 +42,7 @@ public class ContenedorBienvenida extends VBox{
         botonEntrar.setStyle("-fx-base: #373441");
 
         BotonEntrarEventHandler botonEntrarHandler =
-                new BotonEntrarEventHandler(stage, escenaEleccion);
+                new BotonEntrarEventHandler(stage, escenaEleccion,stage.isFullScreen());
         botonEntrar.setOnAction(botonEntrarHandler);
 
         Button botonReglas = new Button();
@@ -69,6 +70,7 @@ public class ContenedorBienvenida extends VBox{
         this.getChildren().addAll(titulo, botonEntrar,contenedorVolumen, botonReglas, botonSalir);
         this.setPadding(new Insets(30));
         this.setSpacing(20);
+
 
     }
 

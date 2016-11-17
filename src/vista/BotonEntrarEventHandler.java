@@ -1,26 +1,29 @@
 package vista;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BotonEntrarEventHandler extends Boton {
+public class BotonEntrarEventHandler extends BotonHandler {
     Stage stage;
-    Scene escenaActual;
+    Scene siguienteEscena;
+    boolean stageEstaEnPantallaCompleta;
 
-    public BotonEntrarEventHandler(Stage stage, Scene escenaEleccion) {
+    public BotonEntrarEventHandler(Stage stage, Scene escenaEleccion, boolean stageEstaEnPantallaCompleta) {
         this.stage = stage;
-        this.escenaActual = escenaEleccion;
+        this.siguienteEscena = escenaEleccion;
+        this.stageEstaEnPantallaCompleta = stageEstaEnPantallaCompleta;
     }
 
     @Override
     public void handle(ActionEvent event) {
         super.handle(event);
-        stage.setScene(escenaActual);
-        stage.setFullScreenExitHint(""); //revisar tamaño de escena anterior
-        stage.setFullScreen(true);
-
+        stage.setFullScreenExitHint("");
+        boolean enPantallaCompletaAntesDeCambiarEscena = stage.isFullScreen();
+        stage.hide();
+        stage.setScene(siguienteEscena);
+        stage.setFullScreen(enPantallaCompletaAntesDeCambiarEscena);
+        stage.show();
     }
 
 

@@ -1,10 +1,9 @@
 package vista;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
-public class BotonReglasEventHandler extends Boton  {
+public class BotonReglasEventHandler extends BotonHandler {
     public BotonReglasEventHandler(Stage stage) {
 
     }

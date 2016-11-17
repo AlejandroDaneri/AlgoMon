@@ -1,9 +1,8 @@
 package vista;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
-public class BotonSalirEventHandler extends Boton {
+public class BotonSalirEventHandler extends BotonHandler {
     @Override
     public void handle(ActionEvent event) {
         super.handle(event);

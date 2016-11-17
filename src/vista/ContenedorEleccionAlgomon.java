@@ -3,6 +3,8 @@ package vista;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -11,9 +13,9 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class ContenedorEleccionAlgomon extends HBox{
+public class ContenedorEleccionAlgomon extends BorderPane{
     private Stage stage;
-    public ContenedorEleccionAlgomon(Stage primaryStage) {
+    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea) {
         super();
         this.stage = primaryStage;
 
@@ -30,23 +32,36 @@ public class ContenedorEleccionAlgomon extends HBox{
         VBox espacioParaJugador1 = crearEspacioParaJugador(algomones,tablas);
         VBox espacioParaJugador2 = crearEspacioParaJugador(algomones,tablas);
 
-        this.getChildren().addAll(espacioParaJugador1,espacioParaJugador2);
-        this.setSpacing(100);
-        this.setAlignment(Pos.CENTER);
-
         /*
-        Cuando se termina de elegir
-        stage.setScene(escenaBatalla)
+        Button botonVolver = new Button();
+        BotonVolverHandler botonVolverHandler = new BotonVolverHandler(stage);
+        botonVolver.setOnAction(botonVolverHandler);
+        queria hacer un boton que vuelva a la pantalla anterior pero no me salio
+        */
 
-         */
+        Button botonEmpezar = new Button("Empezar Partida");
+        BotonEmpezarHandler botonEmpezarHandler = new BotonEmpezarHandler(stage,escenaPelea);
+        botonEmpezar.setOnAction(botonEmpezarHandler);
+
+
+        this.setLeft(espacioParaJugador1);
+        this.setRight(espacioParaJugador2);
+        this.setBottom(botonEmpezar);
+        this.setAlignment(botonEmpezar,Pos.CENTER);
+        this.setPadding(new Insets(0,50,50,50));
+
     }
 
     private VBox crearEspacioParaJugador(ArrayList<Image> algomones, ArrayList<Image> tablas) {
-        HBox seleccionados = inicializarListaDeElegidos();
+
+
+        Label IngresarNombre = new Label("Ingrese su nombre");
+        TextField nombre = new TextField();
+        nombre.setPromptText("HOLA");
 
         ImageView seleccionJugador = crearImagenDeAlgomonAElegir(algomones);
         ImageView tabla = crearTablaDeAlgomonSeleccionado();
-
+        
         ImageView flechaIzquierda = crearFlecha("file:src/vista/imagenes/flechaizq.png");
         ImageView flechaDerecha = crearFlecha("file:src/vista/imagenes/flechader.png");
 
@@ -54,20 +69,24 @@ public class ContenedorEleccionAlgomon extends HBox{
         Button botonCambiarHaciaDerecha = crearBotonDerecho(flechaDerecha,algomones,seleccionJugador,tabla,tablas);
 
         BorderPane zonaDeElecccionParaJugador =
-                crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,seleccionJugador);
-        Button botonSeleccion = crearBotonDeSeleccion();
+                crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,seleccionJugador,tabla);
+
 
         VBox espacioParaJugador = new VBox();
         espacioParaJugador.setAlignment(Pos.CENTER);
-        espacioParaJugador.getChildren().addAll(seleccionados,zonaDeElecccionParaJugador,tabla,botonSeleccion);
+        espacioParaJugador.getChildren().addAll(IngresarNombre,nombre,zonaDeElecccionParaJugador);
+
+        //-->
+        nombre.focusedProperty().addListener((observable,  oldValue,  newValue) -> espacioParaJugador.requestFocus());
+        //<-- Saca focus del textField nombre
 
         return espacioParaJugador;
     }
 
-    private Button crearBotonDeSeleccion() {
+    private Button crearBotonDeSeleccion(ImageView seleccionJugador, HBox seleccionados) {
         Button botonSeleccion = new Button("Seleccionar");
         botonSeleccion.setFont(Font.font(20));
-        BotonSeleccionarEventHandler botonSeleccionarEventHandler =new BotonSeleccionarEventHandler();
+        BotonSeleccionarEventHandler botonSeleccionarEventHandler =new BotonSeleccionarEventHandler(seleccionJugador,seleccionados,botonSeleccion);
         botonSeleccion.setOnAction(botonSeleccionarEventHandler);
         return botonSeleccion;
     }
@@ -92,17 +111,40 @@ public class ContenedorEleccionAlgomon extends HBox{
     }
 
     private BorderPane crearZonaDeEleccionParaJugador(Button botonCambiarIzquierda,
-                                                      Button botonCambiarDerecha, ImageView seleccionJugador) {
+                                                      Button botonCambiarDerecha, ImageView seleccionJugador, ImageView tabla) {
         BorderPane zonaJugador = new BorderPane();
+
+        HBox seleccionados = inicializarListaDeElegidos();
+
+        zonaJugador.setTop(seleccionados);
         zonaJugador.setLeft(botonCambiarIzquierda);
         zonaJugador.setRight(botonCambiarDerecha);
         zonaJugador.setCenter(seleccionJugador);
         zonaJugador.setAlignment(botonCambiarIzquierda,Pos.CENTER);
         zonaJugador.setAlignment(botonCambiarDerecha,Pos.CENTER);
         zonaJugador.setPadding(new Insets(0,0,0,10));
+
+        //HBox botonera = new HBox();
+        Button botonSeleccion = crearBotonDeSeleccion(seleccionJugador,seleccionados);
+        //Button botonDesahcer = crearBotonDeshacer(seleccionados); deshace la eleccion
+
+        VBox zonaInferior = new VBox();
+        zonaInferior.getChildren().addAll(tabla,botonSeleccion);//aca iria botonera
+        zonaInferior.setAlignment(Pos.CENTER);
+
+        zonaJugador.setBottom(zonaInferior);
         return zonaJugador;
     }
+/*
+    private Button crearBotonDeshacer(HBox seleccionados) {
+        Button botonDeshacer = new Button("Deshacer");
+        botonDeshacer.setFont(Font.font(20));
+        BotonDeshacerEventHandler botonDeshacerEventHandler =new BotonDeshacerEventHandler(seleccionados,botonDeshacer);
+        botonDeshacer.setOnAction(botonDeshacerEventHandler);
+        return botonDeshacer;
 
+    }
+*/
     private ImageView crearTablaDeAlgomonSeleccionado() {
         ImageView tabla = new ImageView("file:src/vista/imagenes/TCharmander.png");
         tabla.setFitHeight(175);
@@ -145,9 +187,10 @@ public class ContenedorEleccionAlgomon extends HBox{
         Button botonCambiarIzquierdo = new Button();
         botonCambiarIzquierdo.setGraphic(imagen);
         botonCambiarIzquierdo.setMaxSize(50,50);
+        botonCambiarIzquierdo.requestFocus();
         botonCambiarIzquierdo.setStyle("-fx-background-color: transparent");
-        botonCambiarIzquierdaEventHandler botonCambiarIzquierdaHandler =
-                new botonCambiarIzquierdaEventHandler(algomones,seleccionJugador,tabla,tablas);
+        BotonCambiarIzquierdaEventHandler botonCambiarIzquierdaHandler =
+                new BotonCambiarIzquierdaEventHandler(algomones,seleccionJugador,tabla,tablas);
         botonCambiarIzquierdo.setOnAction(botonCambiarIzquierdaHandler);
         return botonCambiarIzquierdo;
     }
@@ -158,8 +201,8 @@ public class ContenedorEleccionAlgomon extends HBox{
         botonCambiarDerecha.setGraphic(imagen);
         botonCambiarDerecha.setMaxSize(50,50);
         botonCambiarDerecha.setStyle("-fx-background-color: transparent");
-        botonCambiarDerechaEventHandler botonCambiarDerechaHandler =
-                new botonCambiarDerechaEventHandler(algomones,seleccionJugador,tabla,tablas);
+        BotonCambiarDerechaEventHandler botonCambiarDerechaHandler =
+                new BotonCambiarDerechaEventHandler(algomones,seleccionJugador,tabla,tablas);
         botonCambiarDerecha.setOnAction(botonCambiarDerechaHandler);
         return botonCambiarDerecha;
     }

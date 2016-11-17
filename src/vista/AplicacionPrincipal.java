@@ -21,8 +21,11 @@ public class AplicacionPrincipal extends Application{
        // Partida partida = new Partida();
         stagePrincipal.setTitle("AlgoMon");
 
+        ContenedorPelea contenedorPelea = new ContenedorPelea();
+        Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal,alto_minimo,ancho_minimo);
+
         ContenedorEleccionAlgomon contenedorEleccion =
-                new ContenedorEleccionAlgomon(stagePrincipal);
+                new ContenedorEleccionAlgomon(stagePrincipal,escenaPelea);
         Escena escenaEleccion = new Escena(contenedorEleccion,stagePrincipal,alto_minimo,ancho_minimo);
 
         ContenedorBienvenida contenedorBienvenidos =
@@ -30,8 +33,8 @@ public class AplicacionPrincipal extends Application{
         Escena escenaBienvenidos = new Escena(contenedorBienvenidos,stagePrincipal,alto_minimo,ancho_minimo);
 
         stagePrincipal.setScene(escenaBienvenidos);
-        stagePrincipal.setFullScreen(true);
-        stagePrincipal.setFullScreenExitHint("Presione F11 para entrar o salir de la pantalla completa ");
+
+        stagePrincipal.setFullScreenExitHint("Presione F11 para entrar o salir de la pantalla completa");
         stagePrincipal.setMinHeight(alto_minimo);
         stagePrincipal.setMinWidth(ancho_minimo);
         stagePrincipal.show();
