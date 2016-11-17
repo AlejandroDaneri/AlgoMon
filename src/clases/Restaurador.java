@@ -11,8 +11,4 @@ public class Restaurador extends Elemento {
 		algomon.setEstadoEfimero(new EstadoNormal());
 	}
 	
-	public String nombre(){
-		return "Restaurador";
-	}
-	
 }

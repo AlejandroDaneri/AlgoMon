@@ -14,8 +14,4 @@ public class Vitamina extends Elemento {
 			ataque.aumentarAtaque(cantidadAumentarAtaques);
 		}
 	}
-	
-	public String nombre(){
-		return "Vitamina";
-	}
 }

@@ -94,7 +94,7 @@ public class Jugador {
 		this.algomonActivo.atacar(oponente, ataque);	// La excepcion de AtaqueInvalido esta en atacar tmb
 	}
 	
-	public void aplicarElemento(String elemento) {
+	public void aplicarElemento(Elemento elemento) {
 		this.elementos.aplicar(elemento,this.algomonActivo);
 	}
 	

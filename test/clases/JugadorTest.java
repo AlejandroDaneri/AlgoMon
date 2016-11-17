@@ -160,7 +160,7 @@ public class JugadorTest {
 		jugador2.atacar(jugador1.getAlgomonActivo(),new AtaqueRapido());
 		
 		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
-		jugador2.aplicarElemento("Pocion");
+		jugador2.aplicarElemento(new Pocion());
 		
 		assertEquals(jugador2.vidaAlgomonActivo(), 108); // 130 - 10 - 16 - 16 + 20 = 108
 	}
@@ -181,7 +181,7 @@ public class JugadorTest {
 		jugador2.actualizarEstados();
 		
 		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
-		jugador2.aplicarElemento("Restaurador");
+		jugador2.aplicarElemento(new Restaurador());
 		jugador2.actualizarEstados();
 		
 		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());

@@ -23,32 +23,32 @@ public class Elementos {
 		elementos.add(new Vitamina());
 	}
 
-	public void aplicar(String elemento, AlgoMon algomonActivo) {
+	public void aplicar(Elemento elemento, AlgoMon algomonActivo) {
 		if(!this.tieneElemento(elemento)) throw new ElementoInvalidoException();
 		if(this.cantidadElemento(elemento) <= 0) throw new CantidadElementoAgotadaException();
 		this.getElemento(elemento).aplicar(algomonActivo);
 		this.disminuirCantidad(elemento);
 	}
 	
-	public int cantidadElemento(String elementoName){
-		int cantidad = this.getElemento(elementoName).cantidadElemento();
+	public int cantidadElemento(Elemento elemento){
+		int cantidad = this.getElemento(elemento).cantidadElemento();
 		return cantidad;
 	}
 	
-	public boolean tieneElemento(String elementoName){
+	public boolean tieneElemento(Elemento elemento){
 		boolean tiene = false;
-		if(this.getElemento(elementoName) != null) tiene = true;
+		if(this.getElemento(elemento) != null) tiene = true;
 		return tiene;
 	}
 	
-	public void disminuirCantidad(String elementoName){
-		this.getElemento(elementoName).disminuirCantidad();
+	public void disminuirCantidad(Elemento elemento){
+		this.getElemento(elemento).disminuirCantidad();
 	}
 	
-	public Elemento getElemento(String elementoName) {
+	public Elemento getElemento(Elemento elemento) {
 		Elemento elementoActual = null;
-		for(Elemento elemento: elementos){
-			if(elemento.equals(elementoName)) elementoActual = elemento;;
+		for(Elemento unElemento: elementos){
+			if(unElemento.equals(elemento)) elementoActual = unElemento;;
 		}
 		return elementoActual;
 	}

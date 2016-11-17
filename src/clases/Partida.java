@@ -55,7 +55,14 @@ public class Partida {
 	
 	public void jugarTurnoActual(AlgoMon algomon){
 		Jugador jugadorActual = jugadorActual();
-		jugadorActual.cambiarDeAlgoMon(algomon);;
+		jugadorActual.cambiarDeAlgoMon(algomon);
+		this.nextTurno();
+		turnos++;
+	}
+	
+	public void jugarTurnoActual(Elemento elemento){
+		Jugador jugadorActual = jugadorActual();
+		jugadorActual.aplicarElemento(elemento);
 		this.nextTurno();
 		turnos++;
 	}

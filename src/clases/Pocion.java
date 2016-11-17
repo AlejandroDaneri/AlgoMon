@@ -12,8 +12,4 @@ public class Pocion extends Elemento {
 	public void aplicar(AlgoMon algomon){
 		algomon.aumentarVida(valorCuracion);
 	}
-	
-	public String nombre(){
-		return "Pocion";
-	}
 }

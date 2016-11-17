@@ -12,8 +12,4 @@ public class SuperPocion extends Elemento {
 	public void aplicar(AlgoMon algomon){
 		algomon.aumentarVida(valorCuracion);
 	}
-	
-	public String nombre(){
-		return "SuperPocion";
-	}
 }
