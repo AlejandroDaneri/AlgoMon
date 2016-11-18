@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
@@ -25,12 +24,11 @@ public class ContenedorEleccionAlgomon extends BorderPane{
                         BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
+        
+        ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
 
-        ArrayList<Image> algomones = crearArrayConImagenesDeAlgomones();
-        ArrayList<Image> tablas = crearArrayConTablasDeCaracteristicasDeAlgomones();
-
-        VBox espacioParaJugador1 = crearEspacioParaJugador(algomones,tablas);
-        VBox espacioParaJugador2 = crearEspacioParaJugador(algomones,tablas);
+        VBox espacioParaJugador1 = crearEspacioParaJugador(lista);
+        VBox espacioParaJugador2 = crearEspacioParaJugador(lista);
 
         /*
         Button botonVolver = new Button();
@@ -47,26 +45,26 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         this.setLeft(espacioParaJugador1);
         this.setRight(espacioParaJugador2);
         this.setBottom(botonEmpezar);
-        this.setAlignment(botonEmpezar,Pos.CENTER);
+        BorderPane.setAlignment(botonEmpezar,Pos.CENTER);
         this.setPadding(new Insets(0,50,50,50));
 
     }
 
-    private VBox crearEspacioParaJugador(ArrayList<Image> algomones, ArrayList<Image> tablas) {
+    private VBox crearEspacioParaJugador(ListaDeRepresentaciones lista) {
 
 
         Label IngresarNombre = new Label("Ingrese su nombre");
         TextField nombre = new TextField();
         nombre.setPromptText("HOLA");
 
-        ImageView seleccionJugador = crearImagenDeAlgomonAElegir(algomones);
-        ImageView tabla = crearTablaDeAlgomonSeleccionado();
+        ImageView seleccionJugador = crearImagenDeAlgomonAElegir(lista);
+        ImageView tabla = crearTablaDeAlgomonSeleccionado(lista);
         
         ImageView flechaIzquierda = crearFlecha("file:src/vista/imagenes/flechaizq.png");
         ImageView flechaDerecha = crearFlecha("file:src/vista/imagenes/flechader.png");
 
-        Button botonCambiarHaciaIzquierda = crearBotonIzquierdo(flechaIzquierda,algomones,seleccionJugador,tabla,tablas);
-        Button botonCambiarHaciaDerecha = crearBotonDerecho(flechaDerecha,algomones,seleccionJugador,tabla,tablas);
+        Button botonCambiarHaciaIzquierda = crearBotonIzquierdo(flechaIzquierda,seleccionJugador,tabla,lista);
+        Button botonCambiarHaciaDerecha = crearBotonDerecho(flechaDerecha,seleccionJugador,tabla,lista);
 
         BorderPane zonaDeElecccionParaJugador =
                 crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,seleccionJugador,tabla);
@@ -120,8 +118,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         zonaJugador.setLeft(botonCambiarIzquierda);
         zonaJugador.setRight(botonCambiarDerecha);
         zonaJugador.setCenter(seleccionJugador);
-        zonaJugador.setAlignment(botonCambiarIzquierda,Pos.CENTER);
-        zonaJugador.setAlignment(botonCambiarDerecha,Pos.CENTER);
+        BorderPane.setAlignment(botonCambiarIzquierda,Pos.CENTER);
+        BorderPane.setAlignment(botonCambiarDerecha,Pos.CENTER);
         zonaJugador.setPadding(new Insets(0,0,0,10));
 
         //HBox botonera = new HBox();
@@ -145,64 +143,37 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     }
 */
-    private ImageView crearTablaDeAlgomonSeleccionado() {
-        ImageView tabla = new ImageView("file:src/vista/imagenes/TCharmander.png");
+    private ImageView crearTablaDeAlgomonSeleccionado(ListaDeRepresentaciones lista) {
+        ImageView tabla = new ImageView(lista.getActual().getTabla());
         tabla.setFitHeight(175);
         tabla.setFitWidth(400);
         return tabla;
     }
 
-    private ImageView crearImagenDeAlgomonAElegir(ArrayList<Image> algomones) {
-        ImageView seleccionJugador = new ImageView(algomones.get(0));
+    private ImageView crearImagenDeAlgomonAElegir(ListaDeRepresentaciones algomones) {
+        ImageView seleccionJugador = new ImageView(algomones.getActual().getImagen());
         seleccionJugador.setFitWidth(250);
         seleccionJugador.setFitHeight(250);
         return seleccionJugador;
     }
 
-
-    private ArrayList<Image> crearArrayConTablasDeCaracteristicasDeAlgomones() {
-        ArrayList<Image> tablas = new ArrayList<Image>();
-        agregarImagenALista("file:src/vista/imagenes/TCharmander.png",tablas);
-        agregarImagenALista("file:src/vista/imagenes/TBulbasaur.png",tablas);
-        agregarImagenALista("file:src/vista/imagenes/TSquirtle.png",tablas);
-        agregarImagenALista("file:src/vista/imagenes/TChansey.png",tablas);
-        agregarImagenALista("file:src/vista/imagenes/TJigglypuff.png",tablas);
-        agregarImagenALista("file:src/vista/imagenes/TRattata.png",tablas);
-        return tablas;
-    }
-
-    private ArrayList<Image> crearArrayConImagenesDeAlgomones() {
-        ArrayList<Image> algomones = new ArrayList<Image>();
-        agregarImagenALista("file:src/vista/imagenes/Charmander.png",algomones);
-        agregarImagenALista("file:src/vista/imagenes/Bulbasaur.png",algomones);
-        agregarImagenALista("file:src/vista/imagenes/Squirtle.png",algomones);
-        agregarImagenALista("file:src/vista/imagenes/Chansey.png",algomones);
-        agregarImagenALista("file:src/vista/imagenes/Jigglypuff.png",algomones);
-        agregarImagenALista("file:src/vista/imagenes/Rattata.png",algomones);
-        return algomones;
-    }
-
-    private Button crearBotonIzquierdo(ImageView imagen, ArrayList<Image> algomones,
-                                       ImageView seleccionJugador, ImageView tabla, ArrayList<Image> tablas) {
+    private Button crearBotonIzquierdo(ImageView imagen, ImageView seleccionJugador, ImageView tabla, ListaDeRepresentaciones lista) {
         Button botonCambiarIzquierdo = new Button();
         botonCambiarIzquierdo.setGraphic(imagen);
         botonCambiarIzquierdo.setMaxSize(50,50);
         botonCambiarIzquierdo.requestFocus();
         botonCambiarIzquierdo.setStyle("-fx-background-color: transparent");
-        BotonCambiarIzquierdaEventHandler botonCambiarIzquierdaHandler =
-                new BotonCambiarIzquierdaEventHandler(algomones,seleccionJugador,tabla,tablas);
+        BotonCambiarIzquierdaEventHandler botonCambiarIzquierdaHandler = new BotonCambiarIzquierdaEventHandler(lista,seleccionJugador,tabla);
         botonCambiarIzquierdo.setOnAction(botonCambiarIzquierdaHandler);
         return botonCambiarIzquierdo;
     }
 
-    private Button crearBotonDerecho(ImageView imagen, ArrayList<Image> algomones,
-                                     ImageView seleccionJugador, ImageView tabla, ArrayList<Image> tablas) {
+    private Button crearBotonDerecho(ImageView imagen, ImageView seleccionJugador, ImageView tabla, ListaDeRepresentaciones lista) {
         Button botonCambiarDerecha = new Button();
         botonCambiarDerecha.setGraphic(imagen);
         botonCambiarDerecha.setMaxSize(50,50);
         botonCambiarDerecha.setStyle("-fx-background-color: transparent");
-        BotonCambiarDerechaEventHandler botonCambiarDerechaHandler =
-                new BotonCambiarDerechaEventHandler(algomones,seleccionJugador,tabla,tablas);
+        BotonCambiarDerechaEventHandler botonCambiarDerechaHandler = new BotonCambiarDerechaEventHandler(lista,seleccionJugador,tabla);
         botonCambiarDerecha.setOnAction(botonCambiarDerechaHandler);
         return botonCambiarDerecha;
     }
