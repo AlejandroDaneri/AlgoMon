@@ -46,7 +46,6 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
             seleccionados.getChildren().set(contador++,seleccionActual);
         }catch (IndexOutOfBoundsException e) {} //nunca alcanzado
         algomonesSeleccionados.add(representacionActual.getAlgomon());
-        System.out.print(algomonesSeleccionados);
         if (contador==3) botonSeleccion.setDisable(true);
 
 
