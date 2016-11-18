@@ -1,5 +1,6 @@
 package vista;
 
+import clases.Partida;
 import javafx.application.Application;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
@@ -18,10 +19,10 @@ public class AplicacionPrincipal extends Application{
         musicaDeFondo.setCycleCount(2); //
         musicaDeFondo.play();
 
-       // Partida partida = new Partida();
         stagePrincipal.setTitle("AlgoMon");
 
-        ContenedorPelea contenedorPelea = new ContenedorPelea();
+        Partida partida = new Partida("Jugador1", "Jugador2");
+        ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal, partida);
         Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal,alto_minimo,ancho_minimo);
 
         ContenedorEleccionAlgomon contenedorEleccion =
