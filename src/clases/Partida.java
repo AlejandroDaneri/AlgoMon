@@ -18,6 +18,11 @@ public class Partida {
 		this.setOrdenJugadores();
 	}
 	
+	public Partida() {
+		this.setOrdenJugadores();
+		this.setTurnos();
+	}
+
 	public void setTurnos() {
 		this.turnos = 0;
 	}

@@ -21,7 +21,7 @@ public class AplicacionPrincipal extends Application{
 
         stagePrincipal.setTitle("AlgoMon");
 
-        Partida partida = new Partida("Jugador1", "Jugador2");
+        Partida partida = new Partida();
         ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal, partida);
         Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal,alto_minimo,ancho_minimo);
 
