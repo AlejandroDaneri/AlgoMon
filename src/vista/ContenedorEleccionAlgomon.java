@@ -55,7 +55,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         Label IngresarNombre = new Label("Ingrese su nombre");
         TextField nombre = new TextField();
-        nombre.setPromptText("HOLA");
+        nombre.setPromptText("Debe llenar este campo");
 
         ImageView seleccionJugador = crearImagenDeAlgomonAElegir(lista);
         ImageView tabla = crearTablaDeAlgomonSeleccionado(lista);
