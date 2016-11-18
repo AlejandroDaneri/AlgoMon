@@ -11,6 +11,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.ArrayList;
+import java.util.List;
+
+import clases.AlgoMon;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
     private Stage stage;
@@ -25,10 +28,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
-        ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
-
-        VBox espacioParaJugador1 = crearEspacioParaJugador(lista);
-        VBox espacioParaJugador2 = crearEspacioParaJugador(lista);
+        VBox espacioParaJugador1 = crearEspacioParaJugador();
+        VBox espacioParaJugador2 = crearEspacioParaJugador();
 
         /*
         Button botonVolver = new Button();
@@ -50,9 +51,11 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     }
 
-    private VBox crearEspacioParaJugador(ListaDeRepresentaciones lista) {
+    private VBox crearEspacioParaJugador() {
 
-
+    	ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
+    	List<AlgoMon> elegidosJugador = new ArrayList<AlgoMon>();
+    	
         Label IngresarNombre = new Label("Ingrese su nombre");
         TextField nombre = new TextField();
         nombre.setPromptText("Debe llenar este campo");
@@ -67,7 +70,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         Button botonCambiarHaciaDerecha = crearBotonDerecho(flechaDerecha,seleccionJugador,tabla,lista);
 
         BorderPane zonaDeElecccionParaJugador =
-                crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,seleccionJugador,tabla);
+                crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,seleccionJugador,tabla, lista.getActual(), elegidosJugador);
 
 
         VBox espacioParaJugador = new VBox();
@@ -81,10 +84,10 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         return espacioParaJugador;
     }
 
-    private Button crearBotonDeSeleccion(ImageView seleccionJugador, HBox seleccionados) {
+    private Button crearBotonDeSeleccion(ImageView seleccionJugador, HBox seleccionados, List<AlgoMon> algomonesSeleccionados, RepresentacionAlgoMon representacionActual) {
         Button botonSeleccion = new Button("Seleccionar");
         botonSeleccion.setFont(Font.font(20));
-        BotonSeleccionarEventHandler botonSeleccionarEventHandler =new BotonSeleccionarEventHandler(seleccionJugador,seleccionados,botonSeleccion);
+        BotonSeleccionarEventHandler botonSeleccionarEventHandler =new BotonSeleccionarEventHandler(seleccionJugador,seleccionados,botonSeleccion, algomonesSeleccionados, representacionActual);
         botonSeleccion.setOnAction(botonSeleccionarEventHandler);
         return botonSeleccion;
     }
@@ -102,14 +105,14 @@ public class ContenedorEleccionAlgomon extends BorderPane{
     }
 
     private ImageView crearImagenDeNoElegido() {
-        ImageView noSeleccionado = new ImageView("file:src/vista/imagenes/seleccionVacia.png");//puse cualquiera para probar
+        ImageView noSeleccionado = new ImageView("file:src/vista/imagenes/seleccionVacia.png");
         noSeleccionado.setFitWidth(150);
         noSeleccionado.setFitHeight(150);
         return noSeleccionado;
     }
 
     private BorderPane crearZonaDeEleccionParaJugador(Button botonCambiarIzquierda,
-                                                      Button botonCambiarDerecha, ImageView seleccionJugador, ImageView tabla) {
+                                                      Button botonCambiarDerecha, ImageView seleccionJugador, ImageView tabla, RepresentacionAlgoMon representacionActual, List<AlgoMon> algomonesSeleccionados) {
         BorderPane zonaJugador = new BorderPane();
 
         HBox seleccionados = inicializarListaDeElegidos();
@@ -123,7 +126,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         zonaJugador.setPadding(new Insets(0,0,0,10));
 
         //HBox botonera = new HBox();
-        Button botonSeleccion = crearBotonDeSeleccion(seleccionJugador,seleccionados);
+        Button botonSeleccion = crearBotonDeSeleccion(seleccionJugador,seleccionados, algomonesSeleccionados, representacionActual);
         //Button botonDesahcer = crearBotonDeshacer(seleccionados); deshace la eleccion
 
         VBox zonaInferior = new VBox();
@@ -177,11 +180,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         botonCambiarDerecha.setOnAction(botonCambiarDerechaHandler);
         return botonCambiarDerecha;
     }
-    private void agregarImagenALista(String origen, ArrayList<Image> lista) {
-        Image imagen = new Image(origen);
-        lista.add(imagen);
-    }
-
+    
     private ImageView crearFlecha(String origen) {
         Image flecha = new Image(origen);
         ImageView flechaView = new ImageView(flecha);
