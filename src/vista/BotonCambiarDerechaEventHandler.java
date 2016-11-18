@@ -8,11 +8,13 @@ public class BotonCambiarDerechaEventHandler extends BotonHandler {
 	private final ListaDeRepresentaciones lista;
     private final ImageView seleccion;
     private final ImageView tabla;
+    private final BotonSeleccionarEventHandler botonSeleccionar;
 
-    public BotonCambiarDerechaEventHandler(ListaDeRepresentaciones lista, ImageView seleccionJugador, ImageView tabla) {
+    public BotonCambiarDerechaEventHandler(ListaDeRepresentaciones lista, ImageView seleccionJugador, ImageView tabla, BotonSeleccionarEventHandler botonSeleccionar) {
         this.seleccion = seleccionJugador;
         this.tabla = tabla;
         this.lista = lista;
+        this.botonSeleccionar = botonSeleccionar;
     }
 
     @Override
@@ -21,5 +23,6 @@ public class BotonCambiarDerechaEventHandler extends BotonHandler {
     	RepresentacionAlgoMon actual = lista.siguienteALaDerecha();
     	seleccion.setImage(actual.getImagen());
     	tabla.setImage(actual.getTabla());
+    	this.botonSeleccionar.setRepresentacionActual(actual);
     }
 }

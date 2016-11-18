@@ -18,12 +18,19 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
     private Button botonSeleccion; //prueba
     private int contador = 0; //prueba
 
-    public BotonSeleccionarEventHandler(ImageView seleccionJugador, HBox seleccionados, Button botonSeleccion,  List<AlgoMon> algomonesSeleccionados, RepresentacionAlgoMon representacionActual) {
-        this.botonSeleccion = botonSeleccion;
+    public BotonSeleccionarEventHandler(ImageView seleccionJugador, HBox seleccionados, List<AlgoMon> algomonesSeleccionados, RepresentacionAlgoMon representacionActual) {
         this.seleccion = seleccionJugador;
         this.seleccionados = seleccionados;
         this.algomonesSeleccionados = algomonesSeleccionados;
         this.representacionActual = representacionActual;
+    }
+    
+    public void setRepresentacionActual(RepresentacionAlgoMon representacionActual){
+    	this.representacionActual = representacionActual;
+    }
+    
+    public void setBotonSeleccion(Button botonSeleccion){
+    	this.botonSeleccion = botonSeleccion;
     }
 
     @Override
@@ -39,6 +46,7 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
             seleccionados.getChildren().set(contador++,seleccionActual);
         }catch (IndexOutOfBoundsException e) {} //nunca alcanzado
         algomonesSeleccionados.add(representacionActual.getAlgomon());
+        System.out.print(algomonesSeleccionados);
         if (contador==3) botonSeleccion.setDisable(true);
 
 
