@@ -3,31 +3,42 @@ package vista;
 import java.util.ArrayList;
 import java.util.List;
 
+import clases.AlgoMon;
 import clases.Bulbasaur;
 import clases.Chansey;
 import clases.Charmander;
 import clases.Jigglypuff;
 import clases.Rattata;
 import clases.Squirtle;
-import javafx.scene.image.Image;
 
 public class ListaDeRepresentaciones {
 	
 	private List<RepresentacionAlgoMon> lista;
 	private int indice;
+	private FabricaDeRepresentaciones fabrica;
 	
 	public ListaDeRepresentaciones(){
+		this.fabrica = new FabricaDeRepresentaciones();
 		List<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
     	
-    	lista.add(new RepresentacionAlgoMon(new Image("file:src/vista/imagenes/Charmander.png"), new Image("file:src/vista/imagenes/TCharmander.png"),new Charmander()));
-    	lista.add(new RepresentacionAlgoMon(new Image("file:src/vista/imagenes/Bulbasaur.png"), new Image("file:src/vista/imagenes/TBulbasaur.png"),new Bulbasaur()));
-    	lista.add(new RepresentacionAlgoMon(new Image("file:src/vista/imagenes/Squirtle.png"), new Image("file:src/vista/imagenes/TSquirtle.png"),new Squirtle()));
-    	lista.add(new RepresentacionAlgoMon(new Image("file:src/vista/imagenes/Chansey.png"), new Image("file:src/vista/imagenes/TChansey.png"),new Chansey()));
-    	lista.add(new RepresentacionAlgoMon(new Image("file:src/vista/imagenes/Jigglypuff.png"), new Image("file:src/vista/imagenes/TJigglypuff.png"),new Jigglypuff()));
-    	lista.add(new RepresentacionAlgoMon(new Image("file:src/vista/imagenes/Rattata.png"), new Image("file:src/vista/imagenes/TRattata.png"),new Rattata()));
+    	lista.add(fabrica.crearRepresentacion(new Charmander()));
+    	lista.add(fabrica.crearRepresentacion(new Bulbasaur()));
+    	lista.add(fabrica.crearRepresentacion(new Squirtle()));
+    	lista.add(fabrica.crearRepresentacion(new Chansey()));
+    	lista.add(fabrica.crearRepresentacion(new Jigglypuff()));
+    	lista.add(fabrica.crearRepresentacion(new Rattata()));
     	
     	this.setLista(lista);
     	this.setIndice(0);
+	}
+	
+	public ListaDeRepresentaciones(List<AlgoMon> listaDeAlgoMon){
+		this.fabrica = new FabricaDeRepresentaciones();
+		List<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
+		
+		for (AlgoMon algomon : listaDeAlgoMon){
+			lista.add(fabrica.crearRepresentacion(algomon));
+		}
 	}
 	
 	public RepresentacionAlgoMon siguienteALaIzquierda(){
