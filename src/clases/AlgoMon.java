@@ -104,6 +104,10 @@ public abstract class AlgoMon {
 	public Estados getEstados() {
 		return estados;
 	}
+	
+	public List<Estado> getListaDeEstados(){
+		return estados.getListaDeEstados();
+	}
 
 	public void setEstados(Estados estados) {
 		this.estados = estados;

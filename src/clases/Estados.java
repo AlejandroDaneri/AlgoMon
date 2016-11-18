@@ -1,5 +1,8 @@
 package clases;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Estados {
 	
 	private Estado estadoPersistente;
@@ -33,5 +36,12 @@ public class Estados {
 
 	public void setEstadoEfimero(Estado estadoEfimero) {
 		this.estadoEfimero = estadoEfimero;
+	}
+
+	public List<Estado> getListaDeEstados() {
+		List<Estado> lista = new ArrayList<Estado>();
+		lista.add(this.estadoEfimero);
+		lista.add(this.estadoPersistente);
+		return null;
 	}
 }
