@@ -10,7 +10,7 @@ public class Charmander extends AlgoMon {
 	}
 
 	@Override
-	public int obtenerVidaOriginal() {
+	public int getVidaOriginal() {
 		return 170;
 	}
 

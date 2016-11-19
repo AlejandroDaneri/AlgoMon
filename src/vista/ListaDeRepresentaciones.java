@@ -18,6 +18,9 @@ public class ListaDeRepresentaciones {
 	private FabricaDeRepresentaciones fabrica;
 	
 	public ListaDeRepresentaciones(){
+		
+		// supuesto: el algomon actual es el primero elegido, por eso seteamos el indice en 0
+		
 		this.fabrica = new FabricaDeRepresentaciones();
 		List<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
     	

@@ -10,7 +10,7 @@ public class Bulbasaur extends AlgoMon {
 	}
 
 	@Override
-	public int obtenerVidaOriginal() {
+	public int getVidaOriginal() {
 		return 140;
 	}
 

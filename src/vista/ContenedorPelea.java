@@ -13,6 +13,7 @@ import clases.Vitamina;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -48,8 +49,9 @@ public class ContenedorPelea extends BorderPane{
 		HBox panelDeNotificaciones = crearPanelDeNotificaciones();
 		panelDeNotificaciones.setAlignment(Pos.CENTER);
 		
-//		VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesDeAlgomonesDeJugador1);
-//		VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesDeAlgomonesDeJugador2);
+//		ejecutando esto es donde se rompe todo!!		
+//		VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesJugador1.getActual());
+//		VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesJugador2.getActual());
 		
 		HBox contenedorDeAlgomones = crearContenedorDeAlgomones();
 
@@ -62,20 +64,24 @@ public class ContenedorPelea extends BorderPane{
 
 	private VBox crearDisplayAlgomon(RepresentacionAlgoMon representacion) {
 		
-		Label nombreDelAlgomon = new Label("AlgoMon");
+		Label nombreDelAlgomon = new Label("AlgoMon"); // ya no tenemos un metodo que nos devuelva el nombre del algomon
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
 		
-//		ProgressBar progressBar = new ProgressBar(establecerProgreso(vida actual,
-//		vida total del algomon));
+		ProgressBar progressBar = new ProgressBar(establecerProgreso(representacion.getAlgomon().getVida(),
+				representacion.getAlgomon().getVidaOriginal()));
 		
 		VBox display = new VBox();
 		display.setAlignment(Pos.TOP_CENTER);
-		display.getChildren().addAll(nombreDelAlgomon);
+		display.getChildren().addAll(nombreDelAlgomon, progressBar);
 		
 		return display;
 		
+	}
+
+	private double establecerProgreso(int vida, int vidaOriginal) {
+		return ((double)vida/(double)vidaOriginal); // siempre menor que 1
 	}
 
 	private HBox crearContenedorDeAlgomones() {

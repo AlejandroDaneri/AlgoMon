@@ -49,7 +49,7 @@ public abstract class AlgoMon {
 	
 	public void aumentarVida(int puntos){
 		int vidaAumentada = this.getVida() + puntos;
-		if( vidaAumentada > this.obtenerVidaOriginal() ) this.setVida(this.obtenerVidaOriginal());
+		if( vidaAumentada > this.getVidaOriginal() ) this.setVida(this.getVidaOriginal());
 		else this.setVida(vidaAumentada);
 	}
 	
@@ -117,6 +117,6 @@ public abstract class AlgoMon {
 		return this.getVida() <= 0;
 	}
 	
-	public abstract int obtenerVidaOriginal();
+	public abstract int getVidaOriginal();
 
 }
