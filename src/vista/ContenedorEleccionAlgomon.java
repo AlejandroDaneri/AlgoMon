@@ -24,7 +24,10 @@ import clases.Partida;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
     private Stage stage;
-    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea, Partida partida) {
+//    private ArrayList<AlgoMon> algomonesEnUso
+    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea, Partida partida,
+    		ArrayList<AlgoMon> algomonesJugador1, ArrayList<AlgoMon> algomonesJugador2) {
+    	
         super();
         this.stage = primaryStage;
 
@@ -37,9 +40,9 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         
         TextField nombreJugador1 = new TextField();
         TextField nombreJugador2 = new TextField();
-        VBox espacioParaJugador1 = crearEspacioParaJugador(nombreJugador1);
-        VBox espacioParaJugador2 = crearEspacioParaJugador(nombreJugador2);
 
+        VBox espacioParaJugador1 = crearEspacioParaJugador(nombreJugador1, algomonesJugador1);
+        VBox espacioParaJugador2 = crearEspacioParaJugador(nombreJugador2, algomonesJugador2);
         /*
         Button botonVolver = new Button();
         BotonVolverHandler botonVolverHandler = new BotonVolverHandler(stage);
@@ -61,7 +64,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     }
 
-    private VBox crearEspacioParaJugador(TextField nombreJugador) {
+    private VBox crearEspacioParaJugador(TextField nombreJugador, ArrayList<AlgoMon> algomonesSeleccionados) {
 
     	ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
     	List<AlgoMon> elegidosJugador = new ArrayList<AlgoMon>();
@@ -70,6 +73,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         IngresarNombre.setFont(Font.font("Cambria", FontWeight.BOLD, FontPosture.ITALIC , 20));
         IngresarNombre.setPadding(new Insets(20,0,20,0));
         nombreJugador.setPromptText("Debe llenar este campo");
+        
 //        nombre.setPadding(new Insets(20,0,20,0)); esto no sirve para alejarlo de los demas elementos de la interfaz
 //        nombre.setOnAction(new EventHandler<ActionEvent>() {
 //        		public void handle(ActionEvent e) {
@@ -91,7 +95,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         seleccionados.setPadding(new Insets(30,0,30,0));
         
         BotonSeleccionarEventHandler botonSeleccionarEventHandler = new BotonSeleccionarEventHandler(
-        		seleccionJugador, seleccionados, elegidosJugador, lista.getActual());
+        		seleccionJugador, seleccionados, algomonesSeleccionados, lista.getActual());
         
         Button botonSeleccion = crearBotonDeSeleccion(botonSeleccionarEventHandler);
 //        botonSeleccion.setPadding(new Insets(20,0,20,0)); lo mismo que con nombre.setPadding
@@ -145,7 +149,10 @@ public class ContenedorEleccionAlgomon extends BorderPane{
     }
 
     private BorderPane crearZonaDeEleccionParaJugador(Button botonCambiarIzquierda,
-                                                      Button botonCambiarDerecha, Button botonSeleccion, HBox seleccionados, ImageView seleccionJugador, ImageView tabla, RepresentacionAlgoMon representacionActual, List<AlgoMon> algomonesSeleccionados) {
+    		Button botonCambiarDerecha, Button botonSeleccion, HBox seleccionados,
+    		ImageView seleccionJugador, ImageView tabla, RepresentacionAlgoMon representacionActual,
+    		List<AlgoMon> algomonesSeleccionados) {
+    	
         BorderPane zonaJugador = new BorderPane();
 
         zonaJugador.setTop(seleccionados);
@@ -187,7 +194,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         return seleccionJugador;
     }
 
-    private Button crearBotonIzquierdo(ImageView imagen, ImageView seleccionJugador, ImageView tabla, ListaDeRepresentaciones lista, BotonSeleccionarEventHandler botonSeleccion) {
+    private Button crearBotonIzquierdo(ImageView imagen, ImageView seleccionJugador,
+    		ImageView tabla, ListaDeRepresentaciones lista, BotonSeleccionarEventHandler botonSeleccion) {
         Button botonCambiarIzquierdo = new Button();
         botonCambiarIzquierdo.setGraphic(imagen);
         botonCambiarIzquierdo.setMaxSize(50,50);
@@ -198,7 +206,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         return botonCambiarIzquierdo;
     }
 
-    private Button crearBotonDerecho(ImageView imagen, ImageView seleccionJugador, ImageView tabla, ListaDeRepresentaciones lista, BotonSeleccionarEventHandler botonSelecion) {
+    private Button crearBotonDerecho(ImageView imagen, ImageView seleccionJugador, ImageView tabla,
+    		ListaDeRepresentaciones lista, BotonSeleccionarEventHandler botonSelecion) {
         Button botonCambiarDerecha = new Button();
         botonCambiarDerecha.setGraphic(imagen);
         botonCambiarDerecha.setMaxSize(50,50);

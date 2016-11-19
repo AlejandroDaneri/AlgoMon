@@ -1,5 +1,8 @@
 package vista;
 
+import java.util.ArrayList;
+
+import clases.AlgoMon;
 import clases.Partida;
 import javafx.application.Application;
 import javafx.scene.media.AudioClip;
@@ -22,17 +25,21 @@ public class AplicacionPrincipal extends Application{
         stagePrincipal.setTitle("AlgoMon");
 
         Partida partida = new Partida();
-        ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal, partida);
-        Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal,alto_minimo,ancho_minimo);
+        ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
+        ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
 
-// el problema está aca accediendo a partida.jugadorActual();
+        ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal, partida,
+        		algomonesJugador1, algomonesJugador2);
+        Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal, alto_minimo, ancho_minimo);
+
         ContenedorEleccionAlgomon contenedorEleccion =
-                new ContenedorEleccionAlgomon(stagePrincipal,escenaPelea, partida);
-        Escena escenaEleccion = new Escena(contenedorEleccion,stagePrincipal,alto_minimo,ancho_minimo);
+                new ContenedorEleccionAlgomon(stagePrincipal, escenaPelea, partida, 
+                		algomonesJugador1, algomonesJugador2);
+        Escena escenaEleccion = new Escena(contenedorEleccion, stagePrincipal, alto_minimo, ancho_minimo);
 
         ContenedorBienvenida contenedorBienvenidos =
-                new ContenedorBienvenida(stagePrincipal, musicaDeFondo,escenaEleccion);
-        Escena escenaBienvenidos = new Escena(contenedorBienvenidos,stagePrincipal,alto_minimo,ancho_minimo);
+                new ContenedorBienvenida(stagePrincipal, musicaDeFondo, escenaEleccion);
+        Escena escenaBienvenidos = new Escena(contenedorBienvenidos, stagePrincipal, alto_minimo, ancho_minimo);
 
         stagePrincipal.setScene(escenaBienvenidos);
 

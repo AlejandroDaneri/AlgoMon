@@ -1,5 +1,7 @@
 package vista;
 
+import java.util.ArrayList;
+
 import clases.AlgoMon;
 import clases.Elemento;
 import clases.Jugador;
@@ -21,9 +23,15 @@ import javafx.stage.Stage;
 
 public class ContenedorPelea extends BorderPane{
 	private Stage stage;
+	private ListaDeRepresentaciones listaDeRepresentacionesJugador1;
+	private ListaDeRepresentaciones listaDeRepresentacionesJugador2;
 	
-	public ContenedorPelea(Stage primaryStage, Partida partida) {
+	public ContenedorPelea(Stage primaryStage, Partida partida,
+			ArrayList<AlgoMon> algomonesJugador1, ArrayList<AlgoMon> algomonesJugador2) {
 		super();
+		this.listaDeRepresentacionesJugador1 = new ListaDeRepresentaciones(algomonesJugador1);
+		this.listaDeRepresentacionesJugador2 = new ListaDeRepresentaciones(algomonesJugador2);
+
 		this.stage = primaryStage;
 		
 		Image fondo = new Image("file:src/vista/imagenes/fondopelea.jpg");
@@ -39,8 +47,10 @@ public class ContenedorPelea extends BorderPane{
 		informacionParaJugador2.setPadding(new Insets(0,20,0,20));
 		HBox panelDeNotificaciones = crearPanelDeNotificaciones();
 		panelDeNotificaciones.setAlignment(Pos.CENTER);
-//		VBox displayAlgomon1 = crearDisplayAlgomon(AlgoMon algomon1);
-//		VBox displayAlgomon2 = crearDisplayAlgomon(AlgoMon algomon2);
+		
+//		VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesDeAlgomonesDeJugador1);
+//		VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesDeAlgomonesDeJugador2);
+		
 		HBox contenedorDeAlgomones = crearContenedorDeAlgomones();
 
 		this.setLeft(informacionParaJugador1);
@@ -50,13 +60,15 @@ public class ContenedorPelea extends BorderPane{
         this.setPadding(new Insets(50));
 	}
 
-	private VBox crearDisplayAlgomon() {
-		Label nombreDelAlgomon = new Label("AlgoMon1");
+	private VBox crearDisplayAlgomon(RepresentacionAlgoMon representacion) {
+		
+		Label nombreDelAlgomon = new Label("AlgoMon");
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
 		
-//		ProgressBar progressBar = new ProgressBar(algomon.getVida());
+//		ProgressBar progressBar = new ProgressBar(establecerProgreso(vida actual,
+//		vida total del algomon));
 		
 		VBox display = new VBox();
 		display.setAlignment(Pos.TOP_CENTER);
