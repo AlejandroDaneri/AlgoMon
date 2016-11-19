@@ -58,8 +58,6 @@ public class ContenedorPelea extends BorderPane{
 		
 //		ProgressBar progressBar = new ProgressBar(algomon.getVida());
 		
-//		Label pociones = new Label("pociones"+jugador.getElemento(new Pocion()));
-
 		VBox display = new VBox();
 		display.setAlignment(Pos.TOP_CENTER);
 		display.getChildren().addAll(nombreDelAlgomon);

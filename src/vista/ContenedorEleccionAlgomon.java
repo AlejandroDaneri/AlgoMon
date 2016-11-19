@@ -35,8 +35,10 @@ public class ContenedorEleccionAlgomon extends BorderPane{
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
-        VBox espacioParaJugador1 = crearEspacioParaJugador(partida.jugadorActual());
-        VBox espacioParaJugador2 = crearEspacioParaJugador(partida.jugadorOponente());
+        TextField nombreJugador1 = new TextField();
+        TextField nombreJugador2 = new TextField();
+        VBox espacioParaJugador1 = crearEspacioParaJugador(nombreJugador1);
+        VBox espacioParaJugador2 = crearEspacioParaJugador(nombreJugador2);
 
         /*
         Button botonVolver = new Button();
@@ -46,7 +48,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         */
 
         Button botonEmpezar = new Button("Empezar Partida");
-        BotonEmpezarHandler botonEmpezarHandler = new BotonEmpezarHandler(stage,escenaPelea);
+        BotonEmpezarHandler botonEmpezarHandler = new BotonEmpezarHandler(
+        		stage ,escenaPelea, partida, nombreJugador1, nombreJugador2);
         botonEmpezar.setOnAction(botonEmpezarHandler);
 
 
@@ -58,7 +61,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     }
 
-    private VBox crearEspacioParaJugador(Jugador jugador) {
+    private VBox crearEspacioParaJugador(TextField nombreJugador) {
 
     	ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
     	List<AlgoMon> elegidosJugador = new ArrayList<AlgoMon>();
@@ -66,15 +69,14 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         Label IngresarNombre = new Label("Ingrese su nombre");
         IngresarNombre.setFont(Font.font("Cambria", FontWeight.BOLD, FontPosture.ITALIC , 20));
         IngresarNombre.setPadding(new Insets(20,0,20,0));
-        TextField nombre = new TextField();
-        nombre.setPromptText("Debe llenar este campo");
+        nombreJugador.setPromptText("Debe llenar este campo");
 //        nombre.setPadding(new Insets(20,0,20,0)); esto no sirve para alejarlo de los demas elementos de la interfaz
-        nombre.setOnAction(new EventHandler<ActionEvent>() {
-        		public void handle(ActionEvent e) {
-        			if (nombre.getText() != null) 
-        				jugador.setNombre(nombre.getText());;        	
-        	}
-        });
+//        nombre.setOnAction(new EventHandler<ActionEvent>() {
+//        		public void handle(ActionEvent e) {
+//        			if (nombre.getText() != null) 
+//        				jugador.setNombre(nombre.getText());;        	
+//        	}
+//        });
         
         // en el event handler manejamos que si lo ingresado es ""
         // deje algun comentario visualizable
@@ -106,10 +108,10 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         VBox espacioParaJugador = new VBox();
         espacioParaJugador.setAlignment(Pos.CENTER);
-        espacioParaJugador.getChildren().addAll(IngresarNombre,nombre,zonaDeElecccionParaJugador);
+        espacioParaJugador.getChildren().addAll(IngresarNombre, nombreJugador, zonaDeElecccionParaJugador);
 
         //-->
-        nombre.focusedProperty().addListener((observable,  oldValue,  newValue) -> espacioParaJugador.requestFocus());
+//        nombre.focusedProperty().addListener((observable,  oldValue,  newValue) -> espacioParaJugador.requestFocus());
         //<-- Saca focus del textField nombre
 
         return espacioParaJugador;
