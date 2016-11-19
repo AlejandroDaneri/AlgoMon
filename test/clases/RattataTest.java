@@ -21,7 +21,7 @@ public class RattataTest {
 	@Test
 	public void testObtenerVidaOriginal() {
 		Rattata rattata = new Rattata();
-		assertEquals(rattata.obtenerVidaOriginal(),170);
+		assertEquals(rattata.getVidaOriginal(),170);
 	}
 	@Test
 	public void testCrearRattata() {

@@ -20,7 +20,7 @@ public class SquirtleTest {
 	@Test
 	public void testObtenerVidaOriginal() {
 		Squirtle squirtle = new Squirtle();
-		assertEquals(squirtle.obtenerVidaOriginal(),150);
+		assertEquals(squirtle.getVidaOriginal(),150);
 	}
 	@Test
 	public void testCrearSquirtle() {

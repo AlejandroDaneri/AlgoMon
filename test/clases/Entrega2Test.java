@@ -26,7 +26,7 @@ public class Entrega2Test {
 		squirtle.atacar(jigglypuff, ataqueRapido);
 		squirtle.nuevoTurno();
 		
-		assertEquals(jigglypuff.getVida(), jigglypuff.obtenerVidaOriginal());
+		assertEquals(jigglypuff.getVida(), jigglypuff.getVidaOriginal());
 
 	}
 	

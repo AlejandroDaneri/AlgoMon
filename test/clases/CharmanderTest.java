@@ -16,7 +16,7 @@ public class CharmanderTest {
 	@Test
 	public void testObtenerVidaOriginal() {
 		Charmander charmander = new Charmander();
-		assertEquals(charmander.obtenerVidaOriginal(),170);
+		assertEquals(charmander.getVidaOriginal(),170);
 	}
 	
 	@Test

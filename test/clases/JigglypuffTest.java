@@ -20,7 +20,7 @@ public class JigglypuffTest {
 	@Test
 	public void testObtenerVidaOriginal() {
 		Jigglypuff jigglypuff = new Jigglypuff();
-		assertEquals(jigglypuff.obtenerVidaOriginal(),130);
+		assertEquals(jigglypuff.getVidaOriginal(),130);
 	}
 	
 	@Test

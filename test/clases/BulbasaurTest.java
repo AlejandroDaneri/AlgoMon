@@ -16,7 +16,7 @@ public class BulbasaurTest {
 	@Test
 	public void testObtenerVidaOriginal() {
 		Bulbasaur bulbasaur = new Bulbasaur();
-		assertEquals(bulbasaur.obtenerVidaOriginal(),140);
+		assertEquals(bulbasaur.getVidaOriginal(),140);
 	}
 	
 	@Test

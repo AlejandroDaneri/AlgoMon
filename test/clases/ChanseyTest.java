@@ -16,7 +16,7 @@ public class ChanseyTest {
 	@Test
 	public void testObtenerVidaOriginal() {
 		Chansey chansey = new Chansey();
-		assertEquals(chansey.obtenerVidaOriginal(),130);
+		assertEquals(chansey.getVidaOriginal(),130);
 	}
 
 	@Test
