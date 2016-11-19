@@ -14,10 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import clases.AlgoMon;
+import clases.Jugador;
+import clases.Partida;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
     private Stage stage;
-    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea) {
+    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea, Partida partida) {
         super();
         this.stage = primaryStage;
 
@@ -28,8 +30,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
-        VBox espacioParaJugador1 = crearEspacioParaJugador();
-        VBox espacioParaJugador2 = crearEspacioParaJugador();
+        VBox espacioParaJugador1 = crearEspacioParaJugador(/* partida.jugadorActual() */);
+        VBox espacioParaJugador2 = crearEspacioParaJugador(/* partida.jugadorOponente() */);
 
         /*
         Button botonVolver = new Button();
@@ -59,7 +61,10 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         Label IngresarNombre = new Label("Ingrese su nombre");
         TextField nombre = new TextField();
         nombre.setPromptText("Debe llenar este campo");
-
+//        if (nombre.getText() != "") jugador.setNombre(nombre.getText()); esto crashea
+        // en el event handler manejamos que si lo ingresado es ""
+        // deje algun comentario visualizable
+        
         ImageView seleccionJugador = crearImagenDeAlgomonAElegir(lista);
         ImageView tabla = crearTablaDeAlgomonSeleccionado(lista);
         

@@ -25,8 +25,9 @@ public class AplicacionPrincipal extends Application{
         ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal, partida);
         Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal,alto_minimo,ancho_minimo);
 
+// el problema está aca accediendo a partida.jugadorActual();
         ContenedorEleccionAlgomon contenedorEleccion =
-                new ContenedorEleccionAlgomon(stagePrincipal,escenaPelea);
+                new ContenedorEleccionAlgomon(stagePrincipal,escenaPelea, partida);
         Escena escenaEleccion = new Escena(contenedorEleccion,stagePrincipal,alto_minimo,ancho_minimo);
 
         ContenedorBienvenida contenedorBienvenidos =
