@@ -1,5 +1,7 @@
 package vista;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,7 +11,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +35,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
-        VBox espacioParaJugador1 = crearEspacioParaJugador(/* partida.jugadorActual() */);
-        VBox espacioParaJugador2 = crearEspacioParaJugador(/* partida.jugadorOponente() */);
+        VBox espacioParaJugador1 = crearEspacioParaJugador(partida.jugadorActual());
+        VBox espacioParaJugador2 = crearEspacioParaJugador(partida.jugadorOponente());
 
         /*
         Button botonVolver = new Button();
@@ -53,15 +58,24 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     }
 
-    private VBox crearEspacioParaJugador() {
+    private VBox crearEspacioParaJugador(Jugador jugador) {
 
     	ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
     	List<AlgoMon> elegidosJugador = new ArrayList<AlgoMon>();
     	
         Label IngresarNombre = new Label("Ingrese su nombre");
+        IngresarNombre.setFont(Font.font("Cambria", FontWeight.BOLD, FontPosture.ITALIC , 20));
+        IngresarNombre.setPadding(new Insets(20,0,20,0));
         TextField nombre = new TextField();
         nombre.setPromptText("Debe llenar este campo");
-//        if (nombre.getText() != "") jugador.setNombre(nombre.getText()); esto crashea
+//        nombre.setPadding(new Insets(20,0,20,0)); esto no sirve para alejarlo de los demas elementos de la interfaz
+        nombre.setOnAction(new EventHandler<ActionEvent>() {
+        		public void handle(ActionEvent e) {
+        			if (nombre.getText() != null) 
+        				jugador.setNombre(nombre.getText());;        	
+        	}
+        });
+        
         // en el event handler manejamos que si lo ingresado es ""
         // deje algun comentario visualizable
         
@@ -72,15 +86,22 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         ImageView flechaDerecha = crearFlecha("file:src/vista/imagenes/flechader.png");
         
         HBox seleccionados = inicializarListaDeElegidos();
+        seleccionados.setPadding(new Insets(30,0,30,0));
         
-        BotonSeleccionarEventHandler botonSeleccionarEventHandler = new BotonSeleccionarEventHandler(seleccionJugador, seleccionados, elegidosJugador, lista.getActual());
+        BotonSeleccionarEventHandler botonSeleccionarEventHandler = new BotonSeleccionarEventHandler(
+        		seleccionJugador, seleccionados, elegidosJugador, lista.getActual());
         
         Button botonSeleccion = crearBotonDeSeleccion(botonSeleccionarEventHandler);
-        Button botonCambiarHaciaIzquierda = crearBotonIzquierdo(flechaIzquierda,seleccionJugador,tabla,lista,botonSeleccionarEventHandler);
-        Button botonCambiarHaciaDerecha = crearBotonDerecho(flechaDerecha,seleccionJugador,tabla,lista,botonSeleccionarEventHandler);
+//        botonSeleccion.setPadding(new Insets(20,0,20,0)); lo mismo que con nombre.setPadding
+        Button botonCambiarHaciaIzquierda = crearBotonIzquierdo(flechaIzquierda,
+        		seleccionJugador,tabla,lista,botonSeleccionarEventHandler);
+        Button botonCambiarHaciaDerecha = crearBotonDerecho(flechaDerecha,
+        		seleccionJugador,tabla,lista,botonSeleccionarEventHandler);
 
         BorderPane zonaDeElecccionParaJugador =
-                crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,botonSeleccion,seleccionados,seleccionJugador, tabla, lista.getActual(), elegidosJugador);
+                crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,
+                		botonSeleccion,seleccionados,seleccionJugador, tabla, lista.getActual(),
+                		elegidosJugador);
 
 
         VBox espacioParaJugador = new VBox();

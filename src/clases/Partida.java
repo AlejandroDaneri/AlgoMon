@@ -12,15 +12,17 @@ public class Partida {
 	private int turnoActual;
 	
 	public Partida(String nombre1, String nombre2) {
-		Jugador jugador1 = new Jugador(0,nombre1);	// el 0/1 representan un indice arbitrario de turnos
-		Jugador jugador2 = new Jugador(1,nombre2);
+		this.jugador1 = new Jugador(0,nombre1);	// el 0/1 representan un indice arbitrario de turnos
+		this.jugador2 = new Jugador(1,nombre2);
 		this.setTurnos();
 		this.setOrdenJugadores();
 	}
 	
 	public Partida() {
-		this.setOrdenJugadores();
+		this.jugador1 = new Jugador(0,null);	// el 0/1 representan un indice arbitrario de turnos
+		this.jugador2 = new Jugador(1,null);
 		this.setTurnos();
+		this.setOrdenJugadores();
 	}
 
 	public void setTurnos() {

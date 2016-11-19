@@ -102,4 +102,7 @@ public class Jugador {
 		return algomonActivo.getVida();
 	}
 	
+	public Elemento getElemento(Elemento elemento) {
+		return this.elementos.getElemento(elemento);
+	}
 }

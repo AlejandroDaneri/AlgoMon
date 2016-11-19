@@ -1,8 +1,13 @@
 package vista;
 
 import clases.AlgoMon;
+import clases.Elemento;
+import clases.Jugador;
 import clases.Partida;
 import clases.Pocion;
+import clases.Restaurador;
+import clases.SuperPocion;
+import clases.Vitamina;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -28,8 +33,10 @@ public class ContenedorPelea extends BorderPane{
 						BackgroundSize.DEFAULT);
 		this.setBackground(new Background(imagenDeFondo));
 		
-		VBox informacionParaJugador1 = crearInformacionParaJugador();
-		VBox informacionParaJugador2 = crearInformacionParaJugador();
+		VBox informacionParaJugador1 = crearInformacionParaJugador(partida.jugadorActual());
+		informacionParaJugador1.setPadding(new Insets(0,20,0,20));
+		VBox informacionParaJugador2 = crearInformacionParaJugador(partida.jugadorOponente());
+		informacionParaJugador2.setPadding(new Insets(0,20,0,20));
 		HBox panelDeNotificaciones = crearPanelDeNotificaciones();
 		panelDeNotificaciones.setAlignment(Pos.CENTER);
 //		VBox displayAlgomon1 = crearDisplayAlgomon(AlgoMon algomon1);
@@ -44,10 +51,10 @@ public class ContenedorPelea extends BorderPane{
 	}
 
 	private VBox crearDisplayAlgomon() {
-		Label nombreDelJugador = new Label("AlgoMon1");
-		nombreDelJugador.setAlignment(Pos.CENTER);
-		nombreDelJugador.setTextAlignment(TextAlignment.CENTER);
-		nombreDelJugador.setFont(Font.font("Cambria", 20));
+		Label nombreDelAlgomon = new Label("AlgoMon1");
+		nombreDelAlgomon.setAlignment(Pos.CENTER);
+		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
+		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
 		
 //		ProgressBar progressBar = new ProgressBar(algomon.getVida());
 		
@@ -55,7 +62,9 @@ public class ContenedorPelea extends BorderPane{
 
 		VBox display = new VBox();
 		display.setAlignment(Pos.TOP_CENTER);
-//		display.getChildren(nombreDelJugador, progressBar, );
+		display.getChildren().addAll(nombreDelAlgomon);
+		
+		return display;
 		
 	}
 
@@ -78,18 +87,41 @@ public class ContenedorPelea extends BorderPane{
 	}
 
 
-	private VBox crearInformacionParaJugador(/*clases.Jugador jugador*/) {
+	private VBox crearInformacionParaJugador(Jugador jugador) {
 		
-		Label nombreDelJugador = new Label("Marcelo Niembro");
+		Label nombreDelJugador = new Label(jugador.getNombre());
 		nombreDelJugador.setAlignment(Pos.CENTER);
 		nombreDelJugador.setTextAlignment(TextAlignment.CENTER);
 		nombreDelJugador.setFont(Font.font("Cambria", FontWeight.BOLD, 40));
 		
+		Elemento pocion = jugador.getElemento(new Pocion());
+		Label pociones = new Label("Pociones: "+pocion.cantidadElemento());
+		pociones.setTextAlignment(TextAlignment.LEFT);
+		pociones.setFont(Font.font("Cambria", 20));
+		pociones.setPadding(new Insets(50,0,20,0));
+		
+		Elemento superPocion = jugador.getElemento(new SuperPocion());
+		Label superPociones = new Label("Super pociones: "+superPocion.cantidadElemento());
+		superPociones.setTextAlignment(TextAlignment.LEFT);
+		superPociones.setFont(Font.font("Cambria", 20));
+		superPociones.setPadding(new Insets(0,0,20,0));
+		
+		Elemento vitamina = jugador.getElemento(new Vitamina());
+		Label vitaminas = new Label("Vitamina: "+vitamina.cantidadElemento());
+		vitaminas.setTextAlignment(TextAlignment.LEFT);
+		vitaminas.setFont(Font.font("Cambria", 20));
+		vitaminas.setPadding(new Insets(0,0,20,0));
+
+		Elemento restaurador = jugador.getElemento(new Restaurador());
+		Label restauradores = new Label("Restaurador: "+restaurador.cantidadElemento());
+		restauradores.setTextAlignment(TextAlignment.LEFT);
+		restauradores.setFont(Font.font("Cambria", 20));
+		restauradores.setPadding(new Insets(0,0,20,0));
+
 		
 		VBox informacionParaJugador = new VBox();
-		informacionParaJugador .setAlignment(Pos.TOP_LEFT);
-		informacionParaJugador.getChildren().addAll(nombreDelJugador);
-//        informacionParaJugador.setSpacing(20);
+		informacionParaJugador.getChildren().addAll(nombreDelJugador, pociones, superPociones,
+				vitaminas, restauradores);
 		
 		return informacionParaJugador;
 	}
