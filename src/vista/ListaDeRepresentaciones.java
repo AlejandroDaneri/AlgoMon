@@ -13,16 +13,13 @@ import clases.Squirtle;
 
 public class ListaDeRepresentaciones {
 	
-	private List<RepresentacionAlgoMon> lista;
+	private ArrayList<RepresentacionAlgoMon> lista;
 	private int indice;
 	private FabricaDeRepresentaciones fabrica;
 	
 	public ListaDeRepresentaciones(){
-		
-		// supuesto: el algomon actual es el primero elegido, por eso seteamos el indice en 0
-		
-		this.fabrica = new FabricaDeRepresentaciones();
-		List<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
+		fabrica = new FabricaDeRepresentaciones();
+		ArrayList<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
     	
     	lista.add(fabrica.crearRepresentacion(new Charmander()));
     	lista.add(fabrica.crearRepresentacion(new Bulbasaur()));
@@ -31,13 +28,13 @@ public class ListaDeRepresentaciones {
     	lista.add(fabrica.crearRepresentacion(new Jigglypuff()));
     	lista.add(fabrica.crearRepresentacion(new Rattata()));
     	
-    	this.setLista(lista);
-    	this.setIndice(0);
+    	setLista(lista);
+    	setIndice(0);
 	}
 	
-	public ListaDeRepresentaciones(List<AlgoMon> listaDeAlgoMon){
-		this.fabrica = new FabricaDeRepresentaciones();
-		List<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
+	public ListaDeRepresentaciones(ArrayList<AlgoMon> listaDeAlgoMon){
+		fabrica = new FabricaDeRepresentaciones();
+		ArrayList<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
 		
 		for (AlgoMon algomon : listaDeAlgoMon){
 			lista.add(fabrica.crearRepresentacion(algomon));
@@ -45,34 +42,34 @@ public class ListaDeRepresentaciones {
 	}
 	
 	public RepresentacionAlgoMon siguienteALaIzquierda(){
-		this.setIndice(this.getIndice()-1);
-		if(this.getIndice() < 0) this.setIndice(this.getLista().size() - 1);
-		return this.getActual();
+		setIndice(getIndice()-1);
+		if(getIndice() < 0) setIndice(getLista().size() - 1);
+		return getActual();
 	}
 	
 	public RepresentacionAlgoMon siguienteALaDerecha(){
-		this.setIndice(this.getIndice()+1);
-		if(this.getIndice() > (this.getLista().size() - 1)) this.setIndice(0);
-		return this.getActual();
+		setIndice(getIndice()+1);
+		if(getIndice() > (getLista().size() - 1)) setIndice(0);
+		return getActual();
 	}
 	
 	public RepresentacionAlgoMon getActual(){
-		return this.getLista().get(this.getIndice());
+		return getLista().get(getIndice());
 	}
 
-	public List<RepresentacionAlgoMon> getLista() {
+	private ArrayList<RepresentacionAlgoMon> getLista() {
 		return lista;
 	}
 
-	public void setLista(List<RepresentacionAlgoMon> lista) {
+	private void setLista(ArrayList<RepresentacionAlgoMon> lista) {
 		this.lista = lista;
 	}
 
-	public int getIndice() {
+	private int getIndice() {
 		return indice;
 	}
 
-	public void setIndice(int indice) {
+	private void setIndice(int indice) {
 		this.indice = indice;
 	}
 }

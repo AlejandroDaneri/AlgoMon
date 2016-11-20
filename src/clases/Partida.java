@@ -11,16 +11,23 @@ public class Partida {
 	private int turnos;
 	private int turnoActual;
 	
-	public Partida(String nombre1, String nombre2) {
+	public Partida(String nombre1, String nombre2) {// no se estaria usando
 		this.jugador1 = new Jugador(0,nombre1);	// el 0/1 representan un indice arbitrario de turnos
 		this.jugador2 = new Jugador(1,nombre2);
 		this.setTurnos();
 		this.setOrdenJugadores();
 	}
 	
-	public Partida() {
+	public Partida() { // no se estaria usando
 		this.jugador1 = new Jugador(0,null);	// el 0/1 representan un indice arbitrario de turnos
 		this.jugador2 = new Jugador(1,null);
+		this.setTurnos();
+		this.setOrdenJugadores();
+	}
+
+	public Partida(Jugador jugador1 , Jugador jugador2){
+		this.jugador1 = jugador1;
+		this.jugador2 = jugador2;
 		this.setTurnos();
 		this.setOrdenJugadores();
 	}

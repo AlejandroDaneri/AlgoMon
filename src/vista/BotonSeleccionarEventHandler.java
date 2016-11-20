@@ -1,5 +1,6 @@
 package vista;
 
+import clases.Jugador;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -14,16 +15,16 @@ import clases.AlgoMon;
 public class BotonSeleccionarEventHandler extends BotonHandler {
     private ImageView seleccion;
     private HBox seleccionados;
-    private List<AlgoMon> algomonesSeleccionados;
+    private Jugador jugador;
     private RepresentacionAlgoMon representacionActual;
     private Button botonSeleccion; //prueba
     private int contador = 0; //prueba
-    private static List<AlgoMon> algomonesEnUso = new ArrayList<AlgoMon>();
+    private List<AlgoMon> algomonesEnUso = new ArrayList<AlgoMon>();
 
-    public BotonSeleccionarEventHandler(ImageView seleccionJugador, HBox seleccionados, List<AlgoMon> algomonesSeleccionados, RepresentacionAlgoMon representacionActual) {
+    public BotonSeleccionarEventHandler(ImageView seleccionJugador, HBox seleccionados, Jugador jugador, RepresentacionAlgoMon representacionActual) {
         this.seleccion = seleccionJugador;
         this.seleccionados = seleccionados;
-        this.algomonesSeleccionados = algomonesSeleccionados;
+        this.jugador = jugador;
         this.representacionActual = representacionActual;
     }
     
@@ -35,9 +36,9 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
     	this.botonSeleccion = botonSeleccion;
     }
     
-    public static List<AlgoMon> getAlgomonesEnUso() {
+   /* public List<AlgoMon> getAlgomonesEnUso() {
     	return algomonesEnUso;
-    }
+    }*/
 
     @Override
     public void handle(ActionEvent event) {
@@ -47,9 +48,9 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
         super.handle(event);
         
         if (algomonDisponible(representacionActual.getAlgomon())) {
-            algomonesSeleccionados.add(representacionActual.getAlgomon());
+            jugador.agregarAlgomon(representacionActual.getAlgomon());
             this.algomonElegido(representacionActual.getAlgomon());
-            if (algomonesSeleccionados.size() == 3) botonSeleccion.setDisable(true);
+            if (jugador.cantidadAlgomones() == 3) botonSeleccion.setDisable(true);
         }
         else {
         	return;
@@ -65,12 +66,12 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
     }
 
 	private void algomonElegido(AlgoMon algomon) {
-		BotonSeleccionarEventHandler.getAlgomonesEnUso().add(algomon);
+		algomonesEnUso.add(algomon);
 	}
 
 	private boolean algomonDisponible(AlgoMon algomonDeseado) {
 		boolean disponible = true;
-		for (AlgoMon algomon : BotonSeleccionarEventHandler.getAlgomonesEnUso()) {
+		for (AlgoMon algomon : algomonesEnUso) {
 			if (algomon.equals(algomonDeseado)) disponible = false;
 		}
 		return disponible;

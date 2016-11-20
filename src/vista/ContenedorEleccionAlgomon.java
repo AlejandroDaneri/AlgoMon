@@ -1,7 +1,5 @@
 package vista;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,14 +18,11 @@ import java.util.List;
 
 import clases.AlgoMon;
 import clases.Jugador;
-import clases.Partida;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
     private Stage stage;
 //    private ArrayList<AlgoMon> algomonesEnUso
-    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea, Partida partida,
-    		ArrayList<AlgoMon> algomonesJugador1, ArrayList<AlgoMon> algomonesJugador2) {
-    	
+    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea) {
         super();
         this.stage = primaryStage;
 
@@ -39,10 +34,12 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         this.setBackground(new Background(imagenDeFondo));
         
         TextField nombreJugador1 = new TextField();
+        Jugador jugador1 = new Jugador(0,nombreJugador1.getText());//cambiar jugador?
         TextField nombreJugador2 = new TextField();
+        Jugador jugador2 = new Jugador(0,nombreJugador1.getText());
 
-        VBox espacioParaJugador1 = crearEspacioParaJugador(nombreJugador1, algomonesJugador1);
-        VBox espacioParaJugador2 = crearEspacioParaJugador(nombreJugador2, algomonesJugador2);
+        VBox espacioParaJugador1 = crearEspacioParaJugador(nombreJugador1,jugador1);
+        VBox espacioParaJugador2 = crearEspacioParaJugador(nombreJugador2,jugador2);
         /*
         Button botonVolver = new Button();
         BotonVolverHandler botonVolverHandler = new BotonVolverHandler(stage);
@@ -52,7 +49,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         Button botonEmpezar = new Button("Empezar Partida");
         BotonEmpezarHandler botonEmpezarHandler = new BotonEmpezarHandler(
-        		stage ,escenaPelea, partida, nombreJugador1, nombreJugador2);
+        		stage ,escenaPelea, nombreJugador1, nombreJugador2,jugador1,jugador2);
         botonEmpezar.setOnAction(botonEmpezarHandler);
 
 
@@ -64,27 +61,15 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     }
 
-    private VBox crearEspacioParaJugador(TextField nombreJugador, ArrayList<AlgoMon> algomonesSeleccionados) {
+    private VBox crearEspacioParaJugador(TextField nombreJugador, Jugador jugador) {
 
     	ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
-    	List<AlgoMon> elegidosJugador = new ArrayList<AlgoMon>();
     	
         Label IngresarNombre = new Label("Ingrese su nombre");
         IngresarNombre.setFont(Font.font("Cambria", FontWeight.BOLD, FontPosture.ITALIC , 20));
         IngresarNombre.setPadding(new Insets(20,0,20,0));
         nombreJugador.setPromptText("Debe llenar este campo");
-        
-//        nombre.setPadding(new Insets(20,0,20,0)); esto no sirve para alejarlo de los demas elementos de la interfaz
-//        nombre.setOnAction(new EventHandler<ActionEvent>() {
-//        		public void handle(ActionEvent e) {
-//        			if (nombre.getText() != null) 
-//        				jugador.setNombre(nombre.getText());;        	
-//        	}
-//        });
-        
-        // en el event handler manejamos que si lo ingresado es ""
-        // deje algun comentario visualizable
-        
+
         ImageView seleccionJugador = crearImagenDeAlgomonAElegir(lista);
         ImageView tabla = crearTablaDeAlgomonSeleccionado(lista);
         
@@ -95,10 +80,10 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         seleccionados.setPadding(new Insets(30,0,30,0));
         
         BotonSeleccionarEventHandler botonSeleccionarEventHandler = new BotonSeleccionarEventHandler(
-        		seleccionJugador, seleccionados, algomonesSeleccionados, lista.getActual());
+        		seleccionJugador, seleccionados, jugador, lista.getActual());
         
         Button botonSeleccion = crearBotonDeSeleccion(botonSeleccionarEventHandler);
-//        botonSeleccion.setPadding(new Insets(20,0,20,0)); lo mismo que con nombre.setPadding
+
         Button botonCambiarHaciaIzquierda = crearBotonIzquierdo(flechaIzquierda,
         		seleccionJugador,tabla,lista,botonSeleccionarEventHandler);
         Button botonCambiarHaciaDerecha = crearBotonDerecho(flechaDerecha,
@@ -107,7 +92,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         BorderPane zonaDeElecccionParaJugador =
                 crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,
                 		botonSeleccion,seleccionados,seleccionJugador, tabla, lista.getActual(),
-                		elegidosJugador);
+                		jugador.getListaDeAlgomones());
 
 
         VBox espacioParaJugador = new VBox();

@@ -38,9 +38,9 @@ public class RepresentacionAlgoMon {
 	private AlgoMon algomon;
 	
 	public RepresentacionAlgoMon(Image imagen, Image tabla, AlgoMon algomon){
-		this.setImagen(imagen);
-		this.setAlgomon(algomon);
-		this.setTabla(tabla);
+		setImagen(imagen);
+		setAlgomon(algomon);
+		setTabla(tabla);
 	}
 	
 	public List<String> getListaDeEstados(){

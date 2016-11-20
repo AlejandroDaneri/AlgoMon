@@ -1,20 +1,11 @@
 package vista;
 
-import java.util.ArrayList;
-
-import clases.AlgoMon;
-import clases.Elemento;
-import clases.Jugador;
-import clases.Partida;
-import clases.Pocion;
-import clases.Restaurador;
-import clases.SuperPocion;
-import clases.Vitamina;
+import clases.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,62 +18,62 @@ public class ContenedorPelea extends BorderPane{
 	private ListaDeRepresentaciones listaDeRepresentacionesJugador1;
 	private ListaDeRepresentaciones listaDeRepresentacionesJugador2;
 	
-	public ContenedorPelea(Stage primaryStage, Partida partida,
-			ArrayList<AlgoMon> algomonesJugador1, ArrayList<AlgoMon> algomonesJugador2) {
-		super();
-		this.listaDeRepresentacionesJugador1 = new ListaDeRepresentaciones(algomonesJugador1);
-		this.listaDeRepresentacionesJugador2 = new ListaDeRepresentaciones(algomonesJugador2);
-
-		this.stage = primaryStage;
+	public ContenedorPelea(Stage primaryStage) {
+		stage = primaryStage;
 		
 		Image fondo = new Image("file:src/vista/imagenes/fondopelea.jpg");
 		BackgroundImage imagenDeFondo =
 				new BackgroundImage(fondo, BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 						BackgroundSize.DEFAULT);
-		this.setBackground(new Background(imagenDeFondo));
-		
+		setBackground(new Background(imagenDeFondo));
+
+	}
+
+	public void inicializarPelea(Partida partida){
 		VBox informacionParaJugador1 = crearInformacionParaJugador(partida.jugadorActual());
 		informacionParaJugador1.setPadding(new Insets(0,20,0,20));
 		VBox informacionParaJugador2 = crearInformacionParaJugador(partida.jugadorOponente());
 		informacionParaJugador2.setPadding(new Insets(0,20,0,20));
+
+		listaDeRepresentacionesJugador1 = new ListaDeRepresentaciones(partida.jugadorActual().getListaDeAlgomones());
+		listaDeRepresentacionesJugador2 = new ListaDeRepresentaciones(partida.jugadorOponente().getListaDeAlgomones());
 		HBox panelDeNotificaciones = crearPanelDeNotificaciones();
 		panelDeNotificaciones.setAlignment(Pos.CENTER);
-		
-//		ejecutando esto es donde se rompe todo!!		
-//		VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesJugador1.getActual());
-//		VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesJugador2.getActual());
-		
+		//ejecutando esto es donde se rompe todo!!
+		//VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesJugador1.getActual());
+		//VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesJugador2.getActual());
+
 		HBox contenedorDeAlgomones = crearContenedorDeAlgomones();
 
 		this.setLeft(informacionParaJugador1);
 		this.setRight(informacionParaJugador2);
 		this.setBottom(panelDeNotificaciones);
 		this.setCenter(contenedorDeAlgomones);
-        this.setPadding(new Insets(50));
+		this.setPadding(new Insets(50));
 	}
-
 	private VBox crearDisplayAlgomon(RepresentacionAlgoMon representacion) {
-		
+
 		Label nombreDelAlgomon = new Label("AlgoMon"); // ya no tenemos un metodo que nos devuelva el nombre del algomon
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
-		
+
 		ProgressBar progressBar = new ProgressBar(establecerProgreso(representacion.getAlgomon().getVida(),
 				representacion.getAlgomon().getVidaOriginal()));
 		
 		VBox display = new VBox();
 		display.setAlignment(Pos.TOP_CENTER);
-		display.getChildren().addAll(nombreDelAlgomon, progressBar);
+		display.getChildren().addAll(nombreDelAlgomon,progressBar);
 		
 		return display;
 		
 	}
 
 	private double establecerProgreso(int vida, int vidaOriginal) {
-		return ((double)vida/(double)vidaOriginal); // siempre menor que 1
+				return ((double)vida/(double)vidaOriginal); // siempre menor que 1
 	}
+
 
 	private HBox crearContenedorDeAlgomones() {
 		

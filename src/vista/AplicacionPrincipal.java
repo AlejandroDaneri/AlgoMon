@@ -1,9 +1,5 @@
 package vista;
 
-import java.util.ArrayList;
-
-import clases.AlgoMon;
-import clases.Partida;
 import javafx.application.Application;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
@@ -24,17 +20,11 @@ public class AplicacionPrincipal extends Application{
 
         stagePrincipal.setTitle("AlgoMon");
 
-        Partida partida = new Partida();
-        ArrayList<AlgoMon> algomonesJugador1 = new ArrayList<AlgoMon>();
-        ArrayList<AlgoMon> algomonesJugador2 = new ArrayList<AlgoMon>();
-
-        ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal, partida,
-        		algomonesJugador1, algomonesJugador2);
+        ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal);
         Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal, alto_minimo, ancho_minimo);
 
         ContenedorEleccionAlgomon contenedorEleccion =
-                new ContenedorEleccionAlgomon(stagePrincipal, escenaPelea, partida, 
-                		algomonesJugador1, algomonesJugador2);
+                new ContenedorEleccionAlgomon(stagePrincipal, escenaPelea);
         Escena escenaEleccion = new Escena(contenedorEleccion, stagePrincipal, alto_minimo, ancho_minimo);
 
         ContenedorBienvenida contenedorBienvenidos =
