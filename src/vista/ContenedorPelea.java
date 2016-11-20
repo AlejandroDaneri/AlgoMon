@@ -1,11 +1,15 @@
 package vista;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import clases.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -38,11 +42,9 @@ public class ContenedorPelea extends BorderPane{
 
 		listaDeRepresentacionesJugador1 = new ListaDeRepresentaciones(partida.jugadorActual().getListaDeAlgomones());
 		listaDeRepresentacionesJugador2 = new ListaDeRepresentaciones(partida.jugadorOponente().getListaDeAlgomones());
+		
 		HBox panelDeNotificaciones = crearPanelDeNotificaciones();
 		panelDeNotificaciones.setAlignment(Pos.CENTER);
-		//ejecutando esto es donde se rompe todo!!
-		//VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesJugador1.getActual());
-		//VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesJugador2.getActual());
 
 		HBox contenedorDeAlgomones = crearContenedorDeAlgomones();
 
@@ -52,28 +54,6 @@ public class ContenedorPelea extends BorderPane{
 		this.setCenter(contenedorDeAlgomones);
 		this.setPadding(new Insets(50));
 	}
-	private VBox crearDisplayAlgomon(RepresentacionAlgoMon representacion) {
-
-		Label nombreDelAlgomon = new Label("AlgoMon"); // ya no tenemos un metodo que nos devuelva el nombre del algomon
-		nombreDelAlgomon.setAlignment(Pos.CENTER);
-		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
-		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
-
-		ProgressBar progressBar = new ProgressBar(establecerProgreso(representacion.getAlgomon().getVida(),
-				representacion.getAlgomon().getVidaOriginal()));
-		
-		VBox display = new VBox();
-		display.setAlignment(Pos.TOP_CENTER);
-		display.getChildren().addAll(nombreDelAlgomon,progressBar);
-		
-		return display;
-		
-	}
-
-	private double establecerProgreso(int vida, int vidaOriginal) {
-				return ((double)vida/(double)vidaOriginal); // siempre menor que 1
-	}
-
 
 	private HBox crearContenedorDeAlgomones() {
 		
@@ -86,13 +66,43 @@ public class ContenedorPelea extends BorderPane{
 		HBox display = new HBox();
 		display.setBackground(new Background(imagenDeFondo));
 		display.setPadding(new Insets(10));
-//		esto no salió
-		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
-				new CornerRadii(0), BorderWidths.FULL));
-		display.setBorder(border);
+
+		//ejecutando esto es donde se rompe todo!!
+//		VBox displayAlgomon1 = crearDisplayAlgomon(this.listaDeRepresentacionesJugador1.getActual());
+//		VBox displayAlgomon2 = crearDisplayAlgomon(this.listaDeRepresentacionesJugador2.getActual());
+//		display.getChildren().addAll(displayAlgomon1, displayAlgomon2);
+		
+		return display;
+	}
+	
+	private VBox crearDisplayAlgomon(RepresentacionAlgoMon representacion) {
+
+		Label nombreDelAlgomon = new Label("AlgoMon"); // ya no tenemos un metodo que nos devuelva el nombre del algomon
+		nombreDelAlgomon.setAlignment(Pos.CENTER);
+		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
+		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
+
+		ProgressBar progressBar = new ProgressBar(establecerProgreso(representacion.getAlgomon().getVida(),
+				representacion.getAlgomon().getVidaOriginal()));
+		
+		String estadosParaVisualizar = representacion.getListaDeEstados().get(0) + ", " + representacion.getListaDeEstados().get(0);
+		Label estados = new Label(estadosParaVisualizar);
+		estados.setFont(Font.font("Cambria", 20));
+		
+		ImageView imagen = new ImageView(representacion.getImagen());
+		imagen.setFitWidth(250);
+		imagen.setFitHeight(250);
+		
+		VBox display = new VBox();
+		display.setAlignment(Pos.TOP_CENTER);
+		display.getChildren().addAll(nombreDelAlgomon,progressBar, estados, imagen);
+		
 		return display;
 	}
 
+	private double establecerProgreso(int vida, int vidaOriginal) {
+				return ((double)vida/(double)vidaOriginal); // siempre menor que 1
+	}
 
 	private VBox crearInformacionParaJugador(Jugador jugador) {
 		
