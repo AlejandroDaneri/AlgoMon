@@ -38,7 +38,7 @@ public class VentanaNombrarJugadores {
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Nombre Jugadores");
         window.setMinWidth(500);
-
+        window.centerOnScreen();
 
         Label labelParaJugador1 = new Label();
         labelParaJugador1.setText("Ingresar Nombre Jugador 1");

@@ -66,8 +66,12 @@ public class ContenedorPelea extends BorderPane{
 
 	private VBox crearBotonera(Partida partida) {
 		VBox botonera = new VBox();
+		botonera.setSpacing(15);
+		botonera.setAlignment(Pos.CENTER);
 
 		VBox opciones = new VBox();
+		opciones.setSpacing(15);
+		opciones.setAlignment(Pos.CENTER);
 
 		Button botonAtacar = new Button("Atacar");
 		BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones);
@@ -100,7 +104,9 @@ public class ContenedorPelea extends BorderPane{
 		display.setPadding(new Insets(30));
 
 		VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesJugador1.getActual());
+		displayAlgomon1.setPadding(new Insets(0,0,20,0));
 		VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesJugador2.getActual());
+		displayAlgomon2.setPadding(new Insets(0,0,20,0));
 		display.setLeft(displayAlgomon1);
 		display.setRight(displayAlgomon2);
 

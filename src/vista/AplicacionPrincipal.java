@@ -1,6 +1,7 @@
 package vista;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
@@ -17,6 +18,7 @@ public class AplicacionPrincipal extends Application{
         musicaDeFondo.play();
 
         stagePrincipal.setTitle("AlgoMon");
+        stagePrincipal.getIcons().add(new Image("file:src/vista/imagenes/pokebola.png"));
 
         ContenedorBienvenida contenedorBienvenidos =
                 new ContenedorBienvenida(stagePrincipal, musicaDeFondo);
