@@ -3,6 +3,7 @@ package vista;
 import clases.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -45,11 +46,41 @@ public class ContenedorPelea extends BorderPane{
 
 		BorderPane contenedorDeAlgomones = crearContenedorDeAlgomones();
 
-		this.setLeft(informacionParaJugador1);
-		this.setRight(informacionParaJugador2);
+		VBox botoneraJugador1 = crearBotonera(partida);
+		VBox botoneraJugador2 = crearBotonera(partida);
+
+		VBox zonaJugador1 = new VBox();
+		zonaJugador1.getChildren().addAll(informacionParaJugador1,botoneraJugador1);
+
+		VBox zonaJugador2 = new VBox();
+		zonaJugador2.getChildren().addAll(informacionParaJugador2,botoneraJugador2);
+
+
+		this.setLeft(zonaJugador1);
+		this.setRight(zonaJugador2);
 		this.setBottom(panelDeNotificaciones);
 		this.setCenter(contenedorDeAlgomones);
 		this.setPadding(new Insets(50));
+	}
+
+	private VBox crearBotonera(Partida partida) {
+		VBox botonera = new VBox();
+
+		Button botonAtacar = new Button("Atacar");
+		BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida.jugadorActual(),partida.jugadorOponente());
+		botonAtacar.setOnAction(botonAtacarEventHandler);
+
+		Button botonUsarElemento = new Button("Usar elemento");
+		BotonUsarElementoEventHandler botonUsarElementoEventHandler = new BotonUsarElementoEventHandler(partida.jugadorActual(),partida.jugadorOponente());
+		botonUsarElemento.setOnAction(botonUsarElementoEventHandler);
+
+		Button botonCambiarAlgomon = new Button("Cambiar Algomon");
+		BotonCambiarAlgomonEventHandler botonCambiarAlgomonEventHandler = new BotonCambiarAlgomonEventHandler(partida.jugadorActual(),partida.jugadorOponente());
+		botonCambiarAlgomon.setOnAction(botonCambiarAlgomonEventHandler);
+
+		botonera.getChildren().addAll(botonAtacar,botonUsarElemento,botonCambiarAlgomon);
+		botonera.setAlignment(Pos.CENTER);
+		return botonera;
 	}
 
 	private BorderPane crearContenedorDeAlgomones() {
@@ -83,7 +114,7 @@ public class ContenedorPelea extends BorderPane{
 				representacion.getAlgomon().getVidaOriginal()));
 		
 		String estadosParaVisualizar = /*representacion.getListaDeEstados().get(0)*/ "Estado"+ ": " + representacion.getListaDeEstados().get(0);
-		//aca arriba aparecia dos veces lo mismo y empieza como dormido
+		//aca arriba aparecia dos veces lo mismo
 		Label estados = new Label(estadosParaVisualizar);
 		estados.setFont(Font.font("Cambria", 20));
 		
@@ -133,7 +164,8 @@ public class ContenedorPelea extends BorderPane{
 		restauradores.setFont(Font.font("Cambria", 20));
 		restauradores.setPadding(new Insets(0,0,20,0));
 
-		
+
+
 		VBox informacionParaJugador = new VBox();
 		informacionParaJugador.getChildren().addAll(nombreDelJugador, pociones, superPociones,
 				vitaminas, restauradores);

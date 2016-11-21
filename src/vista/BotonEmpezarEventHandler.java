@@ -53,8 +53,8 @@ public class BotonEmpezarEventHandler extends BotonHandler {
     }
 
     private boolean validarJugadorListo(Jugador jugador) {
-        //if (jugador.getListaDeAlgomones().size() ==0) {
-        if (jugador.getListaDeAlgomones().size() != 3){ //para probar les conviene comentar esta y poner la de arriba
+        if (jugador.getListaDeAlgomones().size() ==0) {
+        //if (jugador.getListaDeAlgomones().size() != 3){ //para probar les conviene comentar esta y poner la de arriba
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Algomones sin elegir");
             alert.setHeaderText(jugador.getNombre() + ": Faltan elegir algomones");
