@@ -18,7 +18,7 @@ public class ContenedorBienvenida extends VBox{
 
     private Stage stage;
 
-    public ContenedorBienvenida(Stage primaryStage, AudioClip musicaDeFondo, Scene escenaEleccion) {
+    public ContenedorBienvenida(Stage primaryStage, AudioClip musicaDeFondo) {
         super();
         this.stage = primaryStage;
         this.setAlignment(Pos.CENTER);
@@ -40,9 +40,9 @@ public class ContenedorBienvenida extends VBox{
         botonEntrar.setMinSize(220, 80);
         botonEntrar.setFont(Font.font("Arial Black", FontWeight.BOLD,30));
         botonEntrar.setStyle("-fx-base: #373441");
-
+      
         BotonEntrarEventHandler botonEntrarHandler =
-                new BotonEntrarEventHandler(stage, escenaEleccion,stage.isFullScreen());
+                new BotonEntrarEventHandler(stage,stage.isFullScreen());
         botonEntrar.setOnAction(botonEntrarHandler);
 
         Button botonReglas = new Button();

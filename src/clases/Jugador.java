@@ -14,7 +14,6 @@ public class Jugador {
 	private ArrayList<AlgoMon> algomones;
 	private Elementos elementos;
 	
-	
 	public Jugador(int indice,String nombre) {
 		this.setNombre(nombre);
 		this.setIndiceTurno(indice);

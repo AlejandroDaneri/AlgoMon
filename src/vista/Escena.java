@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Escena extends Scene{
-
+	
     public Escena(Pane contenedor, Stage stage, int ancho, int alto) {
         super(contenedor, alto, ancho);
         this.setOnKeyPressed(event -> {
@@ -14,5 +14,4 @@ public class Escena extends Scene{
             if (event.getCode() == KeyCode.ESCAPE) stage.setMaximized(true);
         });
     }
-
 }

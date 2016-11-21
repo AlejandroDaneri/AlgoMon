@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -20,26 +21,30 @@ import clases.AlgoMon;
 import clases.Jugador;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
+	
     private Stage stage;
+    private Jugador jugador1;
+    private Jugador jugador2;
 //    private ArrayList<AlgoMon> algomonesEnUso
-    public ContenedorEleccionAlgomon(Stage primaryStage, Escena escenaPelea) {
+    
+    public ContenedorEleccionAlgomon(Stage primaryStage, String nombreJugador1, String nombreJugador2) {
+    	
         super();
         this.stage = primaryStage;
-
+        
         Image fondo = new Image("file:src/vista/imagenes/patronfondo.jpg");
         BackgroundImage imagenDeFondo =
                 new BackgroundImage(fondo, BackgroundRepeat.REPEAT,
                         BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
-        
-        TextField nombreJugador1 = new TextField();
-        Jugador jugador1 = new Jugador(0,nombreJugador1.getText());//cambiar jugador?
-        TextField nombreJugador2 = new TextField();
-        Jugador jugador2 = new Jugador(0,nombreJugador1.getText());
+        		
+        Jugador jugador1 = new Jugador(0,nombreJugador1);//cambiar jugador?
+        Jugador jugador2 = new Jugador(1,nombreJugador2);
 
         VBox espacioParaJugador1 = crearEspacioParaJugador(nombreJugador1,jugador1);
         VBox espacioParaJugador2 = crearEspacioParaJugador(nombreJugador2,jugador2);
+        
         /*
         Button botonVolver = new Button();
         BotonVolverHandler botonVolverHandler = new BotonVolverHandler(stage);
@@ -49,9 +54,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         Button botonEmpezar = new Button("Empezar Partida");
         BotonEmpezarHandler botonEmpezarHandler = new BotonEmpezarHandler(
-        		stage ,escenaPelea, nombreJugador1, nombreJugador2,jugador1,jugador2);
+        		stage, nombreJugador1, nombreJugador2, jugador1, jugador2);
         botonEmpezar.setOnAction(botonEmpezarHandler);
-
 
         this.setLeft(espacioParaJugador1);
         this.setRight(espacioParaJugador2);
@@ -61,15 +65,13 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     }
 
-    private VBox crearEspacioParaJugador(TextField nombreJugador, Jugador jugador) {
+    private VBox crearEspacioParaJugador(String nombreJugador, Jugador jugador) {
 
     	ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
     	
-        Label IngresarNombre = new Label("Ingrese su nombre");
-        IngresarNombre.setFont(Font.font("Cambria", FontWeight.BOLD, FontPosture.ITALIC , 20));
-        IngresarNombre.setPadding(new Insets(20,0,20,0));
-        nombreJugador.setPromptText("Debe llenar este campo");
-
+        Label EtiquetaNombre = new Label(nombreJugador);
+        EtiquetaNombre.setFont(Font.font("Cambria", FontWeight.BOLD, 40));
+        
         ImageView seleccionJugador = crearImagenDeAlgomonAElegir(lista);
         ImageView tabla = crearTablaDeAlgomonSeleccionado(lista);
         
@@ -97,7 +99,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         VBox espacioParaJugador = new VBox();
         espacioParaJugador.setAlignment(Pos.CENTER);
-        espacioParaJugador.getChildren().addAll(IngresarNombre, nombreJugador, zonaDeElecccionParaJugador);
+        espacioParaJugador.getChildren().addAll(EtiquetaNombre, zonaDeElecccionParaJugador);
 
         //-->
 //        nombre.focusedProperty().addListener((observable,  oldValue,  newValue) -> espacioParaJugador.requestFocus());

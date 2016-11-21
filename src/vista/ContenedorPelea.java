@@ -17,7 +17,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-public class ContenedorPelea extends BorderPane{
+public class ContenedorPelea extends BorderPane {
+	
 	private Stage stage;
 	private ListaDeRepresentaciones listaDeRepresentacionesJugador1;
 	private ListaDeRepresentaciones listaDeRepresentacionesJugador2;
@@ -67,7 +68,7 @@ public class ContenedorPelea extends BorderPane{
 		display.setBackground(new Background(imagenDeFondo));
 		display.setPadding(new Insets(10));
 
-		//ejecutando esto es donde se rompe todo!!
+//		ejecutando esto es donde se rompe todo!!
 //		VBox displayAlgomon1 = crearDisplayAlgomon(this.listaDeRepresentacionesJugador1.getActual());
 //		VBox displayAlgomon2 = crearDisplayAlgomon(this.listaDeRepresentacionesJugador2.getActual());
 //		display.getChildren().addAll(displayAlgomon1, displayAlgomon2);
@@ -143,8 +144,6 @@ public class ContenedorPelea extends BorderPane{
 		return informacionParaJugador;
 	}
 	
-	
-
 	private HBox crearPanelDeNotificaciones() {
 		
 		BackgroundFill fondo = new BackgroundFill(Color.web("#89B0AE"),

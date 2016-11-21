@@ -1,6 +1,7 @@
 package vista;
 
 import javafx.application.Application;
+import javafx.scene.control.Button;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
@@ -23,14 +24,10 @@ public class AplicacionPrincipal extends Application{
         ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal);
         Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal, alto_minimo, ancho_minimo);
 
-        ContenedorEleccionAlgomon contenedorEleccion =
-                new ContenedorEleccionAlgomon(stagePrincipal, escenaPelea);
-        Escena escenaEleccion = new Escena(contenedorEleccion, stagePrincipal, alto_minimo, ancho_minimo);
-
         ContenedorBienvenida contenedorBienvenidos =
-                new ContenedorBienvenida(stagePrincipal, musicaDeFondo, escenaEleccion);
+                new ContenedorBienvenida(stagePrincipal, musicaDeFondo);
         Escena escenaBienvenidos = new Escena(contenedorBienvenidos, stagePrincipal, alto_minimo, ancho_minimo);
-
+       
         stagePrincipal.setScene(escenaBienvenidos);
 
         stagePrincipal.setFullScreenExitHint("Presione F11 para entrar o salir de la pantalla completa");
