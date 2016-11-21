@@ -19,10 +19,7 @@ import clases.Jugador;
 public class ContenedorEleccionAlgomon extends BorderPane{
 	
     private Stage stage;
-    private Jugador jugador1;
-    private Jugador jugador2;
-//    private ArrayList<AlgoMon> algomonesEnUso
-    
+
     public ContenedorEleccionAlgomon(Stage primaryStage, String nombreJugador1, String nombreJugador2) {
     	
         super();
@@ -52,6 +49,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         BotonEmpezarEventHandler botonEmpezarHandler = new BotonEmpezarEventHandler(
         		stage, nombreJugador1, nombreJugador2, jugador1, jugador2);
         botonEmpezar.setOnAction(botonEmpezarHandler);
+        //botonEmpezar.setMinSize(220, 80);
+        botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
 
         this.setLeft(espacioParaJugador1);
         this.setRight(espacioParaJugador2);
@@ -75,7 +74,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         ImageView flechaDerecha = crearFlecha("file:src/vista/imagenes/flechader.png");
         
         HBox seleccionados = inicializarListaDeElegidos();
-        seleccionados.setPadding(new Insets(30,0,30,0));
+        seleccionados.setPadding(new Insets(13,0,30,0));
         
         BotonSeleccionarEventHandler botonSeleccionarEventHandler = new BotonSeleccionarEventHandler(
         		seleccionJugador, seleccionados, jugador, lista.getActual());
@@ -96,10 +95,6 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         VBox espacioParaJugador = new VBox();
         espacioParaJugador.setAlignment(Pos.CENTER);
         espacioParaJugador.getChildren().addAll(EtiquetaNombre, zonaDeElecccionParaJugador);
-
-        //-->
-//        nombre.focusedProperty().addListener((observable,  oldValue,  newValue) -> espacioParaJugador.requestFocus());
-        //<-- Saca focus del textField nombre
 
         return espacioParaJugador;
     }
@@ -126,8 +121,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     private ImageView crearImagenDeNoElegido() {
         ImageView noSeleccionado = new ImageView("file:src/vista/imagenes/seleccionVacia.png");
-        noSeleccionado.setFitWidth(150);
-        noSeleccionado.setFitHeight(150);
+        noSeleccionado.setFitWidth(120);
+        noSeleccionado.setFitHeight(120);
         return noSeleccionado;
     }
 

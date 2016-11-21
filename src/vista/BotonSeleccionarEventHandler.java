@@ -58,8 +58,8 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
         }
 
         ImageView seleccionActual= new ImageView(seleccion.getImage());
-        seleccionActual.setFitHeight(150);
-        seleccionActual.setFitWidth(150);
+        seleccionActual.setFitHeight(120);
+        seleccionActual.setFitWidth(120);
         try {
             seleccionados.getChildren().set(contador++,seleccionActual);
         }catch (IndexOutOfBoundsException e) {} //nunca alcanzado
