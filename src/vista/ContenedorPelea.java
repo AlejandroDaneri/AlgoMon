@@ -4,6 +4,7 @@ import clases.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -66,19 +67,22 @@ public class ContenedorPelea extends BorderPane{
 	private VBox crearBotonera(Partida partida) {
 		VBox botonera = new VBox();
 
+		VBox opciones = new VBox();
+
 		Button botonAtacar = new Button("Atacar");
-		BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida.jugadorActual(),partida.jugadorOponente());
+		BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones);
 		botonAtacar.setOnAction(botonAtacarEventHandler);
 
 		Button botonUsarElemento = new Button("Usar elemento");
-		BotonUsarElementoEventHandler botonUsarElementoEventHandler = new BotonUsarElementoEventHandler(partida.jugadorActual(),partida.jugadorOponente());
+		BotonUsarElementoEventHandler botonUsarElementoEventHandler = new BotonUsarElementoEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones);
 		botonUsarElemento.setOnAction(botonUsarElementoEventHandler);
 
 		Button botonCambiarAlgomon = new Button("Cambiar Algomon");
-		BotonCambiarAlgomonEventHandler botonCambiarAlgomonEventHandler = new BotonCambiarAlgomonEventHandler(partida.jugadorActual(),partida.jugadorOponente());
+		BotonCambiarAlgomonEventHandler botonCambiarAlgomonEventHandler = new BotonCambiarAlgomonEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones);
 		botonCambiarAlgomon.setOnAction(botonCambiarAlgomonEventHandler);
 
-		botonera.getChildren().addAll(botonAtacar,botonUsarElemento,botonCambiarAlgomon);
+
+		botonera.getChildren().addAll(botonAtacar,botonUsarElemento,botonCambiarAlgomon,opciones);
 		botonera.setAlignment(Pos.CENTER);
 		return botonera;
 	}
