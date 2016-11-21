@@ -18,9 +18,6 @@ public class AplicacionPrincipal extends Application{
 
         stagePrincipal.setTitle("AlgoMon");
 
-        ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal);
-       //Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal, alto_minimo, ancho_minimo);
-
         ContenedorBienvenida contenedorBienvenidos =
                 new ContenedorBienvenida(stagePrincipal, musicaDeFondo);
         Escena escenaBienvenidos = new Escena(contenedorBienvenidos, stagePrincipal);

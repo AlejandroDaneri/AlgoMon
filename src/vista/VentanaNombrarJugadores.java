@@ -1,12 +1,16 @@
 package vista;
 
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class VentanaNombrarJugadores {
@@ -28,32 +32,34 @@ public class VentanaNombrarJugadores {
 
     }
     
-    public void display () {
+    public void mostrar(ActionEvent event) {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Nombre Jugadores");
         window.setMinWidth(500);
 
-        Label label = new Label();
-        label.setText("Ingresar Nombre Jugador 1");
 
-        Label label2 = new Label();
-        label2.setText("Ingresar Nombre Jugador 2");
+        Label labelParaJugador1 = new Label();
+        labelParaJugador1.setText("Ingresar Nombre Jugador 1");
+
+        Label labelParaJugador2 = new Label();
+        labelParaJugador2.setText("Ingresar Nombre Jugador 2");
 
 
-        Button cerrar = new Button();
-        cerrar.setText("Aceptar");
-        cerrar.setOnAction(e -> {
+        Button aceptar = new Button("Aceptar");
+        aceptar.setOnAction(e -> {
             nombresIngresados = true;
             window.close();
         });
 
-        VBox box = new VBox(20);
-        box.getChildren().addAll(label, nombreJugador1, label2, nombreJugador2, cerrar);
-        box.setAlignment(Pos.CENTER);
+        VBox contenedor = new VBox(20);
+        contenedor.getChildren().addAll(labelParaJugador1, nombreJugador1, labelParaJugador2, nombreJugador2, aceptar);
+        contenedor.setMargin(aceptar,new Insets(0,0,10,0));
+        contenedor.setMargin(labelParaJugador1,new Insets(10,0,0,0));
+        contenedor.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(box);
+        Scene scene = new Scene(contenedor);
         window.setScene(scene);
         window.showAndWait();
 
