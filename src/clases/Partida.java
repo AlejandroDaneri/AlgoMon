@@ -10,7 +10,7 @@ public class Partida {
 	private Jugador jugador2;
 	private int turnos;
 	private int turnoActual;
-
+	
 	public Partida(Jugador jugador1 , Jugador jugador2){
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;

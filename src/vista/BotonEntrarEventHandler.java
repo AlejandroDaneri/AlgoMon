@@ -1,7 +1,6 @@
 package vista;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class BotonEntrarEventHandler extends BotonHandler {
@@ -32,7 +31,7 @@ public class BotonEntrarEventHandler extends BotonHandler {
     	String nombreJugador2 = ventanaNombres.getNombreJugador2();
     	
     	ContenedorEleccionAlgomon contenedorEleccion = new ContenedorEleccionAlgomon(stage, nombreJugador1, nombreJugador2);
-        Escena escenaEleccion = new Escena(contenedorEleccion, stage, alto_minimo, ancho_minimo);
+        Escena escenaEleccion = new Escena(contenedorEleccion, stage);
         
         stage.setFullScreenExitHint("");
         boolean enPantallaCompletaAntesDeCambiarEscena = stage.isFullScreen();

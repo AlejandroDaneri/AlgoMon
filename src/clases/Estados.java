@@ -40,8 +40,8 @@ public class Estados {
 
 	public List<Estado> getListaDeEstados() {
 		List<Estado> lista = new ArrayList<Estado>();
-		lista.add(this.estadoEfimero);
-		lista.add(this.estadoPersistente);
-		return null;
+		lista.add(estadoEfimero);
+		lista.add(estadoPersistente);
+		return lista;
 	}
 }

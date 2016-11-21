@@ -44,16 +44,17 @@ public class RepresentacionAlgoMon {
 	}
 	
 	public List<String> getListaDeEstados(){
-		List<String> lista = new ArrayList<String>();
-		for(Estado estado : this.algomon.getListaDeEstados()){
+		ArrayList<String> lista = new ArrayList<String>();
+		for(Estado estado : algomon.getListaDeEstados()){
 			lista.add(this.getNombreDeEstado(estado));
 		}
 		return lista;
 	}
 	
 	public String getNombreDeEstado(Estado estado){
-		if(estado.equals(new Quemado())) return quemado;
-		if(estado.equals(new EstadoNormal())) return normal;
+		//modificar, la version anterior no funcionaba en contenedorPelea
+		if(estado.getClass().equals((Quemado.class))) return quemado;
+		if(estado.getClass().equals(EstadoNormal.class)) return normal;
 		return dormido;
 	}
 	

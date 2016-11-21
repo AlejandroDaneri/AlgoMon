@@ -34,7 +34,7 @@ public class ListaDeRepresentaciones {
 	
 	public ListaDeRepresentaciones(ArrayList<AlgoMon> listaDeAlgoMon){
 		fabrica = new FabricaDeRepresentaciones();
-		ArrayList<RepresentacionAlgoMon> lista = new ArrayList<RepresentacionAlgoMon>();
+		lista = new ArrayList<RepresentacionAlgoMon>();
 		
 		for (AlgoMon algomon : listaDeAlgoMon){
 			lista.add(fabrica.crearRepresentacion(algomon));
@@ -54,7 +54,7 @@ public class ListaDeRepresentaciones {
 	}
 	
 	public RepresentacionAlgoMon getActual(){
-		return getLista().get(getIndice());
+		return lista.get(indice);
 	}
 
 	private ArrayList<RepresentacionAlgoMon> getLista() {

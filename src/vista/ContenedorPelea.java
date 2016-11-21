@@ -1,8 +1,5 @@
 package vista;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import clases.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,8 +14,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-public class ContenedorPelea extends BorderPane {
-	
+public class ContenedorPelea extends BorderPane{
 	private Stage stage;
 	private ListaDeRepresentaciones listaDeRepresentacionesJugador1;
 	private ListaDeRepresentaciones listaDeRepresentacionesJugador2;
@@ -47,7 +43,7 @@ public class ContenedorPelea extends BorderPane {
 		HBox panelDeNotificaciones = crearPanelDeNotificaciones();
 		panelDeNotificaciones.setAlignment(Pos.CENTER);
 
-		HBox contenedorDeAlgomones = crearContenedorDeAlgomones();
+		BorderPane contenedorDeAlgomones = crearContenedorDeAlgomones();
 
 		this.setLeft(informacionParaJugador1);
 		this.setRight(informacionParaJugador2);
@@ -56,7 +52,7 @@ public class ContenedorPelea extends BorderPane {
 		this.setPadding(new Insets(50));
 	}
 
-	private HBox crearContenedorDeAlgomones() {
+	private BorderPane crearContenedorDeAlgomones() {
 		
 		Image fondo = new Image("file:src/vista/imagenes/displayalgomonfondo.png");
 		BackgroundImage imagenDeFondo =
@@ -64,21 +60,21 @@ public class ContenedorPelea extends BorderPane {
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 						BackgroundSize.DEFAULT);
 		
-		HBox display = new HBox();
+		BorderPane display = new BorderPane();
 		display.setBackground(new Background(imagenDeFondo));
-		display.setPadding(new Insets(10));
+		display.setPadding(new Insets(30));
 
-//		ejecutando esto es donde se rompe todo!!
-//		VBox displayAlgomon1 = crearDisplayAlgomon(this.listaDeRepresentacionesJugador1.getActual());
-//		VBox displayAlgomon2 = crearDisplayAlgomon(this.listaDeRepresentacionesJugador2.getActual());
-//		display.getChildren().addAll(displayAlgomon1, displayAlgomon2);
-		
+		VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesJugador1.getActual());
+		VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesJugador2.getActual());
+		display.setLeft(displayAlgomon1);
+		display.setRight(displayAlgomon2);
+
 		return display;
 	}
 	
 	private VBox crearDisplayAlgomon(RepresentacionAlgoMon representacion) {
 
-		Label nombreDelAlgomon = new Label("AlgoMon"); // ya no tenemos un metodo que nos devuelva el nombre del algomon
+		Label nombreDelAlgomon = new Label(representacion.getAlgomon().getClass().getName().substring(7)); // ya no tenemos un metodo que nos devuelva el nombre del algomon, solucion provisoria
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
@@ -86,7 +82,8 @@ public class ContenedorPelea extends BorderPane {
 		ProgressBar progressBar = new ProgressBar(establecerProgreso(representacion.getAlgomon().getVida(),
 				representacion.getAlgomon().getVidaOriginal()));
 		
-		String estadosParaVisualizar = representacion.getListaDeEstados().get(0) + ", " + representacion.getListaDeEstados().get(0);
+		String estadosParaVisualizar = /*representacion.getListaDeEstados().get(0)*/ "Estado"+ ": " + representacion.getListaDeEstados().get(0);
+		//aca arriba aparecia dos veces lo mismo y empieza como dormido
 		Label estados = new Label(estadosParaVisualizar);
 		estados.setFont(Font.font("Cambria", 20));
 		
@@ -95,14 +92,14 @@ public class ContenedorPelea extends BorderPane {
 		imagen.setFitHeight(250);
 		
 		VBox display = new VBox();
-		display.setAlignment(Pos.TOP_CENTER);
-		display.getChildren().addAll(nombreDelAlgomon,progressBar, estados, imagen);
+		display.setAlignment(Pos.BOTTOM_CENTER);
+		display.getChildren().addAll(imagen, nombreDelAlgomon,progressBar, estados);
 		
 		return display;
 	}
 
 	private double establecerProgreso(int vida, int vidaOriginal) {
-				return ((double)vida/(double)vidaOriginal); // siempre menor que 1
+		return ((double)vida/(double)vidaOriginal); // siempre menor que 1
 	}
 
 	private VBox crearInformacionParaJugador(Jugador jugador) {
@@ -144,6 +141,8 @@ public class ContenedorPelea extends BorderPane {
 		return informacionParaJugador;
 	}
 	
+	
+
 	private HBox crearPanelDeNotificaciones() {
 		
 		BackgroundFill fondo = new BackgroundFill(Color.web("#89B0AE"),
@@ -153,6 +152,7 @@ public class ContenedorPelea extends BorderPane {
 		panel.setBackground(new Background(fondo));
 		panel.setMinWidth(400);
 		panel.setMinHeight(70);
+
 		
 		Label notificaciones = new Label("Panel de notificaciones");
 		notificaciones.setFont(Font.font("Cambria", 15));

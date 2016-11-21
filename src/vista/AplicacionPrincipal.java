@@ -1,13 +1,10 @@
 package vista;
 
 import javafx.application.Application;
-import javafx.scene.control.Button;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class AplicacionPrincipal extends Application{
-    private final int ancho_minimo = 1024;
-    private final int alto_minimo = 720;
 
     public static void main(String[] args) {
         launch(args);
@@ -22,17 +19,17 @@ public class AplicacionPrincipal extends Application{
         stagePrincipal.setTitle("AlgoMon");
 
         ContenedorPelea contenedorPelea = new ContenedorPelea(stagePrincipal);
-        Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal, alto_minimo, ancho_minimo);
+       //Escena escenaPelea = new Escena(contenedorPelea,stagePrincipal, alto_minimo, ancho_minimo);
 
         ContenedorBienvenida contenedorBienvenidos =
                 new ContenedorBienvenida(stagePrincipal, musicaDeFondo);
-        Escena escenaBienvenidos = new Escena(contenedorBienvenidos, stagePrincipal, alto_minimo, ancho_minimo);
+        Escena escenaBienvenidos = new Escena(contenedorBienvenidos, stagePrincipal);
        
         stagePrincipal.setScene(escenaBienvenidos);
 
         stagePrincipal.setFullScreenExitHint("Presione F11 para entrar o salir de la pantalla completa");
-        stagePrincipal.setMinHeight(alto_minimo);
-        stagePrincipal.setMinWidth(ancho_minimo);
+        stagePrincipal.setMinHeight(escenaBienvenidos.getAlto_minimo());
+        stagePrincipal.setMinWidth(escenaBienvenidos.getAnchoMinimo());
         stagePrincipal.show();
 
         AlertaHandler alerta = new AlertaHandler();
