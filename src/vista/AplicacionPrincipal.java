@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+import vista.contenedores.ContenedorBienvenida;
+import vista.handlers.AlertaHandler;
 
 public class AplicacionPrincipal extends Application{
 

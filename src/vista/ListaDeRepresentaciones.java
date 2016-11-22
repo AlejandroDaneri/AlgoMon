@@ -1,15 +1,8 @@
 package vista;
 
-import java.util.ArrayList;
-import java.util.List;
+import modelo.algomones.*;
 
-import clases.AlgoMon;
-import clases.Bulbasaur;
-import clases.Chansey;
-import clases.Charmander;
-import clases.Jigglypuff;
-import clases.Rattata;
-import clases.Squirtle;
+import java.util.ArrayList;
 
 public class ListaDeRepresentaciones {
 	

@@ -1,12 +1,7 @@
 package vista;
 
-import clases.AlgoMon;
-import clases.Bulbasaur;
-import clases.Charmander;
-import clases.Jigglypuff;
-import clases.Rattata;
-import clases.Squirtle;
 import javafx.scene.image.Image;
+import modelo.algomones.*;
 
 public class FabricaDeRepresentaciones {
 	

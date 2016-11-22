@@ -206,7 +206,7 @@
 	</target>
 
 	<target name="ejecutar.aplicacion" depends="ejecutar.tests, empaquetar">
-		<java classname="Aplicacion.Main" fork="true">
+		<java classname="aplicacion.Main" fork="true">
 			<classpath refid="classpath" />
 			<classpath location="${build}/dist/AlgoMon.jar" />
 		</java>

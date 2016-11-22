@@ -1,21 +1,14 @@
 package vista;
 
+import javafx.scene.image.Image;
+import modelo.algomones.AlgoMon;
+import modelo.ataques.*;
+import modelo.estados.Estado;
+import modelo.estados.EstadoNormal;
+import modelo.estados.Quemado;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import clases.AlgoMon;
-import clases.Ataque;
-import clases.AtaqueRapido;
-import clases.Brasas;
-import clases.Burbuja;
-import clases.CanonDeAgua;
-import clases.Canto;
-import clases.Chupavidas;
-import clases.Estado;
-import clases.EstadoNormal;
-import clases.Fogonazo;
-import clases.Quemado;
-import javafx.scene.image.Image;
 
 public class RepresentacionAlgoMon {
 	
