@@ -39,8 +39,8 @@ public class BarraDeMenu extends MenuBar {
 		
 		//opciones de "Ayuda"
 		MenuItem reglasDelJuego = new MenuItem("Reglas del juego");
-//		BotonReglasEventHandler reglasDelJuegoHandler = new BotonReglasEventHandler();
-//		reglasDelJuego.setOnAction(reglasDelJuegoHandler);
+		BotonReglasEventHandler reglasDelJuegoHandler = new BotonReglasEventHandler();
+		reglasDelJuego.setOnAction(reglasDelJuegoHandler);
 		
 		MenuItem acercaDe = new MenuItem("Acerca de...");
 		menuAyuda.getItems().addAll(reglasDelJuego, acercaDe);

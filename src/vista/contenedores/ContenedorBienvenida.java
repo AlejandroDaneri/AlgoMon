@@ -54,7 +54,7 @@ public class ContenedorBienvenida extends VBox{
         botonReglas.setMinSize(180, 40);
 
         BotonReglasEventHandler botonReglasHandler =
-                new BotonReglasEventHandler(stage);
+                new BotonReglasEventHandler();
         botonReglas.setOnAction(botonReglasHandler);
 
         Button botonSalir = new Button();
