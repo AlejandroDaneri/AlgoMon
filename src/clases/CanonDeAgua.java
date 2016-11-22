@@ -7,8 +7,7 @@ public class CanonDeAgua extends Ataque {
 	}
 	
 	public int cantidadInicial(){
-		int cantidadInicial = 8;
-		return cantidadInicial;
+		return 8;
 	}
 
 }

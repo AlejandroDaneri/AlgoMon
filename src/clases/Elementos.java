@@ -24,31 +24,31 @@ public class Elementos {
 	}
 
 	public void aplicar(Elemento elemento, AlgoMon algomonActivo) {
-		if(!this.tieneElemento(elemento)) throw new ElementoInvalidoException();
-		if(this.cantidadElemento(elemento) <= 0) throw new CantidadElementoAgotadaException();
-		this.getElemento(elemento).aplicar(algomonActivo);
-		this.disminuirCantidad(elemento);
+		if(!tieneElemento(elemento)) throw new ElementoInvalidoException();
+		if(cantidadElemento(elemento) <= 0) throw new CantidadElementoAgotadaException();
+		getElemento(elemento).aplicar(algomonActivo);
+		disminuirCantidad(elemento);
 	}
 	
 	public int cantidadElemento(Elemento elemento){
-		int cantidad = this.getElemento(elemento).cantidadElemento();
-		return cantidad;
+		return this.getElemento(elemento).cantidadElemento();
 	}
 	
-	public boolean tieneElemento(Elemento elemento){
-		boolean tiene = false;
+	private boolean tieneElemento(Elemento elemento){
+		/*boolean tiene = false;
 		if(this.getElemento(elemento) != null) tiene = true;
-		return tiene;
+		return tiene;*/
+		return this.getElemento(elemento) != null;
 	}
 	
-	public void disminuirCantidad(Elemento elemento){
+	private void disminuirCantidad(Elemento elemento){
 		this.getElemento(elemento).disminuirCantidad();
 	}
 	
 	public Elemento getElemento(Elemento elemento) {
 		Elemento elementoActual = null;
 		for(Elemento unElemento: elementos){
-			if(unElemento.equals(elemento)) elementoActual = unElemento;;
+			if(unElemento.equals(elemento)) elementoActual = unElemento;
 		}
 		return elementoActual;
 	}

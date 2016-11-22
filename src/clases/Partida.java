@@ -49,21 +49,21 @@ public class Partida {
 	public void jugarTurnoActual(Ataque ataque) throws AtaquesAgotadosException{
 		Jugador jugadorActual = jugadorActual();
 		jugadorActual.atacar(this.jugadorOponente().getAlgomonActivo(), ataque);
-		this.nextTurno();
+		this.nuevoTurno();
 		turnos++;
 	}
 	
 	public void jugarTurnoActual(AlgoMon algomon){
 		Jugador jugadorActual = jugadorActual();
 		jugadorActual.cambiarDeAlgoMon(algomon);
-		this.nextTurno();
+		this.nuevoTurno();
 		turnos++;
 	}
 	
 	public void jugarTurnoActual(Elemento elemento){
 		Jugador jugadorActual = jugadorActual();
 		jugadorActual.aplicarElemento(elemento);
-		this.nextTurno();
+		this.nuevoTurno();
 		turnos++;
 	}
 	
@@ -71,11 +71,11 @@ public class Partida {
 		return this.jugador1.perdio() || this.jugador2.perdio();
 	}
 	
-	public void nextTurno(){
+	public void nuevoTurno(){
 		turnoActual = (turnoActual + 1) % 2;
 	}
 	
-	public void agregarAlgomon(AlgoMon algomon){
+	public void agregarAlgomon(AlgoMon algomon){ //creo que esto ya no sirve mas
 		Jugador jugadorActual = jugadorActual();
 		jugadorActual.agregarAlgomon(algomon);
 	}

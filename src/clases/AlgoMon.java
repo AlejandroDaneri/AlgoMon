@@ -77,7 +77,7 @@ public abstract class AlgoMon {
 		return vida;
 	}
 
-	public void setVida(int vida) {
+	private void setVida(int vida) {
 		this.vida = vida;
 	}
 	
@@ -85,7 +85,7 @@ public abstract class AlgoMon {
 		return ataques;
 	}
 
-	public void setAtaques(List<Ataque> ataques) {
+	private void setAtaques(List<Ataque> ataques) {
 		this.ataques = ataques;
 	}
 	
@@ -109,7 +109,7 @@ public abstract class AlgoMon {
 		return estados.getListaDeEstados();
 	}
 
-	public void setEstados(Estados estados) {
+	private void setEstados(Estados estados) {
 		this.estados = estados;
 	}
 	

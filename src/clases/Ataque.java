@@ -32,11 +32,11 @@ public abstract class Ataque {
 		this.reducirCantidadDeAtaque();
 	}
 		
-	public int getPotencia() {
+	private int getPotencia() {
 		return potencia;
 	}
 
-	public void setPotencia(int potencia) {
+	private void setPotencia(int potencia) {
 		this.potencia = potencia;
 	}
 
@@ -44,7 +44,7 @@ public abstract class Ataque {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	private void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
@@ -60,15 +60,15 @@ public abstract class Ataque {
 		return this.getClass().equals(otroAtaque.getClass());
 	}
 	
-	public void reducirCantidadDeAtaque() {
+	private void reducirCantidadDeAtaque() {
 		(this.cantidad)--;
 	}
 
-	public Accion getAccion() {
+	private Accion getAccion() {
 		return accion;
 	}
 
-	public void setAccion(Accion accion) {
+	private void setAccion(Accion accion) {
 		this.accion = accion;
 	}
 	

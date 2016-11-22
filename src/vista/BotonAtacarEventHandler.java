@@ -2,6 +2,7 @@ package vista;
 
 import clases.Ataque;
 import clases.Jugador;
+import clases.Partida;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.MenuButton;
@@ -10,15 +11,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
 
 public class BotonAtacarEventHandler extends BotonHandler {
+    private Partida partida;
     private VBox opciones;
-    private Jugador jugadorActual;
-    private Jugador oponente;
 
-
-
-    public BotonAtacarEventHandler(Jugador jugadorActual, Jugador jugadorContrario, VBox opciones) {
-        this.jugadorActual = jugadorActual;
-        this.oponente = jugadorContrario;
+    public BotonAtacarEventHandler(Partida partida, VBox opciones) {
+        this.partida = partida;
         this.opciones = opciones;
     }
 
@@ -27,9 +24,9 @@ public class BotonAtacarEventHandler extends BotonHandler {
         super.handle(event);
         MenuButton ataques = new MenuButton("Elegir ataque");
         opciones.getChildren().add(ataques);
-        for(Ataque ataque : jugadorActual.getAlgomonActivo().getAtaques()) {
+        for(Ataque ataque : partida.jugadorActual().getAlgomonActivo().getAtaques()) {
             MenuItem opcion = new MenuItem(/*ataque.nombre*/"nombre ataque");
-            opcion.setOnAction(new OpcionEventHandler(jugadorActual,oponente,ataque));
+            opcion.setOnAction(new OpcionEventHandler(partida,ataque));
             ataques.getItems().add(opcion);
 
         }

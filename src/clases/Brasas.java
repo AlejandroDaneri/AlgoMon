@@ -7,8 +7,7 @@ public class Brasas extends Ataque {
 	}
 	
 	public int cantidadInicial(){
-		int cantidadInicial = 10;
-		return cantidadInicial;
+		return 10;
 	}
 
 }

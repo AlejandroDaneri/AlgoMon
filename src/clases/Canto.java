@@ -7,7 +7,6 @@ public class Canto extends Ataque {
 	}
 	
 	public int cantidadInicial(){
-		int cantidadInicial = 6;
-		return cantidadInicial;
+		return 6;
 	}
 }

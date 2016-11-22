@@ -7,8 +7,7 @@ public class Burbuja extends Ataque {
 	}
 	
 	public int cantidadInicial(){
-		int cantidadInicial = 15;
-		return cantidadInicial;
+		return 15;
 	}
 
 }

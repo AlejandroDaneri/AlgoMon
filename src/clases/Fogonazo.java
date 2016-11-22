@@ -7,7 +7,6 @@ public class Fogonazo extends Ataque {
 	}
 	
 	public int cantidadInicial(){
-		int cantidadInicial = 4;
-		return cantidadInicial;
+		return 4;
 	}
 }

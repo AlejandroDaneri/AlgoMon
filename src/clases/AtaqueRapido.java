@@ -6,7 +6,6 @@ public class AtaqueRapido extends Ataque {
 	}
 	
 	public int cantidadInicial(){
-		int cantidadInicial = 16;
-		return cantidadInicial;
+		return 16;
 	}
 }

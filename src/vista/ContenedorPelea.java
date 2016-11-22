@@ -74,7 +74,7 @@ public class ContenedorPelea extends BorderPane{
 		opciones.setAlignment(Pos.CENTER);
 
 		Button botonAtacar = new Button("Atacar");
-		BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones);
+		BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida,opciones);
 		botonAtacar.setOnAction(botonAtacarEventHandler);
 
 		Button botonUsarElemento = new Button("Usar elemento");

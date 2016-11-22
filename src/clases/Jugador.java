@@ -42,7 +42,7 @@ public class Jugador {
 		return this.algomones;
 	}
 	
-	public void setIndiceTurno(int indice){
+	private void setIndiceTurno(int indice){
 		this.indiceTurno = indice;
 	}
 	

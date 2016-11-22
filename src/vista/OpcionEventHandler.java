@@ -1,28 +1,26 @@
 package vista;
 
 import clases.Ataque;
-import clases.Jugador;
+import clases.Partida;
 import excepciones.AtaquesAgotadosException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 
 public class OpcionEventHandler implements EventHandler<ActionEvent> {
-    private final Jugador jugadorActual;
-    private final Ataque ataque;
-    private final Jugador oponente;
+    private Partida partida;
+    private Ataque ataque;
 
-    public OpcionEventHandler(Jugador jugadorActual, Jugador oponente, Ataque ataque) {
-        this.jugadorActual = jugadorActual;
+
+    public OpcionEventHandler(Partida partida, Ataque ataque) {
+        this.partida = partida;
         this.ataque = ataque;
-        this.oponente = oponente;
     }
 
     @Override
     public void handle(ActionEvent event) {
         try {
-            jugadorActual.atacar(oponente.getAlgomonActivo(),ataque);
-            oponente.getAlgomonActivo().getVida();
+            partida.jugarTurnoActual(ataque);
             //funciona pero falta actualizar el cambio en el contenedorPelea
         } catch (AtaquesAgotadosException e) {
             //lanzar aviso
