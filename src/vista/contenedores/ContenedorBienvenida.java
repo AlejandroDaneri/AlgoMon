@@ -48,7 +48,7 @@ public class ContenedorBienvenida extends VBox{
         botonEntrar.setOnAction(botonEntrarHandler);
 
         Button botonReglas = new Button();
-        botonReglas.setText("Reglas de juego");
+        botonReglas.setText("Reglas del juego");
         botonReglas.setFont(Font.font("", 20));
         botonReglas.setStyle("-fx-base: #373441");
         botonReglas.setMinSize(180, 40);

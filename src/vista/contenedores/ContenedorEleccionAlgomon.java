@@ -12,6 +12,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import modelo.Jugador;
 import modelo.algomones.AlgoMon;
+import vista.BarraDeMenu;
 import vista.ListaDeRepresentaciones;
 import vista.RepresentacionAlgoMon;
 import vista.handlers.BotonCambiarDerechaEventHandler;
@@ -57,6 +58,10 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         //botonEmpezar.setMinSize(220, 80);
         botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
 
+        BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
+//        barraDeMenu.setMinHeight(stage.getMinHeight());
+        
+        this.setTop(barraDeMenu);
         this.setLeft(espacioParaJugador1);
         this.setRight(espacioParaJugador2);
         this.setBottom(botonEmpezar);

@@ -18,6 +18,7 @@ public class AplicacionPrincipal extends Application{
         AudioClip musicaDeFondo = new AudioClip("file:src/vista/sonidos/Pokemonentrada.mp3");
         musicaDeFondo.setCycleCount(2); //
         musicaDeFondo.play();
+        
 
         stagePrincipal.setTitle("AlgoMon");
         stagePrincipal.getIcons().add(new Image("file:src/vista/imagenes/pokebola.png"));
@@ -35,6 +36,5 @@ public class AplicacionPrincipal extends Application{
 
         AlertaHandler alerta = new AlertaHandler();
         stagePrincipal.setOnCloseRequest(alerta);
-
     }
 }
