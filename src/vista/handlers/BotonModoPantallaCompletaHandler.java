@@ -19,13 +19,11 @@ public class BotonModoPantallaCompletaHandler extends BotonHandler {
 		super.handle(event);
 		
 		if (stage.isFullScreen()) {
-			System.out.println("stage IS full screen");
 			stage.setFullScreen(false);
 			stage.setMaximized(true);
 			return;
 		}
 		if (!stage.isFullScreen()) {
-			System.out.println("stage IS NOT full screen");
 			stage.setFullScreen(true);
 			stage.setMaximized(false);
 			return;
