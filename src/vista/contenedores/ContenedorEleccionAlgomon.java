@@ -66,7 +66,6 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         this.setRight(espacioParaJugador2);
         this.setBottom(botonEmpezar);
         BorderPane.setAlignment(botonEmpezar,Pos.CENTER);
-        this.setPadding(new Insets(0,50,50,50));
 
     }
 
@@ -98,13 +97,14 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         BorderPane zonaDeElecccionParaJugador =
                 crearZonaDeEleccionParaJugador(botonCambiarHaciaIzquierda,botonCambiarHaciaDerecha,
-                		botonSeleccion,seleccionados,seleccionJugador, tabla, lista.getActual(),
-                		jugador.getListaDeAlgomones());
+                		botonSeleccion,seleccionados,seleccionJugador, tabla
+                );
 
 
         VBox espacioParaJugador = new VBox();
         espacioParaJugador.setAlignment(Pos.CENTER);
         espacioParaJugador.getChildren().addAll(EtiquetaNombre, zonaDeElecccionParaJugador);
+        espacioParaJugador.setPadding(new Insets(0,20,0,0));
 
         return espacioParaJugador;
     }
@@ -138,8 +138,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     private BorderPane crearZonaDeEleccionParaJugador(Button botonCambiarIzquierda,
     		Button botonCambiarDerecha, Button botonSeleccion, HBox seleccionados,
-    		ImageView seleccionJugador, ImageView tabla, RepresentacionAlgoMon representacionActual,
-    		List<AlgoMon> algomonesSeleccionados) {
+    		ImageView seleccionJugador, ImageView tabla) {
     	
         BorderPane zonaJugador = new BorderPane();
 
@@ -152,7 +151,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         zonaJugador.setPadding(new Insets(0,0,0,10));
 
         VBox zonaInferior = new VBox();
-        zonaInferior.getChildren().addAll(tabla,botonSeleccion);//aca iria botonera
+        zonaInferior.getChildren().addAll(tabla,botonSeleccion);
         zonaInferior.setAlignment(Pos.CENTER);
 
         zonaJugador.setBottom(zonaInferior);
