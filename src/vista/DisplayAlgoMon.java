@@ -6,8 +6,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import vista.BarraDeVida;
-import vista.RepresentacionAlgoMon;
 
 public class DisplayAlgoMon extends VBox {
 	private RepresentacionAlgoMon representacion;

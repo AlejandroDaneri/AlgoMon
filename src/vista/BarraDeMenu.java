@@ -1,9 +1,12 @@
 package vista;
 
-import vista.handlers.*;
-import javafx.scene.control.*;
-import javafx.scene.media.AudioClip;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import vista.handlers.BotonModoPantallaCompletaHandler;
+import vista.handlers.BotonReglasEventHandler;
+import vista.handlers.BotonSalirEventHandler;
 
 public class BarraDeMenu extends MenuBar {
 
@@ -46,7 +49,6 @@ public class BarraDeMenu extends MenuBar {
 		menuAyuda.getItems().addAll(reglasDelJuego, acercaDe);
 		
 		this.getMenus().addAll(menuArchivo, menuEdicion, menuAyuda);
-//        this.prefWidthProperty().bind(stage.widthProperty());
         this.prefWidthProperty().bind(stage.minWidthProperty());
 	}
 	

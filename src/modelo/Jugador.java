@@ -1,12 +1,12 @@
 package modelo;
 
-import excepciones.AlgoMonInexistenteException;
-import excepciones.AtaquesAgotadosException;
-import excepciones.CantidadMaximaAlgoMonesException;
 import modelo.algomones.AlgoMon;
 import modelo.ataques.Ataque;
 import modelo.elementos.Elemento;
 import modelo.elementos.Elementos;
+import modelo.excepciones.AlgoMonInexistenteException;
+import modelo.excepciones.AtaquesAgotadosException;
+import modelo.excepciones.CantidadMaximaAlgoMonesException;
 
 import java.util.ArrayList;
 

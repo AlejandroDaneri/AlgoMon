@@ -1,11 +1,11 @@
 package modelo.elementos;
 
-import excepciones.AtaquesAgotadosException;
 import modelo.algomones.*;
 import modelo.ataques.*;
 import modelo.estados.Dormido;
 import modelo.estados.EstadoNormal;
 import modelo.estados.Quemado;
+import modelo.excepciones.AtaquesAgotadosException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

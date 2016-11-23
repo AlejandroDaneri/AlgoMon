@@ -1,7 +1,6 @@
 package vista.handlers;
 
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 
 public class BotonReglasEventHandler extends BotonHandler {

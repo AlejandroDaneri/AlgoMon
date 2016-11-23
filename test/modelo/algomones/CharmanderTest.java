@@ -1,8 +1,8 @@
 package modelo.algomones;
 
-import excepciones.AtaquesAgotadosException;
 import modelo.Tipo;
 import modelo.ataques.*;
+import modelo.excepciones.AtaquesAgotadosException;
 import org.junit.Assert;
 import org.junit.Test;
 

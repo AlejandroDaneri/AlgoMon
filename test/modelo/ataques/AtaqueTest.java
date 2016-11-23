@@ -1,9 +1,9 @@
 package modelo.ataques;
 
-import excepciones.AtaquesAgotadosException;
 import modelo.algomones.Bulbasaur;
 import modelo.algomones.Charmander;
 import modelo.algomones.Squirtle;
+import modelo.excepciones.AtaquesAgotadosException;
 import org.junit.Test;
 
 import java.util.List;

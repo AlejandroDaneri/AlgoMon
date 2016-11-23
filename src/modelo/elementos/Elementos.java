@@ -1,8 +1,8 @@
 package modelo.elementos;
 
-import excepciones.CantidadElementoAgotadaException;
-import excepciones.ElementoInvalidoException;
 import modelo.algomones.AlgoMon;
+import modelo.excepciones.CantidadElementoAgotadaException;
+import modelo.excepciones.ElementoInvalidoException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
 package vista.handlers;
 
-import excepciones.AtaquesAgotadosException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.Partida;
 import modelo.ataques.Ataque;
+import modelo.excepciones.AtaquesAgotadosException;
 
 
 public class OpcionEventHandler implements EventHandler<ActionEvent> {

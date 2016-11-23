@@ -1,11 +1,11 @@
 package modelo.algomones;
 
-import excepciones.AtaqueInvalidoException;
-import excepciones.AtaquesAgotadosException;
 import modelo.Tipo;
 import modelo.ataques.Ataque;
 import modelo.estados.Estado;
 import modelo.estados.Estados;
+import modelo.excepciones.AtaqueInvalidoException;
+import modelo.excepciones.AtaquesAgotadosException;
 
 import java.util.ArrayList;
 import java.util.List;

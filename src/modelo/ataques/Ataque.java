@@ -1,10 +1,10 @@
 package modelo.ataques;
 
-import excepciones.AtaquesAgotadosException;
 import modelo.Tipo;
 import modelo.acciones.Accion;
 import modelo.acciones.AccionNula;
 import modelo.algomones.AlgoMon;
+import modelo.excepciones.AtaquesAgotadosException;
 
 public abstract class Ataque {
 	

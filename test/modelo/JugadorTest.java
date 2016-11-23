@@ -1,14 +1,14 @@
 package modelo;
 
-import excepciones.AlgoMonInexistenteException;
-import excepciones.AtaqueInvalidoException;
-import excepciones.AtaquesAgotadosException;
-import excepciones.CantidadMaximaAlgoMonesException;
 import modelo.algomones.*;
 import modelo.ataques.*;
 import modelo.elementos.Pocion;
 import modelo.elementos.Restaurador;
 import modelo.estados.EstadoNormal;
+import modelo.excepciones.AlgoMonInexistenteException;
+import modelo.excepciones.AtaqueInvalidoException;
+import modelo.excepciones.AtaquesAgotadosException;
+import modelo.excepciones.CantidadMaximaAlgoMonesException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
