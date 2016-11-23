@@ -55,7 +55,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
 
         BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
-//        barraDeMenu.setMinHeight(stage.getMinHeight());
+        //barraDeMenu.setMinHeight(stage.getMinHeight());
         
         this.setTop(barraDeMenu);
         this.setLeft(espacioParaJugador1);

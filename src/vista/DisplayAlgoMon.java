@@ -13,7 +13,6 @@ public class DisplayAlgoMon extends VBox {
 	private BarraDeVida barraDeVida;
 	
 	public DisplayAlgoMon(RepresentacionAlgoMon representacion){
-		super();
 		this.representacion = representacion;
 		
 		Label nombreDelAlgomon = new Label(representacion.getNombre()); // ya no tenemos un metodo que nos devuelva el nombre del algomon, solucion provisoria

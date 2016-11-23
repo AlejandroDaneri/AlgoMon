@@ -27,7 +27,7 @@ public class ContenedorBienvenida extends VBox{
         this.setSpacing(50);
         stage.setFullScreen(true);
 
-        Label titulo = new Label("Algomon"); // Si el titulo esta en la imagen de fondo esto no va mas
+        Label titulo = new Label("Algomon");
         titulo.setFont(Font.font("Courier New",FontWeight.BOLD, 56));
 
         Image imagen = new Image("file:src/vista/imagenes/patronfondo.jpg");
@@ -58,7 +58,7 @@ public class ContenedorBienvenida extends VBox{
         botonReglas.setOnAction(botonReglasHandler);
 
         Button botonSalir = new Button();
-        botonSalir.setText("Salir ");
+        botonSalir.setText("Salir");
         botonSalir.setFont(Font.font("", 20));
         botonSalir.setStyle("-fx-base: #373441");
         botonSalir.setMinSize(180, 40);
