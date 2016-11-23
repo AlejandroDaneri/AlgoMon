@@ -38,8 +38,7 @@ public class RepresentacionAlgoMon {
 		setNombre(nombre);
 	}
 	
-	public RepresentacionAlgoMon() {}
-
+	
 	public List<String> getListaDeEstados(){
 		ArrayList<String> lista = new ArrayList<String>();
 		for(Estado estado : algomon.getListaDeEstados()){

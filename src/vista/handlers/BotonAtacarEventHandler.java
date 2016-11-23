@@ -6,19 +6,17 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import modelo.Partida;
 import modelo.ataques.Ataque;
+import vista.FabricaDeRepresentaciones;
 import vista.RepresentacionAlgoMon;
 
 public class BotonAtacarEventHandler extends BotonHandler {
     private Partida partida;
     private VBox opciones;
-    private RepresentacionAlgoMon representacion;
     
 
     public BotonAtacarEventHandler(Partida partida, VBox opciones) {
         this.partida = partida;
-        this.opciones = opciones;
-        this.representacion = new RepresentacionAlgoMon();
-        
+        this.opciones = opciones;        
     }
 
     @Override
@@ -26,8 +24,10 @@ public class BotonAtacarEventHandler extends BotonHandler {
         super.handle(event);
         MenuButton ataques = new MenuButton("Elegir ataque");
         opciones.getChildren().add(ataques);
+        FabricaDeRepresentaciones fabrica = new FabricaDeRepresentaciones();
+        RepresentacionAlgoMon representacion = fabrica.crearRepresentacion(partida.jugadorActual().getAlgomonActivo());
         for(Ataque ataque : partida.jugadorActual().getAlgomonActivo().getAtaques()) {
-            MenuItem opcion = new MenuItem(this.representacion.getNombreDeAtaque(ataque));
+            MenuItem opcion = new MenuItem(representacion.getNombreDeAtaque(ataque));
             opcion.setOnAction(new OpcionEventHandler(partida,ataque));
             ataques.getItems().add(opcion);
 
