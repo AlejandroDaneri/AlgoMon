@@ -4,9 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -16,8 +14,8 @@ import javafx.stage.Stage;
 import modelo.Jugador;
 import modelo.Partida;
 import modelo.elementos.*;
+import vista.DisplayAlgoMon;
 import vista.ListaDeRepresentaciones;
-import vista.RepresentacionAlgoMon;
 import vista.handlers.BotonAtacarEventHandler;
 import vista.handlers.BotonCambiarAlgomonEventHandler;
 import vista.handlers.BotonUsarElementoEventHandler;
@@ -109,44 +107,14 @@ public class ContenedorPelea extends BorderPane{
 		display.setBackground(new Background(imagenDeFondo));
 		display.setPadding(new Insets(30));
 
-		VBox displayAlgomon1 = crearDisplayAlgomon(listaDeRepresentacionesJugador1.getActual());
+		VBox displayAlgomon1 = new DisplayAlgoMon(listaDeRepresentacionesJugador1.getActual());
 		displayAlgomon1.setPadding(new Insets(0,0,20,0));
-		VBox displayAlgomon2 = crearDisplayAlgomon(listaDeRepresentacionesJugador2.getActual());
+		VBox displayAlgomon2 = new DisplayAlgoMon(listaDeRepresentacionesJugador2.getActual());
 		displayAlgomon2.setPadding(new Insets(0,0,20,0));
 		display.setLeft(displayAlgomon1);
 		display.setRight(displayAlgomon2);
 
 		return display;
-	}
-	
-	private VBox crearDisplayAlgomon(RepresentacionAlgoMon representacion) {
-
-		Label nombreDelAlgomon = new Label(representacion.getAlgomon().getClass().getName().substring(7)); // ya no tenemos un metodo que nos devuelva el nombre del algomon, solucion provisoria
-		nombreDelAlgomon.setAlignment(Pos.CENTER);
-		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
-		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
-
-		ProgressBar progressBar = new ProgressBar(establecerProgreso(representacion.getAlgomon().getVida(),
-				representacion.getAlgomon().getVidaOriginal()));
-		
-		String estadosParaVisualizar = /*representacion.getListaDeEstados().get(0)*/ "Estado"+ ": " + representacion.getListaDeEstados().get(0);
-		//aca arriba aparecia dos veces lo mismo
-		Label estados = new Label(estadosParaVisualizar);
-		estados.setFont(Font.font("Cambria", 20));
-		
-		ImageView imagen = new ImageView(representacion.getImagen());
-		imagen.setFitWidth(250);
-		imagen.setFitHeight(250);
-		
-		VBox display = new VBox();
-		display.setAlignment(Pos.BOTTOM_CENTER);
-		display.getChildren().addAll(imagen, nombreDelAlgomon,progressBar, estados);
-		
-		return display;
-	}
-
-	private double establecerProgreso(int vida, int vidaOriginal) {
-		return ((double)vida/(double)vidaOriginal); // siempre menor que 1
 	}
 
 	private VBox crearInformacionParaJugador(Jugador jugador) {

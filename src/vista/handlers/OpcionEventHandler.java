@@ -10,8 +10,7 @@ import modelo.ataques.Ataque;
 public class OpcionEventHandler implements EventHandler<ActionEvent> {
     private Partida partida;
     private Ataque ataque;
-
-
+    
     public OpcionEventHandler(Partida partida, Ataque ataque) {
         this.partida = partida;
         this.ataque = ataque;
@@ -21,7 +20,6 @@ public class OpcionEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         try {
             partida.jugarTurnoActual(ataque);
-            //funciona pero falta actualizar el cambio en el contenedorPelea
         } catch (AtaquesAgotadosException e) {
             //lanzar aviso
         }

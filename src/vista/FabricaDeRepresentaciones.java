@@ -19,12 +19,20 @@ public class FabricaDeRepresentaciones {
 	public static String imagenTablaJigglypuff = "file:src/vista/imagenes/TJigglypuff.png";
 	public static String imagenTablaChansey = "file:src/vista/imagenes/TChansey.png";
 	
+	public static String nombreCharmander = "Charmander";
+	public static String nombreBulbasaur = "Bulbasaur";
+	public static String nombreSquirtle = "Squirtle";
+	public static String nombreRattata = "Rattata";
+	public static String nombreJigglypuff = "Jigglypuff";
+	public static String nombreChansey = "Chansey";
+	
+	
 	public RepresentacionAlgoMon crearRepresentacion(AlgoMon algomon){
-		if(algomon.equals(new Charmander())) return new RepresentacionAlgoMon(new Image(imagenCharmander),new Image(imagenTablaCharmander),algomon);
-		if(algomon.equals(new Squirtle())) return new RepresentacionAlgoMon(new Image(imagenSquirtle),new Image(imagenTablaSquirtle),algomon);
-		if(algomon.equals(new Bulbasaur())) return new RepresentacionAlgoMon(new Image(imagenBulbasaur),new Image(imagenTablaBulbasaur),algomon);
-		if(algomon.equals(new Rattata())) return new RepresentacionAlgoMon(new Image(imagenRattata),new Image(imagenTablaRattata),algomon);
-		if(algomon.equals(new Jigglypuff())) return new RepresentacionAlgoMon(new Image(imagenJigglypuff),new Image(imagenTablaJigglypuff),algomon);
-		return new RepresentacionAlgoMon(new Image(imagenChansey),new Image(imagenTablaChansey),algomon);
+		if(algomon.equals(new Charmander())) return new RepresentacionAlgoMon(new Image(imagenCharmander),new Image(imagenTablaCharmander),algomon,nombreCharmander);
+		if(algomon.equals(new Squirtle())) return new RepresentacionAlgoMon(new Image(imagenSquirtle),new Image(imagenTablaSquirtle),algomon,nombreBulbasaur);
+		if(algomon.equals(new Bulbasaur())) return new RepresentacionAlgoMon(new Image(imagenBulbasaur),new Image(imagenTablaBulbasaur),algomon,nombreSquirtle);
+		if(algomon.equals(new Rattata())) return new RepresentacionAlgoMon(new Image(imagenRattata),new Image(imagenTablaRattata),algomon,nombreRattata);
+		if(algomon.equals(new Jigglypuff())) return new RepresentacionAlgoMon(new Image(imagenJigglypuff),new Image(imagenTablaJigglypuff),algomon,nombreJigglypuff);
+		return new RepresentacionAlgoMon(new Image(imagenChansey),new Image(imagenTablaChansey),algomon,nombreChansey);
 	}
 }

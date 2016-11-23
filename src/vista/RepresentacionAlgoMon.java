@@ -29,13 +29,17 @@ public class RepresentacionAlgoMon {
 	private Image imagen;
 	private Image tabla;
 	private AlgoMon algomon;
+	private String nombre;
 	
-	public RepresentacionAlgoMon(Image imagen, Image tabla, AlgoMon algomon){
+	public RepresentacionAlgoMon(Image imagen, Image tabla, AlgoMon algomon, String nombre){
 		setImagen(imagen);
 		setAlgomon(algomon);
 		setTabla(tabla);
+		setNombre(nombre);
 	}
 	
+	public RepresentacionAlgoMon() {}
+
 	public List<String> getListaDeEstados(){
 		ArrayList<String> lista = new ArrayList<String>();
 		for(Estado estado : algomon.getListaDeEstados()){
@@ -87,5 +91,13 @@ public class RepresentacionAlgoMon {
 	}
 	public void setTabla(Image tabla) {
 		this.tabla = tabla;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 }
