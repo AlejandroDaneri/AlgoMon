@@ -38,16 +38,14 @@ public class ContenedorPelea extends BorderPane{
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2);
 
-		VBox botoneraJugador1 = new Botonera(partida);
-		VBox botoneraJugador2 = new Botonera(partida);
+		VBox botoneraJugador1 = new Botonera(partida,this);
+		VBox botoneraJugador2 = new Botonera(partida,this);
 
 		VBox zonaJugador1 = new VBox();
 		zonaJugador1.getChildren().addAll(informacionParaJugador1,botoneraJugador1);
 
 		VBox zonaJugador2 = new VBox();
 		zonaJugador2.getChildren().addAll(informacionParaJugador2,botoneraJugador2);
-
-		partida.reproducirEn(this);
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);

@@ -24,6 +24,7 @@ public class RepresentacionAlgoMon {
 	private static String canto = "Canto";
 	private static String chupaVidas = "Chupavidas";
 	private static String fogonazo = "Fogonazo";
+	private static String latigoCepa = "Latigo Cepa";
 	
 	
 	private Image imagen;
@@ -70,7 +71,7 @@ public class RepresentacionAlgoMon {
 		if(ataque.equals(new Canto())) return canto;
 		if(ataque.equals(new Chupavidas())) return chupaVidas;
 		if(ataque.equals(new Fogonazo())) return fogonazo;
-		return dormido;
+		return latigoCepa;
 	}
 	
 	public Image getImagen() {

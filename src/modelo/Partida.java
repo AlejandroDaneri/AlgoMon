@@ -4,8 +4,6 @@ import modelo.algomones.AlgoMon;
 import modelo.ataques.Ataque;
 import modelo.elementos.Elemento;
 import modelo.excepciones.AtaquesAgotadosException;
-import vista.contenedores.ContenedorPelea;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
@@ -14,7 +12,6 @@ public class Partida {
 	private Jugador jugador2;
 	private int turnos;
 	private int turnoActual;
-	private ContenedorPelea representacionDePartida;
 	
 	public Partida(Jugador jugador1 , Jugador jugador2){
 		this.jugador1 = jugador1;
@@ -79,19 +76,10 @@ public class Partida {
 	
 	public void nuevoTurno(){
 		turnoActual = (turnoActual + 1) % 2;
-		representacionDePartida.actualizar();
-		if (juegoTerminado())
-			representacionDePartida.peleaFinalizada(nombreGanador());
-
 	}
 	
 	public void agregarAlgomon(AlgoMon algomon){ //creo que esto ya no sirve mas
 		Jugador jugadorActual = jugadorActual();
 		jugadorActual.agregarAlgomon(algomon);
-	}
-
-
-	public void reproducirEn(ContenedorPelea contenedorDeAlgomones) {
-		representacionDePartida =contenedorDeAlgomones;
 	}
 }

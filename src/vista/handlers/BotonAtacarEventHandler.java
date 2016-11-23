@@ -8,15 +8,17 @@ import modelo.Partida;
 import modelo.ataques.Ataque;
 import vista.FabricaDeRepresentaciones;
 import vista.RepresentacionAlgoMon;
+import vista.contenedores.ContenedorPelea;
 
 public class BotonAtacarEventHandler extends BotonHandler {
     private Partida partida;
     private VBox opciones;
-    
+    private ContenedorPelea contenedor;
 
-    public BotonAtacarEventHandler(Partida partida, VBox opciones) {
+    public BotonAtacarEventHandler(Partida partida, VBox opciones,  ContenedorPelea contenedor) {
         this.partida = partida;
-        this.opciones = opciones;        
+        this.opciones = opciones;
+        this.contenedor = contenedor;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class BotonAtacarEventHandler extends BotonHandler {
         RepresentacionAlgoMon representacion = fabrica.crearRepresentacion(partida.jugadorActual().getAlgomonActivo());
         for(Ataque ataque : partida.jugadorActual().getAlgomonActivo().getAtaques()) {
             MenuItem opcion = new MenuItem(representacion.getNombreDeAtaque(ataque));
-            opcion.setOnAction(new OpcionEventHandler(partida,ataque));
+            opcion.setOnAction(new OpcionEventHandler(partida,ataque,this.contenedor));
             ataques.getItems().add(opcion);
 
         }

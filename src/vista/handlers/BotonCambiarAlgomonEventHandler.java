@@ -6,17 +6,20 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import modelo.Jugador;
 import modelo.algomones.AlgoMon;
+import vista.contenedores.ContenedorPelea;
 
 public class BotonCambiarAlgomonEventHandler extends BotonHandler {
     private VBox opciones;
     private Jugador jugadorActual;
     private Jugador oponente;
+    private ContenedorPelea contenedor;
 
 
-    public BotonCambiarAlgomonEventHandler(Jugador jugadorActual, Jugador jugadorContrario, VBox opciones) {
+    public BotonCambiarAlgomonEventHandler(Jugador jugadorActual, Jugador jugadorContrario, VBox opciones, ContenedorPelea contenedor) {
         this.jugadorActual = jugadorActual;
         this.oponente = jugadorContrario;
         this.opciones = opciones;
+        this.contenedor = contenedor;
     }
 
     @Override

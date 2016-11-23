@@ -29,8 +29,8 @@ public class FabricaDeRepresentaciones {
 	
 	public RepresentacionAlgoMon crearRepresentacion(AlgoMon algomon){
 		if(algomon.equals(new Charmander())) return new RepresentacionAlgoMon(new Image(imagenCharmander),new Image(imagenTablaCharmander),algomon,nombreCharmander);
-		if(algomon.equals(new Squirtle())) return new RepresentacionAlgoMon(new Image(imagenSquirtle),new Image(imagenTablaSquirtle),algomon,nombreBulbasaur);
-		if(algomon.equals(new Bulbasaur())) return new RepresentacionAlgoMon(new Image(imagenBulbasaur),new Image(imagenTablaBulbasaur),algomon,nombreSquirtle);
+		if(algomon.equals(new Squirtle())) return new RepresentacionAlgoMon(new Image(imagenSquirtle),new Image(imagenTablaSquirtle),algomon,nombreSquirtle);
+		if(algomon.equals(new Bulbasaur())) return new RepresentacionAlgoMon(new Image(imagenBulbasaur),new Image(imagenTablaBulbasaur),algomon,nombreBulbasaur);
 		if(algomon.equals(new Rattata())) return new RepresentacionAlgoMon(new Image(imagenRattata),new Image(imagenTablaRattata),algomon,nombreRattata);
 		if(algomon.equals(new Jigglypuff())) return new RepresentacionAlgoMon(new Image(imagenJigglypuff),new Image(imagenTablaJigglypuff),algomon,nombreJigglypuff);
 		return new RepresentacionAlgoMon(new Image(imagenChansey),new Image(imagenTablaChansey),algomon,nombreChansey);

@@ -9,7 +9,7 @@ import vista.handlers.BotonCambiarAlgomonEventHandler;
 import vista.handlers.BotonUsarElementoEventHandler;
 
 public class Botonera extends VBox {
-    public Botonera(Partida partida) {
+    public Botonera(Partida partida, ContenedorPelea contenedor) {
 
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
@@ -19,15 +19,15 @@ public class Botonera extends VBox {
         opciones.setAlignment(Pos.CENTER);
 
         Button botonAtacar = new Button("Atacar");
-        BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida,opciones);
+        BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida,opciones,contenedor);
         botonAtacar.setOnAction(botonAtacarEventHandler);
 
         Button botonUsarElemento = new Button("Usar elemento");
-        BotonUsarElementoEventHandler botonUsarElementoEventHandler = new BotonUsarElementoEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones);
+        BotonUsarElementoEventHandler botonUsarElementoEventHandler = new BotonUsarElementoEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones,contenedor);
         botonUsarElemento.setOnAction(botonUsarElementoEventHandler);
 
         Button botonCambiarAlgomon = new Button("Cambiar Algomon");
-        BotonCambiarAlgomonEventHandler botonCambiarAlgomonEventHandler = new BotonCambiarAlgomonEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones);
+        BotonCambiarAlgomonEventHandler botonCambiarAlgomonEventHandler = new BotonCambiarAlgomonEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones, contenedor);
         botonCambiarAlgomon.setOnAction(botonCambiarAlgomonEventHandler);
 
 
