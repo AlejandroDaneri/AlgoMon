@@ -51,7 +51,7 @@ public class EspacioEleccionParaJugador extends VBox{
 
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(EtiquetaNombre, zonaDeElecccionParaJugador);
-        this.setPadding(new Insets(50));
+        this.setPadding(new Insets(0,20,0,0));
 
     }
 }
