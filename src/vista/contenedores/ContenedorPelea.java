@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import modelo.Partida;
 import modelo.algomones.AlgoMon;
+import vista.BarraDeMenu;
 import vista.ListaDeRepresentaciones;
 
 public class ContenedorPelea extends BorderPane{
@@ -27,8 +28,10 @@ public class ContenedorPelea extends BorderPane{
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 						BackgroundSize.DEFAULT);
 		setBackground(new Background(imagenDeFondo));
-		this.setPadding(new Insets(50));
+//		this.setPadding(new Insets(50, 0, 50, 0));
 
+		BarraDeMenu menu = new BarraDeMenu(stage);
+		this.setTop(menu);
 	}
 
 	public void inicializarPelea(Partida partida){

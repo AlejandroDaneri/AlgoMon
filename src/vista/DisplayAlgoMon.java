@@ -29,7 +29,8 @@ public class DisplayAlgoMon extends VBox {
 
 		this.barraDeVida = new BarraDeVida(representacion.getAlgomon());
 		
-		String estadosParaVisualizar = "Estados"+ ": " + this.representacion.getListaDeEstados().get(0) +", "+ this.representacion.getListaDeEstados().get(1);
+		String estadosParaVisualizar = "Estado persistente"+ ": " + this.representacion.getListaDeEstados().get(0) +
+				" \n Estado efímero: "+ this.representacion.getListaDeEstados().get(1);
 		Label estados = new Label(estadosParaVisualizar);
 		estados.setFont(Font.font("Cambria", 20));
 		this.estados = estados;
@@ -45,7 +46,8 @@ public class DisplayAlgoMon extends VBox {
 	
 	private void actualizarEstados(){
 		this.getChildren().remove(this.estados);
-		String estadosParaVisualizar = "Estados"+ ": " + this.representacion.getListaDeEstados().get(0) +", "+ this.representacion.getListaDeEstados().get(1);
+		String estadosParaVisualizar = "Estado persistente"+ ": " + this.representacion.getListaDeEstados().get(0) +
+				" \n Estado efímero: "+ this.representacion.getListaDeEstados().get(1);
 		System.out.println(estadosParaVisualizar);
 		Label estados = new Label(estadosParaVisualizar);
 		estados.setFont(Font.font("Cambria", 20));

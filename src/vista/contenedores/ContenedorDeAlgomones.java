@@ -26,10 +26,10 @@ public class ContenedorDeAlgomones extends BorderPane {
 		this.setPadding(new Insets(30));
 
         displayAlgomon1 = new DisplayAlgoMon(representacionesJugador1.getActual(),jugador1);
-		displayAlgomon1.setPadding(new Insets(0,0,20,0));
+		displayAlgomon1.setPadding(new Insets(0,0,50,0));
 
         displayAlgomon2 = new DisplayAlgoMon(representacionJugador2.getActual(),jugador2);
-		displayAlgomon2.setPadding(new Insets(0,0,20,0));
+		displayAlgomon2.setPadding(new Insets(0,0,50,0));
 
 		this.setLeft(displayAlgomon1);
 		this.setRight(displayAlgomon2);

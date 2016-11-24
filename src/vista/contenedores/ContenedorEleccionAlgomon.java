@@ -26,6 +26,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
     	
         super();
         this.stage = primaryStage;
+        this.setPadding(new Insets(0,0,50,0));
         
         Image fondo = new Image("file:src/vista/imagenes/patronfondo.jpg");
         BackgroundImage imagenDeFondo =
@@ -55,7 +56,6 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
 
         BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
-        //barraDeMenu.setMinHeight(stage.getMinHeight());
         
         this.setTop(barraDeMenu);
         this.setLeft(espacioParaJugador1);
@@ -100,7 +100,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         VBox espacioParaJugador = new VBox();
         espacioParaJugador.setAlignment(Pos.CENTER);
         espacioParaJugador.getChildren().addAll(EtiquetaNombre, zonaDeElecccionParaJugador);
-        espacioParaJugador.setPadding(new Insets(0,20,0,0));
+        espacioParaJugador.setPadding(new Insets(50));
 
         return espacioParaJugador;
     }

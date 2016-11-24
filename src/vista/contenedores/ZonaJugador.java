@@ -1,5 +1,6 @@
 package vista.contenedores;
 
+import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
 import modelo.Jugador;
 
@@ -12,6 +13,7 @@ public class ZonaJugador extends VBox {
 		this.botonera = botonera;
 		this.setInformacionParaJugador(informacionParaJugador);
 		this.getChildren().addAll(informacionParaJugador,botonera);
+		this.setPadding(new Insets(50));
 	}
 	
 	public Jugador getJugador(){
