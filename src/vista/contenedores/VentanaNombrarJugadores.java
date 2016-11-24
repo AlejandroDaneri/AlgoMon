@@ -53,8 +53,8 @@ public class VentanaNombrarJugadores {
 
         VBox contenedor = new VBox(20);
         contenedor.getChildren().addAll(labelParaJugador1, nombreJugador1, labelParaJugador2, nombreJugador2, aceptar);
-        contenedor.setMargin(aceptar,new Insets(0,0,10,0));
-        contenedor.setMargin(labelParaJugador1,new Insets(10,0,0,0));
+        VBox.setMargin(aceptar,new Insets(0,0,10,0));
+        VBox.setMargin(labelParaJugador1,new Insets(10,0,0,0));
         contenedor.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(contenedor);

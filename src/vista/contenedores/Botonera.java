@@ -28,14 +28,17 @@ public class Botonera extends VBox {
         this.botonAtacar = new BotonMenuAtacar(partida,jugador,opciones,contenedor);
         BotonMenuEventHandler botonMenuAtacarEventHandler = new BotonMenuEventHandler(botonAtacar);
         botonAtacar.setOnAction(botonMenuAtacarEventHandler);
+        botonAtacar.setDisable(jugador != partida.jugadorActual());
 
         this.botonUsarElemento = new BotonMenuAplicarElemento(partida,jugador,opciones,contenedor);
         BotonMenuEventHandler botonUsarElementoEventHandler = new BotonMenuEventHandler(botonUsarElemento);
         botonUsarElemento.setOnAction(botonUsarElementoEventHandler);
+        botonUsarElemento.setDisable(jugador != partida.jugadorActual());
 
         this.botonCambiarAlgomon = new BotonMenuCambiarAlgomon(partida,jugador,opciones,contenedor);
         BotonMenuEventHandler botonCambiarAlgomonEventHandler = new BotonMenuEventHandler(botonCambiarAlgomon);
         botonCambiarAlgomon.setOnAction(botonCambiarAlgomonEventHandler);
+        botonCambiarAlgomon.setDisable(jugador != partida.jugadorActual());
 
         this.getChildren().addAll(botonAtacar,botonUsarElemento,botonCambiarAlgomon,opciones);
         this.setAlignment(Pos.CENTER);

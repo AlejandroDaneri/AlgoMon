@@ -9,12 +9,10 @@ import vista.contenedores.VentanaNombrarJugadores;
 public class BotonEntrarEventHandler extends BotonHandler {
 
     Stage stage;
-    boolean stageEstaEnPantallaCompleta;
     VentanaNombrarJugadores ventanaNombres;
 
-    public BotonEntrarEventHandler(Stage stage, boolean stageEstaEnPantallaCompleta) {
+    public BotonEntrarEventHandler(Stage stage) {
         this.stage = stage;
-        this.stageEstaEnPantallaCompleta = stageEstaEnPantallaCompleta;
         this.ventanaNombres = new VentanaNombrarJugadores();
         
     }
@@ -26,6 +24,7 @@ public class BotonEntrarEventHandler extends BotonHandler {
     	if (!ventanaNombres.jugadoresFueronIngresados()) {
     		ventanaNombres.mostrar(event);
         }
+    	
     	if (ventanaNombres.jugadoresFueronIngresados()) { //esto evita que se empiece la eleccion si no se puso aceptar
             String nombreJugador1 = ventanaNombres.getNombreJugador1();
             String nombreJugador2 = ventanaNombres.getNombreJugador2();

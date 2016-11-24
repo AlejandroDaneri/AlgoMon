@@ -36,12 +36,14 @@ public class ContenedorPelea extends BorderPane{
 		ListaDeRepresentaciones representacionesJugador1 = new ListaDeRepresentaciones(partida.jugadorActual().getListaDeAlgomones());
 		ListaDeRepresentaciones representacionesJugador2 = new ListaDeRepresentaciones(partida.jugadorOponente().getListaDeAlgomones());
 		
-		HBox panelDeNotificaciones = new PanelDeNotifiacion();
+		HBox panelDeNotificaciones = new PanelDeNotificacion();
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2);
 
-		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()), new InformacionParaJugador(partida.jugadorActual()));
-		this.zonaJugador2 = new ZonaJugador(new Botonera(partida,this,partida.jugadorOponente()), new InformacionParaJugador(partida.jugadorOponente()));
+		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()),
+				new InformacionParaJugador(partida.jugadorActual()));
+		this.zonaJugador2 = new ZonaJugador(new Botonera(partida,this,partida.jugadorOponente()),
+				new InformacionParaJugador(partida.jugadorOponente()));
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);

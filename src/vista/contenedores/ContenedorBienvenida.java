@@ -39,7 +39,7 @@ public class ContenedorBienvenida extends VBox{
         botonEntrar.setStyle("-fx-base: #373441");
       
         BotonEntrarEventHandler botonEntrarHandler =
-                new BotonEntrarEventHandler(primaryStage, primaryStage.isFullScreen());
+                new BotonEntrarEventHandler(primaryStage);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         Button botonReglas = new Button();
