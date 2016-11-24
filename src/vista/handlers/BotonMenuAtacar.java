@@ -21,7 +21,7 @@ public class BotonMenuAtacar extends MenuButton {
         RepresentacionAlgoMon representacion = fabrica.crearRepresentacion(jugador.getAlgomonActivo());
         for(Ataque ataque : jugador.getAlgomonActivo().getAtaques()) {
             MenuItem opcion = new MenuItem(representacion.getNombreDeAtaque(ataque));
-            opcion.setOnAction(new OpcionEventHandler(partida,ataque,this.contenedor));
+            opcion.setOnAction(new OpcionAtacarEventHandler(partida,ataque,this.contenedor));
             this.getItems().add(opcion);
         }
     }

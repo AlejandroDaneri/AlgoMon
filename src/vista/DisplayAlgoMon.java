@@ -15,14 +15,17 @@ public class DisplayAlgoMon extends VBox {
 	public DisplayAlgoMon(RepresentacionAlgoMon representacion){
 		this.representacion = representacion;
 		
-		Label nombreDelAlgomon = new Label(representacion.getNombre()); // ya no tenemos un metodo que nos devuelva el nombre del algomon, solucion provisoria
+		Label nombreDelAlgomon = new Label(representacion.getNombre()); 
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
 
 		this.barraDeVida = new BarraDeVida(representacion.getAlgomon());
 		
-		this.actualizarEstados();
+		String estadosParaVisualizar = "Estados"+ ": " + this.representacion.getListaDeEstados().get(0) +", "+ this.representacion.getListaDeEstados().get(1);
+		Label estados = new Label(estadosParaVisualizar);
+		estados.setFont(Font.font("Cambria", 20));
+		this.estados = estados;
 		
 		ImageView imagen = new ImageView(representacion.getImagen());
 		imagen.setFitWidth(250);
@@ -33,10 +36,12 @@ public class DisplayAlgoMon extends VBox {
 	}
 	
 	private void actualizarEstados(){
+		this.getChildren().remove(this.estados);
 		String estadosParaVisualizar = "Estados"+ ": " + this.representacion.getListaDeEstados().get(0) +", "+ this.representacion.getListaDeEstados().get(1);
 		Label estados = new Label(estadosParaVisualizar);
 		estados.setFont(Font.font("Cambria", 20));
 		this.estados = estados;
+		this.getChildren().add(this.estados);		
 	}
 	
 	public void actualizar(){

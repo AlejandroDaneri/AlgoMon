@@ -9,6 +9,7 @@ import modelo.excepciones.AtaquesAgotadosException;
 import modelo.excepciones.CantidadMaximaAlgoMonesException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Jugador {
 	
@@ -109,5 +110,9 @@ public class Jugador {
 	
 	public Elemento getElemento(Elemento elemento) {
 		return this.elementos.getElemento(elemento);
+	}
+
+	public List<Elemento> getElementos() {
+		return this.elementos.getListaDeElementos();
 	}
 }

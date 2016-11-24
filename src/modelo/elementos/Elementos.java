@@ -35,9 +35,6 @@ public class Elementos {
 	}
 	
 	private boolean tieneElemento(Elemento elemento){
-		/*boolean tiene = false;
-		if(this.getElemento(elemento) != null) tiene = true;
-		return tiene;*/
 		return this.getElemento(elemento) != null;
 	}
 	
@@ -51,5 +48,9 @@ public class Elementos {
 			if(unElemento.equals(elemento)) elementoActual = unElemento;
 		}
 		return elementoActual;
+	}
+
+	public List<Elemento> getListaDeElementos() {
+		return this.elementos;
 	}
 }

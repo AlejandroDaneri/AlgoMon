@@ -8,12 +8,12 @@ import modelo.excepciones.AtaquesAgotadosException;
 import vista.contenedores.ContenedorPelea;
 
 
-public class OpcionEventHandler implements EventHandler<ActionEvent> {
+public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
     private Partida partida;
     private Ataque ataque;
     private ContenedorPelea contenedor;
     
-    public OpcionEventHandler(Partida partida, Ataque ataque, ContenedorPelea contenedor) {
+    public OpcionAtacarEventHandler(Partida partida, Ataque ataque, ContenedorPelea contenedor) {
         this.partida = partida;
         this.ataque = ataque;
         this.contenedor = contenedor;

@@ -4,11 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.MenuButton;
 import vista.handlers.BotonHandler;
 
-public class BotonMenuAtacarEventHandler extends BotonHandler {
+public class BotonMenuEventHandler extends BotonHandler {
 	
 	private MenuButton boton;
 	
-	public BotonMenuAtacarEventHandler(MenuButton boton){
+	public BotonMenuEventHandler(MenuButton boton){
 		this.boton = boton;
 	}
 	
