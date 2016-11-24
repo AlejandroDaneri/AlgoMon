@@ -53,8 +53,5 @@ public class DisplayAlgoMon extends VBox {
 		this.barraDeVida.actualizar();
 		this.actualizarEstados();
 	}
-	
-	public RepresentacionAlgoMon getRepresentacion(){
-		return representacion;
-	}
+
 }

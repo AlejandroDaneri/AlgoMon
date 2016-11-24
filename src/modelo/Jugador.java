@@ -4,11 +4,7 @@ import modelo.algomones.AlgoMon;
 import modelo.ataques.Ataque;
 import modelo.elementos.Elemento;
 import modelo.elementos.Elementos;
-import modelo.excepciones.AlgoMonACambiarEsElActualException;
-import modelo.excepciones.AlgoMonInexistenteException;
-import modelo.excepciones.AlgoMonMuertoException;
-import modelo.excepciones.AtaquesAgotadosException;
-import modelo.excepciones.CantidadMaximaAlgoMonesException;
+import modelo.excepciones.*;
 
 import java.util.ArrayList;
 import java.util.List;

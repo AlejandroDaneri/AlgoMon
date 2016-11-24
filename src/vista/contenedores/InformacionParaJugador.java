@@ -57,7 +57,7 @@ public class InformacionParaJugador extends VBox {
         this.getChildren().addAll(pociones, superPociones, vitaminas, restauradores);
 	}
 	
-	public Label setLabelElemento(String stringLabel, Elemento elemento) {
+	private Label setLabelElemento(String stringLabel, Elemento elemento) {
 		
 		Elemento element = jugador.getElemento(elemento);
         Label label = new Label(stringLabel + element.cantidadElemento());

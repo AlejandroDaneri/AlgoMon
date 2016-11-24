@@ -6,10 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import modelo.Partida;
 import modelo.algomones.AlgoMon;
-import modelo.ataques.Ataque;
 import modelo.excepciones.AlgoMonACambiarEsElActualException;
 import modelo.excepciones.AlgoMonMuertoException;
-import modelo.excepciones.AtaquesAgotadosException;
 import vista.RepresentacionAlgoMon;
 import vista.contenedores.ContenedorPelea;
 

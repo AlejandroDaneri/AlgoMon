@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import javafx.scene.media.AudioClip;
 
 public abstract class BotonHandler implements EventHandler<ActionEvent>{
-//heredando de BotonHandler y llamando a super.handle ya va a sonar el boton
 
     @Override
     public void handle(ActionEvent event) {

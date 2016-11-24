@@ -36,9 +36,6 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
     	this.botonSeleccion = botonSeleccion;
     }
     
-   /* public List<AlgoMon> getAlgomonesEnUso() {
-    	return algomonesEnUso;
-    }*/
 
     @Override
     public void handle(ActionEvent event) {

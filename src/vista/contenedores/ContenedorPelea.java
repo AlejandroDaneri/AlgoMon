@@ -9,7 +9,6 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import modelo.Partida;
 import vista.ListaDeRepresentaciones;
-import vista.RepresentacionAlgoMon;
 
 public class ContenedorPelea extends BorderPane{
 	private Stage stage;

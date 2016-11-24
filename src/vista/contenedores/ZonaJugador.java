@@ -18,16 +18,16 @@ public class ZonaJugador extends VBox {
 		return this.getInformacionParaJugador().getJugador();
 	}
 	
-	public Botonera getBotonera() {
+	private Botonera getBotonera() {
 		return botonera;
 	}
-	public void setBotonera(Botonera botonera) {
+	private void setBotonera(Botonera botonera) {
 		this.botonera = botonera;
 	}
-	public InformacionParaJugador getInformacionParaJugador() {
+	private InformacionParaJugador getInformacionParaJugador() {
 		return informacionParaJugador;
 	}
-	public void setInformacionParaJugador(InformacionParaJugador informacionParaJugador) {
+	private void setInformacionParaJugador(InformacionParaJugador informacionParaJugador) {
 		this.informacionParaJugador = informacionParaJugador;
 	}
 

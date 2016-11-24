@@ -1,5 +1,6 @@
 package vista;
 
+import javafx.beans.binding.When;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -10,27 +11,28 @@ import vista.handlers.BotonSalirEventHandler;
 
 public class BarraDeMenu extends MenuBar {
 
-	private Stage stage;
-	
 	public BarraDeMenu(Stage primaryStage) {
 		
 		super();
-		this.stage = primaryStage;
-		
 		Menu menuArchivo = new Menu("Archivo");
-		Menu menuEdicion = new Menu("Edición");
+		Menu menuEdicion = new Menu("Ver");
 		Menu menuAyuda = new Menu("Ayuda");
-		
+
 		//opciones de "Archivo"
 		MenuItem opcionSalir = new MenuItem("Salir");
 		BotonSalirEventHandler opcionSalirHandler = new BotonSalirEventHandler();
 		opcionSalir.setOnAction(opcionSalirHandler);
 		menuArchivo.getItems().addAll(opcionSalir);
-		
-		//opciones de "Edicion"
-		MenuItem modoPantallaCompleta = new MenuItem("Modo pantalla completa");
+
+		//opciones de "Ver"
+		MenuItem modoPantallaCompleta = new MenuItem();
+		modoPantallaCompleta.textProperty().bind(
+				new When(primaryStage.fullScreenProperty())
+						.then("Salir de pantalla completa")
+						.otherwise("Pantalla completa"));
+
 		BotonModoPantallaCompletaHandler modoPantallaCompletaHandler= new
-				BotonModoPantallaCompletaHandler(stage, modoPantallaCompleta);
+				BotonModoPantallaCompletaHandler(primaryStage);
 		modoPantallaCompleta.setOnAction(modoPantallaCompletaHandler);
 
 //		ésta es una idea a futuro
@@ -49,7 +51,7 @@ public class BarraDeMenu extends MenuBar {
 		menuAyuda.getItems().addAll(reglasDelJuego, acercaDe);
 		
 		this.getMenus().addAll(menuArchivo, menuEdicion, menuAyuda);
-        this.prefWidthProperty().bind(stage.minWidthProperty());
+        this.prefWidthProperty().bind(primaryStage.minWidthProperty());
 	}
 	
 }

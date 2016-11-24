@@ -10,14 +10,12 @@ import vista.contenedores.ContenedorPelea;
 
 public class BotonEmpezarEventHandler extends BotonHandler {
 
-	
     private Stage stage;
     private String nombreJugador1;
     private String nombreJugador2;
     private Jugador jugador1;
     private Jugador jugador2;
 
-    // La escena la creo en el handler mas abajo
     public BotonEmpezarEventHandler(Stage stage, String nombreJugador1, String nombreJugador2,
                                     Jugador jugador1, Jugador jugador2) {
         this.stage = stage;

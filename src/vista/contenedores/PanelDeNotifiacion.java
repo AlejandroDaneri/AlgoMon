@@ -14,7 +14,7 @@ import javafx.scene.text.Font;
 public class PanelDeNotifiacion extends HBox {
     public PanelDeNotifiacion() {
         BackgroundFill fondo = new BackgroundFill(Color.web("#89B0AE"),
-                new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
+                new CornerRadii(1), new Insets(0,0,0,0));
 
 
         this.setBackground(new Background(fondo));

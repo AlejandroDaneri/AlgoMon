@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepresentacionAlgoMon {
-	
+
 	private static String quemado = "Quemado";
 	private static String dormido = "Dormido";
 	private static String normal = "Normal";
@@ -54,14 +54,6 @@ public class RepresentacionAlgoMon {
 		return dormido;
 	}
 	
-	public List<String> getListaDeAtaques(){
-		List<String> lista = new ArrayList<String>();
-		for(Ataque ataque : this.algomon.getAtaques()){
-			lista.add(this.getNombreDeAtaque(ataque));
-		}
-		return lista;
-	}
-	
 	public String getNombreDeAtaque(Ataque ataque){
 		if(ataque.equals(new AtaqueRapido())) return ataqueRapido;
 		if(ataque.equals(new Brasas())) return brasas;
@@ -76,7 +68,7 @@ public class RepresentacionAlgoMon {
 	public Image getImagen() {
 		return imagen;
 	}
-	public void setImagen(Image imagen) {
+	private void setImagen(Image imagen) {
 		this.imagen = imagen;
 	}
 	public AlgoMon getAlgomon() {
@@ -88,7 +80,7 @@ public class RepresentacionAlgoMon {
 	public Image getTabla() {
 		return tabla;
 	}
-	public void setTabla(Image tabla) {
+	private void setTabla(Image tabla) {
 		this.tabla = tabla;
 	}
 
@@ -96,7 +88,7 @@ public class RepresentacionAlgoMon {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	private void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 }

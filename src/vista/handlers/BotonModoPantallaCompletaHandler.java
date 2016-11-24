@@ -1,18 +1,15 @@
 package vista.handlers;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class BotonModoPantallaCompletaHandler extends BotonHandler {
 	
 	private Stage stage;
-	private MenuItem menuItem;
 	
-	public BotonModoPantallaCompletaHandler(Stage primaryStage, MenuItem menuItemPantallaCompleta) {
+	public BotonModoPantallaCompletaHandler(Stage primaryStage) {
 		super();
 		this.stage = primaryStage;
-		this.menuItem = menuItemPantallaCompleta;
 	}
 
 	public void handle(ActionEvent event) {

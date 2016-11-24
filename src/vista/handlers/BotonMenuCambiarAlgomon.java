@@ -1,13 +1,11 @@
 package vista.handlers;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import modelo.Jugador;
 import modelo.Partida;
 import modelo.algomones.AlgoMon;
-import modelo.ataques.Ataque;
 import vista.FabricaDeRepresentaciones;
 import vista.RepresentacionAlgoMon;
 import vista.contenedores.ContenedorPelea;

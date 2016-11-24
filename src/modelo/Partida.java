@@ -4,6 +4,7 @@ import modelo.algomones.AlgoMon;
 import modelo.ataques.Ataque;
 import modelo.elementos.Elemento;
 import modelo.excepciones.AtaquesAgotadosException;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
