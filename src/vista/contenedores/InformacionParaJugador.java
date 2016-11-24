@@ -13,6 +13,10 @@ import modelo.elementos.*;
 public class InformacionParaJugador extends VBox {
 	
 	private Jugador jugador;
+	private Label pociones;
+	private Label superPociones;
+	private Label vitaminas;
+	private Label restauradores;
 
     public InformacionParaJugador(Jugador jugador) {
     	
@@ -22,36 +26,14 @@ public class InformacionParaJugador extends VBox {
         nombreDelJugador.setAlignment(Pos.CENTER);
         nombreDelJugador.setTextAlignment(TextAlignment.CENTER);
         nombreDelJugador.setFont(Font.font("Cambria", FontWeight.BOLD, 40));
-
-        Elemento pocion = jugador.getElemento(new Pocion());
-        Label pociones = new Label("Pociones: "+pocion.cantidadElemento());
-        pociones.setTextAlignment(TextAlignment.LEFT);
-        pociones.setFont(Font.font("Cambria", 20));
-        pociones.setPadding(new Insets(50,0,20,0));
-
-        Elemento superPocion = jugador.getElemento(new SuperPocion());
-        Label superPociones = new Label("Super pociones: "+superPocion.cantidadElemento());
-        superPociones.setTextAlignment(TextAlignment.LEFT);
-        superPociones.setFont(Font.font("Cambria", 20));
-        superPociones.setPadding(new Insets(0,0,20,0));
-
-        Elemento vitamina = jugador.getElemento(new Vitamina());
-        Label vitaminas = new Label("Vitamina: "+vitamina.cantidadElemento());
-        vitaminas.setTextAlignment(TextAlignment.LEFT);
-        vitaminas.setFont(Font.font("Cambria", 20));
-        vitaminas.setPadding(new Insets(0,0,20,0));
-
-        Elemento restaurador = jugador.getElemento(new Restaurador());
-        Label restauradores = new Label("Restaurador: "+restaurador.cantidadElemento());
-        restauradores.setTextAlignment(TextAlignment.LEFT);
-        restauradores.setFont(Font.font("Cambria", 20));
-        restauradores.setPadding(new Insets(0,0,20,0));
-
+   
+        this.pociones = this.setLabelElemento("Pociones: ", new Pocion());
+        this.superPociones = this.setLabelElemento("Super pociones: ", new SuperPocion());
+        this.vitaminas = this.setLabelElemento("Vitamina: ", new Vitamina());
+        this.restauradores = this.setLabelElemento("Restaurador: ", new Restaurador());
 
         this.setPadding(new Insets(0,20,0,20));
-        this.getChildren().addAll(nombreDelJugador, pociones, superPociones,
-                vitaminas, restauradores);
-
+        this.getChildren().addAll(nombreDelJugador, pociones, superPociones, vitaminas, restauradores);
 
     }
 
@@ -61,5 +43,28 @@ public class InformacionParaJugador extends VBox {
 
 	public void setJugador(Jugador jugador) {
 		this.jugador = jugador;
+	}
+	
+	public void actualizar(){
+		
+		this.getChildren().removeAll(pociones,superPociones,vitaminas,restauradores);
+		
+		this.pociones = this.setLabelElemento("Pociones: ", new Pocion());
+        this.superPociones = this.setLabelElemento("Super pociones: ", new SuperPocion());
+        this.vitaminas = this.setLabelElemento("Vitamina: ", new Vitamina());
+        this.restauradores = this.setLabelElemento("Restaurador: ", new Restaurador());
+        
+        this.getChildren().addAll(pociones, superPociones, vitaminas, restauradores);
+	}
+	
+	public Label setLabelElemento(String stringLabel, Elemento elemento) {
+		
+		Elemento element = jugador.getElemento(elemento);
+        Label label = new Label(stringLabel + element.cantidadElemento());
+        label.setTextAlignment(TextAlignment.LEFT);
+        label.setFont(Font.font("Cambria", 20));
+        label.setPadding(new Insets(0,0,20,0));
+        return label;
+        
 	}
 }

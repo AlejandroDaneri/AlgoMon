@@ -2,6 +2,8 @@ package vista.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import modelo.Partida;
 import modelo.ataques.Ataque;
 import modelo.excepciones.AtaquesAgotadosException;
@@ -26,8 +28,13 @@ public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
             contenedor.nuevoTurno();
     		if (partida.juegoTerminado())
     			contenedor.peleaFinalizada(partida.nombreGanador());
-        } catch (AtaquesAgotadosException e) {
-            //lanzar aviso
+        } 
+        catch (AtaquesAgotadosException e) {
+        	Alert alert = new Alert(AlertType.WARNING);
+        	alert.setTitle("Warning");
+        	alert.setHeaderText("Ataque Agotado");
+        	alert.setContentText("No puede utilizar mas este ataque!");
+        	alert.showAndWait();
         }
     }
 }

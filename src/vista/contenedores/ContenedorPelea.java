@@ -53,6 +53,9 @@ public class ContenedorPelea extends BorderPane{
 
 	public void actualizar(){
 		contenedorDeAlgomones.actualizar();
+		if(this.zonaJugador1.getJugador() == this.partida.jugadorActual()) zonaJugador2.actualizar();
+		else zonaJugador1.actualizar();
+		
 	}
 	
 	public void nuevoTurno(){

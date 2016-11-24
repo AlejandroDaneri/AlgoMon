@@ -8,6 +8,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 public class DisplayAlgoMon extends VBox {
+	
 	private RepresentacionAlgoMon representacion;
 	private Label estados;
 	private BarraDeVida barraDeVida;

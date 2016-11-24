@@ -2,8 +2,12 @@ package vista.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import modelo.Partida;
 import modelo.elementos.Elemento;
+import modelo.excepciones.AtaquesAgotadosException;
+import modelo.excepciones.CantidadElementoAgotadaException;
 import vista.contenedores.ContenedorPelea;
 
 public class OpcionAplicarElementoEventHandler implements EventHandler<ActionEvent> {
@@ -20,10 +24,19 @@ public class OpcionAplicarElementoEventHandler implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent event) {
-     partida.jugarTurnoActual(this.elemento);
-     contenedor.nuevoTurno();
-     if (partida.juegoTerminado())
-    	 contenedor.peleaFinalizada(partida.nombreGanador());
+    	try {
+    		partida.jugarTurnoActual(this.elemento);
+        	contenedor.nuevoTurno();
+        	if (partida.juegoTerminado())
+        		contenedor.peleaFinalizada(partida.nombreGanador());
+        } 
+        catch (CantidadElementoAgotadaException e) {
+        	Alert alert = new Alert(AlertType.WARNING);
+        	alert.setTitle("Warning");
+        	alert.setHeaderText("Elemento Agotado");
+        	alert.setContentText("No puede utilizar mas este elemento!");
+        	alert.showAndWait();
+        }
     }
 
 }

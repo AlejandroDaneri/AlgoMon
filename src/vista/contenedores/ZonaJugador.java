@@ -35,4 +35,8 @@ public class ZonaJugador extends VBox {
 		this.getBotonera().bloquear(bloqueo);		
 	}
 	
+	public void actualizar(){
+		informacionParaJugador.actualizar();
+	}
+	
 }
