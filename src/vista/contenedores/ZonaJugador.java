@@ -9,7 +9,7 @@ public class ZonaJugador extends VBox {
 	private InformacionParaJugador informacionParaJugador;
 	
 	public ZonaJugador(Botonera botonera, InformacionParaJugador informacionParaJugador){
-		this.setBotonera(botonera);
+		this.botonera = botonera;
 		this.setInformacionParaJugador(informacionParaJugador);
 		this.getChildren().addAll(informacionParaJugador,botonera);
 	}
@@ -21,8 +21,12 @@ public class ZonaJugador extends VBox {
 	private Botonera getBotonera() {
 		return botonera;
 	}
-	private void setBotonera(Botonera botonera) {
+	
+	void setBotonera(Botonera botonera) {
+		this.getChildren().remove(this.botonera);
 		this.botonera = botonera;
+		this.getChildren().add(this.botonera);
+		
 	}
 	private InformacionParaJugador getInformacionParaJugador() {
 		return informacionParaJugador;

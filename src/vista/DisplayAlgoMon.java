@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import modelo.Jugador;
 
 public class DisplayAlgoMon extends VBox {
 	
@@ -13,10 +14,12 @@ public class DisplayAlgoMon extends VBox {
 	private Label estados;
 	private BarraDeVida barraDeVida;
 	private Label nombreDelAlgomon;
-	private ImageView imagen; 
+	private ImageView imagen;
+	private Jugador jugador;
 	
-	public DisplayAlgoMon(RepresentacionAlgoMon representacion){
+	public DisplayAlgoMon(RepresentacionAlgoMon representacion, Jugador jugador){
 		this.representacion = representacion;
+		this.setJugador(jugador);
 		
 		Label nombreDelAlgomon = new Label(representacion.getNombre()); 
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
@@ -52,6 +55,14 @@ public class DisplayAlgoMon extends VBox {
 	public void actualizar(){
 		this.barraDeVida.actualizar();
 		this.actualizarEstados();
+	}
+
+	public Jugador getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
 	}
 
 }

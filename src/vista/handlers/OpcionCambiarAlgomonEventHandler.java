@@ -28,17 +28,11 @@ public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEven
 	@Override
 	public void handle(ActionEvent event) {
 		 try {
-	            partida.jugarTurnoActual(algomon);
+			 	partida.jugarTurnoActual(algomon);
+			    contenedor.cambiarAlgomon(algomon);
 	            contenedor.nuevoTurno();
 	    		if (partida.juegoTerminado())
 	    			contenedor.peleaFinalizada(partida.nombreGanador());
-	        } 
-	        catch (AlgoMonACambiarEsElActualException e) {
-	        	Alert alert = new Alert(AlertType.WARNING);
-	        	alert.setTitle("Warning");
-	        	alert.setHeaderText("No es posible realizar la accion");
-	        	alert.setContentText("El algomon que escogio es el actual!");
-	        	alert.showAndWait();
 	        }
 		 	catch (AlgoMonMuertoException e) {
 			 Alert alert = new Alert(AlertType.WARNING);

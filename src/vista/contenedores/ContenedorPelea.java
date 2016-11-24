@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import modelo.Partida;
+import modelo.algomones.AlgoMon;
 import vista.ListaDeRepresentaciones;
 
 public class ContenedorPelea extends BorderPane{
@@ -38,7 +39,8 @@ public class ContenedorPelea extends BorderPane{
 		
 		HBox panelDeNotificaciones = new PanelDeNotificacion();
 
-		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2);
+		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2,
+				partida.jugadorActual(),partida.jugadorOponente());
 
 		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()),
 				new InformacionParaJugador(partida.jugadorActual()));
@@ -57,6 +59,14 @@ public class ContenedorPelea extends BorderPane{
 		contenedorDeAlgomones.actualizar();
 		if(this.zonaJugador1.getJugador() == this.partida.jugadorActual()) zonaJugador2.actualizar();
 		else zonaJugador1.actualizar();
+		
+	}
+	
+	public void cambiarAlgomon(AlgoMon actual){
+		contenedorDeAlgomones.cambiarAlgomon(actual,partida.jugadorOponente());
+		Botonera botoneraNueva = new Botonera(partida,this,partida.jugadorOponente());
+		if(this.zonaJugador1.getJugador() == this.partida.jugadorOponente()) zonaJugador1.setBotonera(botoneraNueva);
+		else zonaJugador2.setBotonera(botoneraNueva);
 		
 	}
 	
