@@ -40,8 +40,8 @@ public class ContenedorPelea extends BorderPane{
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2);
 
-		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this), new InformacionParaJugador(partida.jugadorActual()));
-		this.zonaJugador2 = new ZonaJugador(new Botonera(partida,this), new InformacionParaJugador(partida.jugadorOponente()));
+		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()), new InformacionParaJugador(partida.jugadorActual()));
+		this.zonaJugador2 = new ZonaJugador(new Botonera(partida,this,partida.jugadorOponente()), new InformacionParaJugador(partida.jugadorOponente()));
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);
@@ -49,8 +49,6 @@ public class ContenedorPelea extends BorderPane{
 
 		this.contenedorDeAlgomones = contenedorDeAlgomones;
 		this.setCenter(contenedorDeAlgomones);
-		
-		//this.nuevoTurno();
 	}
 
 	public void actualizar(){

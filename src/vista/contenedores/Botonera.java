@@ -2,19 +2,22 @@ package vista.contenedores;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
+import modelo.Jugador;
 import modelo.Partida;
-import vista.handlers.BotonAtacarEventHandler;
 import vista.handlers.BotonCambiarAlgomonEventHandler;
+import vista.handlers.BotonMenuAtacar;
+import vista.handlers.BotonMenuAtacarEventHandler;
 import vista.handlers.BotonUsarElementoEventHandler;
 
 public class Botonera extends VBox {
 	
-	private Button botonAtacar;
+	private MenuButton botonAtacar;
 	private Button botonUsarElemento;
 	private Button botonCambiarAlgomon;
 	
-    public Botonera(Partida partida, ContenedorPelea contenedor) {
+    public Botonera(Partida partida, ContenedorPelea contenedor, Jugador jugador) {
 
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
@@ -23,9 +26,9 @@ public class Botonera extends VBox {
         opciones.setSpacing(15);
         opciones.setAlignment(Pos.CENTER);
 
-        this.botonAtacar = new Button("Atacar");
-        BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida,opciones,contenedor);
-        botonAtacar.setOnAction(botonAtacarEventHandler);
+        this.botonAtacar = new BotonMenuAtacar(partida,jugador,opciones,contenedor);
+        BotonMenuAtacarEventHandler botonMenuAtacarEventHandler = new BotonMenuAtacarEventHandler(botonAtacar);
+        botonAtacar.setOnAction(botonMenuAtacarEventHandler);
 
         this.botonUsarElemento = new Button("Usar elemento");
         BotonUsarElementoEventHandler botonUsarElementoEventHandler = new BotonUsarElementoEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones,contenedor);
