@@ -77,6 +77,16 @@ public class ContenedorPelea extends BorderPane{
 		this.actualizar();
 		this.zonaJugador2.bloquearBotonera(this.zonaJugador1.getJugador() == this.partida.jugadorActual());
 		this.zonaJugador1.bloquearBotonera(!(this.zonaJugador1.getJugador() == this.partida.jugadorActual()));
+		if(this.zonaJugadorActual().getJugador().getAlgomonActivo().estaMuerto()) this.manejarCasoAlgoMonActivoMuerto();
+	}
+	
+	public ZonaJugador zonaJugadorActual(){
+		if(this.zonaJugador1.getJugador() == this.partida.jugadorActual()) return zonaJugador1;
+		return zonaJugador2;
+	}
+	
+	public void manejarCasoAlgoMonActivoMuerto(){
+		this.zonaJugadorActual().habilitarSoloCambiarAlgoMon();
 	}
 	
 	public void peleaFinalizada(String ganador) {

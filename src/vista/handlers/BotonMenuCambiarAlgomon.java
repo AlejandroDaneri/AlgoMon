@@ -19,7 +19,7 @@ public class BotonMenuCambiarAlgomon extends MenuButton {
         opciones.getChildren().add(this);
         FabricaDeRepresentaciones fabrica = new FabricaDeRepresentaciones();
         for(AlgoMon algomon : jugador.getListaDeAlgomones()) {
-        	if(algomon.equals(jugador.getAlgomonActivo())) continue;
+        	if(algomon.equals(jugador.getAlgomonActivo()) || algomon.estaMuerto()) continue;
         	RepresentacionAlgoMon representacion = fabrica.crearRepresentacion(algomon);
         	MenuItem opcion = new MenuItem(representacion.getNombre());
         	opcion.setOnAction(new OpcionCambiarAlgomonEventHandler(partida,algomon,representacion,this.contenedor));

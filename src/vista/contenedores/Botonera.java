@@ -49,4 +49,10 @@ public class Botonera extends VBox {
 		this.botonUsarElemento.setDisable(bloqueo);
 		
 	}
+	
+	public void habilitarSoloCambiarAlgoMon(){
+		this.botonAtacar.setDisable(true);
+		this.botonCambiarAlgomon.setDisable(false);
+		this.botonUsarElemento.setDisable(true);
+	}
 }
