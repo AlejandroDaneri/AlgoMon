@@ -9,6 +9,11 @@ import vista.handlers.BotonCambiarAlgomonEventHandler;
 import vista.handlers.BotonUsarElementoEventHandler;
 
 public class Botonera extends VBox {
+	
+	private Button botonAtacar;
+	private Button botonUsarElemento;
+	private Button botonCambiarAlgomon;
+	
     public Botonera(Partida partida, ContenedorPelea contenedor) {
 
         this.setSpacing(15);
@@ -18,15 +23,15 @@ public class Botonera extends VBox {
         opciones.setSpacing(15);
         opciones.setAlignment(Pos.CENTER);
 
-        Button botonAtacar = new Button("Atacar");
+        this.botonAtacar = new Button("Atacar");
         BotonAtacarEventHandler botonAtacarEventHandler = new BotonAtacarEventHandler(partida,opciones,contenedor);
         botonAtacar.setOnAction(botonAtacarEventHandler);
 
-        Button botonUsarElemento = new Button("Usar elemento");
+        this.botonUsarElemento = new Button("Usar elemento");
         BotonUsarElementoEventHandler botonUsarElementoEventHandler = new BotonUsarElementoEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones,contenedor);
         botonUsarElemento.setOnAction(botonUsarElementoEventHandler);
 
-        Button botonCambiarAlgomon = new Button("Cambiar Algomon");
+        this.botonCambiarAlgomon = new Button("Cambiar Algomon");
         BotonCambiarAlgomonEventHandler botonCambiarAlgomonEventHandler = new BotonCambiarAlgomonEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones, contenedor);
         botonCambiarAlgomon.setOnAction(botonCambiarAlgomonEventHandler);
 
@@ -35,4 +40,11 @@ public class Botonera extends VBox {
         this.setAlignment(Pos.CENTER);
 
     }
+
+	public void bloquear(boolean bloqueo) {
+		this.botonAtacar.setDisable(bloqueo);
+		this.botonCambiarAlgomon.setDisable(bloqueo);
+		this.botonUsarElemento.setDisable(bloqueo);
+		
+	}
 }

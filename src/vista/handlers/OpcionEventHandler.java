@@ -23,7 +23,7 @@ public class OpcionEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         try {
             partida.jugarTurnoActual(ataque);
-            contenedor.actualizar();
+            contenedor.nuevoTurno();
     		if (partida.juegoTerminado())
     			contenedor.peleaFinalizada(partida.nombreGanador());
         } catch (AtaquesAgotadosException e) {

@@ -11,8 +11,13 @@ import modelo.Jugador;
 import modelo.elementos.*;
 
 public class InformacionParaJugador extends VBox {
+	
+	private Jugador jugador;
 
     public InformacionParaJugador(Jugador jugador) {
+    	
+    	this.jugador = jugador;
+    	
         Label nombreDelJugador = new Label(jugador.getNombre());
         nombreDelJugador.setAlignment(Pos.CENTER);
         nombreDelJugador.setTextAlignment(TextAlignment.CENTER);
@@ -49,4 +54,12 @@ public class InformacionParaJugador extends VBox {
 
 
     }
+
+	public Jugador getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
+	}
 }

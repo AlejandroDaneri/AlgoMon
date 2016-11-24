@@ -13,6 +13,9 @@ import vista.ListaDeRepresentaciones;
 public class ContenedorPelea extends BorderPane{
 	private Stage stage;
 	private ContenedorDeAlgomones contenedorDeAlgomones;
+	private Partida partida;
+	private ZonaJugador zonaJugador1;
+	private ZonaJugador zonaJugador2;
 
 	public ContenedorPelea(Stage primaryStage) {
 		stage = primaryStage;
@@ -28,9 +31,8 @@ public class ContenedorPelea extends BorderPane{
 	}
 
 	public void inicializarPelea(Partida partida){
-		VBox informacionParaJugador1 = new InformacionParaJugador(partida.jugadorActual());
-		VBox informacionParaJugador2 = new InformacionParaJugador(partida.jugadorOponente());
-
+		this.partida = partida;
+		
 		ListaDeRepresentaciones representacionesJugador1 = new ListaDeRepresentaciones(partida.jugadorActual().getListaDeAlgomones());
 		ListaDeRepresentaciones representacionesJugador2 = new ListaDeRepresentaciones(partida.jugadorOponente().getListaDeAlgomones());
 		
@@ -38,14 +40,8 @@ public class ContenedorPelea extends BorderPane{
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2);
 
-		VBox botoneraJugador1 = new Botonera(partida,this);
-		VBox botoneraJugador2 = new Botonera(partida,this);
-
-		VBox zonaJugador1 = new VBox();
-		zonaJugador1.getChildren().addAll(informacionParaJugador1,botoneraJugador1);
-
-		VBox zonaJugador2 = new VBox();
-		zonaJugador2.getChildren().addAll(informacionParaJugador2,botoneraJugador2);
+		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this), new InformacionParaJugador(partida.jugadorActual()));
+		this.zonaJugador2 = new ZonaJugador(new Botonera(partida,this), new InformacionParaJugador(partida.jugadorOponente()));
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);
@@ -53,10 +49,18 @@ public class ContenedorPelea extends BorderPane{
 
 		this.contenedorDeAlgomones = contenedorDeAlgomones;
 		this.setCenter(contenedorDeAlgomones);
+		
+		//this.nuevoTurno();
 	}
 
 	public void actualizar(){
 		contenedorDeAlgomones.actualizar();
+	}
+	
+	public void nuevoTurno(){
+		this.actualizar();
+		this.zonaJugador2.bloquearBotonera(this.zonaJugador1.getJugador() == this.partida.jugadorActual());
+		this.zonaJugador1.bloquearBotonera(!(this.zonaJugador1.getJugador() == this.partida.jugadorActual()));
 	}
 
 	public void peleaFinalizada(String ganador) {
