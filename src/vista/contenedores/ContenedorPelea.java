@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import modelo.Partida;
 import vista.ListaDeRepresentaciones;
+import vista.RepresentacionAlgoMon;
 
 public class ContenedorPelea extends BorderPane{
 	private Stage stage;
@@ -63,7 +64,7 @@ public class ContenedorPelea extends BorderPane{
 		this.zonaJugador2.bloquearBotonera(this.zonaJugador1.getJugador() == this.partida.jugadorActual());
 		this.zonaJugador1.bloquearBotonera(!(this.zonaJugador1.getJugador() == this.partida.jugadorActual()));
 	}
-
+	
 	public void peleaFinalizada(String ganador) {
 		VBox contenedor = new VBox(20);
 

@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import vista.DisplayAlgoMon;
 import vista.ListaDeRepresentaciones;
+import vista.RepresentacionAlgoMon;
 
 public class ContenedorDeAlgomones extends BorderPane {
     private DisplayAlgoMon displayAlgomon1;

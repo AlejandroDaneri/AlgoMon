@@ -16,7 +16,6 @@ public class RepresentacionAlgoMon {
 	private static String dormido = "Dormido";
 	private static String normal = "Normal";
 	
-	
 	private static String ataqueRapido = "Ataque Rapido";
 	private static String brasas = "Brasas";
 	private static String burbuja = "Burbuja";

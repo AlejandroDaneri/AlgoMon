@@ -4,7 +4,9 @@ import modelo.algomones.AlgoMon;
 import modelo.ataques.Ataque;
 import modelo.elementos.Elemento;
 import modelo.elementos.Elementos;
+import modelo.excepciones.AlgoMonACambiarEsElActualException;
 import modelo.excepciones.AlgoMonInexistenteException;
+import modelo.excepciones.AlgoMonMuertoException;
 import modelo.excepciones.AtaquesAgotadosException;
 import modelo.excepciones.CantidadMaximaAlgoMonesException;
 
@@ -68,8 +70,10 @@ public class Jugador {
 	
 	public void cambiarDeAlgoMon(AlgoMon algomon) {
 		if(!this.tieneAlgomon(algomon)) throw new AlgoMonInexistenteException();
+		if(algomon.equals(algomonActivo)) throw new AlgoMonACambiarEsElActualException();
+		if(algomon.estaMuerto()) throw new AlgoMonMuertoException();
 		for(AlgoMon algomonUser: algomones){
-			if(algomonUser.equals(algomon) && !algomonUser.estaMuerto()) this.setAlgomonActivo(algomonUser);
+			if(algomonUser.equals(algomon)) this.setAlgomonActivo(algomonUser);
 		}
 	}
 	

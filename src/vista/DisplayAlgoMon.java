@@ -12,6 +12,8 @@ public class DisplayAlgoMon extends VBox {
 	private RepresentacionAlgoMon representacion;
 	private Label estados;
 	private BarraDeVida barraDeVida;
+	private Label nombreDelAlgomon;
+	private ImageView imagen; 
 	
 	public DisplayAlgoMon(RepresentacionAlgoMon representacion){
 		this.representacion = representacion;
@@ -20,6 +22,7 @@ public class DisplayAlgoMon extends VBox {
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", 20));
+		this.nombreDelAlgomon = nombreDelAlgomon;
 
 		this.barraDeVida = new BarraDeVida(representacion.getAlgomon());
 		
@@ -31,9 +34,10 @@ public class DisplayAlgoMon extends VBox {
 		ImageView imagen = new ImageView(representacion.getImagen());
 		imagen.setFitWidth(250);
 		imagen.setFitHeight(250);
+		this.imagen = imagen;
 		
 		this.setAlignment(Pos.BOTTOM_CENTER);
-		this.getChildren().addAll(imagen, nombreDelAlgomon,this.barraDeVida, this.estados);
+		this.getChildren().addAll(this.imagen, this.nombreDelAlgomon,this.barraDeVida, this.estados);
 	}
 	
 	private void actualizarEstados(){
@@ -48,5 +52,9 @@ public class DisplayAlgoMon extends VBox {
 	public void actualizar(){
 		this.barraDeVida.actualizar();
 		this.actualizarEstados();
+	}
+	
+	public RepresentacionAlgoMon getRepresentacion(){
+		return representacion;
 	}
 }

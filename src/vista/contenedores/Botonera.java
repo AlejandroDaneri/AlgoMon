@@ -6,16 +6,16 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import modelo.Jugador;
 import modelo.Partida;
-import vista.handlers.BotonCambiarAlgomonEventHandler;
 import vista.handlers.BotonMenuAplicarElemento;
 import vista.handlers.BotonMenuAtacar;
+import vista.handlers.BotonMenuCambiarAlgomon;
 import vista.handlers.BotonMenuEventHandler;
 
 public class Botonera extends VBox {
 	
 	private MenuButton botonAtacar;
 	private MenuButton botonUsarElemento;
-	private Button botonCambiarAlgomon;
+	private MenuButton botonCambiarAlgomon;
 	
     public Botonera(Partida partida, ContenedorPelea contenedor, Jugador jugador) {
 
@@ -34,10 +34,9 @@ public class Botonera extends VBox {
         BotonMenuEventHandler botonUsarElementoEventHandler = new BotonMenuEventHandler(botonUsarElemento);
         botonUsarElemento.setOnAction(botonUsarElementoEventHandler);
 
-        this.botonCambiarAlgomon = new Button("Cambiar Algomon");
-        BotonCambiarAlgomonEventHandler botonCambiarAlgomonEventHandler = new BotonCambiarAlgomonEventHandler(partida.jugadorActual(),partida.jugadorOponente(),opciones, contenedor);
+        this.botonCambiarAlgomon = new BotonMenuCambiarAlgomon(partida,jugador,opciones,contenedor);
+        BotonMenuEventHandler botonCambiarAlgomonEventHandler = new BotonMenuEventHandler(botonCambiarAlgomon);
         botonCambiarAlgomon.setOnAction(botonCambiarAlgomonEventHandler);
-
 
         this.getChildren().addAll(botonAtacar,botonUsarElemento,botonCambiarAlgomon,opciones);
         this.setAlignment(Pos.CENTER);
