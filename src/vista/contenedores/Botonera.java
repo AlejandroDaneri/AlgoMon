@@ -25,17 +25,22 @@ public class Botonera extends VBox {
         opciones.setSpacing(15);
         opciones.setAlignment(Pos.CENTER);
 
-        this.botonAtacar = new BotonMenuAtacar(partida,jugador,opciones,contenedor);
+        botonAtacar = new BotonMenuAtacar(partida,jugador,opciones,contenedor);
         BotonMenuEventHandler botonMenuAtacarEventHandler = new BotonMenuEventHandler(botonAtacar);
         botonAtacar.setOnAction(botonMenuAtacarEventHandler);
 
-        this.botonUsarElemento = new BotonMenuAplicarElemento(partida,jugador,opciones,contenedor);
+
+        botonUsarElemento = new BotonMenuAplicarElemento(partida,jugador,opciones,contenedor);
         BotonMenuEventHandler botonUsarElementoEventHandler = new BotonMenuEventHandler(botonUsarElemento);
         botonUsarElemento.setOnAction(botonUsarElementoEventHandler);
 
-        this.botonCambiarAlgomon = new BotonMenuCambiarAlgomon(partida,jugador,opciones,contenedor);
+        botonCambiarAlgomon = new BotonMenuCambiarAlgomon(partida,jugador,opciones,contenedor);
         BotonMenuEventHandler botonCambiarAlgomonEventHandler = new BotonMenuEventHandler(botonCambiarAlgomon);
         botonCambiarAlgomon.setOnAction(botonCambiarAlgomonEventHandler);
+
+        botonAtacar.setMaxWidth(175);
+        botonUsarElemento.setMaxWidth(175);
+        botonCambiarAlgomon.setMaxWidth(175);
 
         this.getChildren().addAll(botonAtacar,botonUsarElemento,botonCambiarAlgomon,opciones);
         this.setAlignment(Pos.CENTER);

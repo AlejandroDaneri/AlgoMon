@@ -1,6 +1,7 @@
 package vista.contenedores;
 
 import javafx.geometry.Insets;
+import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,6 +29,7 @@ public class EspacioEleccionParaJugador extends VBox{
         EtiquetaNombre.setTextFill(Color.DARKGREY);
 
         ImagenDeAlgomonAElegir seleccionJugador = new ImagenDeAlgomonAElegir(lista);
+
         TablaDeAlgomon tabla = new TablaDeAlgomon(lista);
 
         Flecha flechaIzquierda = new Flecha("file:src/vista/imagenes/flechaizq.png");
@@ -40,6 +42,8 @@ public class EspacioEleccionParaJugador extends VBox{
                 seleccionJugador, seleccionados, jugador, lista.getActual());
 
         Button botonSeleccion = new BotonSeleccionar(botonSeleccionarEventHandler);
+        botonSeleccion.setStyle("-fx-base: #373441");
+
 
         Button botonCambiarHaciaIzquierda = new BotonIzquierdo(flechaIzquierda,
                 seleccionJugador,tabla,lista,botonSeleccionarEventHandler);

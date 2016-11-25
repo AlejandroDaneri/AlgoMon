@@ -1,5 +1,6 @@
 package vista.contenedores;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -40,6 +41,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
                 primaryStage, jugador1, jugador2);
         botonEmpezar.setOnAction(botonEmpezarHandler);
         botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
+        botonEmpezar.setStyle("-fx-base: #373441");
+
 
         BarraDeMenu barraDeMenu = new BarraDeMenu(primaryStage);
 
@@ -47,7 +50,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         this.setLeft(espacioParaJugador1);
         this.setRight(espacioParaJugador2);
         this.setCenter(botonEmpezar);
-
+        this.setMargin(botonEmpezar,new Insets(300,0,0,0));
     }
 
     /* una idea a futuro

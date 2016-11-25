@@ -28,11 +28,11 @@ public class ContenedorBienvenida extends VBox{
         titulo.setTextFill(Color.DARKGREY);
 
         Image imagen = new Image("file:src/vista/imagenes/fondosBienvenida/trespokebol.png");
-        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, true);
+
         BackgroundImage imagenDeFondo =
                 new BackgroundImage(imagen, BackgroundRepeat.REPEAT,
                         BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
-                        backgroundSize);
+                        BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
         Button botonEntrar = new Button();
