@@ -1,6 +1,12 @@
 package vista.contenedores;
 
 import javafx.geometry.Insets;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import modelo.Jugador;
 
@@ -10,14 +16,18 @@ public class ZonaJugador extends VBox {
 	private InformacionParaJugador informacionParaJugador;
 	
 	public ZonaJugador(Botonera botonera, InformacionParaJugador informacionParaJugador){
+		
 		this.botonera = botonera;
 		this.setInformacionParaJugador(informacionParaJugador);
 		this.getChildren().addAll(informacionParaJugador,botonera);
-		this.setPadding(new Insets(50));
 	}
 	
 	public Jugador getJugador(){
 		return this.getInformacionParaJugador().getJugador();
+	}
+	
+	public String getNombreJugador() {
+		return this.getJugador().getNombre();
 	}
 	
 	private Botonera getBotonera() {

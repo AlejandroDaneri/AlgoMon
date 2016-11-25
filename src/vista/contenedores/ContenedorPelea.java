@@ -2,9 +2,12 @@ package vista.contenedores;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import modelo.Partida;
 import modelo.algomones.AlgoMon;
@@ -21,13 +24,12 @@ public class ContenedorPelea extends BorderPane{
 	public ContenedorPelea(Stage primaryStage) {
 		stage = primaryStage;
 		
-		Image fondo = new Image("file:src/vista/imagenes/fondopelea.jpg");
+		Image fondo = new Image("file:src/vista/imagenes/fondosPelea/estadiopoke.jpg");
 		BackgroundImage imagenDeFondo =
 				new BackgroundImage(fondo, BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 						BackgroundSize.DEFAULT);
 		setBackground(new Background(imagenDeFondo));
-//		this.setPadding(new Insets(50, 0, 50, 0));
 
 		BarraDeMenu menu = new BarraDeMenu(stage);
 		this.setTop(menu);
@@ -43,11 +45,11 @@ public class ContenedorPelea extends BorderPane{
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2,
 				partida.jugadorActual(),partida.jugadorOponente());
-
+		
 		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()),
-				new InformacionParaJugador(partida.jugadorActual()));
+				new InformacionParaJugador(partida.jugadorActual(),Color.RED));
 		this.zonaJugador2 = new ZonaJugador(new Botonera(partida,this,partida.jugadorOponente()),
-				new InformacionParaJugador(partida.jugadorOponente()));
+				new InformacionParaJugador(partida.jugadorOponente(),Color.AQUA));
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);
@@ -85,6 +87,11 @@ public class ContenedorPelea extends BorderPane{
 	}
 	
 	private void manejarCasoAlgoMonActivoMuerto(){
+		Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Atencion!");
+    	alert.setHeaderText("Su AlgoMon ha muerto " + this.zonaJugadorActual().getNombreJugador());
+    	alert.setContentText("Escoja el Algomon a utilizar!");
+    	alert.showAndWait();
 		this.zonaJugadorActual().habilitarSoloCambiarAlgoMon();
 	}
 	

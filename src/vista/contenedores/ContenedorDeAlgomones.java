@@ -16,20 +16,9 @@ public class ContenedorDeAlgomones extends BorderPane {
 
     public ContenedorDeAlgomones(ListaDeRepresentaciones representacionesJugador1, ListaDeRepresentaciones representacionJugador2
     		,Jugador jugador1, Jugador jugador2){
-        Image fondo = new Image("file:src/vista/imagenes/displayalgomonfondo.png");
-        BackgroundImage imagenDeFondo =
-            new BackgroundImage(fondo, BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-                    BackgroundSize.DEFAULT);
-
-		this.setBackground(new Background(imagenDeFondo));
-		this.setPadding(new Insets(30));
 
         displayAlgomon1 = new DisplayAlgoMon(representacionesJugador1.getActual(),jugador1);
-		displayAlgomon1.setPadding(new Insets(0,0,50,0));
-
         displayAlgomon2 = new DisplayAlgoMon(representacionJugador2.getActual(),jugador2);
-		displayAlgomon2.setPadding(new Insets(0,0,50,0));
 
 		this.setLeft(displayAlgomon1);
 		this.setRight(displayAlgomon2);
