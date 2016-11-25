@@ -5,8 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import modelo.Jugador;
 import modelo.Partida;
-import vista.Escena;
 import vista.contenedores.ContenedorPelea;
+import vista.contenedores.Escena;
 
 public class BotonEmpezarEventHandler extends BotonHandler {
 

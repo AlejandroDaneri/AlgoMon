@@ -11,10 +11,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modelo.Jugador;
-import vista.BotonDerecho;
-import vista.BotonIzquierdo;
-import vista.BotonSeleccionar;
 import vista.ListaDeRepresentaciones;
+import vista.botones.BotonDerecho;
+import vista.botones.BotonIzquierdo;
+import vista.botones.BotonSeleccionar;
 import vista.handlers.BotonSeleccionarEventHandler;
 
 public class EspacioEleccionParaJugador extends VBox{

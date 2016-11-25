@@ -24,6 +24,8 @@ public class BotonReglasEventHandler extends BotonHandler {
         "Cada jugador debe elegir 3 AlgoMones con los cuales batallara hasta el final de la partida.\n\n" +
         "Turnos: en cada turno el jugador puede: Atacar, Cambiar su AlgoMon o Usar un Elemento.\n\n" +
         "La batalla AlgoMon finaliza cuando los 3 algomones de algun jugador estan muertos.");
+        alerta.setResizable(false);
+        alerta.setHeight(270);
         this.alerta.showAndWait();
     }
 }

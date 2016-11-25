@@ -1,4 +1,4 @@
-package vista.handlers;
+package vista.botones;
 
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -9,6 +9,7 @@ import modelo.algomones.AlgoMon;
 import vista.FabricaDeRepresentaciones;
 import vista.RepresentacionAlgoMon;
 import vista.contenedores.ContenedorPelea;
+import vista.handlers.OpcionCambiarAlgomonEventHandler;
 
 public class BotonMenuCambiarAlgomon extends MenuButton {
 

@@ -1,4 +1,4 @@
-package vista;
+package vista.botones;
 
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
