@@ -86,11 +86,11 @@ public class VentanaNombrarJugadores {
         contenedor.setAlignment(Pos.CENTER);
         
         Image imagen = new Image("file:src/vista/imagenes/fondosVentanaNombrar/pokebordo1.png");
-        BackgroundSize tamaño = new BackgroundSize(1000, 600, true, true, true, true);
+        BackgroundSize tamano = new BackgroundSize(1000, 600, true, true, true, true);
         BackgroundImage imagenDeFondo = 
         		new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, 
         				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-        				tamaño);
+        				tamano);
         contenedor.setBackground(new Background(imagenDeFondo)); 
 		return contenedor;
 	}
