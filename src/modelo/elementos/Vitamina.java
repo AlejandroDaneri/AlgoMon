@@ -17,4 +17,9 @@ public class Vitamina extends Elemento {
 			ataque.aumentarAtaque(cantidadAumentarAtaques);
 		}
 	}
+
+	@Override
+	public int cantidadInicial() {
+		return 5;
+	}
 }

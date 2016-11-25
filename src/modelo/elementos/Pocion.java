@@ -14,4 +14,9 @@ public class Pocion extends Elemento {
 	public void aplicar(AlgoMon algomon){
 		algomon.aumentarVida(valorCuracion);
 	}
+
+	@Override
+	public int cantidadInicial() {
+		return 4;
+	}
 }

@@ -14,4 +14,9 @@ public class SuperPocion extends Elemento {
 	public void aplicar(AlgoMon algomon){
 		algomon.aumentarVida(valorCuracion);
 	}
+
+	@Override
+	public int cantidadInicial() {
+		return 2;
+	}
 }

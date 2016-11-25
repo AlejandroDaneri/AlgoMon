@@ -13,5 +13,10 @@ public class Restaurador extends Elemento {
 		algomon.setEstadoPersistente(new EstadoNormal());
 		algomon.setEstadoEfimero(new EstadoNormal());
 	}
+
+	@Override
+	public int cantidadInicial() {
+		return 3;
+	}
 	
 }

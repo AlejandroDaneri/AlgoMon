@@ -19,4 +19,7 @@ public abstract class Elemento {
 	public boolean equals(Elemento otro){
 		return this.getClass().equals(otro.getClass());
 	}
+	
+	public abstract int cantidadInicial();
+	
 }

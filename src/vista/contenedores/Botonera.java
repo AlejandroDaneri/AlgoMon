@@ -29,7 +29,6 @@ public class Botonera extends VBox {
         BotonMenuEventHandler botonMenuAtacarEventHandler = new BotonMenuEventHandler(botonAtacar);
         botonAtacar.setOnAction(botonMenuAtacarEventHandler);
 
-
         botonUsarElemento = new BotonMenuAplicarElemento(partida,jugador,opciones,contenedor);
         BotonMenuEventHandler botonUsarElementoEventHandler = new BotonMenuEventHandler(botonUsarElemento);
         botonUsarElemento.setOnAction(botonUsarElementoEventHandler);

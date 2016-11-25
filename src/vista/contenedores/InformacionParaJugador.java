@@ -9,7 +9,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import modelo.Jugador;
-import modelo.elementos.Elemento;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,17 +48,7 @@ public class InformacionParaJugador extends VBox {
         nombreDelJugador.setFont(Font.font("Cambria", FontWeight.BOLD, 40));
         nombreDelJugador.setTextFill(color);
         
-        lista.add(nombreDelJugador);
-    	
-    	for(Elemento elemento : jugador.getElementos()){
-    		Label label = new Label(elemento.getClass().getSimpleName() + ": "+ elemento.cantidadElemento());
-            label.setTextAlignment(TextAlignment.LEFT);
-            label.setFont(Font.font("Cambria", 20));
-            label.setPadding(new Insets(0,0,20,0));
-            label.setTextFill(color);
-            lista.add(label);
-    	}
-    	
+        lista.add(nombreDelJugador);    	
     	this.getChildren().addAll(lista);   
 	}
 }
