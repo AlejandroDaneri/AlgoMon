@@ -187,11 +187,9 @@ public class JugadorTest {
 		
 		jugador1.atacar(jugador2.getAlgomonActivo(),new Fogonazo());	// Lo quema
 		jugador2.atacar(jugador1.getAlgomonActivo(),new AtaqueRapido());
-		jugador2.actualizarEstados();
 		
 		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
 		jugador2.aplicarElemento(new Restaurador());
-		jugador2.actualizarEstados();
 		
 		jugador1.atacar(jugador2.getAlgomonActivo(),new Brasas());
 		jugador2.atacar(jugador1.getAlgomonActivo(),new AtaqueRapido());
