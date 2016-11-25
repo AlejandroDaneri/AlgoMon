@@ -48,7 +48,7 @@ public class DisplayAlgoMon extends VBox {
 		this.getChildren().remove(this.estados);
 		String estadosParaVisualizar = "Estado persistente"+ ": " + this.representacion.getListaDeEstados().get(0) +
 				" \n Estado efímero: "+ this.representacion.getListaDeEstados().get(1);
-		System.out.println(estadosParaVisualizar);
+
 		Label estados = new Label(estadosParaVisualizar);
 		estados.setFont(Font.font("Cambria", 20));
 		this.estados = estados;
