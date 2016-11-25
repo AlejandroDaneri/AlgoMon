@@ -1,6 +1,7 @@
-package vista;
+package vista.botones;
 
 import javafx.scene.control.Button;
+import vista.ListaDeRepresentaciones;
 import vista.contenedores.Flecha;
 import vista.contenedores.ImagenDeAlgomonAElegir;
 import vista.contenedores.TablaDeAlgomon;

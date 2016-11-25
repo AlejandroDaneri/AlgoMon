@@ -1,4 +1,4 @@
-package vista.handlers;
+package vista.botones;
 
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -7,6 +7,7 @@ import modelo.Jugador;
 import modelo.Partida;
 import modelo.elementos.Elemento;
 import vista.contenedores.ContenedorPelea;
+import vista.handlers.OpcionAplicarElementoEventHandler;
 
 public class BotonMenuAplicarElemento extends MenuButton {
 	private ContenedorPelea contenedor;

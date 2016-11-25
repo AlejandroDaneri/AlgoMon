@@ -2,8 +2,8 @@ package vista.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import vista.Escena;
 import vista.contenedores.ContenedorEleccionAlgomon;
+import vista.contenedores.Escena;
 import vista.contenedores.VentanaNombrarJugadores;
 
 public class BotonEntrarEventHandler extends BotonHandler {
@@ -22,7 +22,7 @@ public class BotonEntrarEventHandler extends BotonHandler {
     	super.handle(event);
     	
     	if (!ventanaNombres.jugadoresFueronIngresados()) {
-    		ventanaNombres.mostrar(event);
+    		ventanaNombres.mostrar();
         }
     	
     	if (ventanaNombres.jugadoresFueronIngresados()) { //esto evita que se empiece la eleccion si no se puso aceptar
