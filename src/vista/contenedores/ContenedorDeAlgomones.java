@@ -1,8 +1,6 @@
 package vista.contenedores;
 
-import javafx.geometry.Insets;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
 import modelo.Jugador;
 import modelo.algomones.AlgoMon;
 import vista.DisplayAlgoMon;

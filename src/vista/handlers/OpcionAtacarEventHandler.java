@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.MenuItem;
 import modelo.Partida;
 import modelo.ataques.Ataque;
 import modelo.excepciones.AtaquesAgotadosException;
@@ -11,14 +12,16 @@ import vista.contenedores.ContenedorPelea;
 
 
 public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
+    private final MenuItem opcion;
     private Partida partida;
     private Ataque ataque;
     private ContenedorPelea contenedor;
     
-    public OpcionAtacarEventHandler(Partida partida, Ataque ataque, ContenedorPelea contenedor) {
+    public OpcionAtacarEventHandler(Partida partida, Ataque ataque, ContenedorPelea contenedor, MenuItem opcion) {
         this.partida = partida;
         this.ataque = ataque;
         this.contenedor = contenedor;
+        this.opcion = opcion;
     }
 
     @Override
@@ -28,6 +31,7 @@ public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
             contenedor.nuevoTurno();
     		if (partida.juegoTerminado())
     			contenedor.peleaFinalizada(partida.nombreGanador());
+            opcion.setText(ataque.getClass().getSimpleName() + " "+ ataque.getCantidad() +" / "+ ataque.cantidadInicial());
         } 
         catch (AtaquesAgotadosException e) {
         	Alert alert = new Alert(AlertType.WARNING);
