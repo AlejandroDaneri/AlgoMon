@@ -31,7 +31,7 @@ public class OpcionAplicarElementoEventHandler implements EventHandler<ActionEve
         	contenedor.nuevoTurno();
         	if (partida.juegoTerminado())
         		contenedor.peleaFinalizada(partida.nombreGanador());
-            opcion.setText(elemento.getClass().getSimpleName() + " " + elemento.cantidadElemento() + " / " + elemento.cantidadInicial());
+            opcion.setText(elemento.getClass().getSimpleName() + " (" + elemento.cantidadElemento() + "/" + elemento.cantidadInicial() + ")");
         } 
         catch (CantidadElementoAgotadaException e) {
         	Alert alert = new Alert(AlertType.WARNING);

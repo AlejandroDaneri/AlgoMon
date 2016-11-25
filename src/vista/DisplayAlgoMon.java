@@ -26,21 +26,21 @@ public class DisplayAlgoMon extends VBox {
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", FontWeight.BOLD, 25));
-		nombreDelAlgomon.setTextFill(Color.WHITE);
+		nombreDelAlgomon.setTextFill(Color.BLACK);
 
 		this.barraDeVida = new BarraDeVida(representacion.getAlgomon());
 		
 		Label vidaActual = new Label(representacion.getAlgomon().getVida() + "/" 
 		+ representacion.getAlgomon().getVidaOriginal());
-		vidaActual.setFont(Font.font("Cambria", FontWeight.BOLD, 20));
-		vidaActual.setTextFill(Color.WHITE);
+		vidaActual.setFont(Font.font("Cambria", FontWeight.BOLD, 18));
+		vidaActual.setTextFill(Color.BLACK);
 		this.vidaActual = vidaActual;
 		
-		String estadosParaVisualizar = "Estados: < " + this.representacion.getListaDeEstados().get(0) + ", " +
-		this.representacion.getListaDeEstados().get(1) + " >";
+		String estadosParaVisualizar = "Estados: <" + this.representacion.getListaDeEstados().get(0) + ", " +
+		this.representacion.getListaDeEstados().get(1) + ">";
 		Label estados = new Label(estadosParaVisualizar);
-		estados.setFont(Font.font("Cambria", FontWeight.BOLD, 20));
-		estados.setTextFill(Color.WHITE);
+		estados.setFont(Font.font("Cambria", FontWeight.BOLD, 18));
+		estados.setTextFill(Color.BLACK);
 		this.estados = estados;
 		
 		ImageView imagen = new ImageView(representacion.getImagen());

@@ -23,7 +23,7 @@ public class BotonMenuAtacar extends MenuButton {
         for(Ataque ataque : jugador.getAlgomonActivo().getAtaques()) {
             MenuItem opcion = new MenuItem(representacion.getNombreDeAtaque(ataque));
             opcion.setOnAction(new OpcionAtacarEventHandler(partida,ataque,this.contenedor,opcion));
-            opcion.setText(ataque.getClass().getSimpleName() + " "+ ataque.getCantidad() +" / "+ ataque.cantidadInicial());
+            opcion.setText(ataque.getClass().getSimpleName() + " (" + ataque.getCantidad() + "/"+ ataque.cantidadInicial() + ")");
             this.getItems().add(opcion);
         }
     }

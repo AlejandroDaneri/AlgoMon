@@ -23,8 +23,7 @@ public class BotonMenuAplicarElemento extends MenuButton {
         for(Elemento elemento : jugador.getElementos()) {
             MenuItem opcion = new MenuItem(elemento.getClass().getSimpleName());
             opcion.setOnAction(new OpcionAplicarElementoEventHandler(partida,elemento,this.contenedor,opcion));
-//            opcion.setText(opcion.getText().concat(" "+ elemento.cantidadElemento()));
-            opcion.setText(elemento.getClass().getSimpleName() + " " + elemento.cantidadElemento() + " / " + elemento.cantidadInicial());
+            opcion.setText(elemento.getClass().getSimpleName() + " (" + elemento.cantidadElemento() + "/" + elemento.cantidadInicial() + ")");
             this.getItems().add(opcion);
         }
     }

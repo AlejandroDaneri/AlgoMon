@@ -31,7 +31,7 @@ public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
             contenedor.nuevoTurno();
     		if (partida.juegoTerminado())
     			contenedor.peleaFinalizada(partida.nombreGanador());
-            opcion.setText(ataque.getClass().getSimpleName() + " "+ ataque.getCantidad() +" / "+ ataque.cantidadInicial());
+            opcion.setText(ataque.getClass().getSimpleName() + " (" + ataque.getCantidad() + "/" + ataque.cantidadInicial() + ")");
         } 
         catch (AtaquesAgotadosException e) {
         	Alert alert = new Alert(AlertType.WARNING);

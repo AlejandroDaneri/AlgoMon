@@ -22,9 +22,7 @@ public class InformacionParaJugador extends VBox {
     	
     	this.jugador = jugador;
     	this.color = color;
-    	
     	this.setPadding(new Insets(0,20,0,20));
-    	
     	this.actualizar();
     }
 
