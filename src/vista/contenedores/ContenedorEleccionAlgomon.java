@@ -15,14 +15,14 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
     public ContenedorEleccionAlgomon(Stage primaryStage, String nombreJugador1, String nombreJugador2) {
 
-        Image fondo = new Image("file:src/vista/imagenes/patronfondo.jpg");
+        Image fondo = new Image("file:src/vista/imagenes/fondosEleccion/pokefacha.jpg");
         BackgroundImage imagenDeFondo =
                 new BackgroundImage(fondo, BackgroundRepeat.REPEAT,
-                        BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
+                        BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
                         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         		
-        Jugador jugador1 = new Jugador(0,nombreJugador1);//cambiar jugador?
+        Jugador jugador1 = new Jugador(0,nombreJugador1);
         Jugador jugador2 = new Jugador(1,nombreJugador2);
 
         VBox espacioParaJugador1 = new EspacioEleccionParaJugador(nombreJugador1,jugador1);
@@ -46,8 +46,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         this.setTop(barraDeMenu);
         this.setLeft(espacioParaJugador1);
         this.setRight(espacioParaJugador2);
-        this.setBottom(botonEmpezar);
-        BorderPane.setAlignment(botonEmpezar,Pos.CENTER);
+        this.setCenter(botonEmpezar);
 
     }
 

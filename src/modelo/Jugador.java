@@ -97,8 +97,8 @@ public class Jugador {
 	}
 	
 	public void atacar(AlgoMon oponente, Ataque ataque) throws AtaquesAgotadosException {
-		this.algomonActivo.atacar(oponente, ataque);	// La excepcion de AtaqueInvalido esta en atacar tmb
-		//this.actualizarEstados();
+		this.algomonActivo.atacar(oponente, ataque);
+		this.actualizarEstados();
 	}
 	
 	public void aplicarElemento(Elemento elemento) {

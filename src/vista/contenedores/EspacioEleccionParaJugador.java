@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modelo.Jugador;
@@ -21,9 +22,10 @@ public class EspacioEleccionParaJugador extends VBox{
     public EspacioEleccionParaJugador(String nombreJugador, Jugador jugador) {
 
         ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
-
+        
         Label EtiquetaNombre = new Label(nombreJugador);
-        EtiquetaNombre.setFont(Font.font("Cambria", FontWeight.BOLD, 40));
+        EtiquetaNombre.setFont(Font.font("Courier New", FontWeight.BOLD, 40));
+        EtiquetaNombre.setTextFill(Color.DARKGREY);
 
         ImagenDeAlgomonAElegir seleccionJugador = new ImagenDeAlgomonAElegir(lista);
         TablaDeAlgomon tabla = new TablaDeAlgomon(lista);

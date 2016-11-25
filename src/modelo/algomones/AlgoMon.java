@@ -49,6 +49,7 @@ public abstract class AlgoMon {
 	
 	public void disminuirVida(int puntos){
 		this.setVida(this.getVida() - puntos);
+		if(this.getVida()<0) this.setVida(0);
 	}
 	
 	public void aumentarVida(int puntos){

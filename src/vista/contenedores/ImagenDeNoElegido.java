@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 
 public class ImagenDeNoElegido extends ImageView {
     public ImagenDeNoElegido() {
-        this.setImage(new Image("file:src/vista/imagenes/seleccionVacia.png"));
+        this.setImage(new Image("file:src/vista/imagenes/signopreguntas.jpg"));
         this.setFitWidth(120);
         this.setFitHeight(120);
     }

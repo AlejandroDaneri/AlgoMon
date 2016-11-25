@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -22,18 +23,21 @@ public class ContenedorBienvenida extends VBox{
         this.setSpacing(50);
         primaryStage.setFullScreen(true);
 
-        Label titulo = new Label("Algomon");
+        Label titulo = new Label("AlgoMon");
         titulo.setFont(Font.font("Courier New",FontWeight.BOLD, 56));
+        titulo.setTextFill(Color.DARKGREY);
 
-        Image imagen = new Image("file:src/vista/imagenes/patronfondo.jpg");
+        Image imagen = new Image("file:src/vista/imagenes/fondosBienvenida/trespokebol.png");
+        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, true);
         BackgroundImage imagenDeFondo =
                 new BackgroundImage(imagen, BackgroundRepeat.REPEAT,
-                        BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
-                        BackgroundSize.DEFAULT);
+                        BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
+                        backgroundSize);
         this.setBackground(new Background(imagenDeFondo));
 
         Button botonEntrar = new Button();
         botonEntrar.setText("JUGAR");
+        botonEntrar.setTextFill(Color.DARKGREY);
         botonEntrar.setMinSize(220, 80);
         botonEntrar.setFont(Font.font("Arial Black", FontWeight.BOLD,30));
         botonEntrar.setStyle("-fx-base: #373441");
@@ -44,6 +48,7 @@ public class ContenedorBienvenida extends VBox{
 
         Button botonReglas = new Button();
         botonReglas.setText("Reglas del juego");
+        botonReglas.setTextFill(Color.DARKGREY);
         botonReglas.setFont(Font.font("", 20));
         botonReglas.setStyle("-fx-base: #373441");
         botonReglas.setMinSize(180, 40);
@@ -54,6 +59,7 @@ public class ContenedorBienvenida extends VBox{
 
         Button botonSalir = new Button();
         botonSalir.setText("Salir");
+        botonSalir.setTextFill(Color.DARKGREY);
         botonSalir.setFont(Font.font("", 20));
         botonSalir.setStyle("-fx-base: #373441");
         botonSalir.setMinSize(180, 40);
