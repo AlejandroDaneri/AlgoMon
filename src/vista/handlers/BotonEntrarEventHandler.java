@@ -8,8 +8,8 @@ import vista.contenedores.VentanaNombrarJugadores;
 
 public class BotonEntrarEventHandler extends BotonHandler {
 
-    Stage stage;
-    VentanaNombrarJugadores ventanaNombres;
+    private Stage stage;
+    private VentanaNombrarJugadores ventanaNombres;
 
     public BotonEntrarEventHandler(Stage stage) {
         this.stage = stage;

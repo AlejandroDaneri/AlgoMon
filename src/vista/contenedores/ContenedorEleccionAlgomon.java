@@ -37,7 +37,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         Button botonEmpezar = new Button("Empezar Partida");
         BotonEmpezarEventHandler botonEmpezarHandler = new BotonEmpezarEventHandler(
-                primaryStage, nombreJugador1, nombreJugador2, jugador1, jugador2);
+                primaryStage, jugador1, jugador2);
         botonEmpezar.setOnAction(botonEmpezarHandler);
         botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
 

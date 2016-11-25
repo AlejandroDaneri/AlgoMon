@@ -59,7 +59,7 @@ public class BotonSeleccionarEventHandler extends BotonHandler {
         seleccionActual.setFitWidth(120);
         try {
             seleccionados.getChildren().set(contador++,seleccionActual);
-        }catch (IndexOutOfBoundsException e) {} //nunca alcanzado
+        }catch (IndexOutOfBoundsException ignored) {}
     }
 
 	private void algomonElegido(AlgoMon algomon) {

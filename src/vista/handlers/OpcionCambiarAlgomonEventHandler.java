@@ -6,23 +6,19 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import modelo.Partida;
 import modelo.algomones.AlgoMon;
-import modelo.excepciones.AlgoMonACambiarEsElActualException;
 import modelo.excepciones.AlgoMonMuertoException;
-import vista.RepresentacionAlgoMon;
 import vista.contenedores.ContenedorPelea;
 
 public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEvent> {
 	private ContenedorPelea contenedor;
 	private Partida partida;
     private AlgoMon algomon;
-    private RepresentacionAlgoMon representacion;
-	
+
 	public OpcionCambiarAlgomonEventHandler(Partida partida, AlgoMon algomon, 
-			RepresentacionAlgoMon representacion, ContenedorPelea contenedor){
+			 ContenedorPelea contenedor){
 		this.contenedor = contenedor;
 		this.partida = partida;
         this.algomon = algomon;
-        this.representacion = representacion;
 	}
 	
 	@Override

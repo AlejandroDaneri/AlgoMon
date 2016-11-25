@@ -1,6 +1,5 @@
 package vista.contenedores;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -58,7 +57,7 @@ public class ContenedorPelea extends BorderPane{
 		this.setCenter(contenedorDeAlgomones);
 	}
 
-	public void actualizar(){
+	private void actualizar(){
 		contenedorDeAlgomones.actualizar();
 		if(this.zonaJugador1.getJugador() == this.partida.jugadorActual()) zonaJugador2.actualizar();
 		else zonaJugador1.actualizar();
@@ -80,12 +79,12 @@ public class ContenedorPelea extends BorderPane{
 		if(this.zonaJugadorActual().getJugador().getAlgomonActivo().estaMuerto()) this.manejarCasoAlgoMonActivoMuerto();
 	}
 	
-	public ZonaJugador zonaJugadorActual(){
+	private ZonaJugador zonaJugadorActual(){
 		if(this.zonaJugador1.getJugador() == this.partida.jugadorActual()) return zonaJugador1;
 		return zonaJugador2;
 	}
 	
-	public void manejarCasoAlgoMonActivoMuerto(){
+	private void manejarCasoAlgoMonActivoMuerto(){
 		this.zonaJugadorActual().habilitarSoloCambiarAlgoMon();
 	}
 	

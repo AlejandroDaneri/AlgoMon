@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador {
-	
-	private static int cantMaxAlgomones = 3;
+
 	private String nombre;
 	private int indiceTurno;
 	private AlgoMon algomonActivo;
@@ -26,7 +25,7 @@ public class Jugador {
 		this.elementos = new Elementos();
 	}
 	
-	public void setNombre(String nombre) {
+	private void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	
@@ -59,6 +58,7 @@ public class Jugador {
 	}
 	
 	public void agregarAlgomon(AlgoMon algomon) {
+		int cantMaxAlgomones = 3;
 		if (algomones.size() >= cantMaxAlgomones) throw new CantidadMaximaAlgoMonesException();
 		if (algomones.size() == 0) this.setAlgomonActivo(algomon);
 		algomones.add(algomon);
@@ -73,7 +73,7 @@ public class Jugador {
 		}
 	}
 	
-	public void setAlgomonActivo(AlgoMon algomon) {
+	private void setAlgomonActivo(AlgoMon algomon) {
 		this.algomonActivo = algomon;
 	}
 	

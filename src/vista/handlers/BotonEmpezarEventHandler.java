@@ -14,8 +14,7 @@ public class BotonEmpezarEventHandler extends BotonHandler {
     private Jugador jugador1;
     private Jugador jugador2;
 
-    public BotonEmpezarEventHandler(Stage stage, String nombreJugador1, String nombreJugador2,
-                                    Jugador jugador1, Jugador jugador2) {
+    public BotonEmpezarEventHandler(Stage stage, Jugador jugador1, Jugador jugador2) {
         this.stage = stage;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;

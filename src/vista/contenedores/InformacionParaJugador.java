@@ -1,8 +1,5 @@
 package vista.contenedores;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -11,7 +8,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import modelo.Jugador;
-import modelo.elementos.*;
+import modelo.elementos.Elemento;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InformacionParaJugador extends VBox {
 	

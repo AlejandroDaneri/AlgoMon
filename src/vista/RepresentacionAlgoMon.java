@@ -47,7 +47,7 @@ public class RepresentacionAlgoMon {
 		return lista;
 	}
 	
-	public String getNombreDeEstado(Estado estado){
+	private String getNombreDeEstado(Estado estado){
 		//modificar, la version anterior no funcionaba en contenedorPelea
 		if(estado.getClass().equals((Quemado.class))) return quemado;
 		if(estado.getClass().equals(EstadoNormal.class)) return normal;
