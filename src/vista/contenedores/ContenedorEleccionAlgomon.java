@@ -50,6 +50,9 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         this.setRight(espacioParaJugador2);
         this.setCenter(botonEmpezar);
         this.setMargin(botonEmpezar,new Insets(300,0,0,0));
+        this.setMargin(espacioParaJugador1, new Insets(0,0,0,100));
+        this.setMargin(espacioParaJugador2, new Insets(0,100,0,0));
+        
     }
 
     /* una idea a futuro

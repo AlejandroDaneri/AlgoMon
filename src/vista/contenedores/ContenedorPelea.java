@@ -47,7 +47,7 @@ public class ContenedorPelea extends BorderPane{
 				partida.jugadorActual(),partida.jugadorOponente());
 		
 		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()),
-				new InformacionParaJugador(partida.jugadorActual(),Color.RED));
+				new InformacionParaJugador(partida.jugadorActual(),Color.DARKRED));
 		this.zonaJugador2 = new ZonaJugador(new Botonera(partida,this,partida.jugadorOponente()),
 				new InformacionParaJugador(partida.jugadorOponente(),Color.AQUA));
 

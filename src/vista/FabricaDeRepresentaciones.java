@@ -5,12 +5,12 @@ import modelo.algomones.*;
 
 public class FabricaDeRepresentaciones {
 	
-	public static String imagenCharmander = "file:src/vista/imagenes/gifs/charmander.gif";
-	public static String imagenBulbasaur = "file:src/vista/imagenes/gifs/bulbasaur.gif";
-	public static String imagenSquirtle = "file:src/vista/imagenes/gifs/squirtle.gif";
-	public static String imagenRattata = "file:src/vista/imagenes/gifs/rattata.gif";
-	public static String imagenJigglypuff = "file:src/vista/imagenes/gifs/jigglypuff.gif";
-	public static String imagenChansey = "file:src/vista/imagenes/gifs/chansey.gif";
+	public static String imagenCharmander = "file:src/vista/imagenes/Charmander.png";
+	public static String imagenBulbasaur = "file:src/vista/imagenes/Bulbasaur.png";
+	public static String imagenSquirtle = "file:src/vista/imagenes/Squirtle.png";
+	public static String imagenRattata = "file:src/vista/imagenes/Rattata.png";
+	public static String imagenJigglypuff = "file:src/vista/imagenes/Jigglypuff.png";
+	public static String imagenChansey = "file:src/vista/imagenes/Chansey.png";
 	
 	public static String imagenTablaCharmander = "file:src/vista/imagenes/TCharmander.png";
 	public static String imagenTablaBulbasaur = "file:src/vista/imagenes/TBulbasaur.png";

@@ -25,8 +25,6 @@ public class AlertaHandler implements EventHandler<WindowEvent>{
         if (result.get() != aceptar) {
             event.consume();
         }
-
-
     }
 
 }
