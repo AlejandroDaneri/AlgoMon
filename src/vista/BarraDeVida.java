@@ -13,6 +13,7 @@ public class BarraDeVida extends ProgressBar {
 	}
 	
 	public void actualizar(){
+		this.setPrefSize(150, 20);
 		this.setProgress(((double)algomon.getVida()/(double)algomon.getVidaOriginal()));
 	}
 }
