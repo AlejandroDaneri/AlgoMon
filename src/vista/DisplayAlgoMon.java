@@ -79,13 +79,19 @@ public class DisplayAlgoMon extends VBox {
 		vidaActual.setFont(Font.font("Cambria", FontWeight.BOLD, 20));
 		vidaActual.setTextFill(Color.WHITE);
 		this.vidaActual = vidaActual;
-		this.getChildren().add(this.vidaActual);
+		ImageView estados = (ImageView)this.getChildren().get(2);
+		Label imagen = (Label)this.getChildren().get(3);
+		this.getChildren().removeAll(imagen, estados);
+		this.getChildren().addAll(this.vidaActual, imagen, estados);
 	}
 	
 	public void actualizar(){
 		this.barraDeVida.actualizar();
 		this.actualizarVidaActual();
 		this.actualizarEstados();
+		this.setAlignment(Pos.CENTER);
+		this.setPadding(new Insets(40,10,0,10));
+
 	}
 
 	public Jugador getJugador() {

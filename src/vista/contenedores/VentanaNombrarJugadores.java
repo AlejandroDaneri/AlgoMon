@@ -55,7 +55,7 @@ public class VentanaNombrarJugadores {
         Button aceptar = new Button("Aceptar");
         aceptar.setTextFill(Color.DARKRED);
         aceptar.setFont(Font.font("", 40));
-        aceptar.setStyle("-fx-base: rgb(232,235,224)");
+        aceptar.setStyle("-fx-base: rgb(249,219,189)");
         aceptar.setMinSize(180, 40);
 
         aceptar.setOnAction(e -> {
