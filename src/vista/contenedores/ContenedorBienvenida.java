@@ -27,7 +27,7 @@ public class ContenedorBienvenida extends VBox{
         titulo.setFont(Font.font("Courier New",FontWeight.BOLD, 56));
         titulo.setTextFill(Color.DARKGREY);
 
-        Image imagen = new Image("file:src/vista/imagenes/fondosBienvenida/trespokebol.png");
+        Image imagen = new Image("file:src/vista/imagenes/fondosBienvenida/fondonegro.jpg");
 
         BackgroundImage imagenDeFondo =
                 new BackgroundImage(imagen, BackgroundRepeat.REPEAT,
