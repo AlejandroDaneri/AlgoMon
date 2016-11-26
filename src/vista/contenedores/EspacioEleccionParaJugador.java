@@ -18,6 +18,7 @@ import vista.botones.BotonSeleccionar;
 import vista.handlers.BotonSeleccionarEventHandler;
 
 public class EspacioEleccionParaJugador extends VBox{
+    private static boolean primerJugador=true;
 
     public EspacioEleccionParaJugador(String nombreJugador, Jugador jugador) {
 
@@ -28,6 +29,7 @@ public class EspacioEleccionParaJugador extends VBox{
         EtiquetaNombre.setTextFill(Color.DARKGREY);
 
         ImagenDeAlgomonAElegir seleccionJugador = new ImagenDeAlgomonAElegir(lista);
+        girarImagen(seleccionJugador);
 
         TablaDeAlgomon tabla = new TablaDeAlgomon(lista);
 
@@ -58,5 +60,10 @@ public class EspacioEleccionParaJugador extends VBox{
         this.getChildren().addAll(EtiquetaNombre, zonaDeElecccionParaJugador);
         this.setPadding(new Insets(0,20,0,0));
 
+    }
+
+    private void girarImagen(ImagenDeAlgomonAElegir seleccionJugador) {
+        if (primerJugador) seleccionJugador.setScaleX(-1);
+        primerJugador =false;
     }
 }

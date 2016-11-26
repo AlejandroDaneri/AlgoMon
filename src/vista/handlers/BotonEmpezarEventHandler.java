@@ -35,7 +35,6 @@ public class BotonEmpezarEventHandler extends BotonHandler {
             contenedorPelea.inicializarPelea(partida);
 
             boolean enPantallaCompletaAntesDeCambiarEscena = stage.isFullScreen();
-            ((ContenedorPelea) escenaPelea.getRoot()).inicializarPelea(partida);
             stage.hide();
             stage.setScene(escenaPelea);
             stage.setFullScreen(enPantallaCompletaAntesDeCambiarEscena);
