@@ -1,12 +1,8 @@
 package vista.botones;
 
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 import modelo.Jugador;
 import modelo.Partida;
 import modelo.elementos.Elemento;

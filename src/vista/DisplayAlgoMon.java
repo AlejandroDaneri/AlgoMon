@@ -57,9 +57,10 @@ public class DisplayAlgoMon extends VBox {
 	}
 
 	private Label representarEstadosActuales() {
-		String estadosParaVisualizar = "Estados: < " + this.representacion.getListaDeEstados().get(0) + ", " +
-				this.representacion.getListaDeEstados().get(1) + " >";
+		String estadosParaVisualizar = "< " + this.representacion.getEstadoEfimero() + " , " +
+				this.representacion.getEstadoPersistente() + " >";
 		Label estados = new Label(estadosParaVisualizar);
+		estados.setAlignment(Pos.CENTER);
 		estados.setFont(Font.font("Cambria", FontWeight.BOLD, 18));
 		estados.setTextFill(Color.WHITE);
 		return estados;
@@ -89,9 +90,6 @@ public class DisplayAlgoMon extends VBox {
 		this.barraDeVida.actualizar();
 		this.actualizarVidaActual();
 		this.actualizarEstados();
-		this.setAlignment(Pos.CENTER);
-		this.setPadding(new Insets(40,10,0,10));
-
 	}
 
 	public Jugador getJugador() {

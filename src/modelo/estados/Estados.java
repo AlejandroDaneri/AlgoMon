@@ -2,9 +2,6 @@ package modelo.estados;
 
 import modelo.algomones.AlgoMon;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Estados {
 	
 	private Estado estadoPersistente;
@@ -40,10 +37,10 @@ public class Estados {
 		this.estadoEfimero = estadoEfimero;
 	}
 
-	public List<Estado> getListaDeEstados() {
+	/*public List<Estado> getListaDeEstados() {
 		List<Estado> lista = new ArrayList<Estado>();
 		lista.add(estadoEfimero);
 		lista.add(estadoPersistente);
 		return lista;
-	}
+	}*/
 }

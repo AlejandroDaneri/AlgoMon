@@ -69,6 +69,10 @@ public abstract class AlgoMon {
 	public Estado getEstadoPersistente(){
 		return this.getEstados().getEstadoPersistente();
 	}
+
+	public Estado getEstadoEfimero(){
+		return this.getEstados().getEstadoEfimero();
+	}
 	
 	public void setEstadoEfimero(Estado estadoEfimero){
 		this.getEstados().setEstadoEfimero(estadoEfimero);
@@ -110,9 +114,9 @@ public abstract class AlgoMon {
 		return estados;
 	}
 	
-	public List<Estado> getListaDeEstados(){
+	/*public List<Estado> getListaDeEstados(){
 		return estados.getListaDeEstados();
-	}
+	}*/
 
 	private void setEstados(Estados estados) {
 		this.estados = estados;

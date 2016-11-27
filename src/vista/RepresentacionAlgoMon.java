@@ -2,20 +2,18 @@ package vista;
 
 import javafx.scene.image.Image;
 import modelo.algomones.AlgoMon;
-import modelo.ataques.*;
+import modelo.ataques.Ataque;
 import modelo.estados.Estado;
 import modelo.estados.EstadoNormal;
 import modelo.estados.Quemado;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RepresentacionAlgoMon {
-
+/*
 	private static String quemado = "Quemado";
 	private static String dormido = "Dormido";
 	private static String normal = "Normal";
-	
+
+
 	private static String ataqueRapido = "Ataque Rapido";
 	private static String brasas = "Brasas";
 	private static String burbuja = "Burbuja";
@@ -24,7 +22,7 @@ public class RepresentacionAlgoMon {
 	private static String chupaVidas = "Chupavidas";
 	private static String fogonazo = "Fogonazo";
 	private static String latigoCepa = "Latigo Cepa";
-	
+	*/
 	
 	private Image imagen;
 	private Image tabla;
@@ -37,24 +35,27 @@ public class RepresentacionAlgoMon {
 		setTabla(tabla);
 		setNombre(nombre);
 	}
-	
-	
-	public List<String> getListaDeEstados(){
-		ArrayList<String> lista = new ArrayList<String>();
-		for(Estado estado : algomon.getListaDeEstados()){
-			lista.add(this.getNombreDeEstado(estado));
-		}
-		return lista;
+
+	public String getEstadoPersistente(){
+		Estado estado = algomon.getEstadoPersistente();
+		return getNombreDeEstado(estado);
 	}
-	
+
+	public String getEstadoEfimero(){
+		Estado estado = algomon.getEstadoEfimero();
+		return getNombreDeEstado(estado);
+	}
+
 	private String getNombreDeEstado(Estado estado){
-		//modificar, la version anterior no funcionaba en contenedorPelea
-		if(estado.getClass().equals((Quemado.class))) return quemado;
-		if(estado.getClass().equals(EstadoNormal.class)) return normal;
-		return dormido;
+		if(estado.getClass().equals((Quemado.class))) return "Quemado";
+		if(estado.getClass().equals(EstadoNormal.class)) return "Normal";
+		return "Dormido";
+
 	}
 	
 	public String getNombreDeAtaque(Ataque ataque){
+		return ataque.getClass().getSimpleName();
+		/*
 		if(ataque.equals(new AtaqueRapido())) return ataqueRapido;
 		if(ataque.equals(new Brasas())) return brasas;
 		if(ataque.equals(new Burbuja())) return burbuja;
@@ -62,24 +63,29 @@ public class RepresentacionAlgoMon {
 		if(ataque.equals(new Canto())) return canto;
 		if(ataque.equals(new Chupavidas())) return chupaVidas;
 		if(ataque.equals(new Fogonazo())) return fogonazo;
-		return latigoCepa;
+		return latigoCepa;*/
 	}
 	
 	public Image getImagen() {
 		return imagen;
 	}
+
 	private void setImagen(Image imagen) {
 		this.imagen = imagen;
 	}
+
 	public AlgoMon getAlgomon() {
 		return algomon;
 	}
+
 	public void setAlgomon(AlgoMon algomon) {
 		this.algomon = algomon;
 	}
+
 	public Image getTabla() {
 		return tabla;
 	}
+
 	private void setTabla(Image tabla) {
 		this.tabla = tabla;
 	}
