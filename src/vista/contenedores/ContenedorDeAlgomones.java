@@ -28,6 +28,7 @@ public class ContenedorDeAlgomones extends BorderPane {
 		DisplayAlgoMon displayNuevo = new DisplayAlgoMon(representacion,jugadorActual);
     	if(displayAlgomon1.getJugador().equals(jugadorActual)){
     		displayAlgomon1 = displayNuevo;
+			displayAlgomon1.girarImagen();
     		this.setLeft(displayNuevo);
     	}
     	else{

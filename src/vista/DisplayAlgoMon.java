@@ -13,6 +13,7 @@ import modelo.Jugador;
 
 public class DisplayAlgoMon extends VBox {
 
+	private final ImageView imagenAlgomon;
 	private RepresentacionAlgoMon representacion;
 	private Label estados;
 	private Label vidaActual;
@@ -36,15 +37,15 @@ public class DisplayAlgoMon extends VBox {
 
 		this.estados = representarEstadosActuales();
 
-		ImageView imagen = new ImageView(representacion.getImagen());
-		girarImagen(imagen);
-		imagen.setFitWidth(250);
-		imagen.setFitHeight(250);
+		this.imagenAlgomon = new ImageView(representacion.getImagen());
+		if (primerJugador) girarImagen();
+		imagenAlgomon.setFitWidth(250);
+		imagenAlgomon.setFitHeight(250);
 
 		this.setAlignment(Pos.CENTER);//ESTO HACE QUE AL CAMBIAR DE ESTADO SE MUEVAN
 
 		this.setPadding(new Insets(40,10,0,10));
-		this.getChildren().addAll(nombreDelAlgomon,this.barraDeVida, vidaActual, imagen, this.estados);
+		this.getChildren().addAll(nombreDelAlgomon,this.barraDeVida, vidaActual, imagenAlgomon, this.estados);
 	}
 
 	private Label representarVidaActual(RepresentacionAlgoMon representacion) {
@@ -64,8 +65,8 @@ public class DisplayAlgoMon extends VBox {
 		return estados;
 	}
 
-	private void girarImagen(ImageView imagen) {
-		if (primerJugador) imagen.setScaleX(-1);
+	public void girarImagen() {
+		imagenAlgomon.setScaleX(-1);
 		primerJugador =false;
 	}
 
