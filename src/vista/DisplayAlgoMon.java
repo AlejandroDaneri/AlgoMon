@@ -12,47 +12,56 @@ import javafx.scene.text.TextAlignment;
 import modelo.Jugador;
 
 public class DisplayAlgoMon extends VBox {
-	
+
 	private RepresentacionAlgoMon representacion;
 	private Label estados;
 	private Label vidaActual;
 	private BarraDeVida barraDeVida;
 	private Jugador jugador;
 	private static boolean primerJugador=true;
-	
+
 	public DisplayAlgoMon(RepresentacionAlgoMon representacion, Jugador jugador){
 		this.representacion = representacion;
 		this.setJugador(jugador);
-		
-		Label nombreDelAlgomon = new Label(representacion.getNombre()); 
+
+		Label nombreDelAlgomon = new Label(representacion.getNombre());
 		nombreDelAlgomon.setAlignment(Pos.CENTER);
 		nombreDelAlgomon.setTextAlignment(TextAlignment.CENTER);
 		nombreDelAlgomon.setFont(Font.font("Cambria", FontWeight.BOLD, 25));
 		nombreDelAlgomon.setTextFill(Color.WHITE);
 
 		this.barraDeVida = new BarraDeVida(representacion.getAlgomon());
-		
-		Label vidaActual = new Label(representacion.getAlgomon().getVida() + "/" 
-		+ representacion.getAlgomon().getVidaOriginal());
-		vidaActual.setFont(Font.font("Cambria", FontWeight.BOLD, 18));
-		vidaActual.setTextFill(Color.WHITE);
-		this.vidaActual = vidaActual;
-		
-		String estadosParaVisualizar = "Estados: <" + this.representacion.getListaDeEstados().get(0) + ", " +
-		this.representacion.getListaDeEstados().get(1) + ">";
-		Label estados = new Label(estadosParaVisualizar);
-		estados.setFont(Font.font("Cambria", FontWeight.BOLD, 18));
-		estados.setTextFill(Color.WHITE);
-		this.estados = estados;
-		
+
+		this.vidaActual = representarVidaActual(representacion);
+
+		this.estados = representarEstadosActuales();
+
 		ImageView imagen = new ImageView(representacion.getImagen());
 		girarImagen(imagen);
 		imagen.setFitWidth(250);
 		imagen.setFitHeight(250);
 
-		this.setAlignment(Pos.CENTER);
+		this.setAlignment(Pos.CENTER);//ESTO HACE QUE AL CAMBIAR DE ESTADO SE MUEVAN
+
 		this.setPadding(new Insets(40,10,0,10));
 		this.getChildren().addAll(nombreDelAlgomon,this.barraDeVida, vidaActual, imagen, this.estados);
+	}
+
+	private Label representarVidaActual(RepresentacionAlgoMon representacion) {
+		Label vidaActual = new Label(representacion.getAlgomon().getVida() + "/"
+				+ representacion.getAlgomon().getVidaOriginal());
+		vidaActual.setFont(Font.font("Cambria", FontWeight.BOLD, 18));
+		vidaActual.setTextFill(Color.WHITE);
+		return vidaActual;
+	}
+
+	private Label representarEstadosActuales() {
+		String estadosParaVisualizar = "Estados: < " + this.representacion.getListaDeEstados().get(0) + ", " +
+				this.representacion.getListaDeEstados().get(1) + " >";
+		Label estados = new Label(estadosParaVisualizar);
+		estados.setFont(Font.font("Cambria", FontWeight.BOLD, 18));
+		estados.setTextFill(Color.WHITE);
+		return estados;
 	}
 
 	private void girarImagen(ImageView imagen) {
@@ -62,29 +71,19 @@ public class DisplayAlgoMon extends VBox {
 
 	private void actualizarEstados(){
 		this.getChildren().remove(this.estados);
-		String estadosParaVisualizar = "Estados: < " + this.representacion.getListaDeEstados().get(0) + ", " +
-		this.representacion.getListaDeEstados().get(1) + " >";
-		
-		Label estados = new Label(estadosParaVisualizar);
-		estados.setFont(Font.font("Cambria", FontWeight.BOLD, 20));
-		estados.setTextFill(Color.WHITE);
-		this.estados = estados;
-		this.getChildren().add(this.estados);		
+		this.estados = representarEstadosActuales();
+		this.getChildren().add(this.estados);
 	}
-	
-	public void actualizarVidaActual(){
+
+	private void actualizarVidaActual(){
 		this.getChildren().remove(this.vidaActual);
-		Label vidaActual = new Label(representacion.getAlgomon().getVida() + "/" 
-		+ representacion.getAlgomon().getVidaOriginal());
-		vidaActual.setFont(Font.font("Cambria", FontWeight.BOLD, 20));
-		vidaActual.setTextFill(Color.WHITE);
-		this.vidaActual = vidaActual;
+		this.vidaActual = representarVidaActual(representacion);
 		ImageView estados = (ImageView)this.getChildren().get(2);
 		Label imagen = (Label)this.getChildren().get(3);
 		this.getChildren().removeAll(imagen, estados);
 		this.getChildren().addAll(this.vidaActual, imagen, estados);
 	}
-	
+
 	public void actualizar(){
 		this.barraDeVida.actualizar();
 		this.actualizarVidaActual();
