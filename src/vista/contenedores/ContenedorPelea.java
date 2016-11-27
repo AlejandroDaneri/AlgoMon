@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import modelo.Partida;
 import modelo.algomones.AlgoMon;
 import vista.BarraDeMenu;
-import vista.ListaDeRepresentaciones;
 
 public class ContenedorPelea extends BorderPane{
 	private Stage stage;
@@ -38,13 +37,9 @@ public class ContenedorPelea extends BorderPane{
 	public void inicializarPelea(Partida partida){
 		this.partida = partida;
 		
-		ListaDeRepresentaciones representacionesJugador1 = new ListaDeRepresentaciones(partida.jugadorActual().getListaDeAlgomones());
-		ListaDeRepresentaciones representacionesJugador2 = new ListaDeRepresentaciones(partida.jugadorOponente().getListaDeAlgomones());
-		
 		HBox panelDeNotificaciones = new PanelDeNotificacion();
 
-		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(representacionesJugador1, representacionesJugador2,
-				partida.jugadorActual(),partida.jugadorOponente());
+		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(partida.jugadorActual(),partida.jugadorOponente());
 		
 		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()),
 				new InformacionParaJugador(partida.jugadorActual(),Color.DARKRED));

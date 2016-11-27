@@ -21,8 +21,9 @@ public class DisplayAlgoMon extends VBox {
 	private Jugador jugador;
 	private static boolean primerJugador=true;
 
-	public DisplayAlgoMon(RepresentacionAlgoMon representacion, Jugador jugador){
-		this.representacion = representacion;
+	public DisplayAlgoMon(Jugador jugador){
+		FabricaDeRepresentaciones fabrica = new FabricaDeRepresentaciones();
+		this.representacion = fabrica.crearRepresentacion(jugador.getAlgomonActivo());
 		this.setJugador(jugador);
 
 		Label nombreDelAlgomon = new Label(representacion.getNombre());
