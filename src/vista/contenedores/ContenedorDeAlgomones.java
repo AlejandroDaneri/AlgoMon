@@ -1,8 +1,9 @@
 package vista.contenedores;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
 import modelo.Jugador;
-import modelo.algomones.AlgoMon;
 import vista.DisplayAlgoMon;
 
 public class ContenedorDeAlgomones extends BorderPane {
@@ -18,7 +19,9 @@ public class ContenedorDeAlgomones extends BorderPane {
 
 		this.setLeft(displayAlgomon1);
 		this.setRight(displayAlgomon2);
-		this.setTop(panelNotificaciones);
+		this.setCenter(panelNotificaciones);
+        setAlignment(panelNotificaciones,Pos.CENTER);
+        setMargin(panelNotificaciones,new Insets(0,0,450,0));
     }
     
     public void cambiarAlgomon(Jugador jugadorActual){
