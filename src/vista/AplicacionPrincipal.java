@@ -17,7 +17,7 @@ public class AplicacionPrincipal extends Application{
     @Override
     public void start(Stage stagePrincipal) throws Exception {
         AudioClip musicaDeFondo = new AudioClip("file:src/vista/sonidos/Pokemonentrada.mp3");
-        musicaDeFondo.setCycleCount(2); //
+        musicaDeFondo.setCycleCount(5);
         musicaDeFondo.play();
         
 

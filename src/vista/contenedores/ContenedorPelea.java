@@ -42,8 +42,9 @@ public class ContenedorPelea extends BorderPane{
 		AudioClip sonidoInicial = new AudioClip("file:src/vista/sonidos/cambiarPokemon.mp3");
 		sonidoInicial.play();
 		musicaDeFondo = new AudioClip("file:src/vista/sonidos/pelea2.mp3");
+		musicaDeFondo.setCycleCount(5);
 		musicaDeFondo.play();
-		musicaDeFondo.setCycleCount(2);
+
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(partida.jugadorActual(),partida.jugadorOponente());
 		

@@ -18,13 +18,13 @@ import vista.handlers.BotonHandler;
 
 import java.util.ArrayList;
 
-public class VentanaNombrarJugadores {
+public class ContenedorNombrarJugadores {
 	
 	private TextField nombreJugador1;
     private TextField nombreJugador2;
     private Boolean nombresIngresados;
     
-    public VentanaNombrarJugadores (){
+    public ContenedorNombrarJugadores(){
 
         nombreJugador1 = new TextField("Jugador 1");
         nombreJugador2 = new TextField("Jugador 2");

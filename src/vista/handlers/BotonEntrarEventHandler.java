@@ -5,17 +5,17 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import vista.contenedores.ContenedorEleccionAlgomon;
 import vista.contenedores.Escena;
-import vista.contenedores.VentanaNombrarJugadores;
+import vista.contenedores.ContenedorNombrarJugadores;
 
 public class BotonEntrarEventHandler extends BotonHandler {
 
     private final AudioClip musicaDeFondo;
     private Stage stage;
-    private VentanaNombrarJugadores ventanaNombres;
+    private ContenedorNombrarJugadores ventanaNombres;
 
     public BotonEntrarEventHandler(Stage stage, AudioClip musicaDeFondo) {
         this.stage = stage;
-        this.ventanaNombres = new VentanaNombrarJugadores();
+        this.ventanaNombres = new ContenedorNombrarJugadores();
         this.musicaDeFondo = musicaDeFondo;
         
     }

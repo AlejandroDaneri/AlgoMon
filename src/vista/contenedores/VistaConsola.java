@@ -1,13 +1,13 @@
 package vista.contenedores;
 
-import java.util.Observer;
-import java.util.Observable;
-
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.control.Label;
+
+import java.util.Observable;
+import java.util.Observer;
 
 class VistaConsola extends HBox implements Observer
 {
