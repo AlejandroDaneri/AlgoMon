@@ -23,7 +23,7 @@ public class PanelDeNotificacion extends ScrollPane {
 		notificaciones.setMinWidth(Double.MAX_VALUE);
 		this.setContent(notificaciones);
 		this.setWidth(Double.MAX_VALUE);
-		this.setMaxHeight(100);
+		this.setMaxHeight(70);
 
 
     }

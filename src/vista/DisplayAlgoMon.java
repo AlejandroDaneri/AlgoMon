@@ -37,6 +37,7 @@ public class DisplayAlgoMon extends VBox {
 		this.vidaActual = representarVidaActual(representacion);
 
 		this.estados = representarEstadosActuales();
+		estados.setPadding(new Insets(0,0,40,0));
 
 		this.imagenAlgomon = new ImageView(representacion.getImagen());
 		if (primerJugador) girarImagen();
@@ -73,18 +74,14 @@ public class DisplayAlgoMon extends VBox {
 	}
 
 	private void actualizarEstados(){
-		this.getChildren().remove(this.estados);
 		this.estados = representarEstadosActuales();
-		this.getChildren().add(this.estados);
+		estados.setPadding(new Insets(0,0,40,0));
+		this.getChildren().set(3,estados);
 	}
 
 	private void actualizarVidaActual(){
-		this.getChildren().remove(this.vidaActual);
 		this.vidaActual = representarVidaActual(representacion);
-		ImageView estados = (ImageView)this.getChildren().get(2);
-		Label imagen = (Label)this.getChildren().get(3);
-		this.getChildren().removeAll(imagen, estados);
-		this.getChildren().addAll(this.vidaActual, imagen, estados);
+		this.getChildren().set(2,vidaActual);
 	}
 
 	public void actualizar(){

@@ -1,5 +1,6 @@
 package vista.contenedores;
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -13,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import vista.handlers.BotonHandler;
 
 import java.util.ArrayList;
 
@@ -53,10 +55,16 @@ public class VentanaNombrarJugadores {
         aceptar.setStyle("-fx-base: rgb(249,219,189)");
         aceptar.setMinSize(180, 40);
 
-        aceptar.setOnAction(e -> {
-            nombresIngresados = true;
-            window.close();
-        });
+        BotonHandler aceptarHandler = new BotonHandler() {
+            @Override
+            public void handle(ActionEvent event) {
+                super.handle(event);
+                nombresIngresados = true;
+                window.close();
+
+            }
+        };
+        aceptar.setOnAction(aceptarHandler);
         
         ArrayList<Node> lista = new ArrayList<Node>();
         lista.add(labelParaJugador1);
