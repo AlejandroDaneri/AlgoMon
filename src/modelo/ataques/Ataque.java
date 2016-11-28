@@ -36,7 +36,7 @@ public abstract class Ataque {
 		this.reducirCantidadDeAtaque();
 	}
 		
-	private int getPotencia() {
+	public int getPotencia() {
 		return potencia;
 	}
 

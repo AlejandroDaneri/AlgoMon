@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
@@ -37,8 +39,6 @@ public class ContenedorPelea extends BorderPane{
 
 	public void inicializarPelea(Partida partida){
 		this.partida = partida;
-		
-		HBox panelDeNotificaciones = new PanelDeNotificacion();
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(partida.jugadorActual(),partida.jugadorOponente());
 		
@@ -49,7 +49,6 @@ public class ContenedorPelea extends BorderPane{
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);
-		this.setBottom(panelDeNotificaciones);
 
 		this.contenedorDeAlgomones = contenedorDeAlgomones;
 		this.setCenter(contenedorDeAlgomones);
@@ -58,8 +57,11 @@ public class ContenedorPelea extends BorderPane{
 	private void actualizar(){
 		contenedorDeAlgomones.actualizar();
 		if(this.zonaJugador1.getJugador() == this.partida.jugadorActual()) zonaJugador2.actualizar();
-		else zonaJugador1.actualizar();
-		
+		else zonaJugador1.actualizar();	
+	}
+	
+	public void notificarPanel(String mensaje){
+		this.contenedorDeAlgomones.notificarPanel(mensaje);
 	}
 	
 	public void cambiarAlgomon(){

@@ -30,9 +30,9 @@ public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEven
 			 	sonido.play();
 			 	Thread.sleep(500);//para que el sonido se sincronize con el cambio
 			    contenedor.cambiarAlgomon();
+	            contenedor.nuevoTurno();
 	    		if (partida.juegoTerminado())
 	    			contenedor.peleaFinalizada(partida.nombreGanador());
-			 	contenedor.nuevoTurno();
 	        }
 		 	catch (AlgoMonMuertoException e) {
 			 Alert alert = new Alert(AlertType.WARNING);

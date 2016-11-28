@@ -28,6 +28,7 @@ public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         try {
             partida.jugarTurnoActual(ataque);
+            contenedor.notificarPanel(this.notificacionAtaque());
             contenedor.nuevoTurno();
     		if (partida.juegoTerminado())
     			contenedor.peleaFinalizada(partida.nombreGanador());
@@ -40,5 +41,12 @@ public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
         	alert.setContentText("No puede utilizar mas este ataque!");
         	alert.showAndWait();
         }
+    }
+    
+    public String notificacionAtaque(){
+    	return this.partida.jugadorActual().getNombre() + " ha atacado con " 
+    			+ this.partida.jugadorActual().getAlgomonActivo().getClass().getSimpleName() + " con "
+                + this.ataque.getClass().getSimpleName() + " sacando " + Integer.toString(this.ataque.getPotencia()) 
+                + " de vida al rival." + "\n";
     }
 }
