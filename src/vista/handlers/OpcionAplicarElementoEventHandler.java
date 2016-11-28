@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
+import javafx.scene.media.AudioClip;
 import modelo.Partida;
 import modelo.elementos.Elemento;
 import modelo.excepciones.CantidadElementoAgotadaException;
@@ -31,6 +32,8 @@ public class OpcionAplicarElementoEventHandler implements EventHandler<ActionEve
         	contenedor.nuevoTurno();
         	if (partida.juegoTerminado())
         		contenedor.peleaFinalizada(partida.nombreGanador());
+            AudioClip sonido = new AudioClip("file:src/vista/sonidos/elemento.wav");
+            sonido.play();
             opcion.setText(elemento.getClass().getSimpleName() + " (" + elemento.cantidadElemento() + "/" + elemento.cantidadInicial() + ")");
         } 
         catch (CantidadElementoAgotadaException e) {

@@ -43,9 +43,9 @@ public class DisplayAlgoMon extends VBox {
 		imagenAlgomon.setFitWidth(250);
 		imagenAlgomon.setFitHeight(250);
 
-		this.setAlignment(Pos.CENTER);//ESTO HACE QUE AL CAMBIAR DE ESTADO SE MUEVAN
+		this.setAlignment(Pos.CENTER);
 
-		this.setPadding(new Insets(40,10,0,10));
+		this.setPadding(new Insets(10,10,0,10));
 		this.getChildren().addAll(nombreDelAlgomon,this.barraDeVida, vidaActual, imagenAlgomon, this.estados);
 	}
 

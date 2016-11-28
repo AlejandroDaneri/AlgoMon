@@ -18,10 +18,10 @@ public class ContenedorDeAlgomones extends BorderPane {
 		this.setRight(displayAlgomon2);
     }
     
-    public void cambiarAlgomon(AlgoMon algomon, Jugador jugadorActual){
+    public void cambiarAlgomon(Jugador jugadorActual){
     	DisplayAlgoMon displayNuevo = new DisplayAlgoMon(jugadorActual);
     	if(displayAlgomon1.getJugador().equals(jugadorActual)){
-    		displayAlgomon1 = displayNuevo;
+            displayAlgomon1 = displayNuevo;
 			displayAlgomon1.girarImagen();
     		this.setLeft(displayNuevo);
     	}

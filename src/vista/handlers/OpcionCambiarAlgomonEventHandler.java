@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.media.AudioClip;
 import modelo.Partida;
 import modelo.algomones.AlgoMon;
 import modelo.excepciones.AlgoMonMuertoException;
@@ -25,10 +26,13 @@ public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEven
 	public void handle(ActionEvent event) {
 		 try {
 			 	partida.jugarTurnoActual(algomon);
-			    contenedor.cambiarAlgomon(algomon);
-	            contenedor.nuevoTurno();
+			 	AudioClip sonido = new AudioClip("file:src/vista/sonidos/cambiarPokemon.mp3");
+			 	sonido.play();
+			 	Thread.sleep(500);//para que el sonido se sincronize con el cambio
+			    contenedor.cambiarAlgomon();
 	    		if (partida.juegoTerminado())
 	    			contenedor.peleaFinalizada(partida.nombreGanador());
+			 	contenedor.nuevoTurno();
 	        }
 		 	catch (AlgoMonMuertoException e) {
 			 Alert alert = new Alert(AlertType.WARNING);
@@ -36,6 +40,8 @@ public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEven
 	        	alert.setHeaderText("No es posible realizar la accion");
 	        	alert.setContentText("El algomon que escogio esta muerto!");
 	        	alert.showAndWait();
+		 } catch (InterruptedException e) {
+			 e.printStackTrace();
 		 }
 	}
 

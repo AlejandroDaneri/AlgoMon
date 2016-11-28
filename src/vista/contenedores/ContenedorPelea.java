@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import modelo.Partida;
@@ -61,8 +62,8 @@ public class ContenedorPelea extends BorderPane{
 		
 	}
 	
-	public void cambiarAlgomon(AlgoMon actual){
-		contenedorDeAlgomones.cambiarAlgomon(actual,partida.jugadorOponente());
+	public void cambiarAlgomon(){
+		contenedorDeAlgomones.cambiarAlgomon(partida.jugadorOponente());
 		Botonera botoneraNueva = new Botonera(partida,this,partida.jugadorOponente());
 		if(this.zonaJugador1.getJugador() == this.partida.jugadorOponente()) zonaJugador1.setBotonera(botoneraNueva);
 		else zonaJugador2.setBotonera(botoneraNueva);
@@ -99,6 +100,8 @@ public class ContenedorPelea extends BorderPane{
 
 		Scene scene = new Scene(contenedor);
 		stage.setScene(scene);
+		AudioClip musica = new AudioClip("file:src/vista/sonidos/victoria.mp3");
+		musica.play();
 		stage.show();
 	}
 }
