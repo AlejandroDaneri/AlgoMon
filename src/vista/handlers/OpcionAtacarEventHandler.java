@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import modelo.Partida;
 import modelo.ataques.Ataque;
+import modelo.estados.Dormido;
 import modelo.excepciones.AtaquesAgotadosException;
 import vista.contenedores.ContenedorPelea;
 
@@ -43,14 +44,17 @@ public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
         }
     }
     
-    public String notificacionAtaque(){
-    	return this.partida.jugadorActual().getNombre() + " ha atacado con " 
+    private String notificacionAtaque(){
+        if (partida.jugadorActual().getAlgomonActivo().getEstadoEfimero().getClass().getSimpleName().equals("Dormido")){
+            return this.partida.jugadorActual().getAlgomonActivo().getClass().getSimpleName() + " sigue durmiendo profundamente \n";
+        }
+    	return this.partida.jugadorActual().getNombre() + " ha atacado con "
     			+ this.partida.jugadorActual().getAlgomonActivo().getClass().getSimpleName() + " con "
                 + this.ataque.getClass().getSimpleName() + " sacando " + Integer.toString(this.ataque.getPotencia()) 
                 + " de vida al rival." + "\n";
     }
     
-    public void actualizarOpcionAtaque(){
+    private void actualizarOpcionAtaque(){
     	opcion.setText(ataque.getClass().getSimpleName() + " (" + ataque.getCantidad() + "/" + ataque.cantidadInicial() + ")");
     }
 }

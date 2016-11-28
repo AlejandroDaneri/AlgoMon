@@ -29,13 +29,6 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         VBox espacioParaJugador1 = new EspacioEleccionParaJugador(nombreJugador1,jugador1);
         VBox espacioParaJugador2 = new EspacioEleccionParaJugador(nombreJugador2,jugador2);
         
-        /*
-        Button botonVolver = new Button();
-        BotonVolverHandler botonVolverHandler = new BotonVolverHandler(stage);
-        botonVolver.setOnAction(botonVolverHandler);
-        queria hacer un boton que vuelva a la pantalla anterior pero no me salio
-        */
-
         Button botonEmpezar = new Button("Empezar Partida");
         BotonEmpezarEventHandler botonEmpezarHandler = new BotonEmpezarEventHandler(
                 primaryStage, jugador1, jugador2,musicaDeFondo);
@@ -56,14 +49,5 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         
     }
 
-    /* una idea a futuro
-        private Button crearBotonDeshacer(HBox seleccionados) {
-            Button botonDeshacer = new Button("Deshacer");
-            botonDeshacer.setFont(Font.font(20));
-            BotonDeshacerEventHandler botonDeshacerEventHandler =new BotonDeshacerEventHandler(seleccionados,botonDeshacer);
-            botonDeshacer.setOnAction(botonDeshacerEventHandler);
-            return botonDeshacer;
 
-        }
-    */
 }

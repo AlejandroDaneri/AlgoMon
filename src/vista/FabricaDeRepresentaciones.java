@@ -18,31 +18,25 @@ public class FabricaDeRepresentaciones {
 	private static Image imagenTablaRattata = new Image("file:src/vista/imagenes/TRattata.png");
 	private static Image imagenTablaJigglypuff = new Image("file:src/vista/imagenes/TJigglypuff.png");
 	private static Image imagenTablaChansey = new Image("file:src/vista/imagenes/TChansey.png");
-/*
-	private static String nombreCharmander = "Charmander";
-	private static String nombreBulbasaur = "Bulbasaur";
-	private static String nombreSquirtle = "Squirtle";
-	private static String nombreRattata = "Rattata";
-	private static String nombreJigglypuff = "Jigglypuff";
-	private static String nombreChansey = "Chansey";
-	*/
+
+	private BibliotecaDeSonidos sonidos = new BibliotecaDeSonidos() ;
 	
 	public RepresentacionAlgoMon crearRepresentacion(AlgoMon algomon){
 		if(algomon.equals(new Charmander()))
-			return new RepresentacionAlgoMon(imagenCharmander,imagenTablaCharmander,algomon,"Charmander");
+			return new RepresentacionAlgoMon(imagenCharmander,imagenTablaCharmander,algomon,"Charmander",sonidos.get("Charmander"));
 
 		if(algomon.equals(new Squirtle()))
-			return new RepresentacionAlgoMon(imagenSquirtle,imagenTablaSquirtle,algomon,"Squirtle");
+			return new RepresentacionAlgoMon(imagenSquirtle,imagenTablaSquirtle,algomon,"Squirtle",sonidos.get("Squirtle"));
 
 		if(algomon.equals(new Bulbasaur()))
-			return new RepresentacionAlgoMon(imagenBulbasaur,imagenTablaBulbasaur,algomon,"Bulbasaur");
+			return new RepresentacionAlgoMon(imagenBulbasaur,imagenTablaBulbasaur,algomon,"Bulbasaur",sonidos.get("Bulbasaur"));
 
 		if(algomon.equals(new Rattata()))
-			return new RepresentacionAlgoMon(imagenRattata,imagenTablaRattata,algomon,"Rattata");
+			return new RepresentacionAlgoMon(imagenRattata,imagenTablaRattata,algomon,"Rattata",sonidos.get("Rattata"));
 
 		if(algomon.equals(new Jigglypuff()))
-			return new RepresentacionAlgoMon(imagenJigglypuff,imagenTablaJigglypuff,algomon,"Jigglypuff");
+			return new RepresentacionAlgoMon(imagenJigglypuff,imagenTablaJigglypuff,algomon,"Jigglypuff",sonidos.get("Jigglypuff"));
 
-		return new RepresentacionAlgoMon(imagenChansey,imagenTablaChansey,algomon,"Chansey");
+		return new RepresentacionAlgoMon(imagenChansey,imagenTablaChansey,algomon,"Chansey",sonidos.get("Chansey"));
 	}
 }

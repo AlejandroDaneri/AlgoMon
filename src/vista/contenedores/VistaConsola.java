@@ -11,14 +11,14 @@ import javafx.scene.control.Label;
 
 class VistaConsola extends HBox implements Observer
 {
-    Consola consola;
+    private Consola consola;
 
     public VistaConsola(Consola consola)
     {
         this.consola = consola;
         consola.addObserver(this);
 
-        setMaxHeight(110);
+        setMaxHeight(125);
         setMinHeight(getMaxHeight());
         setStyle("-fx-background-color: black;-fx-opacity: 0.8;");
 

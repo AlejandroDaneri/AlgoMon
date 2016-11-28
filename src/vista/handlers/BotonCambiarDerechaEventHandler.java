@@ -25,6 +25,6 @@ public class BotonCambiarDerechaEventHandler extends BotonHandler {
     	RepresentacionAlgoMon actual = lista.siguienteALaDerecha();
     	seleccion.setImage(actual.getImagen());
     	tabla.setImage(actual.getTabla());
-    	this.botonSeleccionar.setRepresentacionActual(actual);
+    	this.botonSeleccionar.setRepresentacion(actual);
     }
 }
