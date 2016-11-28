@@ -19,6 +19,7 @@ public class ContenedorPelea extends BorderPane{
 	private Partida partida;
 	private ZonaJugador zonaJugador1;
 	private ZonaJugador zonaJugador2;
+	private PanelDeNotificacion panelNotificaciones;
 
 	public ContenedorPelea(Stage primaryStage) {
 		stage = primaryStage;
@@ -29,14 +30,14 @@ public class ContenedorPelea extends BorderPane{
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 						BackgroundSize.DEFAULT);
 		setBackground(new Background(imagenDeFondo));
-
+		
 		BarraDeMenu menu = new BarraDeMenu(stage);
 		this.setTop(menu);
 	}
 
 	public void inicializarPelea(Partida partida){
 		this.partida = partida;
-
+		
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(partida.jugadorActual(),partida.jugadorOponente());
 		
 		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()),
@@ -46,6 +47,10 @@ public class ContenedorPelea extends BorderPane{
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);
+		
+		this.panelNotificaciones = new PanelDeNotificacion();
+		this.setBottom(panelNotificaciones);
+		this.panelNotificaciones.setAlignment(Pos.BOTTOM_CENTER);
 
 		this.contenedorDeAlgomones = contenedorDeAlgomones;
 		this.setCenter(contenedorDeAlgomones);
@@ -58,7 +63,7 @@ public class ContenedorPelea extends BorderPane{
 	}
 	
 	public void notificarPanel(String mensaje){
-		this.contenedorDeAlgomones.notificarPanel(mensaje);
+		this.panelNotificaciones.agregarMensaje(mensaje);
 	}
 	
 	public void cambiarAlgomon(){
