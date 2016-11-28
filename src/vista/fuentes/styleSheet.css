@@ -1,0 +1,11 @@
+.menu-button {
+	-fx-font-size: 16pt;
+    	-fx-font-family: "Lucida Console";
+}
+
+.menu-item .label {
+	-fx-font-size: 16pt;
+    	-fx-font-family: "Lucida Console";
+}
+
+

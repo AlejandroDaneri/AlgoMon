@@ -17,10 +17,10 @@ public class BotonMenuAplicarElemento extends MenuButton {
     	super("Aplicar Elemento");
         this.contenedor = contenedor;
         this.setFont(Font.font("Lucida Console", 13));
+        this.getStylesheets().add("src/vista/fuentes/styleSheet.css");
         opciones.getChildren().add(this);
         for(Elemento elemento : jugador.getElementos()) {
             MenuItem opcion = new MenuItem(elemento.getClass().getSimpleName());
-            opcion.setStyle("");
             opcion.setOnAction(new OpcionAplicarElementoEventHandler(partida,elemento,this.contenedor,opcion));
             opcion.setText(elemento.getClass().getSimpleName() + " (" + elemento.cantidadElemento() + "/" + elemento.cantidadInicial() + ")");
             this.getItems().add(opcion);
