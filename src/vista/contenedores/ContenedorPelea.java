@@ -13,6 +13,7 @@ import modelo.Partida;
 import vista.BarraDeMenu;
 
 public class ContenedorPelea extends BorderPane{
+	private AudioClip musicaDeFondo;
 	private Stage stage;
 	private ContenedorDeAlgomones contenedorDeAlgomones;
 	private Partida partida;
@@ -22,7 +23,7 @@ public class ContenedorPelea extends BorderPane{
 
 	public ContenedorPelea(Stage primaryStage) {
 		stage = primaryStage;
-		
+
 		Image fondo = new Image("file:src/vista/imagenes/fondosPelea/estadiopoke.jpg");
 		BackgroundImage imagenDeFondo =
 				new BackgroundImage(fondo, BackgroundRepeat.NO_REPEAT,
@@ -39,9 +40,9 @@ public class ContenedorPelea extends BorderPane{
 
 		AudioClip sonidoInicial = new AudioClip("file:src/vista/sonidos/cambiarPokemon.mp3");
 		sonidoInicial.play();
-		AudioClip musica = new AudioClip("file:src/vista/sonidos/pelea2.mp3");
-		musica.play();
-		musica.setCycleCount(2);
+		musicaDeFondo = new AudioClip("file:src/vista/sonidos/pelea2.mp3");
+		musicaDeFondo.play();
+		musicaDeFondo.setCycleCount(2);
 
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(partida.jugadorActual(),partida.jugadorOponente());
 		
@@ -102,8 +103,7 @@ public class ContenedorPelea extends BorderPane{
 	}
 	
 	public void peleaFinalizada(String ganador) {
-		
-		
+		musicaDeFondo.stop();
 		ContenedorFinal contenedorFinal = new ContenedorFinal(ganador);
 		Scene scene = new Scene(contenedorFinal);
 		boolean enPantallaCompletaAntesDeCambiarEscena = stage.isFullScreen();
