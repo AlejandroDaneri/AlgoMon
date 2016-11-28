@@ -4,19 +4,12 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 
 public class ContenedorFinal extends BorderPane {
 	
@@ -24,6 +17,7 @@ public class ContenedorFinal extends BorderPane {
 		
 		AudioClip musicaGanador = new AudioClip("file:src/vista/sonidos/victoria.mp3");
 		musicaGanador.play();
+		musicaGanador.setCycleCount(5);
 		
 		Image fondo = new Image("file:src/vista/imagenes/fondosEleccion/pokefacha.jpg");
 		BackgroundImage imagenDeFondo =

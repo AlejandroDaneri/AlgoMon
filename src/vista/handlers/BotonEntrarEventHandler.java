@@ -1,6 +1,7 @@
 package vista.handlers;
 
 import javafx.event.ActionEvent;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import vista.contenedores.ContenedorEleccionAlgomon;
 import vista.contenedores.Escena;
@@ -8,12 +9,14 @@ import vista.contenedores.VentanaNombrarJugadores;
 
 public class BotonEntrarEventHandler extends BotonHandler {
 
+    private final AudioClip musicaDeFondo;
     private Stage stage;
     private VentanaNombrarJugadores ventanaNombres;
 
-    public BotonEntrarEventHandler(Stage stage) {
+    public BotonEntrarEventHandler(Stage stage, AudioClip musicaDeFondo) {
         this.stage = stage;
         this.ventanaNombres = new VentanaNombrarJugadores();
+        this.musicaDeFondo = musicaDeFondo;
         
     }
 
@@ -29,7 +32,7 @@ public class BotonEntrarEventHandler extends BotonHandler {
             String nombreJugador1 = ventanaNombres.getNombreJugador1();
             String nombreJugador2 = ventanaNombres.getNombreJugador2();
 
-            ContenedorEleccionAlgomon contenedorEleccion = new ContenedorEleccionAlgomon(stage, nombreJugador1, nombreJugador2);
+            ContenedorEleccionAlgomon contenedorEleccion = new ContenedorEleccionAlgomon(stage, nombreJugador1, nombreJugador2,musicaDeFondo);
             Escena escenaEleccion = new Escena(contenedorEleccion, stage);
 
             stage.setFullScreenExitHint("");

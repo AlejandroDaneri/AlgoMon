@@ -36,7 +36,13 @@ public class ContenedorPelea extends BorderPane{
 
 	public void inicializarPelea(Partida partida){
 		this.partida = partida;
-		
+
+		AudioClip sonidoInicial = new AudioClip("file:src/vista/sonidos/cambiarPokemon.mp3");
+		sonidoInicial.play();
+		AudioClip musica = new AudioClip("file:src/vista/sonidos/pelea2.mp3");
+		musica.play();
+		musica.setCycleCount(2);
+
 		ContenedorDeAlgomones contenedorDeAlgomones = new ContenedorDeAlgomones(partida.jugadorActual(),partida.jugadorOponente());
 		
 		this.zonaJugador1 = new ZonaJugador(new Botonera(partida,this,partida.jugadorActual()),
@@ -49,7 +55,8 @@ public class ContenedorPelea extends BorderPane{
 		
 		this.panelNotificaciones = new PanelDeNotificacion();
 		this.setBottom(panelNotificaciones);
-		this.panelNotificaciones.setAlignment(Pos.BOTTOM_CENTER);
+		this.setAlignment(panelNotificaciones,Pos.BOTTOM_CENTER);
+
 
 		this.contenedorDeAlgomones = contenedorDeAlgomones;
 		this.setCenter(contenedorDeAlgomones);

@@ -1,26 +1,30 @@
 package vista.contenedores;
 
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
-public class PanelDeNotificacion extends HBox {
+public class PanelDeNotificacion extends ScrollPane {
 	
-	TextArea notificaciones;
-	ScrollPane panel;
+	private TextArea notificaciones;
+
 	
     public PanelDeNotificacion() {
-    	
+
     	this.notificaciones = new TextArea();
     	this.notificaciones.setFont(Font.font("Cambria", 12));
     	this.notificaciones.setEditable(false);
-    	this.panel = new ScrollPane(notificaciones);
-    	this.panel.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
-    	this.panel.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
+
+    	this.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+    	this.setHbarPolicy(ScrollBarPolicy.NEVER);
     	this.notificaciones.setText("Movimiento de Jugadores:\n");
-    	this.getChildren().addAll(panel);
+		notificaciones.setWrapText(true);
+
+		notificaciones.setMinWidth(Double.MAX_VALUE);
+		this.setContent(notificaciones);
+		this.setWidth(Double.MAX_VALUE);
+		this.setMaxHeight(100);
+
 
     }
     

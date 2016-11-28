@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -13,7 +14,7 @@ import vista.handlers.BotonEmpezarEventHandler;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
 
-    public ContenedorEleccionAlgomon(Stage primaryStage, String nombreJugador1, String nombreJugador2) {
+    public ContenedorEleccionAlgomon(Stage primaryStage, String nombreJugador1, String nombreJugador2, AudioClip musicaDeFondo) {
 
         Image fondo = new Image("file:src/vista/imagenes/fondosEleccion/pokefacha.jpg");
         BackgroundImage imagenDeFondo =
@@ -37,7 +38,7 @@ public class ContenedorEleccionAlgomon extends BorderPane{
 
         Button botonEmpezar = new Button("Empezar Partida");
         BotonEmpezarEventHandler botonEmpezarHandler = new BotonEmpezarEventHandler(
-                primaryStage, jugador1, jugador2);
+                primaryStage, jugador1, jugador2,musicaDeFondo);
         botonEmpezar.setOnAction(botonEmpezarHandler);
         botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
         botonEmpezar.setStyle("-fx-base: #373441");

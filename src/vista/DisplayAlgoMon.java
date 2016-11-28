@@ -46,7 +46,7 @@ public class DisplayAlgoMon extends VBox {
 		this.setAlignment(Pos.CENTER);
 
 		this.setPadding(new Insets(10,10,0,10));
-		this.getChildren().addAll(nombreDelAlgomon,this.barraDeVida, vidaActual, imagenAlgomon, this.estados);
+		this.getChildren().addAll(nombreDelAlgomon,this.barraDeVida, vidaActual,this.estados, imagenAlgomon );
 	}
 
 	private Label representarVidaActual(RepresentacionAlgoMon representacion) {
