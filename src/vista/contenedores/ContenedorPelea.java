@@ -19,7 +19,8 @@ public class ContenedorPelea extends BorderPane{
 	private Partida partida;
 	private ZonaJugador zonaJugador1;
 	private ZonaJugador zonaJugador2;
-	private PanelDeNotificacion panelNotificaciones;
+	private VistaConsola panelNotificaciones;
+	private Consola consola = new Consola();
 
 	public ContenedorPelea(Stage primaryStage) {
 		stage = primaryStage;
@@ -53,8 +54,8 @@ public class ContenedorPelea extends BorderPane{
 
 		this.setLeft(zonaJugador1);
 		this.setRight(zonaJugador2);
-		
-		this.panelNotificaciones = new PanelDeNotificacion();
+
+		this.panelNotificaciones = new VistaConsola(consola);
 		this.setBottom(panelNotificaciones);
 		this.setAlignment(panelNotificaciones,Pos.BOTTOM_CENTER);
 
@@ -70,7 +71,7 @@ public class ContenedorPelea extends BorderPane{
 	}
 	
 	public void notificarPanel(String mensaje){
-		this.panelNotificaciones.agregarMensaje(mensaje);
+		this.consola.agregarMensaje(mensaje);
 	}
 	
 	public void cambiarAlgomon(){

@@ -25,12 +25,12 @@ public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEven
 	@Override
 	public void handle(ActionEvent event) {
 		 try {
+			 contenedor.notificarPanel(this.notificacionCambioAlgomon());
 			 partida.jugarTurnoActual(algomon);
 			 AudioClip sonido = new AudioClip("file:src/vista/sonidos/cambiarPokemon.mp3");
 			 sonido.play();
 			 Thread.sleep(500); // para que el sonido se sincronize con el cambio
 			 contenedor.cambiarAlgomon();
-			 contenedor.notificarPanel(this.notificacionCambioAlgomon());
 	         contenedor.nuevoTurno();
 	         if (partida.juegoTerminado())
 	        	 contenedor.peleaFinalizada(partida.nombreGanador());

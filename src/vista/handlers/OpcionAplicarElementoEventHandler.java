@@ -28,8 +28,8 @@ public class OpcionAplicarElementoEventHandler implements EventHandler<ActionEve
     @Override
     public void handle(ActionEvent event) {
     	try {
+            contenedor.notificarPanel(this.notificacionElemento());
     		partida.jugarTurnoActual(this.elemento);
-    		contenedor.notificarPanel(this.notificacionElemento());
         	contenedor.nuevoTurno();
         	if (partida.juegoTerminado())
         		contenedor.peleaFinalizada(partida.nombreGanador());

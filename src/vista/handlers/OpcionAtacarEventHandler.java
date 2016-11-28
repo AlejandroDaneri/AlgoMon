@@ -27,8 +27,8 @@ public class OpcionAtacarEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         try {
-            partida.jugarTurnoActual(ataque);
             contenedor.notificarPanel(this.notificacionAtaque());
+            partida.jugarTurnoActual(ataque);
             contenedor.nuevoTurno();
     		if (partida.juegoTerminado())
     			contenedor.peleaFinalizada(partida.nombreGanador());
