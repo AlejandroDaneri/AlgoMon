@@ -25,7 +25,7 @@ public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEven
 	public void handle(ActionEvent event) {
 		 try {
 			 	partida.jugarTurnoActual(algomon);
-			    contenedor.cambiarAlgomon(algomon);
+			    contenedor.cambiarAlgomon();
 	            contenedor.nuevoTurno();
 	    		if (partida.juegoTerminado())
 	    			contenedor.peleaFinalizada(partida.nombreGanador());
