@@ -10,7 +10,7 @@ public class PanelDeNotificacion extends Label {
     	
     	this.setFont(Font.font("Cambria", 18));
         this.setTextFill(Color.WHITE);
-        this.setText("Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores:Movimiento de Jugadores: ");
+        this.setText("Movimiento de Jugadores: ");
         this.setWrapText(true);
         this.setStyle("-fx-background-color: transparent;");
         this.toBack();

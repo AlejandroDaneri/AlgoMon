@@ -29,12 +29,13 @@ public class OpcionAplicarElementoEventHandler implements EventHandler<ActionEve
     public void handle(ActionEvent event) {
     	try {
     		partida.jugarTurnoActual(this.elemento);
+    		contenedor.notificarPanel(this.notificacionElemento());
         	contenedor.nuevoTurno();
         	if (partida.juegoTerminado())
         		contenedor.peleaFinalizada(partida.nombreGanador());
             AudioClip sonido = new AudioClip("file:src/vista/sonidos/elemento.wav");
             sonido.play();
-            opcion.setText(elemento.getClass().getSimpleName() + " (" + elemento.cantidadElemento() + "/" + elemento.cantidadInicial() + ")");
+            this.actualizarOpcionElemento();
         } 
         catch (CantidadElementoAgotadaException e) {
         	Alert alert = new Alert(AlertType.WARNING);
@@ -44,7 +45,14 @@ public class OpcionAplicarElementoEventHandler implements EventHandler<ActionEve
         	alert.showAndWait();
         }
     }
-
-
+    
+    public String notificacionElemento(){
+    	return this.partida.jugadorActual().getNombre() + " ha utilizado " 
+    			+ this.elemento.getClass().getSimpleName() + "\n";
+    }
+    
+    public void actualizarOpcionElemento(){
+    	opcion.setText(elemento.getClass().getSimpleName() + " (" + elemento.cantidadElemento() + "/" + elemento.cantidadInicial() + ")");
+    }
 
 }

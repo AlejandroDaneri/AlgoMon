@@ -25,24 +25,32 @@ public class OpcionCambiarAlgomonEventHandler implements EventHandler<ActionEven
 	@Override
 	public void handle(ActionEvent event) {
 		 try {
-			 	partida.jugarTurnoActual(algomon);
-			 	AudioClip sonido = new AudioClip("file:src/vista/sonidos/cambiarPokemon.mp3");
-			 	sonido.play();
-			 	Thread.sleep(500);//para que el sonido se sincronize con el cambio
-			    contenedor.cambiarAlgomon();
-	            contenedor.nuevoTurno();
-	    		if (partida.juegoTerminado())
-	    			contenedor.peleaFinalizada(partida.nombreGanador());
+			 partida.jugarTurnoActual(algomon);
+			 AudioClip sonido = new AudioClip("file:src/vista/sonidos/cambiarPokemon.mp3");
+			 sonido.play();
+			 Thread.sleep(500); // para que el sonido se sincronize con el cambio
+			 contenedor.cambiarAlgomon();
+			 contenedor.notificarPanel(this.notificacionCambioAlgomon());
+	         contenedor.nuevoTurno();
+	         if (partida.juegoTerminado())
+	        	 contenedor.peleaFinalizada(partida.nombreGanador());
 	        }
 		 	catch (AlgoMonMuertoException e) {
-			 Alert alert = new Alert(AlertType.WARNING);
+		 		Alert alert = new Alert(AlertType.WARNING);
 	        	alert.setTitle("Warning");
 	        	alert.setHeaderText("No es posible realizar la accion");
 	        	alert.setContentText("El algomon que escogio esta muerto!");
 	        	alert.showAndWait();
-		 } catch (InterruptedException e) {
-			 e.printStackTrace();
+	        	
+		 	} 
+		 	catch (InterruptedException e) {
+		 		e.printStackTrace();
 		 }
 	}
+	
+	public String notificacionCambioAlgomon(){
+    	return this.partida.jugadorActual().getNombre() + " ha cambiado su AlgoMon actual por " 
+    			+ this.algomon.getClass().getSimpleName() + "\n";
+    }
 
 }
