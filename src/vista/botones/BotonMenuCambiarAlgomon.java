@@ -18,7 +18,7 @@ public class BotonMenuCambiarAlgomon extends MenuButton {
     	super("Cambiar Algomon");
         ContenedorPelea contenedor1 = contenedor;
         this.setFont(Font.font("Lucida Console", 13));
-        this.getStylesheets().add("src/vista/fuentes/styleSheet.css");
+        this.getStylesheets().add("file:src/vista/fuentes/styleSheet.css");
         opciones.getChildren().add(this);
         FabricaDeRepresentaciones fabrica = new FabricaDeRepresentaciones();
         for(AlgoMon algomon : jugador.getListaDeAlgomones()) {

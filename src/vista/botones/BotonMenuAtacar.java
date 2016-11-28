@@ -19,7 +19,7 @@ public class BotonMenuAtacar extends MenuButton {
     	super("Atacar");
         this.contenedor = contenedor;
         this.setFont(Font.font("Lucida Console", 13));
-        this.getStylesheets().add("src/vista/fuentes/styleSheet.css");
+        this.getStylesheets().add("file:src/vista/fuentes/styleSheet.css");
         opciones.getChildren().add(this);
         FabricaDeRepresentaciones fabrica = new FabricaDeRepresentaciones();
         RepresentacionAlgoMon representacion = fabrica.crearRepresentacion(jugador.getAlgomonActivo());
