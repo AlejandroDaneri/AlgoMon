@@ -15,6 +15,7 @@ public class PanelDeNotificacion extends HBox {
     	
     	this.notificaciones = new TextArea();
     	this.notificaciones.setFont(Font.font("Cambria", 12));
+    	this.notificaciones.setEditable(false);
     	this.panel = new ScrollPane(notificaciones);
     	this.panel.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
     	this.panel.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);

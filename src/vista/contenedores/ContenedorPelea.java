@@ -4,7 +4,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
@@ -96,16 +95,14 @@ public class ContenedorPelea extends BorderPane{
 	}
 	
 	public void peleaFinalizada(String ganador) {
-		VBox contenedor = new VBox(20);
-
-		Label jugadorGanador = new Label("Gano"+ ganador);
-		contenedor.getChildren().add(jugadorGanador);
-		contenedor.setAlignment(Pos.CENTER);
-
-		Scene scene = new Scene(contenedor);
-		stage.setScene(scene);
-		AudioClip musica = new AudioClip("file:src/vista/sonidos/victoria.mp3");
-		musica.play();
-		stage.show();
+		
+		
+		ContenedorFinal contenedorFinal = new ContenedorFinal(ganador);
+		Scene scene = new Scene(contenedorFinal);
+		boolean enPantallaCompletaAntesDeCambiarEscena = stage.isFullScreen();
+        stage.hide();
+        stage.setScene(scene);
+        stage.setFullScreen(enPantallaCompletaAntesDeCambiarEscena);
+        stage.show();
 	}
 }
