@@ -10,7 +10,7 @@ public class BarraDeVolumen extends Slider{
         this.setMin(0);
         this.setMax(1);
         this.setMaxWidth(225);
-        this.setStyle("-fx-base: #373441");
+        this.setStyle("-fx-base: #394867");
     }
 
 

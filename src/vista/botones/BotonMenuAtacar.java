@@ -3,6 +3,7 @@ package vista.botones;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import modelo.Jugador;
 import modelo.Partida;
 import modelo.ataques.Ataque;
@@ -17,6 +18,7 @@ public class BotonMenuAtacar extends MenuButton {
     public BotonMenuAtacar(Partida partida, Jugador jugador, VBox opciones,  ContenedorPelea contenedor) {
     	super("Atacar");
         this.contenedor = contenedor;
+        this.setFont(Font.font("Lucida Console", 13));
         opciones.getChildren().add(this);
         FabricaDeRepresentaciones fabrica = new FabricaDeRepresentaciones();
         RepresentacionAlgoMon representacion = fabrica.crearRepresentacion(jugador.getAlgomonActivo());

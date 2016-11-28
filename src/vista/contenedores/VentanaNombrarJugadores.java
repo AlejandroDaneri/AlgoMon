@@ -51,7 +51,7 @@ public class VentanaNombrarJugadores {
 
         Button aceptar = new Button("Aceptar");
         aceptar.setTextFill(Color.DARKRED);
-        aceptar.setFont(Font.font("", 40));
+        aceptar.setFont(Font.font("Lucida Console", 40));
         aceptar.setStyle("-fx-base: rgb(249,219,189)");
         aceptar.setMinSize(180, 40);
 
@@ -102,7 +102,7 @@ public class VentanaNombrarJugadores {
         Label labelParaJugador = new Label();
         labelParaJugador.setText(texto);
         labelParaJugador.setStyle("-fx-border-color:red; -fx-background-color: white; -fx-stroke: black;");
-        labelParaJugador.setFont(Font.font("", 30));
+        labelParaJugador.setFont(Font.font("Lucida Console", 30));
         return labelParaJugador;
 
     }

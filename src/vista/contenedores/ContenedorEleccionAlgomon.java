@@ -40,8 +40,8 @@ public class ContenedorEleccionAlgomon extends BorderPane{
         BotonEmpezarEventHandler botonEmpezarHandler = new BotonEmpezarEventHandler(
                 primaryStage, jugador1, jugador2,musicaDeFondo);
         botonEmpezar.setOnAction(botonEmpezarHandler);
-        botonEmpezar.setFont(Font.font("Arial Black", FontWeight.BOLD,20));
-        botonEmpezar.setStyle("-fx-base: #373441");
+        botonEmpezar.setFont(Font.font("Lucida Console", FontWeight.BOLD,20));
+        botonEmpezar.setStyle("-fx-base: rgb(249,219,189)");
 
 
         BarraDeMenu barraDeMenu = new BarraDeMenu(primaryStage);

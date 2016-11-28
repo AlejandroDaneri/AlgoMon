@@ -25,8 +25,8 @@ public class EspacioEleccionParaJugador extends VBox{
         ListaDeRepresentaciones lista = new ListaDeRepresentaciones();
         
         Label EtiquetaNombre = new Label(nombreJugador);
-        EtiquetaNombre.setFont(Font.font("Courier New", FontWeight.BOLD, 40));
-        EtiquetaNombre.setTextFill(Color.DARKGREY);
+        EtiquetaNombre.setFont(Font.font("", FontWeight.BOLD, 40));
+        EtiquetaNombre.setTextFill(Color.web("#f9dbbd"));
 
         ImagenDeAlgomonAElegir seleccionJugador = new ImagenDeAlgomonAElegir(lista);
         girarImagen(seleccionJugador);
@@ -43,8 +43,9 @@ public class EspacioEleccionParaJugador extends VBox{
                 seleccionJugador, seleccionados, jugador, lista.getActual());
 
         Button botonSeleccion = new BotonSeleccionar(botonSeleccionarEventHandler);
-        botonSeleccion.setStyle("-fx-base: #373441");
-
+        botonSeleccion.setStyle("-fx-base: rgb(249,219,189)");
+        botonSeleccion.setFont(Font.font("Lucida Console", 20));
+        
 
         Button botonCambiarHaciaIzquierda = new BotonIzquierdo(flechaIzquierda,
                 seleccionJugador,tabla,lista,botonSeleccionarEventHandler);
@@ -58,8 +59,7 @@ public class EspacioEleccionParaJugador extends VBox{
 
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(EtiquetaNombre, zonaDeElecccionParaJugador);
-        this.setPadding(new Insets(0,20,0,0));
-
+        this.setPadding(new Insets(0,20,0,0));        
     }
 
     private void girarImagen(ImagenDeAlgomonAElegir seleccionJugador) {

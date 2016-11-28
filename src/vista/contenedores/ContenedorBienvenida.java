@@ -19,13 +19,14 @@ public class ContenedorBienvenida extends VBox{
 
     public ContenedorBienvenida(Stage primaryStage, AudioClip musicaDeFondo) {
         super();
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(50);
+        this.setAlignment(Pos.CENTER_LEFT);
+        this.setSpacing(70);
         primaryStage.setFullScreen(true);
 
         Label titulo = new Label("AlgoMon");
-        titulo.setFont(Font.font("Courier New",FontWeight.BOLD, 56));
-        titulo.setTextFill(Color.DARKGREY);
+        titulo.setFont(Font.font("",FontWeight.BOLD, 76));
+        titulo.setTextFill(Color.web("#f9dbbd"));
+        
 
         Image imagen = new Image("file:src/vista/imagenes/fondosBienvenida/fondonegro.jpg");
 
@@ -36,41 +37,44 @@ public class ContenedorBienvenida extends VBox{
         this.setBackground(new Background(imagenDeFondo));
 
         Button botonEntrar = new Button();
-        botonEntrar.setText("JUGAR");
-        botonEntrar.setTextFill(Color.DARKGREY);
-        botonEntrar.setMinSize(220, 80);
-        botonEntrar.setFont(Font.font("Arial Black", FontWeight.BOLD,30));
-        botonEntrar.setStyle("-fx-base: #373441");
+        botonEntrar.setMinSize(260, 100);
+        botonEntrar.setText("Jugar");
+        botonEntrar.setTextFill(Color.web("#f9dbbd"));
+        botonEntrar.setFont(Font.font("Lucida Console", FontWeight.BOLD,40));
+        botonEntrar.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
+
       
         BotonEntrarEventHandler botonEntrarHandler =
                 new BotonEntrarEventHandler(primaryStage,musicaDeFondo);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         Button botonReglas = new Button();
+        botonReglas.setMinSize(200, 60);
         botonReglas.setText("Reglas del juego");
-        botonReglas.setTextFill(Color.DARKGREY);
-        botonReglas.setFont(Font.font("", 20));
-        botonReglas.setStyle("-fx-base: #373441");
-        botonReglas.setMinSize(180, 40);
+        botonReglas.setTextFill(Color.web("#f9dbbd"));
+        botonReglas.setFont(Font.font("Lucida Console", 20));
+        botonReglas.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
 
         BotonReglasEventHandler botonReglasHandler =
                 new BotonReglasEventHandler();
         botonReglas.setOnAction(botonReglasHandler);
 
         Button botonSalir = new Button();
+        botonSalir.setMinSize(200, 60);
         botonSalir.setText("Salir");
-        botonSalir.setTextFill(Color.DARKGREY);
-        botonSalir.setFont(Font.font("", 20));
-        botonSalir.setStyle("-fx-base: #373441");
-        botonSalir.setMinSize(180, 40);
+        botonSalir.setTextFill(Color.web("#f9dbbd"));
+        botonSalir.setFont(Font.font("Lucida Console", 20));
+        botonSalir.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
 
         BotonSalirEventHandler botonSalirHandler = new BotonSalirEventHandler();
         botonSalir.setOnAction(botonSalirHandler);
 
         ContenedorVolumen contenedorVolumen = new ContenedorVolumen(musicaDeFondo);
+        contenedorVolumen.setAlignment(Pos.CENTER_LEFT);
+        contenedorVolumen.setPadding(new Insets(30, 0, 30, 0));
 
         this.getChildren().addAll(titulo, botonEntrar,contenedorVolumen, botonReglas, botonSalir);
-        this.setPadding(new Insets(30));
+        this.setPadding(new Insets(30, 0, 30, 220));
         this.setSpacing(20);
     }
 }
