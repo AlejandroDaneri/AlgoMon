@@ -1,5 +1,6 @@
 package vista.contenedores;
 
+import controlador.handlers.BotonEmpezarEventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -10,7 +11,6 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import modelo.Jugador;
 import vista.BarraDeMenu;
-import vista.handlers.BotonEmpezarEventHandler;
 
 public class ContenedorEleccionAlgomon extends BorderPane{
 

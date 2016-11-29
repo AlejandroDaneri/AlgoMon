@@ -1,4 +1,4 @@
-package vista.handlers;
+package controlador.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.MenuButton;

@@ -1,4 +1,4 @@
-package vista.handlers;
+package controlador.handlers;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;

@@ -1,5 +1,6 @@
 package vista.contenedores;
 
+import controlador.handlers.BotonSeleccionarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,7 +16,6 @@ import vista.ListaDeRepresentaciones;
 import vista.botones.BotonDerecho;
 import vista.botones.BotonIzquierdo;
 import vista.botones.BotonSeleccionar;
-import vista.handlers.BotonSeleccionarEventHandler;
 
 public class EspacioEleccionParaJugador extends VBox{
     private static boolean primerJugador=true;

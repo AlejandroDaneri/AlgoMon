@@ -1,4 +1,4 @@
-package vista.handlers;
+package controlador.handlers;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;

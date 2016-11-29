@@ -14,9 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import vista.handlers.BotonHandler;
 
 import java.util.ArrayList;
+
+import controlador.handlers.BotonHandler;
 
 public class ContenedorNombrarJugadores {
 	

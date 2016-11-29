@@ -1,13 +1,13 @@
 package vista;
 
+import controlador.handlers.BotonModoPantallaCompletaHandler;
+import controlador.handlers.BotonReglasEventHandler;
+import controlador.handlers.BotonSalirEventHandler;
 import javafx.beans.binding.When;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import vista.handlers.BotonModoPantallaCompletaHandler;
-import vista.handlers.BotonReglasEventHandler;
-import vista.handlers.BotonSalirEventHandler;
 
 public class BarraDeMenu extends MenuBar {
 

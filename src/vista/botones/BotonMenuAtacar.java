@@ -1,5 +1,6 @@
 package vista.botones;
 
+import controlador.handlers.OpcionAtacarEventHandler;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
@@ -10,7 +11,6 @@ import modelo.ataques.Ataque;
 import vista.FabricaDeRepresentaciones;
 import vista.RepresentacionAlgoMon;
 import vista.contenedores.ContenedorPelea;
-import vista.handlers.OpcionAtacarEventHandler;
 
 public class BotonMenuAtacar extends MenuButton {
     private ContenedorPelea contenedor;

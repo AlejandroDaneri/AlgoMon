@@ -1,5 +1,8 @@
 package vista.contenedores;
 
+import controlador.handlers.BotonEntrarEventHandler;
+import controlador.handlers.BotonReglasEventHandler;
+import controlador.handlers.BotonSalirEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,9 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import vista.handlers.BotonEntrarEventHandler;
-import vista.handlers.BotonReglasEventHandler;
-import vista.handlers.BotonSalirEventHandler;
 
 public class ContenedorBienvenida extends VBox{
 

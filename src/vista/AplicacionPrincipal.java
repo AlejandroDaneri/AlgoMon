@@ -6,7 +6,7 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import vista.contenedores.ContenedorBienvenida;
 import vista.contenedores.Escena;
-import vista.handlers.AlertaHandler;
+import controlador.handlers.AlertaHandler;
 
 public class AplicacionPrincipal extends Application{
 

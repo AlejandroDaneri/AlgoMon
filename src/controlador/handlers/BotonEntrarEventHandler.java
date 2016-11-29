@@ -1,4 +1,4 @@
-package vista.handlers;
+package controlador.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.media.AudioClip;
@@ -11,11 +11,11 @@ public class BotonEntrarEventHandler extends BotonHandler {
 
     private final AudioClip musicaDeFondo;
     private Stage stage;
-    private ContenedorNombrarJugadores ventanaNombres;
+    private ContenedorNombrarJugadores contenedorNombres;
 
     public BotonEntrarEventHandler(Stage stage, AudioClip musicaDeFondo) {
         this.stage = stage;
-        this.ventanaNombres = new ContenedorNombrarJugadores();
+        this.contenedorNombres = new ContenedorNombrarJugadores();
         this.musicaDeFondo = musicaDeFondo;
         
     }
@@ -24,13 +24,13 @@ public class BotonEntrarEventHandler extends BotonHandler {
     public void handle(ActionEvent event) {
     	super.handle(event);
     	
-    	if (!ventanaNombres.jugadoresFueronIngresados()) {
-    		ventanaNombres.mostrar();
+    	if (!contenedorNombres.jugadoresFueronIngresados()) {
+    		contenedorNombres.mostrar();
         }
     	
-    	if (ventanaNombres.jugadoresFueronIngresados()) { //esto evita que se empiece la eleccion si no se puso aceptar
-            String nombreJugador1 = ventanaNombres.getNombreJugador1();
-            String nombreJugador2 = ventanaNombres.getNombreJugador2();
+    	if (contenedorNombres.jugadoresFueronIngresados()) { //esto evita que se empiece la eleccion si no se puso aceptar
+            String nombreJugador1 = contenedorNombres.getNombreJugador1();
+            String nombreJugador2 = contenedorNombres.getNombreJugador2();
 
             ContenedorEleccionAlgomon contenedorEleccion = new ContenedorEleccionAlgomon(stage, nombreJugador1, nombreJugador2,musicaDeFondo);
             Escena escenaEleccion = new Escena(contenedorEleccion, stage);

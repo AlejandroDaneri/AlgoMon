@@ -1,5 +1,6 @@
 package vista.contenedores;
 
+import controlador.handlers.BotonMenuEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
@@ -8,7 +9,6 @@ import modelo.Partida;
 import vista.botones.BotonMenuAplicarElemento;
 import vista.botones.BotonMenuAtacar;
 import vista.botones.BotonMenuCambiarAlgomon;
-import vista.handlers.BotonMenuEventHandler;
 
 public class Botonera extends VBox {
 	

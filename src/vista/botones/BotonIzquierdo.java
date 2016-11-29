@@ -1,12 +1,12 @@
 package vista.botones;
 
+import controlador.handlers.BotonCambiarIzquierdaEventHandler;
+import controlador.handlers.BotonSeleccionarEventHandler;
 import javafx.scene.control.Button;
 import vista.ListaDeRepresentaciones;
 import vista.contenedores.Flecha;
 import vista.contenedores.ImagenDeAlgomonAElegir;
 import vista.contenedores.TablaDeAlgomon;
-import vista.handlers.BotonCambiarIzquierdaEventHandler;
-import vista.handlers.BotonSeleccionarEventHandler;
 
 public class BotonIzquierdo extends Button {
     public BotonIzquierdo(Flecha imagen, ImagenDeAlgomonAElegir seleccionJugador, TablaDeAlgomon tabla,
